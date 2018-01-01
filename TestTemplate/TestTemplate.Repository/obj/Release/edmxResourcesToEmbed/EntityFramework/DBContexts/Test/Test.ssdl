@@ -1,0 +1,607 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HMLVTSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="TS_ChildWorkOrder">
+    <Key>
+      <PropertyRef Name="ParentWOID" />
+      <PropertyRef Name="ChildWOID" />
+      <PropertyRef Name="RouteID" />
+    </Key>
+    <Property Name="ParentWOID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ChildWOID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RouteID" Type="int" Nullable="false" />
+    <Property Name="ProcOPseq" Type="int" Nullable="false" />
+    <Property Name="Type" Type="nvarchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TS_ExStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WOID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProcOpSeq" Type="int" Nullable="false" />
+    <Property Name="ExStatus" Type="int" Nullable="false" />
+    <Property Name="UpdatedDate" Type="datetime" Nullable="false" />
+    <Property Name="OperatorID" Type="char" MaxLength="16" Nullable="false" />
+    <Property Name="OperatorName" Type="char" MaxLength="64" Nullable="false" />
+    <Property Name="Reason" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TS_Lock">
+    <Key>
+      <PropertyRef Name="WOID" />
+    </Key>
+    <Property Name="WOID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LoginName" Type="char" MaxLength="64" Nullable="false" />
+    <Property Name="LoginID" Type="char" MaxLength="16" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+    <Property Name="MacAddress" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="TS_MacAddress">
+    <Key>
+      <PropertyRef Name="MACAddress" />
+      <PropertyRef Name="Login" />
+      <PropertyRef Name="Logout" />
+      <PropertyRef Name="LoginDate" />
+    </Key>
+    <Property Name="MACAddress" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="Login" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="Logout" Type="nchar" MaxLength="10" Nullable="false" />
+    <Property Name="LoginDate" Type="datetime" Nullable="false" />
+    <Property Name="LogoutDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TS_Mutex">
+    <Key>
+      <PropertyRef Name="MutexFunction" />
+    </Key>
+    <Property Name="MutexFunction" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LoginName" Type="char" MaxLength="64" Nullable="false" />
+    <Property Name="LoginID" Type="char" MaxLength="16" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'HMLVTS.dbo.TS_Operation' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TS_Operation">
+    <Key>
+      <PropertyRef Name="WOID" />
+      <PropertyRef Name="WorkCenter" />
+      <PropertyRef Name="RouteID" />
+      <PropertyRef Name="OpSeq" />
+      <PropertyRef Name="ProcOpSeq" />
+      <PropertyRef Name="McID" />
+      <PropertyRef Name="McType" />
+      <PropertyRef Name="OperatorID" />
+      <PropertyRef Name="OperatorName" />
+    </Key>
+    <Property Name="WOID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="WorkCenter" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="RouteID" Type="int" Nullable="false" />
+    <Property Name="OpSeq" Type="int" Nullable="false" />
+    <Property Name="ProcOpSeq" Type="int" Nullable="false" />
+    <Property Name="StartDateTime" Type="datetime" />
+    <Property Name="StopDateTime" Type="datetime" />
+    <Property Name="StartType" Type="char" MaxLength="20" />
+    <Property Name="EndType" Type="char" MaxLength="20" />
+    <Property Name="McID" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="McType" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Reason" Type="varchar" MaxLength="100" />
+    <Property Name="OperatorID" Type="char" MaxLength="16" Nullable="false" />
+    <Property Name="OperatorName" Type="char" MaxLength="64" Nullable="false" />
+    <Property Name="ShiftID" Type="char" MaxLength="24" />
+    <Property Name="AlertStatus" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'HMLVTS.dbo.TS_Parameter' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TS_Parameter">
+    <Key>
+      <PropertyRef Name="Threshold" />
+    </Key>
+    <Property Name="Threshold" Type="int" Nullable="false" />
+    <Property Name="QCCheck" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="SRPTThreshold" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="EDDThreshold" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="WOStatusThreshold" Type="decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'HMLVTS.dbo.TS_PauseOperationReason' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TS_PauseOperationReason">
+    <Key>
+      <PropertyRef Name="Reason" />
+    </Key>
+    <Property Name="Reason" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TS_QC_Equipment">
+    <Key>
+      <PropertyRef Name="WOID" />
+      <PropertyRef Name="WorkCenter" />
+      <PropertyRef Name="RouteID" />
+      <PropertyRef Name="ProcOpSeq" />
+      <PropertyRef Name="McID" />
+    </Key>
+    <Property Name="WOID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="WorkCenter" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="RouteID" Type="int" Nullable="false" />
+    <Property Name="OpSeq" Type="int" Nullable="false" />
+    <Property Name="ProcOpSeq" Type="int" Nullable="false" />
+    <Property Name="McID" Type="char" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'HMLVTS.dbo.TS_QCDocAttachment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TS_QCDocAttachment">
+    <Key>
+      <PropertyRef Name="WOID" />
+      <PropertyRef Name="Directory" />
+      <PropertyRef Name="Filename" />
+      <PropertyRef Name="AttachedDate" />
+      <PropertyRef Name="OperatorID" />
+      <PropertyRef Name="OperatorName" />
+    </Key>
+    <Property Name="WOID" Type="int" Nullable="false" />
+    <Property Name="Directory" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Filename" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="FileStatus" Type="varchar" MaxLength="20" />
+    <Property Name="CheckDate" Type="datetime" />
+    <Property Name="AttachedDate" Type="datetime" Nullable="false" />
+    <Property Name="OperatorID" Type="char" MaxLength="16" Nullable="false" />
+    <Property Name="OperatorName" Type="char" MaxLength="64" Nullable="false" />
+    <Property Name="ApprovedID" Type="char" MaxLength="16" />
+    <Property Name="ApprovedName" Type="char" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="TS_Rework">
+    <Key>
+      <PropertyRef Name="WOID" />
+      <PropertyRef Name="WorkCenter" />
+      <PropertyRef Name="RouteID" />
+      <PropertyRef Name="ProcOpSeq" />
+      <PropertyRef Name="ReworkDate" />
+    </Key>
+    <Property Name="WOID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="WorkCenter" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="RouteID" Type="int" Nullable="false" />
+    <Property Name="OpSeq" Type="int" Nullable="false" />
+    <Property Name="ProcOpSeq" Type="int" Nullable="false" />
+    <Property Name="ReworkRouteID" Type="int" Nullable="false" />
+    <Property Name="ReworkStartWC" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="ReworkStartOpSeq" Type="int" Nullable="false" />
+    <Property Name="ReworkStartProcOpSeq" Type="int" Nullable="false" />
+    <Property Name="ReworkQty" Type="int" Nullable="false" />
+    <Property Name="ReworkDate" Type="datetime" Nullable="false" />
+    <Property Name="UserID" Type="char" MaxLength="16" Nullable="false" />
+    <Property Name="UserName" Type="char" MaxLength="64" Nullable="false" />
+    <Property Name="Remark" Type="varchar" MaxLength="100" />
+    <Property Name="Status" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="RouteName" Type="varchar" MaxLength="50" />
+    <Property Name="AlertStatus" Type="varchar" MaxLength="20" />
+    <Property Name="ProblemWC" Type="nvarchar" MaxLength="32" />
+    <Property Name="ProblemOpSeq" Type="int" />
+    <Property Name="ProblemProcOpSeq" Type="int" />
+    <Property Name="ProblemOperatorID" Type="char" MaxLength="16" />
+    <Property Name="ProblemOperatorName" Type="char" MaxLength="64" />
+    <Property Name="ApprovedID" Type="char" MaxLength="16" />
+    <Property Name="ApprovedName" Type="char" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="TS_Scrap">
+    <Key>
+      <PropertyRef Name="WOID" />
+      <PropertyRef Name="WorkCenter" />
+      <PropertyRef Name="RouteID" />
+      <PropertyRef Name="ProcOpSeq" />
+      <PropertyRef Name="ScrapDate" />
+    </Key>
+    <Property Name="WOID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="WorkCenter" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="RouteID" Type="int" Nullable="false" />
+    <Property Name="OpSeq" Type="int" Nullable="false" />
+    <Property Name="ProcOpSeq" Type="int" Nullable="false" />
+    <Property Name="ScrapQty" Type="int" Nullable="false" />
+    <Property Name="ScrapDate" Type="datetime" Nullable="false" />
+    <Property Name="ScrapType" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="UserID" Type="char" MaxLength="16" Nullable="false" />
+    <Property Name="UserName" Type="char" MaxLength="64" Nullable="false" />
+    <Property Name="Remark" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="AlertStatus" Type="varchar" MaxLength="20" />
+    <Property Name="ApprovedID" Type="char" MaxLength="16" />
+    <Property Name="ApprovedName" Type="char" MaxLength="64" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'HMLVTS.dbo.TS_ScrapRemark' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TS_ScrapRemark">
+    <Key>
+      <PropertyRef Name="ScrapRemark" />
+    </Key>
+    <Property Name="ScrapRemark" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'HMLVTS.dbo.TS_SplitRemark' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TS_SplitRemark">
+    <Key>
+      <PropertyRef Name="SplitRemark" />
+    </Key>
+    <Property Name="SplitRemark" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'HMLVTS.dbo.TS_TrackingRemark' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TS_TrackingRemark">
+    <Key>
+      <PropertyRef Name="Remark" />
+    </Key>
+    <Property Name="Remark" Type="nvarchar" MaxLength="255" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TS_WODispatchBand">
+    <Key>
+      <PropertyRef Name="WOID" />
+      <PropertyRef Name="RouteID" />
+      <PropertyRef Name="McID" />
+      <PropertyRef Name="WorkCenter" />
+      <PropertyRef Name="ProcOpSeq" />
+    </Key>
+    <Property Name="WOID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RouteID" Type="int" Nullable="false" />
+    <Property Name="McID" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="WorkCenter" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="ProcOpSeq" Type="int" Nullable="false" />
+    <Property Name="ReleasedProdQty" Type="int" Nullable="false" />
+    <Property Name="RequestedDeliveryDate" Type="datetime" Nullable="false" />
+    <Property Name="TotalRemainingProcOpSeq" Type="int" />
+    <Property Name="SRPTDuration" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="EDDBand" Type="int" />
+    <Property Name="SRPTBand" Type="int" />
+    <Property Name="BandDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="TS_WorkOrder">
+    <Key>
+      <PropertyRef Name="WOID" />
+    </Key>
+    <Property Name="WOID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RequestedDeliveryDate" Type="datetime" Nullable="false" />
+    <Property Name="CommittedDeliveryDate" Type="datetime" Nullable="false" />
+    <Property Name="ReleasedProdQty" Type="int" Nullable="false" />
+    <Property Name="ReleasedProdDate" Type="datetime" Nullable="false" />
+    <Property Name="ActualProdQty" Type="int" Nullable="false" />
+    <Property Name="ActualProdDate" Type="datetime" Nullable="false" />
+    <Property Name="ActualRecQty" Type="int" Nullable="false" />
+    <Property Name="ActualRecDate" Type="datetime" Nullable="false" />
+    <Property Name="CompletedQty" Type="int" />
+    <Property Name="CompletedDate" Type="datetime" />
+    <Property Name="OutstandingQty" Type="int" Nullable="false" />
+    <Property Name="OutstandingDate" Type="datetime" Nullable="false" />
+    <Property Name="AccumulatedScrapQty" Type="int" />
+    <Property Name="AccumulatedScrapDate" Type="datetime" />
+    <Property Name="TotalActAdjustedQty" Type="int" />
+    <Property Name="TotalActAdjustedDate" Type="datetime" />
+    <Property Name="WOStatus" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="ToolDescription" Type="varchar" MaxLength="30" />
+    <Property Name="PlannerRemark" Type="varchar" MaxLength="100" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="ParentWOID" Type="varchar" MaxLength="50" />
+    <Property Name="Remark" Type="varchar" MaxLength="100" />
+    <Property Name="PPID" Type="int" Nullable="false" />
+    <Property Name="SalesOrderID" Type="char" MaxLength="50" Nullable="false" />
+    <Property Name="ReleasedDate" Type="datetime" />
+    <Property Name="AlertStatus" Type="varchar" MaxLength="20" />
+    <Property Name="OrderType" Type="char" MaxLength="20" />
+    <Property Name="OperatorID" Type="char" MaxLength="16" />
+    <Property Name="OperatorName" Type="char" MaxLength="64" />
+    <Property Name="ApprovedID" Type="char" MaxLength="16" />
+    <Property Name="ApprovedName" Type="char" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="TS_WorkOrderCancel">
+    <Key>
+      <PropertyRef Name="WOID" />
+    </Key>
+    <Property Name="WOID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="WorkCenter" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="RouteID" Type="int" Nullable="false" />
+    <Property Name="OpSeq" Type="int" Nullable="false" />
+    <Property Name="ProcOpSeq" Type="int" Nullable="false" />
+    <Property Name="RequestedAdjustQty" Type="int" Nullable="false" />
+    <Property Name="RequestedAdjustDate" Type="datetime" Nullable="false" />
+    <Property Name="TotalActAdjustedQty" Type="int" />
+    <Property Name="OutstandingAdjustQty" Type="int" />
+    <Property Name="Status" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="TS_WorkOrderCancelDetail">
+    <Key>
+      <PropertyRef Name="WOID" />
+      <PropertyRef Name="ActualAdjustDate" />
+    </Key>
+    <Property Name="WOID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="WorkCenter" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="RouteID" Type="int" Nullable="false" />
+    <Property Name="OpSeq" Type="int" Nullable="false" />
+    <Property Name="ProcOpSeq" Type="int" Nullable="false" />
+    <Property Name="ActualAdjustQty" Type="int" Nullable="false" />
+    <Property Name="ActualAdjustDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="20" />
+    <Property Name="Remark" Type="varchar" MaxLength="100" />
+    <Property Name="UserID" Type="char" MaxLength="16" />
+    <Property Name="UserName" Type="char" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="TS_WorkOrderExecution">
+    <Key>
+      <PropertyRef Name="WOID" />
+      <PropertyRef Name="ProcOpSeq" />
+    </Key>
+    <Property Name="WOID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ActualRecQty" Type="int" Nullable="false" />
+    <Property Name="ActualRecDate" Type="datetime" Nullable="false" />
+    <Property Name="CompletedQty" Type="int" Nullable="false" />
+    <Property Name="CompletedDate" Type="datetime" Nullable="false" />
+    <Property Name="OutstandingQty" Type="int" Nullable="false" />
+    <Property Name="OutstandingDate" Type="datetime" Nullable="false" />
+    <Property Name="ScrapQty" Type="int" />
+    <Property Name="ScrapDate" Type="datetime" />
+    <Property Name="AdjustedQty" Type="int" />
+    <Property Name="AdjustedDate" Type="datetime" />
+    <Property Name="McID" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="McType" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="RouteID" Type="int" Nullable="false" />
+    <Property Name="WorkCenter" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Opseq" Type="int" Nullable="false" />
+    <Property Name="ProcOpSeq" Type="int" Nullable="false" />
+    <Property Name="WOStatus" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="SetupStartDate" Type="datetime" />
+    <Property Name="SetupEndDate" Type="datetime" />
+    <Property Name="ProdStartDate" Type="datetime" />
+    <Property Name="ProdEndDate" Type="datetime" />
+    <Property Name="ParentWOID" Type="varchar" MaxLength="20" />
+    <Property Name="Remark" Type="varchar" MaxLength="100" />
+    <Property Name="TotalSetupDuration" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="ProdTotalDuration" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OperatorID" Type="char" MaxLength="16" />
+    <Property Name="OperatorName" Type="char" MaxLength="64" />
+    <Property Name="ShiftID" Type="char" MaxLength="24" />
+    <Property Name="SendOutDate" Type="datetime" />
+    <Property Name="ReceivedDate" Type="datetime" />
+    <Property Name="QtyUpdated" Type="int" />
+    <Property Name="PlannedDuration" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="OrderType" Type="char" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="TS_WorkOrderRoute">
+    <Key>
+      <PropertyRef Name="WOID" />
+      <PropertyRef Name="WorkCenter" />
+      <PropertyRef Name="RouteID" />
+      <PropertyRef Name="ProcOpSeq" />
+    </Key>
+    <Property Name="WOID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="WorkCenter" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="RouteID" Type="int" Nullable="false" />
+    <Property Name="OpSeq" Type="int" Nullable="false" />
+    <Property Name="ProcOpSeq" Type="int" Nullable="false" />
+    <Property Name="McID" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="McType" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="PrioritizedNo" Type="int" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="100" />
+    <Property Name="RouteName" Type="varchar" MaxLength="50" />
+    <Property Name="MacGroup" Type="int" />
+    <Property Name="AttributeGroup" Type="varchar" MaxLength="32" />
+  </EntityType>
+  <EntityType Name="TS_WorkOrderRouteDispatch">
+    <Key>
+      <PropertyRef Name="WOID" />
+      <PropertyRef Name="WorkCenter" />
+      <PropertyRef Name="RouteID" />
+      <PropertyRef Name="ProcOpSeq" />
+    </Key>
+    <Property Name="WOID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="WorkCenter" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="RouteID" Type="int" Nullable="false" />
+    <Property Name="OpSeq" Type="int" Nullable="false" />
+    <Property Name="ProcOpSeq" Type="int" Nullable="false" />
+    <Property Name="McID" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="McType" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="PrioritizedNo" Type="int" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="100" />
+    <Property Name="RouteName" Type="varchar" MaxLength="50" />
+    <Property Name="MacGroup" Type="int" />
+    <Property Name="AttributeGroup" Type="varchar" MaxLength="32" />
+  </EntityType>
+  <Association Name="FK_TS_Operation_TS_WorkOrder">
+    <End Role="TS_WorkOrder" Type="Self.TS_WorkOrder" Multiplicity="1" />
+    <End Role="TS_Operation" Type="Self.TS_Operation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TS_WorkOrder">
+        <PropertyRef Name="WOID" />
+      </Principal>
+      <Dependent Role="TS_Operation">
+        <PropertyRef Name="WOID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TS_QC_Equipment_TS_WorkOrder">
+    <End Role="TS_WorkOrder" Type="Self.TS_WorkOrder" Multiplicity="1" />
+    <End Role="TS_QC_Equipment" Type="Self.TS_QC_Equipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TS_WorkOrder">
+        <PropertyRef Name="WOID" />
+      </Principal>
+      <Dependent Role="TS_QC_Equipment">
+        <PropertyRef Name="WOID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TS_Rework_TS_WorkOrder">
+    <End Role="TS_WorkOrder" Type="Self.TS_WorkOrder" Multiplicity="1" />
+    <End Role="TS_Rework" Type="Self.TS_Rework" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TS_WorkOrder">
+        <PropertyRef Name="WOID" />
+      </Principal>
+      <Dependent Role="TS_Rework">
+        <PropertyRef Name="WOID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TS_Scrap_TS_WorkOrder">
+    <End Role="TS_WorkOrder" Type="Self.TS_WorkOrder" Multiplicity="1" />
+    <End Role="TS_Scrap" Type="Self.TS_Scrap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TS_WorkOrder">
+        <PropertyRef Name="WOID" />
+      </Principal>
+      <Dependent Role="TS_Scrap">
+        <PropertyRef Name="WOID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TS_WorkOrderCancel_TS_WorkOrder">
+    <End Role="TS_WorkOrder" Type="Self.TS_WorkOrder" Multiplicity="1" />
+    <End Role="TS_WorkOrderCancel" Type="Self.TS_WorkOrderCancel" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TS_WorkOrder">
+        <PropertyRef Name="WOID" />
+      </Principal>
+      <Dependent Role="TS_WorkOrderCancel">
+        <PropertyRef Name="WOID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TS_WorkOrderRoute_TS_WorkOrder">
+    <End Role="TS_WorkOrder" Type="Self.TS_WorkOrder" Multiplicity="1" />
+    <End Role="TS_WorkOrderRoute" Type="Self.TS_WorkOrderRoute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TS_WorkOrder">
+        <PropertyRef Name="WOID" />
+      </Principal>
+      <Dependent Role="TS_WorkOrderRoute">
+        <PropertyRef Name="WOID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TS_WorkOrderStatus_TS_WorkOrder">
+    <End Role="TS_WorkOrder" Type="Self.TS_WorkOrder" Multiplicity="1" />
+    <End Role="TS_WorkOrderExecution" Type="Self.TS_WorkOrderExecution" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TS_WorkOrder">
+        <PropertyRef Name="WOID" />
+      </Principal>
+      <Dependent Role="TS_WorkOrderExecution">
+        <PropertyRef Name="WOID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HMLVTSModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_ChildWorkOrder" EntityType="Self.TS_ChildWorkOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_ExStatus" EntityType="Self.TS_ExStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_Lock" EntityType="Self.TS_Lock" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_MacAddress" EntityType="Self.TS_MacAddress" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_Mutex" EntityType="Self.TS_Mutex" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_QC_Equipment" EntityType="Self.TS_QC_Equipment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_Rework" EntityType="Self.TS_Rework" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_Scrap" EntityType="Self.TS_Scrap" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_WODispatchBand" EntityType="Self.TS_WODispatchBand" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_WorkOrder" EntityType="Self.TS_WorkOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_WorkOrderCancel" EntityType="Self.TS_WorkOrderCancel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_WorkOrderCancelDetail" EntityType="Self.TS_WorkOrderCancelDetail" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_WorkOrderExecution" EntityType="Self.TS_WorkOrderExecution" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_WorkOrderRoute" EntityType="Self.TS_WorkOrderRoute" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_WorkOrderRouteDispatch" EntityType="Self.TS_WorkOrderRouteDispatch" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TS_Operation" EntityType="Self.TS_Operation" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TS_Operation].[WOID] AS [WOID], 
+    [TS_Operation].[WorkCenter] AS [WorkCenter], 
+    [TS_Operation].[RouteID] AS [RouteID], 
+    [TS_Operation].[OpSeq] AS [OpSeq], 
+    [TS_Operation].[ProcOpSeq] AS [ProcOpSeq], 
+    [TS_Operation].[StartDateTime] AS [StartDateTime], 
+    [TS_Operation].[StopDateTime] AS [StopDateTime], 
+    [TS_Operation].[StartType] AS [StartType], 
+    [TS_Operation].[EndType] AS [EndType], 
+    [TS_Operation].[McID] AS [McID], 
+    [TS_Operation].[McType] AS [McType], 
+    [TS_Operation].[Reason] AS [Reason], 
+    [TS_Operation].[OperatorID] AS [OperatorID], 
+    [TS_Operation].[OperatorName] AS [OperatorName], 
+    [TS_Operation].[ShiftID] AS [ShiftID], 
+    [TS_Operation].[AlertStatus] AS [AlertStatus]
+    FROM [dbo].[TS_Operation] AS [TS_Operation]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TS_Parameter" EntityType="Self.TS_Parameter" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TS_Parameter].[Threshold] AS [Threshold], 
+    [TS_Parameter].[QCCheck] AS [QCCheck], 
+    [TS_Parameter].[SRPTThreshold] AS [SRPTThreshold], 
+    [TS_Parameter].[EDDThreshold] AS [EDDThreshold], 
+    [TS_Parameter].[WOStatusThreshold] AS [WOStatusThreshold]
+    FROM [dbo].[TS_Parameter] AS [TS_Parameter]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TS_PauseOperationReason" EntityType="Self.TS_PauseOperationReason" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TS_PauseOperationReason].[Reason] AS [Reason]
+    FROM [dbo].[TS_PauseOperationReason] AS [TS_PauseOperationReason]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TS_QCDocAttachment" EntityType="Self.TS_QCDocAttachment" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TS_QCDocAttachment].[WOID] AS [WOID], 
+    [TS_QCDocAttachment].[Directory] AS [Directory], 
+    [TS_QCDocAttachment].[Filename] AS [Filename], 
+    [TS_QCDocAttachment].[FileStatus] AS [FileStatus], 
+    [TS_QCDocAttachment].[CheckDate] AS [CheckDate], 
+    [TS_QCDocAttachment].[AttachedDate] AS [AttachedDate], 
+    [TS_QCDocAttachment].[OperatorID] AS [OperatorID], 
+    [TS_QCDocAttachment].[OperatorName] AS [OperatorName], 
+    [TS_QCDocAttachment].[ApprovedID] AS [ApprovedID], 
+    [TS_QCDocAttachment].[ApprovedName] AS [ApprovedName]
+    FROM [dbo].[TS_QCDocAttachment] AS [TS_QCDocAttachment]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TS_ScrapRemark" EntityType="Self.TS_ScrapRemark" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TS_ScrapRemark].[ScrapRemark] AS [ScrapRemark]
+    FROM [dbo].[TS_ScrapRemark] AS [TS_ScrapRemark]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TS_SplitRemark" EntityType="Self.TS_SplitRemark" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TS_SplitRemark].[SplitRemark] AS [SplitRemark]
+    FROM [dbo].[TS_SplitRemark] AS [TS_SplitRemark]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TS_TrackingRemark" EntityType="Self.TS_TrackingRemark" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TS_TrackingRemark].[Remark] AS [Remark]
+    FROM [dbo].[TS_TrackingRemark] AS [TS_TrackingRemark]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_TS_Operation_TS_WorkOrder" Association="Self.FK_TS_Operation_TS_WorkOrder">
+      <End Role="TS_WorkOrder" EntitySet="TS_WorkOrder" />
+      <End Role="TS_Operation" EntitySet="TS_Operation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TS_QC_Equipment_TS_WorkOrder" Association="Self.FK_TS_QC_Equipment_TS_WorkOrder">
+      <End Role="TS_WorkOrder" EntitySet="TS_WorkOrder" />
+      <End Role="TS_QC_Equipment" EntitySet="TS_QC_Equipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TS_Rework_TS_WorkOrder" Association="Self.FK_TS_Rework_TS_WorkOrder">
+      <End Role="TS_WorkOrder" EntitySet="TS_WorkOrder" />
+      <End Role="TS_Rework" EntitySet="TS_Rework" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TS_Scrap_TS_WorkOrder" Association="Self.FK_TS_Scrap_TS_WorkOrder">
+      <End Role="TS_WorkOrder" EntitySet="TS_WorkOrder" />
+      <End Role="TS_Scrap" EntitySet="TS_Scrap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TS_WorkOrderCancel_TS_WorkOrder" Association="Self.FK_TS_WorkOrderCancel_TS_WorkOrder">
+      <End Role="TS_WorkOrder" EntitySet="TS_WorkOrder" />
+      <End Role="TS_WorkOrderCancel" EntitySet="TS_WorkOrderCancel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TS_WorkOrderRoute_TS_WorkOrder" Association="Self.FK_TS_WorkOrderRoute_TS_WorkOrder">
+      <End Role="TS_WorkOrder" EntitySet="TS_WorkOrder" />
+      <End Role="TS_WorkOrderRoute" EntitySet="TS_WorkOrderRoute" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TS_WorkOrderStatus_TS_WorkOrder" Association="Self.FK_TS_WorkOrderStatus_TS_WorkOrder">
+      <End Role="TS_WorkOrder" EntitySet="TS_WorkOrder" />
+      <End Role="TS_WorkOrderExecution" EntitySet="TS_WorkOrderExecution" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,265 @@
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.WebAPI.dll.config
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.WebAPI.dll
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.WebAPI.pdb
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Antlr3.Runtime.dll
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.AspNet.Identity.Core.dll
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.Owin.dll
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.Web.Infrastructure.dll
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Newtonsoft.Json.dll
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Nexus.Infrastructure.dll
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Nexus.Net.dll
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Owin.dll
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Security.Cryptography.dll
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Net.Http.Formatting.dll
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Cors.dll
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Helpers.dll
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.Cors.dll
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.dll
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.WebHost.dll
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Mvc.dll
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Optimization.dll
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Razor.dll
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Deployment.dll
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.dll
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Razor.dll
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\WebGrease.dll
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.AspNet.Identity.Core.xml
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.Owin.xml
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Newtonsoft.Json.xml
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Security.Cryptography.pdb
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Security.Cryptography.xml
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.Cors.xml
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Net.Http.Formatting.xml
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Helpers.xml
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.xml
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.WebHost.xml
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Mvc.xml
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Optimization.xml
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Razor.xml
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.xml
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Deployment.xml
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Razor.xml
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Antlr3.Runtime.pdb
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.csprojResolveAssemblyReference.cache
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.dll
+c:\users\linxl\documents\visual studio 2015\Projects\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.pdb
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.WebAPI.dll.config
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.WebAPI.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.WebAPI.pdb
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Antlr3.Runtime.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.Owin.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Newtonsoft.Json.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Nexus.Infrastructure.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Nexus.Net.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Owin.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Security.Cryptography.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Net.Http.Formatting.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Cors.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Helpers.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.Cors.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.WebHost.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Mvc.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Optimization.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Razor.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Deployment.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Razor.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\WebGrease.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.Owin.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Newtonsoft.Json.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Security.Cryptography.pdb
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Security.Cryptography.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.Cors.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Net.Http.Formatting.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Helpers.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.WebHost.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Mvc.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Optimization.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Razor.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Deployment.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Razor.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Antlr3.Runtime.pdb
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.csprojResolveAssemblyReference.cache
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.pdb
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.SqlServer.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.SqlServer.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.Service.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Repository.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.Service.pdb
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.pdb
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Repository.pdb
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.WebAPI.dll.config
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.WebAPI.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.WebAPI.pdb
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Antlr3.Runtime.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.SqlServer.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.Owin.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Newtonsoft.Json.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Nexus.Infrastructure.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Nexus.Net.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Owin.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Security.Cryptography.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Net.Http.Formatting.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Cors.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Helpers.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.Cors.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.WebHost.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Mvc.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Optimization.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Razor.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Deployment.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Razor.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.Service.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Repository.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\WebGrease.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.Service.pdb
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.pdb
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Repository.pdb
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.SqlServer.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.Owin.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Newtonsoft.Json.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Security.Cryptography.pdb
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Security.Cryptography.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.Cors.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Net.Http.Formatting.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Helpers.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.WebHost.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Mvc.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Optimization.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Razor.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Deployment.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Razor.xml
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Antlr3.Runtime.pdb
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.csprojResolveAssemblyReference.cache
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.dll
+C:\Users\linxl\Documents\Visual Studio 2015\Projects\Configuration\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.pdb
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.WebAPI.dll.config
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.WebAPI.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.WebAPI.pdb
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Antlr3.Runtime.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.SqlServer.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.AspNet.Identity.Core.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.Owin.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.Web.Infrastructure.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Newtonsoft.Json.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Nexus.Infrastructure.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Nexus.Net.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Owin.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Security.Cryptography.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Net.Http.Formatting.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Cors.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Helpers.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.Cors.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.WebHost.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Mvc.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Optimization.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Razor.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Deployment.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Razor.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.Service.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Repository.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\WebGrease.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.Service.pdb
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.pdb
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Repository.pdb
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.xml
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.SqlServer.xml
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.AspNet.Identity.Core.xml
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.Owin.xml
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Newtonsoft.Json.xml
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Security.Cryptography.pdb
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Security.Cryptography.xml
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.Cors.xml
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Net.Http.Formatting.xml
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Helpers.xml
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.xml
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.WebHost.xml
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Mvc.xml
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Optimization.xml
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Razor.xml
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.xml
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Deployment.xml
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Razor.xml
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Antlr3.Runtime.pdb
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.csprojResolveAssemblyReference.cache
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.dll
+C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.pdb
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.WebAPI.dll.config
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.WebAPI.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.WebAPI.pdb
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Antlr3.Runtime.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.SqlServer.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.Owin.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.Web.Infrastructure.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Newtonsoft.Json.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Nexus.Infrastructure.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Nexus.Net.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Owin.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Security.Cryptography.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Net.Http.Formatting.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Cors.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Helpers.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.Cors.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.WebHost.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Mvc.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Optimization.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Razor.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Deployment.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Razor.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.Service.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Repository.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\WebGrease.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.Service.pdb
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.pdb
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Repository.pdb
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.SqlServer.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.Owin.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Newtonsoft.Json.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Security.Cryptography.pdb
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Security.Cryptography.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.Cors.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Net.Http.Formatting.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Helpers.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.WebHost.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Mvc.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Optimization.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Razor.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Deployment.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Razor.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Antlr3.Runtime.pdb
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.csprojResolveAssemblyReference.cache
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.pdb

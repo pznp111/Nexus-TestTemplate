@@ -1,0 +1,1673 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SIMAPS_MOMModelStoreContainer" CdmEntityContainer="SIMAPS_MOM">
+    <EntitySetMapping Name="InvMas">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.InvMa">
+        <MappingFragment StoreEntitySet="InvMas">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="DateIn" ColumnName="DateIn" />
+          <ScalarProperty Name="InvType" ColumnName="InvType" />
+          <ScalarProperty Name="PartNo" ColumnName="PartNo" />
+          <ScalarProperty Name="WorkOrder" ColumnName="WorkOrder" />
+          <ScalarProperty Name="SubWorkOrder" ColumnName="SubWorkOrder" />
+          <ScalarProperty Name="ReservedWorkOrder" ColumnName="ReservedWorkOrder" />
+          <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
+          <ScalarProperty Name="CenterID" ColumnName="CenterID" />
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="BalQty" ColumnName="BalQty" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ActualBalQty" ColumnName="ActualBalQty" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CapacityProfiles">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.CapacityProfile">
+        <MappingFragment StoreEntitySet="CapacityProfile">
+          <ScalarProperty Name="OrderCapacityID" ColumnName="OrderCapacityID" />
+          <ScalarProperty Name="ReleaseID" ColumnName="ReleaseID" />
+          <ScalarProperty Name="OperationID" ColumnName="OperationID" />
+          <ScalarProperty Name="OperationSequence" ColumnName="OperationSequence" />
+          <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+          <ScalarProperty Name="UsedRatio" ColumnName="UsedRatio" />
+          <ScalarProperty Name="ProducedQuantity" ColumnName="ProducedQuantity" />
+          <ScalarProperty Name="ProductionDate" ColumnName="ProductionDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DailyLoadingPlans">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.DailyLoadingPlan">
+        <MappingFragment StoreEntitySet="DailyLoadingPlan">
+          <ScalarProperty Name="PPOrderID" ColumnName="PPOrderID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="IssuedDate" ColumnName="IssuedDate" />
+          <ScalarProperty Name="PartID" ColumnName="PartID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderReleases">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.OrderRelease">
+        <MappingFragment StoreEntitySet="OrderRelease">
+          <ScalarProperty Name="ReleaseID" ColumnName="ReleaseID" />
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+          <ScalarProperty Name="PartID" ColumnName="PartID" />
+          <ScalarProperty Name="PartName" ColumnName="PartName" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="ReceivedDate" ColumnName="ReceivedDate" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="ReleasedDate" ColumnName="ReleasedDate" />
+          <ScalarProperty Name="OriginalQuantity" ColumnName="OriginalQuantity" />
+          <ScalarProperty Name="PlanQuantity" ColumnName="PlanQuantity" />
+          <ScalarProperty Name="InventoryQuantity" ColumnName="InventoryQuantity" />
+          <ScalarProperty Name="ProductionQuantity" ColumnName="ProductionQuantity" />
+          <ScalarProperty Name="ProductionDate" ColumnName="ProductionDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="ReservedString1" ColumnName="ReservedString1" />
+          <ScalarProperty Name="ReservedString2" ColumnName="ReservedString2" />
+          <ScalarProperty Name="ReservedString3" ColumnName="ReservedString3" />
+          <ScalarProperty Name="ReservedString4" ColumnName="ReservedString4" />
+          <ScalarProperty Name="ReservedString5" ColumnName="ReservedString5" />
+          <ScalarProperty Name="ReservedString6" ColumnName="ReservedString6" />
+          <ScalarProperty Name="ReservedString7" ColumnName="ReservedString7" />
+          <ScalarProperty Name="ReservedString8" ColumnName="ReservedString8" />
+          <ScalarProperty Name="ReservedString9" ColumnName="ReservedString9" />
+          <ScalarProperty Name="ReservedString10" ColumnName="ReservedString10" />
+          <ScalarProperty Name="ReservedString11" ColumnName="ReservedString11" />
+          <ScalarProperty Name="ReservedString12" ColumnName="ReservedString12" />
+          <ScalarProperty Name="ReservedDate1" ColumnName="ReservedDate1" />
+          <ScalarProperty Name="ReservedDate2" ColumnName="ReservedDate2" />
+          <ScalarProperty Name="ReservedDate3" ColumnName="ReservedDate3" />
+          <ScalarProperty Name="ReservedFlag1" ColumnName="ReservedFlag1" />
+          <ScalarProperty Name="ReservedFlag2" ColumnName="ReservedFlag2" />
+          <ScalarProperty Name="ReservedFlag3" ColumnName="ReservedFlag3" />
+          <ScalarProperty Name="ReservedInt1" ColumnName="ReservedInt1" />
+          <ScalarProperty Name="ReservedInt2" ColumnName="ReservedInt2" />
+          <ScalarProperty Name="ReservedInt3" ColumnName="ReservedInt3" />
+          <ScalarProperty Name="ReservedFloat1" ColumnName="ReservedFloat1" />
+          <ScalarProperty Name="ReservedFloat2" ColumnName="ReservedFloat2" />
+          <ScalarProperty Name="ReservedFloat3" ColumnName="ReservedFloat3" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderReleaseDetails">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.OrderReleaseDetail">
+        <MappingFragment StoreEntitySet="OrderReleaseDetail">
+          <ScalarProperty Name="ReleaseDetailID" ColumnName="ReleaseDetailID" />
+          <ScalarProperty Name="ReleaseID" ColumnName="ReleaseID" />
+          <ScalarProperty Name="ProductionQuantity" ColumnName="ProductionQuantity" />
+          <ScalarProperty Name="ProductionDate" ColumnName="ProductionDate" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schedules">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.Schedule">
+        <MappingFragment StoreEntitySet="Schedule">
+          <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+          <ScalarProperty Name="UnitId" ColumnName="UnitId" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="RuleSetID" ColumnName="RuleSetID" />
+          <ScalarProperty Name="String1" ColumnName="String1" />
+          <ScalarProperty Name="String2" ColumnName="String2" />
+          <ScalarProperty Name="String3" ColumnName="String3" />
+          <ScalarProperty Name="String4" ColumnName="String4" />
+          <ScalarProperty Name="String5" ColumnName="String5" />
+          <ScalarProperty Name="MaxString1" ColumnName="MaxString1" />
+          <ScalarProperty Name="MaxString2" ColumnName="MaxString2" />
+          <ScalarProperty Name="MaxString3" ColumnName="MaxString3" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ScheduleDetails">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.ScheduleDetail">
+        <MappingFragment StoreEntitySet="ScheduleDetail">
+          <ScalarProperty Name="ScheduleDetailID" ColumnName="ScheduleDetailID" />
+          <ScalarProperty Name="ScheduleID" ColumnName="ScheduleID" />
+          <ScalarProperty Name="ScheduleType" ColumnName="ScheduleType" />
+          <ScalarProperty Name="OperationID" ColumnName="OperationID" />
+          <ScalarProperty Name="OperationName" ColumnName="OperationName" />
+          <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+          <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="ShiftName" ColumnName="ShiftName" />
+          <ScalarProperty Name="UnitRunTime" ColumnName="UnitRunTime" />
+          <ScalarProperty Name="RunTime" ColumnName="RunTime" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="WorkOrderID" ColumnName="WorkOrderID" />
+          <ScalarProperty Name="WorkOrderNumber" ColumnName="WorkOrderNumber" />
+          <ScalarProperty Name="String1" ColumnName="String1" />
+          <ScalarProperty Name="String2" ColumnName="String2" />
+          <ScalarProperty Name="String3" ColumnName="String3" />
+          <ScalarProperty Name="String4" ColumnName="String4" />
+          <ScalarProperty Name="String5" ColumnName="String5" />
+          <ScalarProperty Name="MaxString1" ColumnName="MaxString1" />
+          <ScalarProperty Name="MaxString2" ColumnName="MaxString2" />
+          <ScalarProperty Name="MaxString3" ColumnName="MaxString3" />
+          <ScalarProperty Name="Int1" ColumnName="Int1" />
+          <ScalarProperty Name="Int2" ColumnName="Int2" />
+          <ScalarProperty Name="Int3" ColumnName="Int3" />
+          <ScalarProperty Name="Int4" ColumnName="Int4" />
+          <ScalarProperty Name="Int5" ColumnName="Int5" />
+          <ScalarProperty Name="Int6" ColumnName="Int6" />
+          <ScalarProperty Name="Float1" ColumnName="Float1" />
+          <ScalarProperty Name="Float2" ColumnName="Float2" />
+          <ScalarProperty Name="Date1" ColumnName="Date1" />
+          <ScalarProperty Name="Date2" ColumnName="Date2" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ctr_mc">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.ctr_mc">
+        <MappingFragment StoreEntitySet="ctr_mc">
+          <ScalarProperty Name="ctr_code" ColumnName="ctr_code" />
+          <ScalarProperty Name="mc_code" ColumnName="mc_code" />
+          <ScalarProperty Name="mc_grp_code" ColumnName="mc_grp_code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="part_detail_semicon">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.part_detail_semicon">
+        <MappingFragment StoreEntitySet="part_detail_semicon">
+          <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+          <ScalarProperty Name="part_num" ColumnName="part_num" />
+          <ScalarProperty Name="cust_id" ColumnName="cust_id" />
+          <ScalarProperty Name="packagelc" ColumnName="packagelc" />
+          <ScalarProperty Name="package" ColumnName="package" />
+          <ScalarProperty Name="leadcount" ColumnName="leadcount" />
+          <ScalarProperty Name="padsize" ColumnName="padsize" />
+          <ScalarProperty Name="device" ColumnName="device" />
+          <ScalarProperty Name="pkg_dimension" ColumnName="pkg_dimension" />
+          <ScalarProperty Name="grp" ColumnName="grp" />
+          <ScalarProperty Name="exception_flag" ColumnName="exception_flag" />
+          <ScalarProperty Name="route_id" ColumnName="route_id" />
+          <ScalarProperty Name="remark" ColumnName="remark" />
+          <ScalarProperty Name="cust_id_erp" ColumnName="cust_id_erp" />
+          <ScalarProperty Name="bodysize" ColumnName="bodysize" />
+          <ScalarProperty Name="applyfor" ColumnName="applyfor" />
+          <ScalarProperty Name="mold_compound_id" ColumnName="mold_compound_id" />
+          <ScalarProperty Name="mark_instruction_id" ColumnName="mark_instruction_id" />
+          <ScalarProperty Name="lf_part_id" ColumnName="lf_part_id" />
+          <ScalarProperty Name="updatedatetime" ColumnName="updatedatetime" />
+          <ScalarProperty Name="gold_content" ColumnName="gold_content" />
+          <ScalarProperty Name="ends_used" ColumnName="ends_used" />
+          <ScalarProperty Name="hooks_used" ColumnName="hooks_used" />
+          <ScalarProperty Name="alt_ends_used" ColumnName="alt_ends_used" />
+          <ScalarProperty Name="alt_hooks_used" ColumnName="alt_hooks_used" />
+          <ScalarProperty Name="earring_ends" ColumnName="earring_ends" />
+          <ScalarProperty Name="safety_stock" ColumnName="safety_stock" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PPOrders">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.PPOrder">
+        <MappingFragment StoreEntitySet="PPOrder">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MeltingOrderID" ColumnName="MeltingOrderID" />
+          <ScalarProperty Name="GoldContent" ColumnName="GoldContent" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="BasicChainType" ColumnName="BasicChainType" />
+          <ScalarProperty Name="AllocWeight" ColumnName="AllocWeight" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="GenDate" ColumnName="GenDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PPOrderDetails">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.PPOrderDetail">
+        <MappingFragment StoreEntitySet="PPOrderDetail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MeltingOrderID" ColumnName="MeltingOrderID" />
+          <ScalarProperty Name="PPID" ColumnName="PPID" />
+          <ScalarProperty Name="PartNo" ColumnName="PartNo" />
+          <ScalarProperty Name="SublotID" ColumnName="SublotID" />
+          <ScalarProperty Name="SalesOrderID" ColumnName="SalesOrderID" />
+          <ScalarProperty Name="SalesOrderDetID" ColumnName="SalesOrderDetID" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="EstCompletionDate" ColumnName="EstCompletionDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PPOrderRoutes">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.PPOrderRoute">
+        <MappingFragment StoreEntitySet="PPOrderRoute">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PPID" ColumnName="PPID" />
+          <ScalarProperty Name="PartNo" ColumnName="PartNo" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+          <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
+          <ScalarProperty Name="CentreID" ColumnName="CentreID" />
+          <ScalarProperty Name="MacCode" ColumnName="MacCode" />
+          <ScalarProperty Name="MacType" ColumnName="MacType" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="MacGroup" ColumnName="MacGroup" />
+          <ScalarProperty Name="AttributeGroup" ColumnName="AttributeGroup" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rights">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.Right">
+        <MappingFragment StoreEntitySet="Rights">
+          <ScalarProperty Name="User_grp" ColumnName="User_grp" />
+          <ScalarProperty Name="Unit_id" ColumnName="Unit_id" />
+          <ScalarProperty Name="Object_id" ColumnName="Object_id" />
+          <ScalarProperty Name="Rights" ColumnName="Rights" />
+          <ScalarProperty Name="usergrp_flag" ColumnName="usergrp_flag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RouteMas">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.RouteMa">
+        <MappingFragment StoreEntitySet="RouteMas">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="UnitID" ColumnName="UnitID" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalesOrderCancelDets">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.SalesOrderCancelDet">
+        <MappingFragment StoreEntitySet="SalesOrderCancelDet">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OrderCancelledID" ColumnName="OrderCancelledID" />
+          <ScalarProperty Name="PPID" ColumnName="PPID" />
+          <ScalarProperty Name="PlannedWt" ColumnName="PlannedWt" />
+          <ScalarProperty Name="CancelledWt" ColumnName="CancelledWt" />
+          <ScalarProperty Name="BalWt" ColumnName="BalWt" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalesOrderCancelleds">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.SalesOrderCancelled">
+        <MappingFragment StoreEntitySet="SalesOrderCancelled">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+          <ScalarProperty Name="OrderDetID" ColumnName="OrderDetID" />
+          <ScalarProperty Name="OrigQty" ColumnName="OrigQty" />
+          <ScalarProperty Name="PlannedQty" ColumnName="PlannedQty" />
+          <ScalarProperty Name="CancelledQty" ColumnName="CancelledQty" />
+          <ScalarProperty Name="BalQty" ColumnName="BalQty" />
+          <ScalarProperty Name="GenDate" ColumnName="GenDate" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shift_det">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.shift_det">
+        <MappingFragment StoreEntitySet="shift_det">
+          <ScalarProperty Name="shift_code" ColumnName="shift_code" />
+          <ScalarProperty Name="beg_time" ColumnName="beg_time" />
+          <ScalarProperty Name="end_time" ColumnName="end_time" />
+          <ScalarProperty Name="team_id" ColumnName="team_id" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_det">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.user_det">
+        <MappingFragment StoreEntitySet="user_det">
+          <ScalarProperty Name="login_id" ColumnName="login_id" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="user_grp" ColumnName="user_grp" />
+          <ScalarProperty Name="user_title" ColumnName="user_title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="working_Rate_except">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.working_Rate_except">
+        <MappingFragment StoreEntitySet="working_Rate_except">
+          <ScalarProperty Name="part_num" ColumnName="part_num" />
+          <ScalarProperty Name="mc_code" ColumnName="mc_code" />
+          <ScalarProperty Name="prod_unit" ColumnName="prod_unit" />
+          <ScalarProperty Name="route_id" ColumnName="route_id" />
+          <ScalarProperty Name="ctr_code" ColumnName="ctr_code" />
+          <ScalarProperty Name="seq_no" ColumnName="seq_no" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkOrderAssemblies">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.WorkOrderAssembly">
+        <MappingFragment StoreEntitySet="WorkOrderAssembly">
+          <ScalarProperty Name="AssyWO" ColumnName="AssyWO" />
+          <ScalarProperty Name="ComponentWO" ColumnName="ComponentWO" />
+          <ScalarProperty Name="QtyPer" ColumnName="QtyPer" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkorderMacs">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.WorkorderMac">
+        <MappingFragment StoreEntitySet="WorkorderMac">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="WOID" ColumnName="WOID" />
+          <ScalarProperty Name="PartNo" ColumnName="PartNo" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+          <ScalarProperty Name="SeqNo" ColumnName="SeqNo" />
+          <ScalarProperty Name="CentreID" ColumnName="CentreID" />
+          <ScalarProperty Name="MacCode" ColumnName="MacCode" />
+          <ScalarProperty Name="MacType" ColumnName="MacType" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="MacGroup" ColumnName="MacGroup" />
+          <ScalarProperty Name="AttributeGroup" ColumnName="AttributeGroup" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkOrderMasters">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.WorkOrderMaster">
+        <MappingFragment StoreEntitySet="WorkOrderMaster">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Customer" ColumnName="Customer" />
+          <ScalarProperty Name="PartNo" ColumnName="PartNo" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ToStockQty" ColumnName="ToStockQty" />
+          <ScalarProperty Name="InvQty1" ColumnName="InvQty1" />
+          <ScalarProperty Name="InvQty2" ColumnName="InvQty2" />
+          <ScalarProperty Name="BalQty" ColumnName="BalQty" />
+          <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+          <ScalarProperty Name="DrawingStatus" ColumnName="DrawingStatus" />
+          <ScalarProperty Name="MaterialGrade" ColumnName="MaterialGrade" />
+          <ScalarProperty Name="MaterialSupplier" ColumnName="MaterialSupplier" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="drawing1" ColumnName="drawing1" />
+          <ScalarProperty Name="drawing2" ColumnName="drawing2" />
+          <ScalarProperty Name="drawing3" ColumnName="drawing3" />
+          <ScalarProperty Name="drawing4" ColumnName="drawing4" />
+          <ScalarProperty Name="MinQty" ColumnName="MinQty" />
+          <ScalarProperty Name="MaxQty" ColumnName="MaxQty" />
+          <ScalarProperty Name="FGDimension1" ColumnName="FGDimension1" />
+          <ScalarProperty Name="FGDimension2" ColumnName="FGDimension2" />
+          <ScalarProperty Name="FGDimension3" ColumnName="FGDimension3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkOrderMaterials">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.WorkOrderMaterial">
+        <MappingFragment StoreEntitySet="WorkOrderMaterial">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="WOID" ColumnName="WOID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Supplier" ColumnName="Supplier" />
+          <ScalarProperty Name="Grade" ColumnName="Grade" />
+          <ScalarProperty Name="MatType" ColumnName="MatType" />
+          <ScalarProperty Name="ReqQty" ColumnName="ReqQty" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Diameter" ColumnName="Diameter" />
+          <ScalarProperty Name="Length" ColumnName="Length" />
+          <ScalarProperty Name="Thinkness" ColumnName="Thinkness" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="OutsideDiameter" ColumnName="OutsideDiameter" />
+          <ScalarProperty Name="InsideDiameter" ColumnName="InsideDiameter" />
+          <ScalarProperty Name="Availability" ColumnName="Availability" />
+          <ScalarProperty Name="sodID" ColumnName="sodID" />
+          <ScalarProperty Name="QtyLength" ColumnName="QtyLength" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Inventories">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.Inventory">
+        <MappingFragment StoreEntitySet="Inventory">
+          <ScalarProperty Name="InventoryID" ColumnName="InventoryID" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="DateIn" ColumnName="DateIn" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="WorkOrderID" ColumnName="WorkOrderID" />
+          <ScalarProperty Name="SequenceNo" ColumnName="SequenceNo" />
+          <ScalarProperty Name="OperationName" ColumnName="OperationName" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="BalanceQuantity" ColumnName="BalanceQuantity" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="String1" ColumnName="String1" />
+          <ScalarProperty Name="String2" ColumnName="String2" />
+          <ScalarProperty Name="String3" ColumnName="String3" />
+          <ScalarProperty Name="String4" ColumnName="String4" />
+          <ScalarProperty Name="Int1" ColumnName="Int1" />
+          <ScalarProperty Name="Int2" ColumnName="Int2" />
+          <ScalarProperty Name="Float1" ColumnName="Float1" />
+          <ScalarProperty Name="Float2" ColumnName="Float2" />
+          <ScalarProperty Name="Date1" ColumnName="Date1" />
+          <ScalarProperty Name="Date2" ColumnName="Date2" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InventoryUsages">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.InventoryUsage">
+        <MappingFragment StoreEntitySet="InventoryUsage">
+          <ScalarProperty Name="InventoryUsageID" ColumnName="InventoryUsageID" />
+          <ScalarProperty Name="InventoryID" ColumnName="InventoryID" />
+          <ScalarProperty Name="UsageType" ColumnName="UsageType" />
+          <ScalarProperty Name="UsedByOrderID" ColumnName="UsedByOrderID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="DateOut" ColumnName="DateOut" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="BillingAddress" ColumnName="BillingAddress" />
+          <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PictureID" ColumnName="PictureID" />
+          <ScalarProperty Name="String1" ColumnName="String1" />
+          <ScalarProperty Name="String2" ColumnName="String2" />
+          <ScalarProperty Name="String3" ColumnName="String3" />
+          <ScalarProperty Name="String4" ColumnName="String4" />
+          <ScalarProperty Name="String5" ColumnName="String5" />
+          <ScalarProperty Name="MaxString1" ColumnName="MaxString1" />
+          <ScalarProperty Name="MaxString2" ColumnName="MaxString2" />
+          <ScalarProperty Name="MaxString3" ColumnName="MaxString3" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeliveryOrders">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.DeliveryOrder">
+        <MappingFragment StoreEntitySet="DeliveryOrder">
+          <ScalarProperty Name="DeliveryOrderID" ColumnName="DeliveryOrderID" />
+          <ScalarProperty Name="DeliveryOrderNumber" ColumnName="DeliveryOrderNumber" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ShipDate" ColumnName="ShipDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="InvoiceAddress" ColumnName="InvoiceAddress" />
+          <ScalarProperty Name="ShipAddress" ColumnName="ShipAddress" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Int1" ColumnName="Int1" />
+          <ScalarProperty Name="Int2" ColumnName="Int2" />
+          <ScalarProperty Name="Int3" ColumnName="Int3" />
+          <ScalarProperty Name="Int4" ColumnName="Int4" />
+          <ScalarProperty Name="Flag1" ColumnName="Flag1" />
+          <ScalarProperty Name="Flag2" ColumnName="Flag2" />
+          <ScalarProperty Name="Flag3" ColumnName="Flag3" />
+          <ScalarProperty Name="Flag4" ColumnName="Flag4" />
+          <ScalarProperty Name="String1" ColumnName="String1" />
+          <ScalarProperty Name="String2" ColumnName="String2" />
+          <ScalarProperty Name="String3" ColumnName="String3" />
+          <ScalarProperty Name="String4" ColumnName="String4" />
+          <ScalarProperty Name="String5" ColumnName="String5" />
+          <ScalarProperty Name="String6" ColumnName="String6" />
+          <ScalarProperty Name="String7" ColumnName="String7" />
+          <ScalarProperty Name="String8" ColumnName="String8" />
+          <ScalarProperty Name="String9" ColumnName="String9" />
+          <ScalarProperty Name="String10" ColumnName="String10" />
+          <ScalarProperty Name="String11" ColumnName="String11" />
+          <ScalarProperty Name="String12" ColumnName="String12" />
+          <ScalarProperty Name="MaxString1" ColumnName="MaxString1" />
+          <ScalarProperty Name="MaxString2" ColumnName="MaxString2" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeliveryOrderDetails">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.DeliveryOrderDetail">
+        <MappingFragment StoreEntitySet="DeliveryOrderDetail">
+          <ScalarProperty Name="DeliveryOrderLineID" ColumnName="DeliveryOrderLineID" />
+          <ScalarProperty Name="DeliveryOrderID" ColumnName="DeliveryOrderID" />
+          <ScalarProperty Name="WorkOrderID" ColumnName="WorkOrderID" />
+          <ScalarProperty Name="SalesOrderLineID" ColumnName="SalesOrderLineID" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="String1" ColumnName="String1" />
+          <ScalarProperty Name="String2" ColumnName="String2" />
+          <ScalarProperty Name="String3" ColumnName="String3" />
+          <ScalarProperty Name="String4" ColumnName="String4" />
+          <ScalarProperty Name="String5" ColumnName="String5" />
+          <ScalarProperty Name="String6" ColumnName="String6" />
+          <ScalarProperty Name="String7" ColumnName="String7" />
+          <ScalarProperty Name="String8" ColumnName="String8" />
+          <ScalarProperty Name="String9" ColumnName="String9" />
+          <ScalarProperty Name="String10" ColumnName="String10" />
+          <ScalarProperty Name="String11" ColumnName="String11" />
+          <ScalarProperty Name="String12" ColumnName="String12" />
+          <ScalarProperty Name="String13" ColumnName="String13" />
+          <ScalarProperty Name="String14" ColumnName="String14" />
+          <ScalarProperty Name="String15" ColumnName="String15" />
+          <ScalarProperty Name="String16" ColumnName="String16" />
+          <ScalarProperty Name="String17" ColumnName="String17" />
+          <ScalarProperty Name="String18" ColumnName="String18" />
+          <ScalarProperty Name="String19" ColumnName="String19" />
+          <ScalarProperty Name="String20" ColumnName="String20" />
+          <ScalarProperty Name="String21" ColumnName="String21" />
+          <ScalarProperty Name="String22" ColumnName="String22" />
+          <ScalarProperty Name="String23" ColumnName="String23" />
+          <ScalarProperty Name="String24" ColumnName="String24" />
+          <ScalarProperty Name="String25" ColumnName="String25" />
+          <ScalarProperty Name="String26" ColumnName="String26" />
+          <ScalarProperty Name="String27" ColumnName="String27" />
+          <ScalarProperty Name="String28" ColumnName="String28" />
+          <ScalarProperty Name="String29" ColumnName="String29" />
+          <ScalarProperty Name="String30" ColumnName="String30" />
+          <ScalarProperty Name="String31" ColumnName="String31" />
+          <ScalarProperty Name="String32" ColumnName="String32" />
+          <ScalarProperty Name="String33" ColumnName="String33" />
+          <ScalarProperty Name="String34" ColumnName="String34" />
+          <ScalarProperty Name="String35" ColumnName="String35" />
+          <ScalarProperty Name="String36" ColumnName="String36" />
+          <ScalarProperty Name="String37" ColumnName="String37" />
+          <ScalarProperty Name="String38" ColumnName="String38" />
+          <ScalarProperty Name="String39" ColumnName="String39" />
+          <ScalarProperty Name="String40" ColumnName="String40" />
+          <ScalarProperty Name="String41" ColumnName="String41" />
+          <ScalarProperty Name="String42" ColumnName="String42" />
+          <ScalarProperty Name="String43" ColumnName="String43" />
+          <ScalarProperty Name="String44" ColumnName="String44" />
+          <ScalarProperty Name="String45" ColumnName="String45" />
+          <ScalarProperty Name="String46" ColumnName="String46" />
+          <ScalarProperty Name="String47" ColumnName="String47" />
+          <ScalarProperty Name="String48" ColumnName="String48" />
+          <ScalarProperty Name="String49" ColumnName="String49" />
+          <ScalarProperty Name="String50" ColumnName="String50" />
+          <ScalarProperty Name="MaxString1" ColumnName="MaxString1" />
+          <ScalarProperty Name="MaxString2" ColumnName="MaxString2" />
+          <ScalarProperty Name="Flag1" ColumnName="Flag1" />
+          <ScalarProperty Name="Flag2" ColumnName="Flag2" />
+          <ScalarProperty Name="Flag3" ColumnName="Flag3" />
+          <ScalarProperty Name="Flag4" ColumnName="Flag4" />
+          <ScalarProperty Name="Flag5" ColumnName="Flag5" />
+          <ScalarProperty Name="Flag6" ColumnName="Flag6" />
+          <ScalarProperty Name="Flag7" ColumnName="Flag7" />
+          <ScalarProperty Name="Flag8" ColumnName="Flag8" />
+          <ScalarProperty Name="Flag9" ColumnName="Flag9" />
+          <ScalarProperty Name="Flag10" ColumnName="Flag10" />
+          <ScalarProperty Name="Flag11" ColumnName="Flag11" />
+          <ScalarProperty Name="Flag12" ColumnName="Flag12" />
+          <ScalarProperty Name="Flag13" ColumnName="Flag13" />
+          <ScalarProperty Name="Flag14" ColumnName="Flag14" />
+          <ScalarProperty Name="Flag15" ColumnName="Flag15" />
+          <ScalarProperty Name="Flag16" ColumnName="Flag16" />
+          <ScalarProperty Name="Flag17" ColumnName="Flag17" />
+          <ScalarProperty Name="Flag18" ColumnName="Flag18" />
+          <ScalarProperty Name="Flag19" ColumnName="Flag19" />
+          <ScalarProperty Name="Flag20" ColumnName="Flag20" />
+          <ScalarProperty Name="Flag21" ColumnName="Flag21" />
+          <ScalarProperty Name="Flag22" ColumnName="Flag22" />
+          <ScalarProperty Name="Flag23" ColumnName="Flag23" />
+          <ScalarProperty Name="Flag24" ColumnName="Flag24" />
+          <ScalarProperty Name="Flag25" ColumnName="Flag25" />
+          <ScalarProperty Name="Flag26" ColumnName="Flag26" />
+          <ScalarProperty Name="Flag27" ColumnName="Flag27" />
+          <ScalarProperty Name="Flag28" ColumnName="Flag28" />
+          <ScalarProperty Name="Flag29" ColumnName="Flag29" />
+          <ScalarProperty Name="Flag30" ColumnName="Flag30" />
+          <ScalarProperty Name="Flag31" ColumnName="Flag31" />
+          <ScalarProperty Name="Flag32" ColumnName="Flag32" />
+          <ScalarProperty Name="Flag33" ColumnName="Flag33" />
+          <ScalarProperty Name="Flag34" ColumnName="Flag34" />
+          <ScalarProperty Name="Flag35" ColumnName="Flag35" />
+          <ScalarProperty Name="Flag36" ColumnName="Flag36" />
+          <ScalarProperty Name="Flag37" ColumnName="Flag37" />
+          <ScalarProperty Name="Flag38" ColumnName="Flag38" />
+          <ScalarProperty Name="Flag39" ColumnName="Flag39" />
+          <ScalarProperty Name="Flag40" ColumnName="Flag40" />
+          <ScalarProperty Name="Flag41" ColumnName="Flag41" />
+          <ScalarProperty Name="Flag42" ColumnName="Flag42" />
+          <ScalarProperty Name="Flag43" ColumnName="Flag43" />
+          <ScalarProperty Name="Flag44" ColumnName="Flag44" />
+          <ScalarProperty Name="Flag45" ColumnName="Flag45" />
+          <ScalarProperty Name="Flag46" ColumnName="Flag46" />
+          <ScalarProperty Name="Flag47" ColumnName="Flag47" />
+          <ScalarProperty Name="Flag48" ColumnName="Flag48" />
+          <ScalarProperty Name="Flag49" ColumnName="Flag49" />
+          <ScalarProperty Name="Flag50" ColumnName="Flag50" />
+          <ScalarProperty Name="Int1" ColumnName="Int1" />
+          <ScalarProperty Name="Int2" ColumnName="Int2" />
+          <ScalarProperty Name="Int3" ColumnName="Int3" />
+          <ScalarProperty Name="Int4" ColumnName="Int4" />
+          <ScalarProperty Name="Int5" ColumnName="Int5" />
+          <ScalarProperty Name="Int6" ColumnName="Int6" />
+          <ScalarProperty Name="Float1" ColumnName="Float1" />
+          <ScalarProperty Name="Float2" ColumnName="Float2" />
+          <ScalarProperty Name="Float3" ColumnName="Float3" />
+          <ScalarProperty Name="Float4" ColumnName="Float4" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalesOrders">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.SalesOrder">
+        <MappingFragment StoreEntitySet="SalesOrder">
+          <ScalarProperty Name="SalesOrderID" ColumnName="SalesOrderID" />
+          <ScalarProperty Name="SalesOrderNumber" ColumnName="SalesOrderNumber" />
+          <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+          <ScalarProperty Name="PurchaseOrderNumber" ColumnName="PurchaseOrderNumber" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="ShipDate" ColumnName="ShipDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="SalesPersonName" ColumnName="SalesPersonName" />
+          <ScalarProperty Name="ContactPersonName" ColumnName="ContactPersonName" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="TotalItems" ColumnName="TotalItems" />
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="TotalQuantity" ColumnName="TotalQuantity" />
+          <ScalarProperty Name="BalanceAmount" ColumnName="BalanceAmount" />
+          <ScalarProperty Name="BalanceQuantity" ColumnName="BalanceQuantity" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="String1" ColumnName="String1" />
+          <ScalarProperty Name="String2" ColumnName="String2" />
+          <ScalarProperty Name="String3" ColumnName="String3" />
+          <ScalarProperty Name="String4" ColumnName="String4" />
+          <ScalarProperty Name="String5" ColumnName="String5" />
+          <ScalarProperty Name="MaxString1" ColumnName="MaxString1" />
+          <ScalarProperty Name="MaxString2" ColumnName="MaxString2" />
+          <ScalarProperty Name="Float1" ColumnName="Float1" />
+          <ScalarProperty Name="Float2" ColumnName="Float2" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalesOrderAdjustments">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.SalesOrderAdjustment">
+        <MappingFragment StoreEntitySet="SalesOrderAdjustment">
+          <ScalarProperty Name="SalesOrderAjustmentID" ColumnName="SalesOrderAjustmentID" />
+          <ScalarProperty Name="SalesOrderDetailID" ColumnName="SalesOrderDetailID" />
+          <ScalarProperty Name="OrigianlQty" ColumnName="OrigianlQty" />
+          <ScalarProperty Name="PlannedQty" ColumnName="PlannedQty" />
+          <ScalarProperty Name="ReducedQty" ColumnName="ReducedQty" />
+          <ScalarProperty Name="BalanceQty" ColumnName="BalanceQty" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalesOrderDetails">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.SalesOrderDetail">
+        <MappingFragment StoreEntitySet="SalesOrderDetail">
+          <ScalarProperty Name="SalesOrderLinelID" ColumnName="SalesOrderLinelID" />
+          <ScalarProperty Name="SalesOrderID" ColumnName="SalesOrderID" />
+          <ScalarProperty Name="OrderQty" ColumnName="OrderQty" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="LineNumber" ColumnName="LineNumber" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="String1" ColumnName="String1" />
+          <ScalarProperty Name="String2" ColumnName="String2" />
+          <ScalarProperty Name="String3" ColumnName="String3" />
+          <ScalarProperty Name="String4" ColumnName="String4" />
+          <ScalarProperty Name="String5" ColumnName="String5" />
+          <ScalarProperty Name="String6" ColumnName="String6" />
+          <ScalarProperty Name="String7" ColumnName="String7" />
+          <ScalarProperty Name="String8" ColumnName="String8" />
+          <ScalarProperty Name="MaxString1" ColumnName="MaxString1" />
+          <ScalarProperty Name="MaxString2" ColumnName="MaxString2" />
+          <ScalarProperty Name="Int1" ColumnName="Int1" />
+          <ScalarProperty Name="Int2" ColumnName="Int2" />
+          <ScalarProperty Name="Float1" ColumnName="Float1" />
+          <ScalarProperty Name="Float2" ColumnName="Float2" />
+          <ScalarProperty Name="Date1" ColumnName="Date1" />
+          <ScalarProperty Name="Date2" ColumnName="Date2" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkOrders">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.WorkOrder">
+        <MappingFragment StoreEntitySet="WorkOrder">
+          <ScalarProperty Name="WorkOrderID" ColumnName="WorkOrderID" />
+          <ScalarProperty Name="WorkOrderNumber" ColumnName="WorkOrderNumber" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+          <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="ParentWorkOrderID" ColumnName="ParentWorkOrderID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="String1" ColumnName="String1" />
+          <ScalarProperty Name="String2" ColumnName="String2" />
+          <ScalarProperty Name="String3" ColumnName="String3" />
+          <ScalarProperty Name="String4" ColumnName="String4" />
+          <ScalarProperty Name="String5" ColumnName="String5" />
+          <ScalarProperty Name="String6" ColumnName="String6" />
+          <ScalarProperty Name="String7" ColumnName="String7" />
+          <ScalarProperty Name="String8" ColumnName="String8" />
+          <ScalarProperty Name="MaxString1" ColumnName="MaxString1" />
+          <ScalarProperty Name="MaxString2" ColumnName="MaxString2" />
+          <ScalarProperty Name="Int1" ColumnName="Int1" />
+          <ScalarProperty Name="Int2" ColumnName="Int2" />
+          <ScalarProperty Name="Int3" ColumnName="Int3" />
+          <ScalarProperty Name="Int4" ColumnName="Int4" />
+          <ScalarProperty Name="Int5" ColumnName="Int5" />
+          <ScalarProperty Name="Int6" ColumnName="Int6" />
+          <ScalarProperty Name="Float1" ColumnName="Float1" />
+          <ScalarProperty Name="Float2" ColumnName="Float2" />
+          <ScalarProperty Name="Date1" ColumnName="Date1" />
+          <ScalarProperty Name="Date2" ColumnName="Date2" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkOrderAdjustments">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.WorkOrderAdjustment">
+        <MappingFragment StoreEntitySet="WorkOrderAdjustment">
+          <ScalarProperty Name="WorkOrderAjustmentID" ColumnName="WorkOrderAjustmentID" />
+          <ScalarProperty Name="SalesOrderAdjustID" ColumnName="SalesOrderAdjustID" />
+          <ScalarProperty Name="WorkOrderID" ColumnName="WorkOrderID" />
+          <ScalarProperty Name="PlannedQty" ColumnName="PlannedQty" />
+          <ScalarProperty Name="ReducedQty" ColumnName="ReducedQty" />
+          <ScalarProperty Name="BalanceQty" ColumnName="BalanceQty" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkOrderCosts">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.WorkOrderCost">
+        <MappingFragment StoreEntitySet="WorkOrderCost">
+          <ScalarProperty Name="WorkOrderCostId" ColumnName="WorkOrderCostId" />
+          <ScalarProperty Name="WorkOrderId" ColumnName="WorkOrderId" />
+          <ScalarProperty Name="WorkOrderNumber" ColumnName="WorkOrderNumber" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="String1" ColumnName="String1" />
+          <ScalarProperty Name="String2" ColumnName="String2" />
+          <ScalarProperty Name="String3" ColumnName="String3" />
+          <ScalarProperty Name="String4" ColumnName="String4" />
+          <ScalarProperty Name="MaxString1" ColumnName="MaxString1" />
+          <ScalarProperty Name="MaxString2" ColumnName="MaxString2" />
+          <ScalarProperty Name="Flag1" ColumnName="Flag1" />
+          <ScalarProperty Name="Flag2" ColumnName="Flag2" />
+          <ScalarProperty Name="Int1" ColumnName="Int1" />
+          <ScalarProperty Name="Int2" ColumnName="Int2" />
+          <ScalarProperty Name="Float1" ColumnName="Float1" />
+          <ScalarProperty Name="Float2" ColumnName="Float2" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkOrderDetails">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.WorkOrderDetail">
+        <MappingFragment StoreEntitySet="WorkOrderDetail">
+          <ScalarProperty Name="WorkOrderLineID" ColumnName="WorkOrderLineID" />
+          <ScalarProperty Name="WorkOrderID" ColumnName="WorkOrderID" />
+          <ScalarProperty Name="SalesOrderLineID" ColumnName="SalesOrderLineID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="MaxString1" ColumnName="MaxString1" />
+          <ScalarProperty Name="MaxString2" ColumnName="MaxString2" />
+          <ScalarProperty Name="Int1" ColumnName="Int1" />
+          <ScalarProperty Name="Int2" ColumnName="Int2" />
+          <ScalarProperty Name="Int3" ColumnName="Int3" />
+          <ScalarProperty Name="Int4" ColumnName="Int4" />
+          <ScalarProperty Name="Int5" ColumnName="Int5" />
+          <ScalarProperty Name="Float1" ColumnName="Float1" />
+          <ScalarProperty Name="Float2" ColumnName="Float2" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkOrderMaterial1">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.WorkOrderMaterial1">
+        <MappingFragment StoreEntitySet="WorkOrderMaterial1">
+          <ScalarProperty Name="WorkOrderMaterialId" ColumnName="WorkOrderMaterialId" />
+          <ScalarProperty Name="WorkOrderId" ColumnName="WorkOrderId" />
+          <ScalarProperty Name="MaterialId" ColumnName="MaterialId" />
+          <ScalarProperty Name="UnitMeasureID" ColumnName="UnitMeasureID" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Availability" ColumnName="Availability" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Ratio" ColumnName="Ratio" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Operations">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.Operation">
+        <MappingFragment StoreEntitySet="Operation">
+          <ScalarProperty Name="OperationId" ColumnName="OperationId" />
+          <ScalarProperty Name="OperationName" ColumnName="OperationName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Categroy" ColumnName="Categroy" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Instruction" ColumnName="Instruction" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="SizeMin" ColumnName="SizeMin" />
+          <ScalarProperty Name="SizeMultiple" ColumnName="SizeMultiple" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="Pretime" ColumnName="Pretime" />
+          <ScalarProperty Name="Posttime" ColumnName="Posttime" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="DurationPer" ColumnName="DurationPer" />
+          <ScalarProperty Name="UOM" ColumnName="UOM" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OperationParameters">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.OperationParameter">
+        <MappingFragment StoreEntitySet="OperationParameter">
+          <ScalarProperty Name="OperationParamterId" ColumnName="OperationParamterId" />
+          <ScalarProperty Name="OperationID" ColumnName="OperationID" />
+          <ScalarProperty Name="ParamterID" ColumnName="ParamterID" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="MinValue" ColumnName="MinValue" />
+          <ScalarProperty Name="MaxValue" ColumnName="MaxValue" />
+          <ScalarProperty Name="UOM" ColumnName="UOM" />
+          <ScalarProperty Name="NoofReading" ColumnName="NoofReading" />
+          <ScalarProperty Name="MaxString1" ColumnName="MaxString1" />
+          <ScalarProperty Name="MaxString2" ColumnName="MaxString2" />
+          <ScalarProperty Name="Int1" ColumnName="Int1" />
+          <ScalarProperty Name="Int2" ColumnName="Int2" />
+          <ScalarProperty Name="Int3" ColumnName="Int3" />
+          <ScalarProperty Name="Int4" ColumnName="Int4" />
+          <ScalarProperty Name="Int5" ColumnName="Int5" />
+          <ScalarProperty Name="Int6" ColumnName="Int6" />
+          <ScalarProperty Name="Int7" ColumnName="Int7" />
+          <ScalarProperty Name="Int8" ColumnName="Int8" />
+          <ScalarProperty Name="Float1" ColumnName="Float1" />
+          <ScalarProperty Name="Float2" ColumnName="Float2" />
+          <ScalarProperty Name="Float3" ColumnName="Float3" />
+          <ScalarProperty Name="Float4" ColumnName="Float4" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OperationRates">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.OperationRate">
+        <MappingFragment StoreEntitySet="OperationRate">
+          <ScalarProperty Name="OperationRateId" ColumnName="OperationRateId" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+          <ScalarProperty Name="RouteOperationId" ColumnName="RouteOperationId" />
+          <ScalarProperty Name="OperationID" ColumnName="OperationID" />
+          <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="Instruction" ColumnName="Instruction" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="Pretime" ColumnName="Pretime" />
+          <ScalarProperty Name="Posttime" ColumnName="Posttime" />
+          <ScalarProperty Name="RunTime" ColumnName="RunTime" />
+          <ScalarProperty Name="UOM" ColumnName="UOM" />
+          <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OperationResources">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.OperationResource">
+        <MappingFragment StoreEntitySet="OperationResource">
+          <ScalarProperty Name="OperationResourceId" ColumnName="OperationResourceId" />
+          <ScalarProperty Name="OperationID" ColumnName="OperationID" />
+          <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+          <ScalarProperty Name="Instruction" ColumnName="Instruction" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+          <ScalarProperty Name="Pretime" ColumnName="Pretime" />
+          <ScalarProperty Name="Posttime" ColumnName="Posttime" />
+          <ScalarProperty Name="Duration" ColumnName="Duration" />
+          <ScalarProperty Name="DurationPer" ColumnName="DurationPer" />
+          <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parameters">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.Parameter">
+        <MappingFragment StoreEntitySet="Parameter">
+          <ScalarProperty Name="ParameterID" ColumnName="ParameterID" />
+          <ScalarProperty Name="ParameterName" ColumnName="ParameterName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="DataType" ColumnName="DataType" />
+          <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
+          <ScalarProperty Name="MinValue" ColumnName="MinValue" />
+          <ScalarProperty Name="MaxValue" ColumnName="MaxValue" />
+          <ScalarProperty Name="UOM" ColumnName="UOM" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductRoutes">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.ProductRoute">
+        <MappingFragment StoreEntitySet="ProductRoute">
+          <ScalarProperty Name="ProductRouteId" ColumnName="ProductRouteId" />
+          <ScalarProperty Name="ProductRouteName" ColumnName="ProductRouteName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+          <ScalarProperty Name="String1" ColumnName="String1" />
+          <ScalarProperty Name="String2" ColumnName="String2" />
+          <ScalarProperty Name="Int1" ColumnName="Int1" />
+          <ScalarProperty Name="Int2" ColumnName="Int2" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductRouteStatus">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.ProductRouteStatu">
+        <MappingFragment StoreEntitySet="ProductRouteStatus">
+          <ScalarProperty Name="ProductRouteStatusId" ColumnName="ProductRouteStatusId" />
+          <ScalarProperty Name="ProductRouteId" ColumnName="ProductRouteId" />
+          <ScalarProperty Name="StepNo" ColumnName="StepNo" />
+          <ScalarProperty Name="ApprovedBy" ColumnName="ApprovedBy" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Routes">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.Route">
+        <MappingFragment StoreEntitySet="Route">
+          <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+          <ScalarProperty Name="RouteName" ColumnName="RouteName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="TraceLevel" ColumnName="TraceLevel" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RouteOperations">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.RouteOperation">
+        <MappingFragment StoreEntitySet="RouteOperation">
+          <ScalarProperty Name="RouteOperationId" ColumnName="RouteOperationId" />
+          <ScalarProperty Name="RouteId" ColumnName="RouteId" />
+          <ScalarProperty Name="OperationId" ColumnName="OperationId" />
+          <ScalarProperty Name="SubrouteId" ColumnName="SubrouteId" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="DefaultResourceID" ColumnName="DefaultResourceID" />
+          <ScalarProperty Name="Instruction" ColumnName="Instruction" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BillOfMaterials">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.BillOfMaterial">
+        <MappingFragment StoreEntitySet="BillOfMaterial">
+          <ScalarProperty Name="BillOfMaterialId" ColumnName="BillOfMaterialId" />
+          <ScalarProperty Name="ProductAssemblyId" ColumnName="ProductAssemblyId" />
+          <ScalarProperty Name="ComponentId" ColumnName="ComponentId" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="UOMCode" ColumnName="UOMCode" />
+          <ScalarProperty Name="BOMLevel" ColumnName="BOMLevel" />
+          <ScalarProperty Name="PerAssemblyQty" ColumnName="PerAssemblyQty" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerItems">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.CustomerItem">
+        <MappingFragment StoreEntitySet="CustomerItem">
+          <ScalarProperty Name="CustomerItemID" ColumnName="CustomerItemID" />
+          <ScalarProperty Name="CustomerItemName" ColumnName="CustomerItemName" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ParentItemID" ColumnName="ParentItemID" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="InternalTAT" ColumnName="InternalTAT" />
+          <ScalarProperty Name="ExternalTAT" ColumnName="ExternalTAT" />
+          <ScalarProperty Name="PriceUomID" ColumnName="PriceUomID" />
+          <ScalarProperty Name="String1" ColumnName="String1" />
+          <ScalarProperty Name="String2" ColumnName="String2" />
+          <ScalarProperty Name="String3" ColumnName="String3" />
+          <ScalarProperty Name="String4" ColumnName="String4" />
+          <ScalarProperty Name="String5" ColumnName="String5" />
+          <ScalarProperty Name="String6" ColumnName="String6" />
+          <ScalarProperty Name="String7" ColumnName="String7" />
+          <ScalarProperty Name="String8" ColumnName="String8" />
+          <ScalarProperty Name="MaxString1" ColumnName="MaxString1" />
+          <ScalarProperty Name="MaxString2" ColumnName="MaxString2" />
+          <ScalarProperty Name="MaxString3" ColumnName="MaxString3" />
+          <ScalarProperty Name="Int1" ColumnName="Int1" />
+          <ScalarProperty Name="Int2" ColumnName="Int2" />
+          <ScalarProperty Name="Int3" ColumnName="Int3" />
+          <ScalarProperty Name="Int4" ColumnName="Int4" />
+          <ScalarProperty Name="Float1" ColumnName="Float1" />
+          <ScalarProperty Name="Float2" ColumnName="Float2" />
+          <ScalarProperty Name="Flag1" ColumnName="Flag1" />
+          <ScalarProperty Name="Flag2" ColumnName="Flag2" />
+          <ScalarProperty Name="Flag3" ColumnName="Flag3" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Items">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.Item">
+        <MappingFragment StoreEntitySet="Item">
+          <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+          <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Subcategory" ColumnName="Subcategory" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="StandardCost" ColumnName="StandardCost" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+          <ScalarProperty Name="PictureID" ColumnName="PictureID" />
+          <ScalarProperty Name="MakeFlag" ColumnName="MakeFlag" />
+          <ScalarProperty Name="SafetyStockLevel" ColumnName="SafetyStockLevel" />
+          <ScalarProperty Name="ReorderPoint" ColumnName="ReorderPoint" />
+          <ScalarProperty Name="Group1" ColumnName="Group1" />
+          <ScalarProperty Name="Group2" ColumnName="Group2" />
+          <ScalarProperty Name="Group3" ColumnName="Group3" />
+          <ScalarProperty Name="Group4" ColumnName="Group4" />
+          <ScalarProperty Name="Group5" ColumnName="Group5" />
+          <ScalarProperty Name="Group6" ColumnName="Group6" />
+          <ScalarProperty Name="ParentItemID" ColumnName="ParentItemID" />
+          <ScalarProperty Name="String1" ColumnName="String1" />
+          <ScalarProperty Name="String2" ColumnName="String2" />
+          <ScalarProperty Name="String3" ColumnName="String3" />
+          <ScalarProperty Name="String4" ColumnName="String4" />
+          <ScalarProperty Name="String5" ColumnName="String5" />
+          <ScalarProperty Name="String6" ColumnName="String6" />
+          <ScalarProperty Name="String7" ColumnName="String7" />
+          <ScalarProperty Name="String8" ColumnName="String8" />
+          <ScalarProperty Name="String9" ColumnName="String9" />
+          <ScalarProperty Name="MaxString1" ColumnName="MaxString1" />
+          <ScalarProperty Name="MaxString2" ColumnName="MaxString2" />
+          <ScalarProperty Name="MaxString3" ColumnName="MaxString3" />
+          <ScalarProperty Name="MaxString4" ColumnName="MaxString4" />
+          <ScalarProperty Name="MaxString5" ColumnName="MaxString5" />
+          <ScalarProperty Name="Date1" ColumnName="Date1" />
+          <ScalarProperty Name="Date2" ColumnName="Date2" />
+          <ScalarProperty Name="Date3" ColumnName="Date3" />
+          <ScalarProperty Name="Date4" ColumnName="Date4" />
+          <ScalarProperty Name="Date5" ColumnName="Date5" />
+          <ScalarProperty Name="Flag1" ColumnName="Flag1" />
+          <ScalarProperty Name="Flag2" ColumnName="Flag2" />
+          <ScalarProperty Name="Flag3" ColumnName="Flag3" />
+          <ScalarProperty Name="Flag4" ColumnName="Flag4" />
+          <ScalarProperty Name="Flag5" ColumnName="Flag5" />
+          <ScalarProperty Name="Int1" ColumnName="Int1" />
+          <ScalarProperty Name="Int2" ColumnName="Int2" />
+          <ScalarProperty Name="Int3" ColumnName="Int3" />
+          <ScalarProperty Name="Int4" ColumnName="Int4" />
+          <ScalarProperty Name="Int5" ColumnName="Int5" />
+          <ScalarProperty Name="Int6" ColumnName="Int6" />
+          <ScalarProperty Name="Int7" ColumnName="Int7" />
+          <ScalarProperty Name="Int8" ColumnName="Int8" />
+          <ScalarProperty Name="Int9" ColumnName="Int9" />
+          <ScalarProperty Name="Int10" ColumnName="Int10" />
+          <ScalarProperty Name="Float1" ColumnName="Float1" />
+          <ScalarProperty Name="Float2" ColumnName="Float2" />
+          <ScalarProperty Name="Float3" ColumnName="Float3" />
+          <ScalarProperty Name="Float4" ColumnName="Float4" />
+          <ScalarProperty Name="Float5" ColumnName="Float5" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ItemLocations">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.ItemLocation">
+        <MappingFragment StoreEntitySet="ItemLocation">
+          <ScalarProperty Name="ItemLocationId" ColumnName="ItemLocationId" />
+          <ScalarProperty Name="ProductLineId" ColumnName="ProductLineId" />
+          <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locations">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.Location">
+        <MappingFragment StoreEntitySet="Location">
+          <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+          <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Subcategory" ColumnName="Subcategory" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CalendarId" ColumnName="CalendarId" />
+          <ScalarProperty Name="ParentLocationId" ColumnName="ParentLocationId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pictures">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.Picture">
+        <MappingFragment StoreEntitySet="Picture">
+          <ScalarProperty Name="PictureID" ColumnName="PictureID" />
+          <ScalarProperty Name="ThumbNailImage" ColumnName="ThumbNailImage" />
+          <ScalarProperty Name="ThumbnailImageFileName" ColumnName="ThumbnailImageFileName" />
+          <ScalarProperty Name="LargeImage" ColumnName="LargeImage" />
+          <ScalarProperty Name="LargeImageFileName" ColumnName="LargeImageFileName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserProductLines">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.UserProductLine">
+        <MappingFragment StoreEntitySet="UserProductLine">
+          <ScalarProperty Name="UserProductLineID" ColumnName="UserProductLineID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ProductLineID" ColumnName="ProductLineID" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Calendars">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.Calendar">
+        <MappingFragment StoreEntitySet="Calendar">
+          <ScalarProperty Name="CalendarId" ColumnName="CalendarId" />
+          <ScalarProperty Name="CalendarName" ColumnName="CalendarName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CalendarDetails">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.CalendarDetail">
+        <MappingFragment StoreEntitySet="CalendarDetail">
+          <ScalarProperty Name="CalendarDetailId" ColumnName="CalendarDetailId" />
+          <ScalarProperty Name="CalendarDetailName" ColumnName="CalendarDetailName" />
+          <ScalarProperty Name="ParentCalendarId" ColumnName="ParentCalendarId" />
+          <ScalarProperty Name="CalendarId" ColumnName="CalendarId" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="Priority" ColumnName="Priority" />
+          <ScalarProperty Name="Interval" ColumnName="Interval" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Equipments">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.Equipment">
+        <MappingFragment StoreEntitySet="Equipment">
+          <ScalarProperty Name="EquipmentId" ColumnName="EquipmentId" />
+          <ScalarProperty Name="EquipmentName" ColumnName="EquipmentName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Subcategory" ColumnName="Subcategory" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ParentEquipmentID" ColumnName="ParentEquipmentID" />
+          <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+          <ScalarProperty Name="CalendarID" ColumnName="CalendarID" />
+          <ScalarProperty Name="String1" ColumnName="String1" />
+          <ScalarProperty Name="String2" ColumnName="String2" />
+          <ScalarProperty Name="MaxString1" ColumnName="MaxString1" />
+          <ScalarProperty Name="MaxString2" ColumnName="MaxString2" />
+          <ScalarProperty Name="Float1" ColumnName="Float1" />
+          <ScalarProperty Name="Float2" ColumnName="Float2" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EquipmentParameters">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.EquipmentParameter">
+        <MappingFragment StoreEntitySet="EquipmentParameter">
+          <ScalarProperty Name="EquipmentParameterID" ColumnName="EquipmentParameterID" />
+          <ScalarProperty Name="EquipmentID" ColumnName="EquipmentID" />
+          <ScalarProperty Name="ParameterID" ColumnName="ParameterID" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="MinValue" ColumnName="MinValue" />
+          <ScalarProperty Name="MaxValue" ColumnName="MaxValue" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Buttons">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.Button">
+        <MappingFragment StoreEntitySet="Button">
+          <ScalarProperty Name="ButtonId" ColumnName="ButtonId" />
+          <ScalarProperty Name="ButtonName" ColumnName="ButtonName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="DisplayText" ColumnName="DisplayText" />
+          <ScalarProperty Name="ImageFileName" ColumnName="ImageFileName" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Menus">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.Menu">
+        <MappingFragment StoreEntitySet="Menu">
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+          <ScalarProperty Name="ParentTaskId" ColumnName="ParentTaskId" />
+          <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+          <ScalarProperty Name="SortSequence" ColumnName="SortSequence" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="StartTaskId" ColumnName="StartTaskId" />
+          <ScalarProperty Name="GlobalAccess" ColumnName="GlobalAccess" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleTasks">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.RoleTask">
+        <MappingFragment StoreEntitySet="RoleTask">
+          <ScalarProperty Name="RoleTaskId" ColumnName="RoleTaskId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+          <ScalarProperty Name="AccessMode" ColumnName="AccessMode" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tasks">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.Task">
+        <MappingFragment StoreEntitySet="Task">
+          <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+          <ScalarProperty Name="Group" ColumnName="Group" />
+          <ScalarProperty Name="DisplayText" ColumnName="DisplayText" />
+          <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ButtonID" ColumnName="ButtonID" />
+          <ScalarProperty Name="Setting" ColumnName="Setting" />
+          <ScalarProperty Name="Selection" ColumnName="Selection" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+          <ScalarProperty Name="MaxExecutionTime" ColumnName="MaxExecutionTime" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+          <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
+          <ScalarProperty Name="PasswordAnswerHash" ColumnName="PasswordAnswerHash" />
+          <ScalarProperty Name="PasswordAnswerSalt" ColumnName="PasswordAnswerSalt" />
+          <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+          <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+          <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+          <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+          <ScalarProperty Name="FailedPasswordAttemptCount" ColumnName="FailedPasswordAttemptCount" />
+          <ScalarProperty Name="LanguageCode" ColumnName="LanguageCode" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="PictureID" ColumnName="PictureID" />
+          <ScalarProperty Name="SignatureID" ColumnName="SignatureID" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoles">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.UserRole">
+        <MappingFragment StoreEntitySet="UserRole">
+          <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CodeDetails">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.CodeDetail">
+        <MappingFragment StoreEntitySet="CodeDetail">
+          <ScalarProperty Name="CodeDetailId" ColumnName="CodeDetailId" />
+          <ScalarProperty Name="CodeTypeId" ColumnName="CodeTypeId" />
+          <ScalarProperty Name="CodeNo" ColumnName="CodeNo" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CodeTypes">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.CodeType">
+        <MappingFragment StoreEntitySet="CodeType">
+          <ScalarProperty Name="CodeTypeId" ColumnName="CodeTypeId" />
+          <ScalarProperty Name="CodeTypeName" ColumnName="CodeTypeName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DataType" ColumnName="DataType" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CodeUsages">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.CodeUsage">
+        <MappingFragment StoreEntitySet="CodeUsage">
+          <ScalarProperty Name="CodeUsageId" ColumnName="CodeUsageId" />
+          <ScalarProperty Name="CodeTypeId" ColumnName="CodeTypeId" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="ColumnName" ColumnName="ColumnName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Options">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.Option">
+        <MappingFragment StoreEntitySet="Option">
+          <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+          <ScalarProperty Name="OptionName" ColumnName="OptionName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="DataType" ColumnName="DataType" />
+          <ScalarProperty Name="DefaultSetting" ColumnName="DefaultSetting" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserPreferences">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.UserPreference">
+        <MappingFragment StoreEntitySet="UserPreference">
+          <ScalarProperty Name="UserPreferenceId" ColumnName="UserPreferenceId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="OptionId" ColumnName="OptionId" />
+          <ScalarProperty Name="Setting" ColumnName="Setting" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="VersionStamp" ColumnName="VersionStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tmpRoutes">
+      <EntityTypeMapping TypeName="SIMAPS_MOMModel.tmpRoute">
+        <MappingFragment StoreEntitySet="tmpRoute">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+          <ScalarProperty Name="OperationID" ColumnName="OperationID" />
+          <ScalarProperty Name="Subrouteid" ColumnName="Subrouteid" />
+          <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+          <ScalarProperty Name="SubrouteSeq" ColumnName="SubrouteSeq" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

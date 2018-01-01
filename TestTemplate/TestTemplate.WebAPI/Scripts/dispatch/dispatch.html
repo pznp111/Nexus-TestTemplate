@@ -1,0 +1,67 @@
+﻿<div class="col-md-12">
+
+    <div class="row split-table-margin table-card">
+
+        <div class="row split-table-margin">
+            <label>Work Order Selection</label>
+        </div>
+
+        <div class="row split-table-margin">
+            <div class="col-md-3"><label>Work Order</label></div>
+            <div class="col-md-4"><label>By State:</label></div>
+            <div class="col-md-2"  id="dispatchALL" ><input type="checkbox" name="all" value="all" ng-click ="checkboxClick()" id="checkboxALL"> Dispatch All<br></div>
+            <div class="col-md-2"><button type="button" class="btn btn-default" ng-click="refresh()">Refresh</button></div>
+        </div>
+
+        <div class="row split-table-margin">
+            <div class="col-md-3">
+                <select id="select_mctype" class="selector form-control" style = "width: 150px;" ng-change="changeMcType()" ng-model="mctype"></select>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-2"><label>New Release</label></div>
+                <div class="col-md-1"><input type="radio" name="State1" value="new-release" checked="checked" ng-click="toggleRadio()"></div>
+                <div class="col-md-2"><label>Dispatched</label></div>
+                <div class="col-md-1"><input type="radio" name="State1" value="dispatched"  ng-click="toggleRadio()"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+        <div class="row split-table-margin table-block" id="dispatch-table1" ng-click="tryDispatch()">
+
+
+    </div>
+    <div class="row  split-table-margin" >
+        <div class="col-sm-2">
+            <div class="yellow-background col-sm-1 small-border" style="height:100%;width:10%;">&nbsp;</div>
+            <div class="col-sm-2"> Near Requested Delivery</div>
+        </div>
+
+        <div class="col-sm-2">
+            <div class="pink-background col-sm-1 small-border" style="height:100%;width:10%;">&nbsp;</div>
+            <div class="col-sm-2"> Overdue Requested Delivery</div>
+        </div>
+    </div>
+    <div class="row split-table-margin table-block" id="dispatch-table2" ng-click="tryDispatchTable2()">
+        .table2
+    </div>
+
+    <div class="row  split-table-margin">
+        <div class="col-sm-2">
+            <div class="yellow-background col-sm-1 small-border" style="height:100%;width:10%;">&nbsp;</div>
+            <div class="col-sm-2">Processin or Completed</div>
+        </div>
+
+        <div class="col-sm-2">
+            <div class=" col-sm-1 small-border" style="height:100%;width:10%;background:white;">&nbsp;</div>
+            <div class="col-sm-2">To be started</div>
+        </div>
+    </div>
+
+    <div class="row split-table-margin">
+        <button type="button" class="btn btn-default" ng-click="confirm()">Confirm</button>
+    </div>
+
+</div>

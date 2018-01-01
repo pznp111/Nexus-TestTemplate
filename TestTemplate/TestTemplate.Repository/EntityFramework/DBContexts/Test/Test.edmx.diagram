@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9353923d86e440ad919c2cc8953e18b5" Name="Diagram1">
+        <EntityTypeShape EntityType="HMLVTSModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMLVTSModel.TS_ChildWorkOrder" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMLVTSModel.TS_ExStatus" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMLVTSModel.TS_Lock" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMLVTSModel.TS_MacAddress" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMLVTSModel.TS_Mutex" Width="1.5" PointX="7.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMLVTSModel.TS_QC_Equipment" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMLVTSModel.TS_Rework" Width="1.5" PointX="3" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMLVTSModel.TS_Scrap" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMLVTSModel.TS_WODispatchBand" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMLVTSModel.TS_WorkOrder" Width="1.5" PointX="0.75" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMLVTSModel.TS_WorkOrderCancel" Width="1.5" PointX="3" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMLVTSModel.TS_WorkOrderCancelDetail" Width="1.5" PointX="9.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMLVTSModel.TS_WorkOrderExecution" Width="1.5" PointX="3" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMLVTSModel.TS_WorkOrderRoute" Width="1.5" PointX="3" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMLVTSModel.TS_WorkOrderRouteDispatch" Width="1.5" PointX="5.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMLVTSModel.TS_Operation" Width="1.5" PointX="3" PointY="34.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMLVTSModel.TS_Parameter" Width="1.5" PointX="7.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMLVTSModel.TS_PauseOperationReason" Width="1.5" PointX="9.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMLVTSModel.TS_QCDocAttachment" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMLVTSModel.TS_ScrapRemark" Width="1.5" PointX="11.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMLVTSModel.TS_SplitRemark" Width="1.5" PointX="11.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HMLVTSModel.TS_TrackingRemark" Width="1.5" PointX="11.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="HMLVTSModel.FK_TS_QC_Equipment_TS_WorkOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="HMLVTSModel.FK_TS_Rework_TS_WorkOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="HMLVTSModel.FK_TS_Scrap_TS_WorkOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="HMLVTSModel.FK_TS_Operation_TS_WorkOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="HMLVTSModel.FK_TS_WorkOrderCancel_TS_WorkOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="HMLVTSModel.FK_TS_WorkOrderRoute_TS_WorkOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="HMLVTSModel.FK_TS_WorkOrderStatus_TS_WorkOrder" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

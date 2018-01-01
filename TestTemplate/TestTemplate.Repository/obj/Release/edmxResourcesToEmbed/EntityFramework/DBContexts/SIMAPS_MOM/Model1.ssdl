@@ -1,0 +1,3405 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SIMAPS_MOMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="InvMas">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Location" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DateIn" Type="datetime" Nullable="false" />
+    <Property Name="InvType" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="PartNo" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="WorkOrder" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SubWorkOrder" Type="varchar" MaxLength="50" />
+    <Property Name="ReservedWorkOrder" Type="varchar" MaxLength="50" />
+    <Property Name="SeqNo" Type="int" />
+    <Property Name="CenterID" Type="varchar" MaxLength="50" />
+    <Property Name="Customer" Type="varchar" MaxLength="50" />
+    <Property Name="Qty" Type="int" Nullable="false" />
+    <Property Name="BalQty" Type="int" Nullable="false" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="300" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="ActualBalQty" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CreatedOn" Type="datetime" />
+    <Property Name="CreatedBy" Type="varchar" MaxLength="16" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIMAPS_MOM.dbo.tmpRoute' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tmpRoute">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="RouteID" />
+      <PropertyRef Name="OperationID" />
+      <PropertyRef Name="Sequence" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RouteID" Type="int" Nullable="false" />
+    <Property Name="OperationID" Type="int" Nullable="false" />
+    <Property Name="Subrouteid" Type="int" />
+    <Property Name="Sequence" Type="int" Nullable="false" />
+    <Property Name="SubrouteSeq" Type="int" />
+  </EntityType>
+  <EntityType Name="CapacityProfile">
+    <Key>
+      <PropertyRef Name="OrderCapacityID" />
+    </Key>
+    <Property Name="OrderCapacityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReleaseID" Type="int" Nullable="false" />
+    <Property Name="OperationID" Type="int" Nullable="false" />
+    <Property Name="OperationSequence" Type="int" />
+    <Property Name="ResourceID" Type="int" Nullable="false" />
+    <Property Name="UsedRatio" Type="float" />
+    <Property Name="ProducedQuantity" Type="float" Nullable="false" />
+    <Property Name="ProductionDate" Type="datetime" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="32" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DailyLoadingPlan">
+    <Key>
+      <PropertyRef Name="PPOrderID" />
+    </Key>
+    <Property Name="PPOrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type" Type="tinyint" Nullable="false" />
+    <Property Name="Quantity" Type="float" Nullable="false" />
+    <Property Name="IssuedDate" Type="int" Nullable="false" />
+    <Property Name="PartID" Type="int" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="256" />
+    <Property Name="ParentID" Type="int" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="32" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderRelease">
+    <Key>
+      <PropertyRef Name="ReleaseID" />
+    </Key>
+    <Property Name="ReleaseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderNo" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="PartID" Type="int" Nullable="false" />
+    <Property Name="PartName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="ReceivedDate" Type="datetime" Nullable="false" />
+    <Property Name="DueDate" Type="datetime" Nullable="false" />
+    <Property Name="ReleasedDate" Type="datetime" />
+    <Property Name="OriginalQuantity" Type="float" Nullable="false" />
+    <Property Name="PlanQuantity" Type="float" Nullable="false" />
+    <Property Name="InventoryQuantity" Type="float" Nullable="false" />
+    <Property Name="ProductionQuantity" Type="float" Nullable="false" />
+    <Property Name="ProductionDate" Type="datetime" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="256" />
+    <Property Name="ReservedString1" Type="nvarchar" MaxLength="32" />
+    <Property Name="ReservedString2" Type="nvarchar" MaxLength="32" />
+    <Property Name="ReservedString3" Type="nvarchar" MaxLength="32" />
+    <Property Name="ReservedString4" Type="nvarchar" MaxLength="32" />
+    <Property Name="ReservedString5" Type="nvarchar" MaxLength="32" />
+    <Property Name="ReservedString6" Type="nvarchar" MaxLength="32" />
+    <Property Name="ReservedString7" Type="nvarchar" MaxLength="32" />
+    <Property Name="ReservedString8" Type="nvarchar" MaxLength="32" />
+    <Property Name="ReservedString9" Type="nvarchar" MaxLength="32" />
+    <Property Name="ReservedString10" Type="nvarchar" MaxLength="256" />
+    <Property Name="ReservedString11" Type="nvarchar" MaxLength="256" />
+    <Property Name="ReservedString12" Type="nvarchar" MaxLength="256" />
+    <Property Name="ReservedDate1" Type="datetime" />
+    <Property Name="ReservedDate2" Type="datetime" />
+    <Property Name="ReservedDate3" Type="datetime" />
+    <Property Name="ReservedFlag1" Type="bit" />
+    <Property Name="ReservedFlag2" Type="bit" />
+    <Property Name="ReservedFlag3" Type="bit" />
+    <Property Name="ReservedInt1" Type="int" />
+    <Property Name="ReservedInt2" Type="int" />
+    <Property Name="ReservedInt3" Type="int" />
+    <Property Name="ReservedFloat1" Type="float" />
+    <Property Name="ReservedFloat2" Type="float" />
+    <Property Name="ReservedFloat3" Type="float" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="32" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OrderReleaseDetail">
+    <Key>
+      <PropertyRef Name="ReleaseDetailID" />
+    </Key>
+    <Property Name="ReleaseDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReleaseID" Type="int" Nullable="false" />
+    <Property Name="ProductionQuantity" Type="float" Nullable="false" />
+    <Property Name="ProductionDate" Type="datetime" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="256" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="32" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Schedule">
+    <Key>
+      <PropertyRef Name="ScheduleID" />
+    </Key>
+    <Property Name="ScheduleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UnitId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Version" Type="int" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="RuleSetID" Type="int" />
+    <Property Name="String1" Type="nvarchar" MaxLength="50" />
+    <Property Name="String2" Type="nvarchar" MaxLength="50" />
+    <Property Name="String3" Type="nvarchar" MaxLength="50" />
+    <Property Name="String4" Type="nvarchar" MaxLength="50" />
+    <Property Name="String5" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaxString1" Type="nvarchar(max)" />
+    <Property Name="MaxString2" Type="nvarchar(max)" />
+    <Property Name="MaxString3" Type="nvarchar(max)" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ScheduleDetail">
+    <Key>
+      <PropertyRef Name="ScheduleDetailID" />
+    </Key>
+    <Property Name="ScheduleDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ScheduleID" Type="int" Nullable="false" />
+    <Property Name="ScheduleType" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="OperationID" Type="int" Nullable="false" />
+    <Property Name="OperationName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MachineID" Type="int" Nullable="false" />
+    <Property Name="MachineName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Sequence" Type="int" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="ShiftName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UnitRunTime" Type="float" Nullable="false" />
+    <Property Name="RunTime" Type="float" Nullable="false" />
+    <Property Name="Quantity" Type="float" Nullable="false" />
+    <Property Name="WorkOrderID" Type="int" />
+    <Property Name="WorkOrderNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="String1" Type="nvarchar" MaxLength="50" />
+    <Property Name="String2" Type="nvarchar" MaxLength="50" />
+    <Property Name="String3" Type="nvarchar" MaxLength="50" />
+    <Property Name="String4" Type="nvarchar" MaxLength="50" />
+    <Property Name="String5" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaxString1" Type="nvarchar(max)" />
+    <Property Name="MaxString2" Type="nvarchar(max)" />
+    <Property Name="MaxString3" Type="nvarchar(max)" />
+    <Property Name="Int1" Type="int" />
+    <Property Name="Int2" Type="int" />
+    <Property Name="Int3" Type="int" />
+    <Property Name="Int4" Type="int" />
+    <Property Name="Int5" Type="int" />
+    <Property Name="Int6" Type="int" />
+    <Property Name="Float1" Type="float" />
+    <Property Name="Float2" Type="float" />
+    <Property Name="Date1" Type="datetime" />
+    <Property Name="Date2" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ctr_mc">
+    <Key>
+      <PropertyRef Name="ctr_code" />
+      <PropertyRef Name="mc_code" />
+    </Key>
+    <Property Name="ctr_code" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="mc_code" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="mc_grp_code" Type="char" MaxLength="32" />
+  </EntityType>
+  <EntityType Name="part_detail_semicon">
+    <Key>
+      <PropertyRef Name="part_num" />
+    </Key>
+    <Property Name="unit_id" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="part_num" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="cust_id" Type="varchar" MaxLength="100" />
+    <Property Name="packagelc" Type="varchar" MaxLength="40" />
+    <Property Name="package" Type="varchar" MaxLength="30" />
+    <Property Name="leadcount" Type="varchar" MaxLength="30" />
+    <Property Name="padsize" Type="varchar" MaxLength="50" />
+    <Property Name="device" Type="varchar" MaxLength="30" />
+    <Property Name="pkg_dimension" Type="char" MaxLength="10" />
+    <Property Name="grp" Type="varchar" MaxLength="100" />
+    <Property Name="exception_flag" Type="char" MaxLength="1" />
+    <Property Name="route_id" Type="varchar" MaxLength="50" />
+    <Property Name="remark" Type="varchar" MaxLength="200" />
+    <Property Name="cust_id_erp" Type="varchar" MaxLength="30" />
+    <Property Name="bodysize" Type="varchar" MaxLength="30" />
+    <Property Name="applyfor" Type="char" MaxLength="10" />
+    <Property Name="mold_compound_id" Type="varchar" MaxLength="30" />
+    <Property Name="mark_instruction_id" Type="varchar" MaxLength="30" />
+    <Property Name="lf_part_id" Type="varchar" MaxLength="30" />
+    <Property Name="updatedatetime" Type="datetime" />
+    <Property Name="gold_content" Type="char" MaxLength="10" />
+    <Property Name="ends_used" Type="nvarchar" MaxLength="50" />
+    <Property Name="hooks_used" Type="nvarchar" MaxLength="50" />
+    <Property Name="alt_ends_used" Type="nvarchar" MaxLength="50" />
+    <Property Name="alt_hooks_used" Type="nvarchar" MaxLength="50" />
+    <Property Name="earring_ends" Type="nvarchar" MaxLength="50" />
+    <Property Name="safety_stock" Type="int" />
+  </EntityType>
+  <EntityType Name="PPOrder">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MeltingOrderID" Type="int" />
+    <Property Name="GoldContent" Type="varchar" MaxLength="50" />
+    <Property Name="Size" Type="varchar" MaxLength="30" />
+    <Property Name="BasicChainType" Type="varchar" MaxLength="50" />
+    <Property Name="AllocWeight" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+    <Property Name="Type" Type="char" MaxLength="1" />
+    <Property Name="IssueDate" Type="datetime" />
+    <Property Name="status" Type="char" MaxLength="10" />
+    <Property Name="GenDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PPOrderDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MeltingOrderID" Type="int" />
+    <Property Name="PPID" Type="int" />
+    <Property Name="PartNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SublotID" Type="varchar" MaxLength="50" />
+    <Property Name="SalesOrderID" Type="int" Nullable="false" />
+    <Property Name="SalesOrderDetID" Type="int" />
+    <Property Name="Weight" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Remark" Type="varchar" MaxLength="50" />
+    <Property Name="EstCompletionDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PPOrderRoute">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PPID" Type="int" Nullable="false" />
+    <Property Name="PartNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RouteID" Type="int" Nullable="false" />
+    <Property Name="SeqNo" Type="int" Nullable="false" />
+    <Property Name="CentreID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MacCode" Type="char" MaxLength="200" />
+    <Property Name="MacType" Type="char" MaxLength="20" />
+    <Property Name="Remark" Type="nvarchar(max)" />
+    <Property Name="MacGroup" Type="int" />
+    <Property Name="AttributeGroup" Type="varchar" MaxLength="32" />
+  </EntityType>
+  <EntityType Name="Rights">
+    <Key>
+      <PropertyRef Name="User_grp" />
+      <PropertyRef Name="Unit_id" />
+      <PropertyRef Name="Object_id" />
+      <PropertyRef Name="usergrp_flag" />
+    </Key>
+    <Property Name="User_grp" Type="char" MaxLength="16" Nullable="false" />
+    <Property Name="Unit_id" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="Object_id" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="Rights" Type="smallint" Nullable="false" />
+    <Property Name="usergrp_flag" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RouteMas">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Remark" Type="varchar" MaxLength="200" />
+    <Property Name="UnitID" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="type" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="SalesOrderCancelDet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderCancelledID" Type="int" Nullable="false" />
+    <Property Name="PPID" Type="int" Nullable="false" />
+    <Property Name="PlannedWt" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CancelledWt" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="BalWt" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="char" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="SalesOrderCancelled">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderNo" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="OrderDetID" Type="int" Nullable="false" />
+    <Property Name="OrigQty" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="PlannedQty" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CancelledQty" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="BalQty" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="GenDate" Type="datetime" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="50" />
+    <Property Name="status" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="shift_det">
+    <Key>
+      <PropertyRef Name="shift_code" />
+    </Key>
+    <Property Name="shift_code" Type="char" MaxLength="24" Nullable="false" />
+    <Property Name="beg_time" Type="smallint" Nullable="false" />
+    <Property Name="end_time" Type="smallint" Nullable="false" />
+    <Property Name="team_id" Type="char" MaxLength="12" />
+    <Property Name="description" Type="varchar" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="user_det">
+    <Key>
+      <PropertyRef Name="login_id" />
+    </Key>
+    <Property Name="login_id" Type="char" MaxLength="16" Nullable="false" />
+    <Property Name="password" Type="char" MaxLength="16" />
+    <Property Name="user_name" Type="char" MaxLength="64" />
+    <Property Name="user_grp" Type="char" MaxLength="16" />
+    <Property Name="user_title" Type="char" MaxLength="24" />
+  </EntityType>
+  <EntityType Name="working_Rate_except">
+    <Key>
+      <PropertyRef Name="part_num" />
+      <PropertyRef Name="mc_code" />
+    </Key>
+    <Property Name="part_num" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="mc_code" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="prod_unit" Type="numeric" Precision="6" Scale="0" />
+    <Property Name="route_id" Type="int" />
+    <Property Name="ctr_code" Type="char" MaxLength="32" />
+    <Property Name="seq_no" Type="int" />
+  </EntityType>
+  <EntityType Name="WorkOrderAssembly">
+    <Key>
+      <PropertyRef Name="AssyWO" />
+      <PropertyRef Name="ComponentWO" />
+    </Key>
+    <Property Name="AssyWO" Type="int" Nullable="false" />
+    <Property Name="ComponentWO" Type="int" Nullable="false" />
+    <Property Name="QtyPer" Type="float" />
+    <Property Name="Level" Type="int" />
+  </EntityType>
+  <EntityType Name="WorkorderMac">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WOID" Type="nvarchar" MaxLength="50" />
+    <Property Name="PartNo" Type="varchar" MaxLength="50" />
+    <Property Name="RouteID" Type="int" Nullable="false" />
+    <Property Name="SeqNo" Type="int" Nullable="false" />
+    <Property Name="CentreID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MacCode" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="MacType" Type="char" MaxLength="20" />
+    <Property Name="Remark" Type="nvarchar(max)" />
+    <Property Name="MacGroup" Type="int" />
+    <Property Name="AttributeGroup" Type="varchar" MaxLength="32" />
+  </EntityType>
+  <EntityType Name="WorkOrderMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Location" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="Customer" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="PartNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Qty" Type="int" Nullable="false" />
+    <Property Name="ToStockQty" Type="int" Nullable="false" />
+    <Property Name="InvQty1" Type="int" Nullable="false" />
+    <Property Name="InvQty2" Type="int" Nullable="false" />
+    <Property Name="BalQty" Type="int" Nullable="false" />
+    <Property Name="OrderType" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="IssueDate" Type="datetime" Nullable="false" />
+    <Property Name="DeliveryDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="500" />
+    <Property Name="RouteID" Type="int" />
+    <Property Name="DrawingStatus" Type="char" MaxLength="10" />
+    <Property Name="MaterialGrade" Type="char" MaxLength="10" />
+    <Property Name="MaterialSupplier" Type="nvarchar" MaxLength="40" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="UserID" Type="char" MaxLength="20" />
+    <Property Name="drawing1" Type="nvarchar" MaxLength="200" />
+    <Property Name="drawing2" Type="nvarchar" MaxLength="200" />
+    <Property Name="drawing3" Type="nvarchar" MaxLength="200" />
+    <Property Name="drawing4" Type="nvarchar" MaxLength="200" />
+    <Property Name="MinQty" Type="int" />
+    <Property Name="MaxQty" Type="int" />
+    <Property Name="FGDimension1" Type="nvarchar" MaxLength="50" />
+    <Property Name="FGDimension2" Type="nvarchar" MaxLength="50" />
+    <Property Name="FGDimension3" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="WorkOrderMaterial">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WOID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="Supplier" Type="nvarchar" MaxLength="40" />
+    <Property Name="Grade" Type="nvarchar" MaxLength="40" />
+    <Property Name="MatType" Type="nvarchar" MaxLength="40" />
+    <Property Name="ReqQty" Type="int" />
+    <Property Name="Value" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Status" Type="nchar" MaxLength="10" />
+    <Property Name="Diameter" Type="varchar" MaxLength="20" />
+    <Property Name="Length" Type="varchar" MaxLength="20" />
+    <Property Name="Thinkness" Type="varchar" MaxLength="20" />
+    <Property Name="Width" Type="varchar" MaxLength="20" />
+    <Property Name="OutsideDiameter" Type="varchar" MaxLength="20" />
+    <Property Name="InsideDiameter" Type="varchar" MaxLength="20" />
+    <Property Name="Availability" Type="char" MaxLength="1" />
+    <Property Name="sodID" Type="int" />
+    <Property Name="QtyLength" Type="nvarchar" MaxLength="20" />
+    <Property Name="UnitPrice" Type="decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="Inventory">
+    <Key>
+      <PropertyRef Name="InventoryID" />
+    </Key>
+    <Property Name="InventoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="DateIn" Type="datetime" Nullable="false" />
+    <Property Name="Type" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="WorkOrderID" Type="int" />
+    <Property Name="SequenceNo" Type="int" />
+    <Property Name="OperationName" Type="varchar" MaxLength="50" />
+    <Property Name="CustomerID" Type="int" />
+    <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="BalanceQuantity" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="250" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="String1" Type="nvarchar" MaxLength="250" />
+    <Property Name="String2" Type="nvarchar" MaxLength="250" />
+    <Property Name="String3" Type="nvarchar(max)" />
+    <Property Name="String4" Type="nvarchar(max)" />
+    <Property Name="Int1" Type="int" />
+    <Property Name="Int2" Type="int" />
+    <Property Name="Float1" Type="float" />
+    <Property Name="Float2" Type="float" />
+    <Property Name="Date1" Type="datetime" />
+    <Property Name="Date2" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InventoryUsage">
+    <Key>
+      <PropertyRef Name="InventoryUsageID" />
+    </Key>
+    <Property Name="InventoryUsageID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InventoryID" Type="int" Nullable="false" />
+    <Property Name="UsageType" Type="int" Nullable="false" />
+    <Property Name="UsedByOrderID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="DateOut" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="50" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="250" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Priority" Type="int" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="250" />
+    <Property Name="Address" Type="nvarchar" MaxLength="250" />
+    <Property Name="BillingAddress" Type="nvarchar" MaxLength="250" />
+    <Property Name="ContactPerson" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="250" />
+    <Property Name="PictureID" Type="int" />
+    <Property Name="String1" Type="nvarchar" MaxLength="50" />
+    <Property Name="String2" Type="nvarchar" MaxLength="50" />
+    <Property Name="String3" Type="nvarchar" MaxLength="50" />
+    <Property Name="String4" Type="nvarchar" MaxLength="50" />
+    <Property Name="String5" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaxString1" Type="nvarchar(max)" />
+    <Property Name="MaxString2" Type="nvarchar(max)" />
+    <Property Name="MaxString3" Type="nvarchar(max)" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DeliveryOrder">
+    <Key>
+      <PropertyRef Name="DeliveryOrderID" />
+    </Key>
+    <Property Name="DeliveryOrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DeliveryOrderNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type" Type="tinyint" Nullable="false" />
+    <Property Name="ShipDate" Type="datetime" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="CustomerID" Type="int" />
+    <Property Name="InvoiceAddress" Type="nvarchar" MaxLength="250" />
+    <Property Name="ShipAddress" Type="nvarchar" MaxLength="250" />
+    <Property Name="Currency" Type="char" MaxLength="10" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="Int1" Type="int" />
+    <Property Name="Int2" Type="int" />
+    <Property Name="Int3" Type="int" />
+    <Property Name="Int4" Type="int" />
+    <Property Name="Flag1" Type="bit" />
+    <Property Name="Flag2" Type="bit" />
+    <Property Name="Flag3" Type="bit" />
+    <Property Name="Flag4" Type="bit" />
+    <Property Name="String1" Type="nvarchar" MaxLength="50" />
+    <Property Name="String2" Type="nvarchar" MaxLength="50" />
+    <Property Name="String3" Type="nvarchar" MaxLength="50" />
+    <Property Name="String4" Type="nvarchar" MaxLength="50" />
+    <Property Name="String5" Type="nvarchar" MaxLength="50" />
+    <Property Name="String6" Type="nvarchar" MaxLength="250" />
+    <Property Name="String7" Type="nvarchar" MaxLength="250" />
+    <Property Name="String8" Type="nvarchar" MaxLength="250" />
+    <Property Name="String9" Type="nvarchar" MaxLength="250" />
+    <Property Name="String10" Type="nvarchar" MaxLength="250" />
+    <Property Name="String11" Type="nvarchar" MaxLength="250" />
+    <Property Name="String12" Type="nvarchar" MaxLength="250" />
+    <Property Name="MaxString1" Type="nvarchar(max)" />
+    <Property Name="MaxString2" Type="nvarchar(max)" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DeliveryOrderDetail">
+    <Key>
+      <PropertyRef Name="DeliveryOrderLineID" />
+    </Key>
+    <Property Name="DeliveryOrderLineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DeliveryOrderID" Type="int" Nullable="false" />
+    <Property Name="WorkOrderID" Type="int" />
+    <Property Name="SalesOrderLineID" Type="int" />
+    <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Quantity" Type="float" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="String1" Type="nvarchar" MaxLength="50" />
+    <Property Name="String2" Type="nvarchar" MaxLength="50" />
+    <Property Name="String3" Type="nvarchar" MaxLength="50" />
+    <Property Name="String4" Type="nvarchar" MaxLength="50" />
+    <Property Name="String5" Type="nvarchar" MaxLength="50" />
+    <Property Name="String6" Type="nvarchar" MaxLength="50" />
+    <Property Name="String7" Type="nvarchar" MaxLength="50" />
+    <Property Name="String8" Type="nvarchar" MaxLength="50" />
+    <Property Name="String9" Type="nvarchar" MaxLength="50" />
+    <Property Name="String10" Type="nvarchar" MaxLength="50" />
+    <Property Name="String11" Type="nvarchar" MaxLength="250" />
+    <Property Name="String12" Type="nvarchar" MaxLength="250" />
+    <Property Name="String13" Type="nvarchar" MaxLength="250" />
+    <Property Name="String14" Type="nvarchar" MaxLength="250" />
+    <Property Name="String15" Type="nvarchar" MaxLength="250" />
+    <Property Name="String16" Type="nvarchar" MaxLength="250" />
+    <Property Name="String17" Type="nvarchar" MaxLength="250" />
+    <Property Name="String18" Type="nvarchar" MaxLength="250" />
+    <Property Name="String19" Type="nvarchar" MaxLength="250" />
+    <Property Name="String20" Type="nvarchar" MaxLength="250" />
+    <Property Name="String21" Type="nvarchar" MaxLength="250" />
+    <Property Name="String22" Type="nvarchar" MaxLength="250" />
+    <Property Name="String23" Type="nvarchar" MaxLength="250" />
+    <Property Name="String24" Type="nvarchar" MaxLength="250" />
+    <Property Name="String25" Type="nvarchar" MaxLength="250" />
+    <Property Name="String26" Type="nvarchar" MaxLength="250" />
+    <Property Name="String27" Type="nvarchar" MaxLength="250" />
+    <Property Name="String28" Type="nvarchar" MaxLength="250" />
+    <Property Name="String29" Type="nvarchar" MaxLength="250" />
+    <Property Name="String30" Type="nvarchar" MaxLength="250" />
+    <Property Name="String31" Type="nvarchar" MaxLength="250" />
+    <Property Name="String32" Type="nvarchar" MaxLength="250" />
+    <Property Name="String33" Type="nvarchar" MaxLength="250" />
+    <Property Name="String34" Type="nvarchar" MaxLength="250" />
+    <Property Name="String35" Type="nvarchar" MaxLength="250" />
+    <Property Name="String36" Type="nvarchar" MaxLength="250" />
+    <Property Name="String37" Type="nvarchar" MaxLength="250" />
+    <Property Name="String38" Type="nvarchar" MaxLength="250" />
+    <Property Name="String39" Type="nvarchar" MaxLength="250" />
+    <Property Name="String40" Type="nvarchar" MaxLength="250" />
+    <Property Name="String41" Type="nvarchar" MaxLength="250" />
+    <Property Name="String42" Type="nvarchar" MaxLength="250" />
+    <Property Name="String43" Type="nvarchar" MaxLength="250" />
+    <Property Name="String44" Type="nvarchar" MaxLength="250" />
+    <Property Name="String45" Type="nvarchar" MaxLength="250" />
+    <Property Name="String46" Type="nvarchar" MaxLength="250" />
+    <Property Name="String47" Type="nvarchar" MaxLength="250" />
+    <Property Name="String48" Type="nvarchar" MaxLength="250" />
+    <Property Name="String49" Type="nvarchar" MaxLength="250" />
+    <Property Name="String50" Type="nvarchar" MaxLength="250" />
+    <Property Name="MaxString1" Type="nvarchar(max)" />
+    <Property Name="MaxString2" Type="nvarchar(max)" />
+    <Property Name="Flag1" Type="bit" />
+    <Property Name="Flag2" Type="bit" />
+    <Property Name="Flag3" Type="bit" />
+    <Property Name="Flag4" Type="bit" />
+    <Property Name="Flag5" Type="bit" />
+    <Property Name="Flag6" Type="bit" />
+    <Property Name="Flag7" Type="bit" />
+    <Property Name="Flag8" Type="bit" />
+    <Property Name="Flag9" Type="bit" />
+    <Property Name="Flag10" Type="bit" />
+    <Property Name="Flag11" Type="bit" />
+    <Property Name="Flag12" Type="bit" />
+    <Property Name="Flag13" Type="bit" />
+    <Property Name="Flag14" Type="bit" />
+    <Property Name="Flag15" Type="bit" />
+    <Property Name="Flag16" Type="bit" />
+    <Property Name="Flag17" Type="bit" />
+    <Property Name="Flag18" Type="bit" />
+    <Property Name="Flag19" Type="bit" />
+    <Property Name="Flag20" Type="bit" />
+    <Property Name="Flag21" Type="bit" />
+    <Property Name="Flag22" Type="bit" />
+    <Property Name="Flag23" Type="bit" />
+    <Property Name="Flag24" Type="bit" />
+    <Property Name="Flag25" Type="bit" />
+    <Property Name="Flag26" Type="bit" />
+    <Property Name="Flag27" Type="bit" />
+    <Property Name="Flag28" Type="bit" />
+    <Property Name="Flag29" Type="bit" />
+    <Property Name="Flag30" Type="bit" />
+    <Property Name="Flag31" Type="bit" />
+    <Property Name="Flag32" Type="bit" />
+    <Property Name="Flag33" Type="bit" />
+    <Property Name="Flag34" Type="bit" />
+    <Property Name="Flag35" Type="bit" />
+    <Property Name="Flag36" Type="bit" />
+    <Property Name="Flag37" Type="bit" />
+    <Property Name="Flag38" Type="bit" />
+    <Property Name="Flag39" Type="bit" />
+    <Property Name="Flag40" Type="bit" />
+    <Property Name="Flag41" Type="bit" />
+    <Property Name="Flag42" Type="bit" />
+    <Property Name="Flag43" Type="bit" />
+    <Property Name="Flag44" Type="bit" />
+    <Property Name="Flag45" Type="bit" />
+    <Property Name="Flag46" Type="bit" />
+    <Property Name="Flag47" Type="bit" />
+    <Property Name="Flag48" Type="bit" />
+    <Property Name="Flag49" Type="bit" />
+    <Property Name="Flag50" Type="bit" />
+    <Property Name="Int1" Type="int" />
+    <Property Name="Int2" Type="int" />
+    <Property Name="Int3" Type="int" />
+    <Property Name="Int4" Type="int" />
+    <Property Name="Int5" Type="int" />
+    <Property Name="Int6" Type="int" />
+    <Property Name="Float1" Type="float" />
+    <Property Name="Float2" Type="float" />
+    <Property Name="Float3" Type="float" />
+    <Property Name="Float4" Type="float" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SalesOrder">
+    <Key>
+      <PropertyRef Name="SalesOrderID" />
+    </Key>
+    <Property Name="SalesOrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SalesOrderNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OrderType" Type="tinyint" Nullable="false" />
+    <Property Name="PurchaseOrderNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="OrderDate" Type="datetime" Nullable="false" />
+    <Property Name="DueDate" Type="datetime" Nullable="false" />
+    <Property Name="ShipDate" Type="datetime" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="CustomerID" Type="int" />
+    <Property Name="SalesPersonName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactPersonName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ContactNo" Type="nvarchar" MaxLength="50" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="TotalItems" Type="int" />
+    <Property Name="TotalAmount" Type="money" />
+    <Property Name="TotalQuantity" Type="float" />
+    <Property Name="BalanceAmount" Type="money" />
+    <Property Name="BalanceQuantity" Type="float" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="String1" Type="nvarchar" MaxLength="50" />
+    <Property Name="String2" Type="nvarchar" MaxLength="50" />
+    <Property Name="String3" Type="nvarchar" MaxLength="50" />
+    <Property Name="String4" Type="nvarchar" MaxLength="50" />
+    <Property Name="String5" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaxString1" Type="nvarchar(max)" />
+    <Property Name="MaxString2" Type="nvarchar(max)" />
+    <Property Name="Float1" Type="float" />
+    <Property Name="Float2" Type="float" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SalesOrderAdjustment">
+    <Key>
+      <PropertyRef Name="SalesOrderAjustmentID" />
+    </Key>
+    <Property Name="SalesOrderAjustmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SalesOrderDetailID" Type="int" Nullable="false" />
+    <Property Name="OrigianlQty" Type="float" />
+    <Property Name="PlannedQty" Type="float" />
+    <Property Name="ReducedQty" Type="float" />
+    <Property Name="BalanceQty" Type="float" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="250" />
+    <Property Name="Status" Type="int" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SalesOrderDetail">
+    <Key>
+      <PropertyRef Name="SalesOrderLinelID" />
+    </Key>
+    <Property Name="SalesOrderLinelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SalesOrderID" Type="int" Nullable="false" />
+    <Property Name="OrderQty" Type="float" />
+    <Property Name="ProductID" Type="int" />
+    <Property Name="LineNumber" Type="int" Nullable="false" />
+    <Property Name="UnitPrice" Type="money" />
+    <Property Name="Amount" Type="money" />
+    <Property Name="DueDate" Type="datetime" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="Remark" Type="nvarchar(max)" />
+    <Property Name="String1" Type="nvarchar" MaxLength="50" />
+    <Property Name="String2" Type="nvarchar" MaxLength="50" />
+    <Property Name="String3" Type="nvarchar" MaxLength="50" />
+    <Property Name="String4" Type="nvarchar" MaxLength="50" />
+    <Property Name="String5" Type="nvarchar" MaxLength="50" />
+    <Property Name="String6" Type="nvarchar" MaxLength="50" />
+    <Property Name="String7" Type="nvarchar" MaxLength="50" />
+    <Property Name="String8" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaxString1" Type="nvarchar(max)" />
+    <Property Name="MaxString2" Type="nvarchar(max)" />
+    <Property Name="Int1" Type="int" />
+    <Property Name="Int2" Type="int" />
+    <Property Name="Float1" Type="float" />
+    <Property Name="Float2" Type="float" />
+    <Property Name="Date1" Type="datetime" />
+    <Property Name="Date2" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkOrder">
+    <Key>
+      <PropertyRef Name="WorkOrderID" />
+    </Key>
+    <Property Name="WorkOrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WorkOrderNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="Quantity" Type="float" Nullable="false" />
+    <Property Name="OrderType" Type="tinyint" Nullable="false" />
+    <Property Name="IssueDate" Type="datetime" Nullable="false" />
+    <Property Name="DueDate" Type="datetime" Nullable="false" />
+    <Property Name="CompletedDate" Type="datetime" />
+    <Property Name="Priority" Type="smallint" />
+    <Property Name="ParentWorkOrderID" Type="int" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="CustomerID" Type="int" />
+    <Property Name="RouteID" Type="int" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="250" />
+    <Property Name="String1" Type="nvarchar" MaxLength="50" />
+    <Property Name="String2" Type="nvarchar" MaxLength="50" />
+    <Property Name="String3" Type="nvarchar" MaxLength="50" />
+    <Property Name="String4" Type="nvarchar" MaxLength="50" />
+    <Property Name="String5" Type="nvarchar" MaxLength="250" />
+    <Property Name="String6" Type="nvarchar" MaxLength="250" />
+    <Property Name="String7" Type="nvarchar" MaxLength="250" />
+    <Property Name="String8" Type="nvarchar" MaxLength="250" />
+    <Property Name="MaxString1" Type="nvarchar(max)" />
+    <Property Name="MaxString2" Type="nvarchar(max)" />
+    <Property Name="Int1" Type="int" />
+    <Property Name="Int2" Type="int" />
+    <Property Name="Int3" Type="int" />
+    <Property Name="Int4" Type="int" />
+    <Property Name="Int5" Type="int" />
+    <Property Name="Int6" Type="int" />
+    <Property Name="Float1" Type="float" />
+    <Property Name="Float2" Type="float" />
+    <Property Name="Date1" Type="datetime" />
+    <Property Name="Date2" Type="datetime" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkOrderAdjustment">
+    <Key>
+      <PropertyRef Name="WorkOrderAjustmentID" />
+    </Key>
+    <Property Name="WorkOrderAjustmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SalesOrderAdjustID" Type="int" Nullable="false" />
+    <Property Name="WorkOrderID" Type="int" Nullable="false" />
+    <Property Name="PlannedQty" Type="float" Nullable="false" />
+    <Property Name="ReducedQty" Type="float" Nullable="false" />
+    <Property Name="BalanceQty" Type="float" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="250" />
+    <Property Name="Status" Type="char" MaxLength="10" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkOrderCost">
+    <Key>
+      <PropertyRef Name="WorkOrderCostId" />
+    </Key>
+    <Property Name="WorkOrderCostId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WorkOrderId" Type="int" Nullable="false" />
+    <Property Name="WorkOrderNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="UnitPrice" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Quantity" Type="float" Nullable="false" />
+    <Property Name="CustomerName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Remarks" Type="nvarchar(max)" />
+    <Property Name="String1" Type="nvarchar" MaxLength="50" />
+    <Property Name="String2" Type="nvarchar" MaxLength="50" />
+    <Property Name="String3" Type="nvarchar" MaxLength="250" />
+    <Property Name="String4" Type="nvarchar" MaxLength="250" />
+    <Property Name="MaxString1" Type="nvarchar(max)" />
+    <Property Name="MaxString2" Type="nvarchar(max)" />
+    <Property Name="Flag1" Type="bit" />
+    <Property Name="Flag2" Type="bit" />
+    <Property Name="Int1" Type="int" />
+    <Property Name="Int2" Type="int" />
+    <Property Name="Float1" Type="float" />
+    <Property Name="Float2" Type="float" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkOrderDetail">
+    <Key>
+      <PropertyRef Name="WorkOrderLineID" />
+    </Key>
+    <Property Name="WorkOrderLineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WorkOrderID" Type="int" Nullable="false" />
+    <Property Name="SalesOrderLineID" Type="int" />
+    <Property Name="ItemID" Type="int" />
+    <Property Name="Quantity" Type="float" Nullable="false" />
+    <Property Name="MaxString1" Type="nvarchar(max)" />
+    <Property Name="MaxString2" Type="nvarchar(max)" />
+    <Property Name="Int1" Type="int" />
+    <Property Name="Int2" Type="int" />
+    <Property Name="Int3" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Int4" Type="int" />
+    <Property Name="Int5" Type="int" />
+    <Property Name="Float1" Type="float" />
+    <Property Name="Float2" Type="float" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkOrderMaterial1">
+    <Key>
+      <PropertyRef Name="WorkOrderMaterialId" />
+    </Key>
+    <Property Name="WorkOrderMaterialId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WorkOrderId" Type="int" Nullable="false" />
+    <Property Name="MaterialId" Type="int" Nullable="false" />
+    <Property Name="UnitMeasureID" Type="int" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="250" />
+    <Property Name="Status" Type="char" MaxLength="10" />
+    <Property Name="Availability" Type="bit" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="Quantity" Type="float" />
+    <Property Name="Ratio" Type="float" />
+  </EntityType>
+  <EntityType Name="Operation">
+    <Key>
+      <PropertyRef Name="OperationId" />
+    </Key>
+    <Property Name="OperationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OperationName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type" Type="tinyint" Nullable="false" />
+    <Property Name="Categroy" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="Instruction" Type="nvarchar(max)" />
+    <Property Name="Version" Type="int" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="SizeMin" Type="float" />
+    <Property Name="SizeMultiple" Type="float" />
+    <Property Name="Cost" Type="float" />
+    <Property Name="Pretime" Type="float" />
+    <Property Name="Posttime" Type="float" />
+    <Property Name="Duration" Type="float" />
+    <Property Name="DurationPer" Type="float" />
+    <Property Name="UOM" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OperationParameter">
+    <Key>
+      <PropertyRef Name="OperationParamterId" />
+    </Key>
+    <Property Name="OperationParamterId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OperationID" Type="int" Nullable="false" />
+    <Property Name="ParamterID" Type="int" />
+    <Property Name="Value" Type="nvarchar" MaxLength="250" />
+    <Property Name="MinValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaxValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="UOM" Type="char" MaxLength="3" />
+    <Property Name="NoofReading" Type="smallint" />
+    <Property Name="MaxString1" Type="nvarchar(max)" />
+    <Property Name="MaxString2" Type="nvarchar(max)" />
+    <Property Name="Int1" Type="int" />
+    <Property Name="Int2" Type="int" />
+    <Property Name="Int3" Type="int" />
+    <Property Name="Int4" Type="int" />
+    <Property Name="Int5" Type="int" />
+    <Property Name="Int6" Type="int" />
+    <Property Name="Int7" Type="int" />
+    <Property Name="Int8" Type="int" />
+    <Property Name="Float1" Type="float" />
+    <Property Name="Float2" Type="float" />
+    <Property Name="Float3" Type="float" />
+    <Property Name="Float4" Type="float" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OperationRate">
+    <Key>
+      <PropertyRef Name="OperationRateId" />
+    </Key>
+    <Property Name="OperationRateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RouteID" Type="int" />
+    <Property Name="RouteOperationId" Type="int" />
+    <Property Name="OperationID" Type="int" />
+    <Property Name="ResourceID" Type="int" />
+    <Property Name="ItemID" Type="int" />
+    <Property Name="Instruction" Type="nvarchar(max)" />
+    <Property Name="Cost" Type="float" />
+    <Property Name="Pretime" Type="float" />
+    <Property Name="Posttime" Type="float" />
+    <Property Name="RunTime" Type="float" />
+    <Property Name="UOM" Type="int" />
+    <Property Name="IsDefault" Type="bit" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OperationResource">
+    <Key>
+      <PropertyRef Name="OperationResourceId" />
+    </Key>
+    <Property Name="OperationResourceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OperationID" Type="int" Nullable="false" />
+    <Property Name="ResourceID" Type="int" />
+    <Property Name="Instruction" Type="nvarchar(max)" />
+    <Property Name="Cost" Type="float" />
+    <Property Name="Pretime" Type="float" />
+    <Property Name="Posttime" Type="float" />
+    <Property Name="Duration" Type="float" />
+    <Property Name="DurationPer" Type="float" />
+    <Property Name="IsDefault" Type="bit" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Parameter">
+    <Key>
+      <PropertyRef Name="ParameterID" />
+    </Key>
+    <Property Name="ParameterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParameterName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type" Type="tinyint" Nullable="false" />
+    <Property Name="DataType" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="DefaultValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="MinValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaxValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="UOM" Type="char" MaxLength="3" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductRoute">
+    <Key>
+      <PropertyRef Name="ProductRouteId" />
+    </Key>
+    <Property Name="ProductRouteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductRouteName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Type" Type="int" Nullable="false" />
+    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="ProductId" Type="int" Nullable="false" />
+    <Property Name="RouteId" Type="int" Nullable="false" />
+    <Property Name="Status" Type="tinyint" Nullable="false" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="Remarks" Type="nvarchar(max)" />
+    <Property Name="Version" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsDefault" Type="bit" />
+    <Property Name="String1" Type="nvarchar" MaxLength="50" />
+    <Property Name="String2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Int1" Type="int" />
+    <Property Name="Int2" Type="int" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductRouteStatus">
+    <Key>
+      <PropertyRef Name="ProductRouteStatusId" />
+    </Key>
+    <Property Name="ProductRouteStatusId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductRouteId" Type="int" Nullable="false" />
+    <Property Name="StepNo" Type="int" Nullable="false" />
+    <Property Name="ApprovedBy" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsApproved" Type="bit" Nullable="false" />
+    <Property Name="Remarks" Type="nvarchar(max)" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Route">
+    <Key>
+      <PropertyRef Name="RouteId" />
+    </Key>
+    <Property Name="RouteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RouteName" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Type" Type="tinyint" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="Version" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsDefault" Type="bit" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="TraceLevel" Type="tinyint" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="ModifiedOn" Type="datetime" />
+  </EntityType>
+  <EntityType Name="RouteOperation">
+    <Key>
+      <PropertyRef Name="RouteOperationId" />
+    </Key>
+    <Property Name="RouteOperationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RouteId" Type="int" Nullable="false" />
+    <Property Name="OperationId" Type="int" />
+    <Property Name="SubrouteId" Type="int" />
+    <Property Name="Sequence" Type="int" />
+    <Property Name="DefaultResourceID" Type="int" />
+    <Property Name="Instruction" Type="nvarchar(max)" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="32" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="32" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BillOfMaterial">
+    <Key>
+      <PropertyRef Name="BillOfMaterialId" />
+    </Key>
+    <Property Name="BillOfMaterialId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductAssemblyId" Type="int" Nullable="false" />
+    <Property Name="ComponentId" Type="int" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="UOMCode" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="BOMLevel" Type="smallint" Nullable="false" />
+    <Property Name="PerAssemblyQty" Type="float" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CustomerItem">
+    <Key>
+      <PropertyRef Name="CustomerItemID" />
+    </Key>
+    <Property Name="CustomerItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerItemName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CustomerID" Type="int" Nullable="false" />
+    <Property Name="ItemID" Type="int" Nullable="false" />
+    <Property Name="ParentItemID" Type="int" />
+    <Property Name="UnitPrice" Type="money" />
+    <Property Name="InternalTAT" Type="int" />
+    <Property Name="ExternalTAT" Type="int" />
+    <Property Name="PriceUomID" Type="int" />
+    <Property Name="String1" Type="nvarchar" MaxLength="50" />
+    <Property Name="String2" Type="nvarchar" MaxLength="50" />
+    <Property Name="String3" Type="nvarchar" MaxLength="50" />
+    <Property Name="String4" Type="nvarchar" MaxLength="50" />
+    <Property Name="String5" Type="nvarchar" MaxLength="100" />
+    <Property Name="String6" Type="nvarchar" MaxLength="100" />
+    <Property Name="String7" Type="nvarchar" MaxLength="100" />
+    <Property Name="String8" Type="nvarchar" MaxLength="100" />
+    <Property Name="MaxString1" Type="nvarchar(max)" />
+    <Property Name="MaxString2" Type="nvarchar(max)" />
+    <Property Name="MaxString3" Type="nvarchar(max)" />
+    <Property Name="Int1" Type="int" />
+    <Property Name="Int2" Type="int" />
+    <Property Name="Int3" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Int4" Type="int" />
+    <Property Name="Float1" Type="float" />
+    <Property Name="Float2" Type="float" />
+    <Property Name="Flag1" Type="bit" />
+    <Property Name="Flag2" Type="bit" />
+    <Property Name="Flag3" Type="bit" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="ItemID" />
+    </Key>
+    <Property Name="ItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Type" Type="tinyint" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="50" />
+    <Property Name="Subcategory" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="StandardCost" Type="money" />
+    <Property Name="UnitPrice" Type="money" />
+    <Property Name="PictureID" Type="int" />
+    <Property Name="MakeFlag" Type="bit" />
+    <Property Name="SafetyStockLevel" Type="smallint" />
+    <Property Name="ReorderPoint" Type="smallint" />
+    <Property Name="Group1" Type="nvarchar" MaxLength="50" />
+    <Property Name="Group2" Type="nvarchar" MaxLength="50" />
+    <Property Name="Group3" Type="nvarchar" MaxLength="50" />
+    <Property Name="Group4" Type="nvarchar" MaxLength="50" />
+    <Property Name="Group5" Type="nvarchar" MaxLength="50" />
+    <Property Name="Group6" Type="nvarchar" MaxLength="50" />
+    <Property Name="ParentItemID" Type="int" />
+    <Property Name="String1" Type="nvarchar" MaxLength="50" />
+    <Property Name="String2" Type="nvarchar" MaxLength="50" />
+    <Property Name="String3" Type="nvarchar" MaxLength="50" />
+    <Property Name="String4" Type="nvarchar" MaxLength="50" />
+    <Property Name="String5" Type="nvarchar" MaxLength="50" />
+    <Property Name="String6" Type="nvarchar" MaxLength="50" />
+    <Property Name="String7" Type="nvarchar" MaxLength="50" />
+    <Property Name="String8" Type="nvarchar" MaxLength="50" />
+    <Property Name="String9" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaxString1" Type="nvarchar(max)" />
+    <Property Name="MaxString2" Type="nvarchar(max)" />
+    <Property Name="MaxString3" Type="nvarchar(max)" />
+    <Property Name="MaxString4" Type="nvarchar(max)" />
+    <Property Name="MaxString5" Type="nvarchar(max)" />
+    <Property Name="Date1" Type="datetime" />
+    <Property Name="Date2" Type="datetime" />
+    <Property Name="Date3" Type="datetime" />
+    <Property Name="Date4" Type="datetime" />
+    <Property Name="Date5" Type="datetime" />
+    <Property Name="Flag1" Type="bit" />
+    <Property Name="Flag2" Type="bit" />
+    <Property Name="Flag3" Type="bit" />
+    <Property Name="Flag4" Type="bit" />
+    <Property Name="Flag5" Type="bit" />
+    <Property Name="Int1" Type="int" />
+    <Property Name="Int2" Type="int" />
+    <Property Name="Int3" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="Int4" Type="int" />
+    <Property Name="Int5" Type="int" />
+    <Property Name="Int6" Type="int" />
+    <Property Name="Int7" Type="int" />
+    <Property Name="Int8" Type="int" />
+    <Property Name="Int9" Type="int" />
+    <Property Name="Int10" Type="int" />
+    <Property Name="Float1" Type="float" />
+    <Property Name="Float2" Type="float" />
+    <Property Name="Float3" Type="float" />
+    <Property Name="Float4" Type="float" />
+    <Property Name="Float5" Type="float" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ItemLocation">
+    <Key>
+      <PropertyRef Name="ItemLocationId" />
+    </Key>
+    <Property Name="ItemLocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductLineId" Type="int" Nullable="false" />
+    <Property Name="ItemId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="LocationId" />
+    </Key>
+    <Property Name="LocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LocationName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Subcategory" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="CalendarId" Type="int" />
+    <Property Name="ParentLocationId" Type="int" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Picture">
+    <Key>
+      <PropertyRef Name="PictureID" />
+    </Key>
+    <Property Name="PictureID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ThumbNailImage" Type="varbinary(max)" />
+    <Property Name="ThumbnailImageFileName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LargeImage" Type="varbinary(max)" />
+    <Property Name="LargeImageFileName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserProductLine">
+    <Key>
+      <PropertyRef Name="UserProductLineID" />
+    </Key>
+    <Property Name="UserProductLineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="ProductLineID" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Calendar">
+    <Key>
+      <PropertyRef Name="CalendarId" />
+    </Key>
+    <Property Name="CalendarId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CalendarName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type" Type="tinyint" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="DefaultValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="StartTime" Type="int" />
+    <Property Name="EndTime" Type="int" />
+    <Property Name="StartDate" Type="date" />
+    <Property Name="EndDate" Type="date" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CalendarDetail">
+    <Key>
+      <PropertyRef Name="CalendarDetailId" />
+    </Key>
+    <Property Name="CalendarDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CalendarDetailName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ParentCalendarId" Type="int" Nullable="false" />
+    <Property Name="CalendarId" Type="int" Nullable="false" />
+    <Property Name="Sequence" Type="int" Nullable="false" />
+    <Property Name="Priority" Type="int" />
+    <Property Name="Interval" Type="int" />
+    <Property Name="Value" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Equipment">
+    <Key>
+      <PropertyRef Name="EquipmentId" />
+    </Key>
+    <Property Name="EquipmentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EquipmentName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="Category" Type="nvarchar" MaxLength="50" />
+    <Property Name="Subcategory" Type="nvarchar" MaxLength="50" />
+    <Property Name="Type" Type="int" />
+    <Property Name="ParentEquipmentID" Type="int" />
+    <Property Name="LocationID" Type="int" />
+    <Property Name="CalendarID" Type="int" />
+    <Property Name="String1" Type="nvarchar" MaxLength="50" />
+    <Property Name="String2" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaxString1" Type="nvarchar(max)" />
+    <Property Name="MaxString2" Type="nvarchar(max)" />
+    <Property Name="Float1" Type="float" />
+    <Property Name="Float2" Type="float" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EquipmentParameter">
+    <Key>
+      <PropertyRef Name="EquipmentParameterID" />
+    </Key>
+    <Property Name="EquipmentParameterID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EquipmentID" Type="int" Nullable="false" />
+    <Property Name="ParameterID" Type="int" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="50" />
+    <Property Name="MinValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaxValue" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Button">
+    <Key>
+      <PropertyRef Name="ButtonId" />
+    </Key>
+    <Property Name="ButtonId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ButtonName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type" Type="char" MaxLength="10" />
+    <Property Name="DisplayText" Type="nchar" MaxLength="50" />
+    <Property Name="ImageFileName" Type="nchar" MaxLength="250" />
+    <Property Name="Image" Type="image" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="MenuId" />
+    </Key>
+    <Property Name="MenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentTaskId" Type="int" Nullable="false" />
+    <Property Name="TaskId" Type="int" Nullable="false" />
+    <Property Name="SortSequence" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="StartTaskId" Type="int" />
+    <Property Name="GlobalAccess" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RoleTask">
+    <Key>
+      <PropertyRef Name="RoleTaskId" />
+    </Key>
+    <Property Name="RoleTaskId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="TaskId" Type="int" Nullable="false" />
+    <Property Name="AccessMode" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="TaskId" />
+    </Key>
+    <Property Name="TaskId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TaskName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="ModuleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Group" Type="nvarchar" MaxLength="50" />
+    <Property Name="DisplayText" Type="nchar" MaxLength="50" />
+    <Property Name="ActionName" Type="nchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="ButtonID" Type="int" />
+    <Property Name="Setting" Type="nchar" MaxLength="250" />
+    <Property Name="Selection" Type="nchar" MaxLength="250" />
+    <Property Name="OrderBy" Type="nchar" MaxLength="250" />
+    <Property Name="MaxExecutionTime" Type="int" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LoginId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="250" />
+    <Property Name="PasswordHash" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="PasswordSalt" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PasswordQuestion" Type="nvarchar" MaxLength="250" />
+    <Property Name="PasswordAnswerHash" Type="nvarchar" MaxLength="250" />
+    <Property Name="PasswordAnswerSalt" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsLockedOut" Type="bit" />
+    <Property Name="LastLoginDate" Type="datetime" />
+    <Property Name="LastPasswordChangedDate" Type="datetime" />
+    <Property Name="LastLockoutDate" Type="datetime" />
+    <Property Name="FailedPasswordAttemptCount" Type="int" />
+    <Property Name="LanguageCode" Type="char" MaxLength="3" />
+    <Property Name="Comment" Type="nvarchar(max)" />
+    <Property Name="PictureID" Type="int" />
+    <Property Name="SignatureID" Type="int" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="UserRoleId" />
+    </Key>
+    <Property Name="UserRoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CodeDetail">
+    <Key>
+      <PropertyRef Name="CodeDetailId" />
+    </Key>
+    <Property Name="CodeDetailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CodeTypeId" Type="int" />
+    <Property Name="CodeNo" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CodeType">
+    <Key>
+      <PropertyRef Name="CodeTypeId" />
+    </Key>
+    <Property Name="CodeTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CodeTypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="DataType" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CodeUsage">
+    <Key>
+      <PropertyRef Name="CodeUsageId" />
+    </Key>
+    <Property Name="CodeUsageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CodeTypeId" Type="int" />
+    <Property Name="TableName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ColumnName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Option">
+    <Key>
+      <PropertyRef Name="OptionId" />
+    </Key>
+    <Property Name="OptionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OptionName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="ModuleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Category" Type="nchar" MaxLength="50" />
+    <Property Name="DataType" Type="nchar" MaxLength="50" />
+    <Property Name="DefaultSetting" Type="nvarchar(max)" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserPreference">
+    <Key>
+      <PropertyRef Name="UserPreferenceId" />
+    </Key>
+    <Property Name="UserPreferenceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="OptionId" Type="int" Nullable="false" />
+    <Property Name="Setting" Type="nvarchar(max)" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+    <Property Name="ModifiedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="ModifiedOn" Type="datetime" />
+    <Property Name="VersionStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIMAPS_MOM.dbo.ctr_mc' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ctr_mc1">
+    <Key>
+      <PropertyRef Name="ctr_code" />
+      <PropertyRef Name="mc_code" />
+      <PropertyRef Name="mc_grp_code" />
+    </Key>
+    <Property Name="ctr_code" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="mc_code" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="mc_grp_code" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="McType" Type="varchar" MaxLength="7" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIMAPS_MOM.dbo.Customer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Customer1">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+      <PropertyRef Name="cust_id" />
+      <PropertyRef Name="Category" />
+    </Key>
+    <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cust_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Category" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Priority" Type="int" />
+    <Property Name="CompanyName" Type="nvarchar" MaxLength="250" />
+    <Property Name="Address" Type="nvarchar" MaxLength="250" />
+    <Property Name="BillingAddress" Type="nvarchar" MaxLength="250" />
+    <Property Name="ContactPerson" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="250" />
+    <Property Name="PictureID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIMAPS_MOM.dbo.OperatorAssg' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="OperatorAssg">
+    <Key>
+      <PropertyRef Name="CenterID" />
+      <PropertyRef Name="MachID" />
+      <PropertyRef Name="OperatorID" />
+    </Key>
+    <Property Name="CenterID" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="MachID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="OperatorID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIMAPS_MOM.dbo.part_detail_semicon' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="part_detail_semicon1">
+    <Key>
+      <PropertyRef Name="part_num" />
+      <PropertyRef Name="PartId" />
+    </Key>
+    <Property Name="part_num" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="package" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="PartId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIMAPS_MOM.dbo.PPOrder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="PPOrder1">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="AllocWeight" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="MeltingOrderID" Type="int" />
+    <Property Name="GoldContent" Type="varchar" MaxLength="30" />
+    <Property Name="Size" Type="varchar" MaxLength="30" />
+    <Property Name="BasicChainType" Type="varchar" MaxLength="30" />
+    <Property Name="AllocWeight" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="50" />
+    <Property Name="Type" Type="char" MaxLength="1" />
+    <Property Name="IssueDate" Type="datetime" />
+    <Property Name="status" Type="char" MaxLength="10" />
+    <Property Name="GenDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIMAPS_MOM.dbo.PPOrderDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="PPOrderDetail1">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="PartNo" />
+      <PropertyRef Name="Weight" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MeltingOrderID" Type="int" />
+    <Property Name="PPID" Type="int" />
+    <Property Name="PartNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SalesOrderID" Type="char" MaxLength="20" />
+    <Property Name="SalesOrderDetID" Type="int" />
+    <Property Name="Weight" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Remark" Type="varchar" MaxLength="50" />
+    <Property Name="EstCompletionDate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIMAPS_MOM.dbo.PPOrderRoute' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="PPOrderRoute1">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="PPID" />
+      <PropertyRef Name="PartNo" />
+      <PropertyRef Name="RouteID" />
+      <PropertyRef Name="SeqNo" />
+      <PropertyRef Name="CentreID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PPID" Type="int" Nullable="false" />
+    <Property Name="PartNo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RouteID" Type="int" Nullable="false" />
+    <Property Name="SeqNo" Type="int" Nullable="false" />
+    <Property Name="CentreID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="MacCode" Type="char" MaxLength="200" />
+    <Property Name="MacType" Type="char" MaxLength="20" />
+    <Property Name="Remark" Type="nvarchar(max)" />
+    <Property Name="MacGroup" Type="int" />
+    <Property Name="AttributeGroup" Type="varchar" MaxLength="32" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIMAPS_MOM.dbo.product_leadtime' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="product_leadtime">
+    <Key>
+      <PropertyRef Name="part_num" />
+      <PropertyRef Name="ctr_code" />
+      <PropertyRef Name="mc_code" />
+      <PropertyRef Name="route_id" />
+      <PropertyRef Name="UOM" />
+    </Key>
+    <Property Name="part_num" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ctr_code" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="mc_code" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="prod_unit" Type="float" />
+    <Property Name="route_id" Type="int" Nullable="false" />
+    <Property Name="seq_no" Type="int" />
+    <Property Name="UOM" Type="char" MaxLength="3" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIMAPS_MOM.dbo.product_working_rate' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="product_working_rate">
+    <Key>
+      <PropertyRef Name="part_num" />
+      <PropertyRef Name="ctr_code" />
+      <PropertyRef Name="mc_code" />
+      <PropertyRef Name="route_id" />
+      <PropertyRef Name="UOM" />
+    </Key>
+    <Property Name="part_num" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ctr_code" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="mc_code" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="prod_unit" Type="float" />
+    <Property Name="route_id" Type="int" Nullable="false" />
+    <Property Name="seq_no" Type="int" />
+    <Property Name="UOM" Type="char" MaxLength="3" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIMAPS_MOM.dbo.RouteDet' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="RouteDet">
+    <Key>
+      <PropertyRef Name="RouteId" />
+      <PropertyRef Name="ctrcode" />
+      <PropertyRef Name="maccode" />
+    </Key>
+    <Property Name="RouteId" Type="int" Nullable="false" />
+    <Property Name="ctrcode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="maccode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="opseq" Type="int" />
+    <Property Name="MacType" Type="varchar" MaxLength="7" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIMAPS_MOM.dbo.RouteDetAll' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="RouteDetAll">
+    <Key>
+      <PropertyRef Name="RouteId" />
+      <PropertyRef Name="ctrcode" />
+      <PropertyRef Name="maccode" />
+    </Key>
+    <Property Name="RouteId" Type="int" Nullable="false" />
+    <Property Name="ctrcode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="maccode" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="opseq" Type="int" />
+    <Property Name="MacType" Type="varchar" MaxLength="7" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIMAPS_MOM.dbo.RouteMas' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="RouteMas1">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="UnitID" />
+      <PropertyRef Name="Type" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="remark" Type="nvarchar(max)" />
+    <Property Name="UnitID" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="Type" Type="tinyint" Nullable="false" />
+    <Property Name="Version" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIMAPS_MOM.dbo.shift_det' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="shift_det1">
+    <Key>
+      <PropertyRef Name="shift_code" />
+      <PropertyRef Name="beg_time" />
+      <PropertyRef Name="end_time" />
+    </Key>
+    <Property Name="shift_code" Type="char" MaxLength="24" Nullable="false" />
+    <Property Name="beg_time" Type="smallint" Nullable="false" />
+    <Property Name="end_time" Type="smallint" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIMAPS_MOM.dbo.TM_Rights' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TM_Rights">
+    <Key>
+      <PropertyRef Name="User_grp" />
+      <PropertyRef Name="Unit_id" />
+      <PropertyRef Name="Object_id" />
+      <PropertyRef Name="Rights" />
+      <PropertyRef Name="usergrp_flag" />
+    </Key>
+    <Property Name="User_grp" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Unit_id" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="Object_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Rights" Type="int" Nullable="false" />
+    <Property Name="usergrp_flag" Type="varchar" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIMAPS_MOM.dbo.unit_det' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="unit_det">
+    <Key>
+      <PropertyRef Name="LocationName" />
+    </Key>
+    <Property Name="LocationName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="PictureID" Type="int" />
+    <Property Name="ThumbNailImage" Type="varbinary(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIMAPS_MOM.dbo.user_det' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="user_det1">
+    <Key>
+      <PropertyRef Name="login_id" />
+      <PropertyRef Name="password" />
+      <PropertyRef Name="user_title" />
+      <PropertyRef Name="user_grp" />
+    </Key>
+    <Property Name="login_id" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="user_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="password" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="user_title" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="user_grp" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIMAPS_MOM.dbo.View_TS_WOAdjustment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="View_TS_WOAdjustment">
+    <Key>
+      <PropertyRef Name="WOID" />
+      <PropertyRef Name="PartID" />
+      <PropertyRef Name="RequestedAdjustedQty" />
+      <PropertyRef Name="OrderCancelledID" />
+    </Key>
+    <Property Name="WOID" Type="int" Nullable="false" />
+    <Property Name="PartID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="RequestedAdjustedQty" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="GenDate" Type="datetime" />
+    <Property Name="OrderCancelledID" Type="int" Nullable="false" />
+    <Property Name="Status" Type="char" MaxLength="10" />
+    <Property Name="PPID" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIMAPS_MOM.dbo.View_TS_WorkOrder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="View_TS_WorkOrder">
+    <Key>
+      <PropertyRef Name="PPID" />
+      <PropertyRef Name="PartID" />
+      <PropertyRef Name="RequestedDeliveryDate" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="PPID" Type="int" Nullable="false" />
+    <Property Name="status" Type="char" MaxLength="10" />
+    <Property Name="WOID" Type="varchar" MaxLength="50" />
+    <Property Name="PartID" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ReleaseProdQty" Type="int" />
+    <Property Name="ToolDescription" Type="nvarchar" MaxLength="50" />
+    <Property Name="RequestedDeliveryDate" Type="datetime" Nullable="false" />
+    <Property Name="ReleasedDate" Type="datetime" />
+    <Property Name="OrderType" Type="varchar" MaxLength="11" />
+    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIMAPS_MOM.dbo.working_rate_except' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="working_rate_except1">
+    <Key>
+      <PropertyRef Name="route_id" />
+      <PropertyRef Name="seq_no" />
+      <PropertyRef Name="ctr_code" />
+      <PropertyRef Name="mc_code" />
+    </Key>
+    <Property Name="part_num" Type="varchar" MaxLength="50" />
+    <Property Name="route_id" Type="int" Nullable="false" />
+    <Property Name="WOID" Type="nvarchar" MaxLength="50" />
+    <Property Name="seq_no" Type="int" Nullable="false" />
+    <Property Name="ctr_code" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="mc_code" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="UoM" Type="int" />
+    <Property Name="prod_unit" Type="varchar" MaxLength="32" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIMAPS_MOM.dbo.WorkOrderAssembly' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="WorkOrderAssembly1">
+    <Key>
+      <PropertyRef Name="ComponentWO" />
+      <PropertyRef Name="AssyWO" />
+      <PropertyRef Name="AssyQty" />
+      <PropertyRef Name="ComponentQty" />
+      <PropertyRef Name="QtyPer" />
+    </Key>
+    <Property Name="ComponentWO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AssyWO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="AssyQty" Type="float" Nullable="false" />
+    <Property Name="ComponentQty" Type="float" Nullable="false" />
+    <Property Name="QtyPer" Type="int" Nullable="false" />
+    <Property Name="level" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIMAPS_MOM.dbo.WorkOrderInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="WorkOrderInfo">
+    <Key>
+      <PropertyRef Name="WOID" />
+      <PropertyRef Name="PartNum" />
+      <PropertyRef Name="RequestedDeliveryDate" />
+    </Key>
+    <Property Name="WOID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="50" />
+    <Property Name="PONumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="PartNum" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="FGDimension" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="250" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="250" />
+    <Property Name="CommittedDeliveryDate" Type="datetime" />
+    <Property Name="RequestedDeliveryDate" Type="datetime" Nullable="false" />
+    <Property Name="LineNumber" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIMAPS_MOM.dbo.WorkOrderMac' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="WorkOrderMac1">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="RouteID" />
+      <PropertyRef Name="SeqNo" />
+      <PropertyRef Name="CentreID" />
+      <PropertyRef Name="MacCode" />
+      <PropertyRef Name="WOID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="PartNo" Type="varchar" MaxLength="50" />
+    <Property Name="RouteID" Type="int" Nullable="false" />
+    <Property Name="SeqNo" Type="int" Nullable="false" />
+    <Property Name="CentreID" Type="char" MaxLength="32" Nullable="false" />
+    <Property Name="MacCode" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="MacType" Type="char" MaxLength="20" />
+    <Property Name="Remark" Type="varchar" MaxLength="50" />
+    <Property Name="MacGroup" Type="int" />
+    <Property Name="AttributeGroup" Type="varchar" MaxLength="32" />
+    <Property Name="WOID" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIMAPS_MOM.dbo.WorkOrderMaster' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="WorkOrderMaster1">
+    <Key>
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="PartNo" />
+      <PropertyRef Name="Qty" />
+      <PropertyRef Name="IssueDate" />
+      <PropertyRef Name="DeliveryDate" />
+      <PropertyRef Name="Location" />
+      <PropertyRef Name="Customer" />
+      <PropertyRef Name="CreatedDate" />
+      <PropertyRef Name="BalQty" />
+      <PropertyRef Name="ToStockQty" />
+      <PropertyRef Name="InvQty1" />
+      <PropertyRef Name="InvQty2" />
+      <PropertyRef Name="DrawingStatus" />
+      <PropertyRef Name="MaterialGrade" />
+      <PropertyRef Name="MaterialSupplier" />
+      <PropertyRef Name="PartId" />
+    </Key>
+    <Property Name="ID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PartNo" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Qty" Type="float" Nullable="false" />
+    <Property Name="IssueDate" Type="datetime" Nullable="false" />
+    <Property Name="DeliveryDate" Type="datetime" Nullable="false" />
+    <Property Name="Status" Type="varchar" MaxLength="10" />
+    <Property Name="Location" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="250" />
+    <Property Name="OrderType" Type="varchar" MaxLength="11" />
+    <Property Name="RouteID" Type="int" />
+    <Property Name="Customer" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="50" />
+    <Property Name="BalQty" Type="float" Nullable="false" />
+    <Property Name="ToStockQty" Type="int" Nullable="false" />
+    <Property Name="InvQty1" Type="int" Nullable="false" />
+    <Property Name="InvQty2" Type="int" Nullable="false" />
+    <Property Name="DrawingStatus" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="MaterialGrade" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="MaterialSupplier" Type="varchar" MaxLength="1" Nullable="false" />
+    <Property Name="PartId" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'SIMAPS_MOM.dbo.WorkOrderMaterial' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="WorkOrderMaterial2">
+    <Key>
+      <PropertyRef Name="WOID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Supplier" />
+    </Key>
+    <Property Name="WOID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Supplier" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="250" />
+    <Property Name="Diameter" Type="nvarchar" MaxLength="50" />
+    <Property Name="InsideDiameter" Type="nvarchar" MaxLength="50" />
+    <Property Name="Length" Type="nvarchar" MaxLength="50" />
+    <Property Name="OutsideDiameter" Type="nvarchar" MaxLength="50" />
+    <Property Name="ThinkNess" Type="nvarchar" MaxLength="50" />
+    <Property Name="Width" Type="nvarchar" MaxLength="50" />
+    <Property Name="QtyPerLength" Type="nvarchar" MaxLength="50" />
+    <Property Name="Grade" Type="nvarchar" MaxLength="50" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="UnitPrice" Type="money" />
+    <Property Name="MatType" Type="int" />
+    <Property Name="ReqQty" Type="float" />
+  </EntityType>
+  <Association Name="FK__BillOfMat__Compo__395884C4">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="BillOfMaterial" Type="Self.BillOfMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="BillOfMaterial">
+        <PropertyRef Name="ComponentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BillOfMat__Produ__3864608B">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="BillOfMaterial" Type="Self.BillOfMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="BillOfMaterial">
+        <PropertyRef Name="ProductAssemblyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CalendarDetail_Calendar">
+    <End Role="Calendar" Type="Self.Calendar" Multiplicity="1" />
+    <End Role="CalendarDetail" Type="Self.CalendarDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calendar">
+        <PropertyRef Name="CalendarId" />
+      </Principal>
+      <Dependent Role="CalendarDetail">
+        <PropertyRef Name="CalendarId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CapacityProfile_OrderRelease">
+    <End Role="OrderRelease" Type="Self.OrderRelease" Multiplicity="1" />
+    <End Role="CapacityProfile" Type="Self.CapacityProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderRelease">
+        <PropertyRef Name="ReleaseID" />
+      </Principal>
+      <Dependent Role="CapacityProfile">
+        <PropertyRef Name="ReleaseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Item__ParentItem__0C85DE4D">
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="Item1" Type="Self.Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="Item1">
+        <PropertyRef Name="ParentItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Item__PictureID__2645B050">
+    <End Role="Picture" Type="Self.Picture" Multiplicity="0..1" />
+    <End Role="Item" Type="Self.Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Picture">
+        <PropertyRef Name="PictureID" />
+      </Principal>
+      <Dependent Role="Item">
+        <PropertyRef Name="PictureID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ItemLocat__ItemI__1EA48E88">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="ItemLocation" Type="Self.ItemLocation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="ItemLocation">
+        <PropertyRef Name="ItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ItemLocat__Produ__1F98B2C1">
+    <End Role="Location" Type="Self.Location" Multiplicity="1" />
+    <End Role="ItemLocation" Type="Self.ItemLocation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationId" />
+      </Principal>
+      <Dependent Role="ItemLocation">
+        <PropertyRef Name="ProductLineId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Location__Parent__2739D489">
+    <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+    <End Role="Location1" Type="Self.Location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationId" />
+      </Principal>
+      <Dependent Role="Location1">
+        <PropertyRef Name="ParentLocationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Menu__ParentTask__6A30C649">
+    <End Role="Task" Type="Self.Task" Multiplicity="1" />
+    <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="TaskId" />
+      </Principal>
+      <Dependent Role="Menu">
+        <PropertyRef Name="ParentTaskId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Menu__TaskId__6B24EA82">
+    <End Role="Task" Type="Self.Task" Multiplicity="1" />
+    <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="TaskId" />
+      </Principal>
+      <Dependent Role="Menu">
+        <PropertyRef Name="TaskId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Operation__Locat__56B3DD81">
+    <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+    <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationId" />
+      </Principal>
+      <Dependent Role="Operation">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderReleaseDetail_OrderRelease">
+    <End Role="OrderRelease" Type="Self.OrderRelease" Multiplicity="1" />
+    <End Role="OrderReleaseDetail" Type="Self.OrderReleaseDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderRelease">
+        <PropertyRef Name="ReleaseID" />
+      </Principal>
+      <Dependent Role="OrderReleaseDetail">
+        <PropertyRef Name="ReleaseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RoleTask__RoleId__778AC167">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="RoleTask" Type="Self.RoleTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="RoleTask">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RoleTask__TaskId__787EE5A0">
+    <End Role="Task" Type="Self.Task" Multiplicity="1" />
+    <End Role="RoleTask" Type="Self.RoleTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="TaskId" />
+      </Principal>
+      <Dependent Role="RoleTask">
+        <PropertyRef Name="TaskId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SalesOrde__Custo__671F4F74">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="SalesOrder" Type="Self.SalesOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="SalesOrder">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SalesOrde__Sales__6DCC4D03">
+    <End Role="SalesOrder" Type="Self.SalesOrder" Multiplicity="1" />
+    <End Role="SalesOrderDetail" Type="Self.SalesOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesOrder">
+        <PropertyRef Name="SalesOrderID" />
+      </Principal>
+      <Dependent Role="SalesOrderDetail">
+        <PropertyRef Name="SalesOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SalesOrde__Sales__719CDDE7">
+    <End Role="SalesOrderDetail" Type="Self.SalesOrderDetail" Multiplicity="1" />
+    <End Role="SalesOrderAdjustment" Type="Self.SalesOrderAdjustment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesOrderDetail">
+        <PropertyRef Name="SalesOrderLinelID" />
+      </Principal>
+      <Dependent Role="SalesOrderAdjustment">
+        <PropertyRef Name="SalesOrderDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Task__ButtonID__5FB337D6">
+    <End Role="Button" Type="Self.Button" Multiplicity="0..1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Button">
+        <PropertyRef Name="ButtonId" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="ButtonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserPrefe__Optio__51300E55">
+    <End Role="Option" Type="Self.Option" Multiplicity="1" />
+    <End Role="UserPreference" Type="Self.UserPreference" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Option">
+        <PropertyRef Name="OptionId" />
+      </Principal>
+      <Dependent Role="UserPreference">
+        <PropertyRef Name="OptionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserPrefe__UserI__5224328E">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserPreference" Type="Self.UserPreference" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserPreference">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserProdu__Produ__245D67DE">
+    <End Role="Location" Type="Self.Location" Multiplicity="1" />
+    <End Role="UserProductLine" Type="Self.UserProductLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationId" />
+      </Principal>
+      <Dependent Role="UserProductLine">
+        <PropertyRef Name="ProductLineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserProdu__UserI__25518C17">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserProductLine" Type="Self.UserProductLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserProductLine">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserRole__RoleId__70DDC3D8">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserRole__UserId__71D1E811">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WorkOrder__Mater__2610A626">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="WorkOrderMaterial1" Type="Self.WorkOrderMaterial1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="WorkOrderMaterial1">
+        <PropertyRef Name="MaterialId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WorkOrder__Sales__0880433F">
+    <End Role="SalesOrderDetail" Type="Self.SalesOrderDetail" Multiplicity="0..1" />
+    <End Role="WorkOrderDetail" Type="Self.WorkOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesOrderDetail">
+        <PropertyRef Name="SalesOrderLinelID" />
+      </Principal>
+      <Dependent Role="WorkOrderDetail">
+        <PropertyRef Name="SalesOrderLineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WorkOrder__WorkO__09746778">
+    <End Role="WorkOrder" Type="Self.WorkOrder" Multiplicity="1" />
+    <End Role="WorkOrderDetail" Type="Self.WorkOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkOrder">
+        <PropertyRef Name="WorkOrderID" />
+      </Principal>
+      <Dependent Role="WorkOrderDetail">
+        <PropertyRef Name="WorkOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WorkOrder__WorkO__251C81ED">
+    <End Role="WorkOrder" Type="Self.WorkOrder" Multiplicity="1" />
+    <End Role="WorkOrderMaterial1" Type="Self.WorkOrderMaterial1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkOrder">
+        <PropertyRef Name="WorkOrderID" />
+      </Principal>
+      <Dependent Role="WorkOrderMaterial1">
+        <PropertyRef Name="WorkOrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CalendarDetail_Calendar">
+    <End Role="Calendar" Type="Self.Calendar" Multiplicity="1" />
+    <End Role="CalendarDetail" Type="Self.CalendarDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calendar">
+        <PropertyRef Name="CalendarId" />
+      </Principal>
+      <Dependent Role="CalendarDetail">
+        <PropertyRef Name="ParentCalendarId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CodeDetail_CodeType">
+    <End Role="CodeType" Type="Self.CodeType" Multiplicity="0..1" />
+    <End Role="CodeDetail" Type="Self.CodeDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CodeType">
+        <PropertyRef Name="CodeTypeId" />
+      </Principal>
+      <Dependent Role="CodeDetail">
+        <PropertyRef Name="CodeTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CodeUsage_CodeType">
+    <End Role="CodeType" Type="Self.CodeType" Multiplicity="0..1" />
+    <End Role="CodeUsage" Type="Self.CodeUsage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CodeType">
+        <PropertyRef Name="CodeTypeId" />
+      </Principal>
+      <Dependent Role="CodeUsage">
+        <PropertyRef Name="CodeTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustomerItem_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="CustomerItem" Type="Self.CustomerItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="CustomerItem">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustomerItem_Item">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="CustomerItem" Type="Self.CustomerItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="CustomerItem">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeliveryOrderDetail_DeliveryOrder">
+    <End Role="DeliveryOrder" Type="Self.DeliveryOrder" Multiplicity="1" />
+    <End Role="DeliveryOrderDetail" Type="Self.DeliveryOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeliveryOrder">
+        <PropertyRef Name="DeliveryOrderID" />
+      </Principal>
+      <Dependent Role="DeliveryOrderDetail">
+        <PropertyRef Name="DeliveryOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeliveryOrderDetail_SalesOrderDetail">
+    <End Role="SalesOrderDetail" Type="Self.SalesOrderDetail" Multiplicity="0..1" />
+    <End Role="DeliveryOrderDetail" Type="Self.DeliveryOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesOrderDetail">
+        <PropertyRef Name="SalesOrderLinelID" />
+      </Principal>
+      <Dependent Role="DeliveryOrderDetail">
+        <PropertyRef Name="SalesOrderLineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeliveryOrderDetail_WorkOrder">
+    <End Role="WorkOrder" Type="Self.WorkOrder" Multiplicity="0..1" />
+    <End Role="DeliveryOrderDetail" Type="Self.DeliveryOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkOrder">
+        <PropertyRef Name="WorkOrderID" />
+      </Principal>
+      <Dependent Role="DeliveryOrderDetail">
+        <PropertyRef Name="WorkOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Equipment_Calendar">
+    <End Role="Calendar" Type="Self.Calendar" Multiplicity="0..1" />
+    <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calendar">
+        <PropertyRef Name="CalendarId" />
+      </Principal>
+      <Dependent Role="Equipment">
+        <PropertyRef Name="CalendarID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EquipmentParameter_Equipment">
+    <End Role="Equipment" Type="Self.Equipment" Multiplicity="1" />
+    <End Role="EquipmentParameter" Type="Self.EquipmentParameter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipment">
+        <PropertyRef Name="EquipmentId" />
+      </Principal>
+      <Dependent Role="EquipmentParameter">
+        <PropertyRef Name="EquipmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EquipmentParameter_Parameter">
+    <End Role="Parameter" Type="Self.Parameter" Multiplicity="1" />
+    <End Role="EquipmentParameter" Type="Self.EquipmentParameter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parameter">
+        <PropertyRef Name="ParameterID" />
+      </Principal>
+      <Dependent Role="EquipmentParameter">
+        <PropertyRef Name="ParameterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InvUsage_InvMas">
+    <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
+    <End Role="InventoryUsage" Type="Self.InventoryUsage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inventory">
+        <PropertyRef Name="InventoryID" />
+      </Principal>
+      <Dependent Role="InventoryUsage">
+        <PropertyRef Name="InventoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Item_Route">
+    <End Role="Route" Type="Self.Route" Multiplicity="0..1" />
+    <End Role="Item" Type="Self.Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Route">
+        <PropertyRef Name="RouteId" />
+      </Principal>
+      <Dependent Role="Item">
+        <PropertyRef Name="Int5" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OperationParamter_Operation">
+    <End Role="Operation" Type="Self.Operation" Multiplicity="1" />
+    <End Role="OperationParameter" Type="Self.OperationParameter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operation">
+        <PropertyRef Name="OperationId" />
+      </Principal>
+      <Dependent Role="OperationParameter">
+        <PropertyRef Name="OperationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OperationParamter_Parameter">
+    <End Role="Parameter" Type="Self.Parameter" Multiplicity="0..1" />
+    <End Role="OperationParameter" Type="Self.OperationParameter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parameter">
+        <PropertyRef Name="ParameterID" />
+      </Principal>
+      <Dependent Role="OperationParameter">
+        <PropertyRef Name="ParamterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OperationResource_Equipment">
+    <End Role="Equipment" Type="Self.Equipment" Multiplicity="0..1" />
+    <End Role="OperationResource" Type="Self.OperationResource" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipment">
+        <PropertyRef Name="EquipmentId" />
+      </Principal>
+      <Dependent Role="OperationResource">
+        <PropertyRef Name="ResourceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OperationResource_Operation">
+    <End Role="Operation" Type="Self.Operation" Multiplicity="1" />
+    <End Role="OperationResource" Type="Self.OperationResource" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operation">
+        <PropertyRef Name="OperationId" />
+      </Principal>
+      <Dependent Role="OperationResource">
+        <PropertyRef Name="OperationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PPOrderDetail_PPOrder">
+    <End Role="PPOrder" Type="Self.PPOrder" Multiplicity="0..1" />
+    <End Role="PPOrderDetail" Type="Self.PPOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PPOrder">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PPOrderDetail">
+        <PropertyRef Name="PPID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PPOrderRoute_PPOrder">
+    <End Role="PPOrder" Type="Self.PPOrder" Multiplicity="1" />
+    <End Role="PPOrderRoute" Type="Self.PPOrderRoute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PPOrder">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PPOrderRoute">
+        <PropertyRef Name="PPID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductRoute_Route">
+    <End Role="Route" Type="Self.Route" Multiplicity="1" />
+    <End Role="ProductRoute" Type="Self.ProductRoute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Route">
+        <PropertyRef Name="RouteId" />
+      </Principal>
+      <Dependent Role="ProductRoute">
+        <PropertyRef Name="RouteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductRouteStatus_ProductRoute">
+    <End Role="ProductRoute" Type="Self.ProductRoute" Multiplicity="1" />
+    <End Role="ProductRouteStatus" Type="Self.ProductRouteStatus" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductRoute">
+        <PropertyRef Name="ProductRouteId" />
+      </Principal>
+      <Dependent Role="ProductRouteStatus">
+        <PropertyRef Name="ProductRouteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RouteOperation_Route">
+    <End Role="Route" Type="Self.Route" Multiplicity="1" />
+    <End Role="RouteOperation" Type="Self.RouteOperation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Route">
+        <PropertyRef Name="RouteId" />
+      </Principal>
+      <Dependent Role="RouteOperation">
+        <PropertyRef Name="RouteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RouteOperation_Route1">
+    <End Role="Route" Type="Self.Route" Multiplicity="0..1" />
+    <End Role="RouteOperation" Type="Self.RouteOperation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Route">
+        <PropertyRef Name="RouteId" />
+      </Principal>
+      <Dependent Role="RouteOperation">
+        <PropertyRef Name="SubrouteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoutingOperation_Operation">
+    <End Role="Operation" Type="Self.Operation" Multiplicity="0..1" />
+    <End Role="RouteOperation" Type="Self.RouteOperation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operation">
+        <PropertyRef Name="OperationId" />
+      </Principal>
+      <Dependent Role="RouteOperation">
+        <PropertyRef Name="OperationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesOrderCancelDet_SalesOrderCancelled">
+    <End Role="SalesOrderCancelled" Type="Self.SalesOrderCancelled" Multiplicity="1" />
+    <End Role="SalesOrderCancelDet" Type="Self.SalesOrderCancelDet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesOrderCancelled">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SalesOrderCancelDet">
+        <PropertyRef Name="OrderCancelledID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesOrderDetail_Item">
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="SalesOrderDetail" Type="Self.SalesOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="SalesOrderDetail">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScheduleDetail_Schedule">
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="1" />
+    <End Role="ScheduleDetail" Type="Self.ScheduleDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schedule">
+        <PropertyRef Name="ScheduleID" />
+      </Principal>
+      <Dependent Role="ScheduleDetail">
+        <PropertyRef Name="ScheduleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_PictureID">
+    <End Role="Picture" Type="Self.Picture" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Picture">
+        <PropertyRef Name="PictureID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="PictureID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_SignatureID">
+    <End Role="Picture" Type="Self.Picture" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Picture">
+        <PropertyRef Name="PictureID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="SignatureID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkOrder_Item">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="WorkOrder" Type="Self.WorkOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="WorkOrder">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkOrder_Route">
+    <End Role="Route" Type="Self.Route" Multiplicity="0..1" />
+    <End Role="WorkOrder" Type="Self.WorkOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Route">
+        <PropertyRef Name="RouteId" />
+      </Principal>
+      <Dependent Role="WorkOrder">
+        <PropertyRef Name="RouteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkOrderAdjustment_SalesOrderAdjustment">
+    <End Role="SalesOrderAdjustment" Type="Self.SalesOrderAdjustment" Multiplicity="1" />
+    <End Role="WorkOrderAdjustment" Type="Self.WorkOrderAdjustment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesOrderAdjustment">
+        <PropertyRef Name="SalesOrderAjustmentID" />
+      </Principal>
+      <Dependent Role="WorkOrderAdjustment">
+        <PropertyRef Name="SalesOrderAdjustID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkOrderDetail_Item">
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="WorkOrderDetail" Type="Self.WorkOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="WorkOrderDetail">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SIMAPS_MOMModelStoreContainer">
+    <EntitySet Name="InvMas" EntityType="Self.InvMas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CapacityProfile" EntityType="Self.CapacityProfile" Schema="DLR" store:Type="Tables" />
+    <EntitySet Name="DailyLoadingPlan" EntityType="Self.DailyLoadingPlan" Schema="DLR" store:Type="Tables" />
+    <EntitySet Name="OrderRelease" EntityType="Self.OrderRelease" Schema="DLR" store:Type="Tables" />
+    <EntitySet Name="OrderReleaseDetail" EntityType="Self.OrderReleaseDetail" Schema="DLR" store:Type="Tables" />
+    <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="DLR" store:Type="Tables" />
+    <EntitySet Name="ScheduleDetail" EntityType="Self.ScheduleDetail" Schema="DLR" store:Type="Tables" />
+    <EntitySet Name="ctr_mc" EntityType="Self.ctr_mc" Schema="Integration" store:Type="Tables" />
+    <EntitySet Name="part_detail_semicon" EntityType="Self.part_detail_semicon" Schema="Integration" store:Type="Tables" />
+    <EntitySet Name="PPOrder" EntityType="Self.PPOrder" Schema="Integration" store:Type="Tables" />
+    <EntitySet Name="PPOrderDetail" EntityType="Self.PPOrderDetail" Schema="Integration" store:Type="Tables" />
+    <EntitySet Name="PPOrderRoute" EntityType="Self.PPOrderRoute" Schema="Integration" store:Type="Tables" />
+    <EntitySet Name="Rights" EntityType="Self.Rights" Schema="Integration" store:Type="Tables" />
+    <EntitySet Name="RouteMas" EntityType="Self.RouteMas" Schema="Integration" store:Type="Tables" />
+    <EntitySet Name="SalesOrderCancelDet" EntityType="Self.SalesOrderCancelDet" Schema="Integration" store:Type="Tables" />
+    <EntitySet Name="SalesOrderCancelled" EntityType="Self.SalesOrderCancelled" Schema="Integration" store:Type="Tables" />
+    <EntitySet Name="shift_det" EntityType="Self.shift_det" Schema="Integration" store:Type="Tables" />
+    <EntitySet Name="user_det" EntityType="Self.user_det" Schema="Integration" store:Type="Tables" />
+    <EntitySet Name="working_Rate_except" EntityType="Self.working_Rate_except" Schema="Integration" store:Type="Tables" />
+    <EntitySet Name="WorkOrderAssembly" EntityType="Self.WorkOrderAssembly" Schema="Integration" store:Type="Tables" />
+    <EntitySet Name="WorkorderMac" EntityType="Self.WorkorderMac" Schema="Integration" store:Type="Tables" />
+    <EntitySet Name="WorkOrderMaster" EntityType="Self.WorkOrderMaster" Schema="Integration" store:Type="Tables" />
+    <EntitySet Name="WorkOrderMaterial" EntityType="Self.WorkOrderMaterial" Schema="Integration" store:Type="Tables" />
+    <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="Inventory" store:Type="Tables" />
+    <EntitySet Name="InventoryUsage" EntityType="Self.InventoryUsage" Schema="Inventory" store:Type="Tables" />
+    <EntitySet Name="Customer" EntityType="Self.Customer" Schema="Order" store:Type="Tables" />
+    <EntitySet Name="DeliveryOrder" EntityType="Self.DeliveryOrder" Schema="Order" store:Type="Tables" />
+    <EntitySet Name="DeliveryOrderDetail" EntityType="Self.DeliveryOrderDetail" Schema="Order" store:Type="Tables" />
+    <EntitySet Name="SalesOrder" EntityType="Self.SalesOrder" Schema="Order" store:Type="Tables" />
+    <EntitySet Name="SalesOrderAdjustment" EntityType="Self.SalesOrderAdjustment" Schema="Order" store:Type="Tables" />
+    <EntitySet Name="SalesOrderDetail" EntityType="Self.SalesOrderDetail" Schema="Order" store:Type="Tables" />
+    <EntitySet Name="WorkOrder" EntityType="Self.WorkOrder" Schema="Order" store:Type="Tables" />
+    <EntitySet Name="WorkOrderAdjustment" EntityType="Self.WorkOrderAdjustment" Schema="Order" store:Type="Tables" />
+    <EntitySet Name="WorkOrderCost" EntityType="Self.WorkOrderCost" Schema="Order" store:Type="Tables" />
+    <EntitySet Name="WorkOrderDetail" EntityType="Self.WorkOrderDetail" Schema="Order" store:Type="Tables" />
+    <EntitySet Name="WorkOrderMaterial1" EntityType="Self.WorkOrderMaterial1" Schema="Order" Table="WorkOrderMaterial" store:Type="Tables" />
+    <EntitySet Name="Operation" EntityType="Self.Operation" Schema="Process" store:Type="Tables" />
+    <EntitySet Name="OperationParameter" EntityType="Self.OperationParameter" Schema="Process" store:Type="Tables" />
+    <EntitySet Name="OperationRate" EntityType="Self.OperationRate" Schema="Process" store:Type="Tables" />
+    <EntitySet Name="OperationResource" EntityType="Self.OperationResource" Schema="Process" store:Type="Tables" />
+    <EntitySet Name="Parameter" EntityType="Self.Parameter" Schema="Process" store:Type="Tables" />
+    <EntitySet Name="ProductRoute" EntityType="Self.ProductRoute" Schema="Process" store:Type="Tables" />
+    <EntitySet Name="ProductRouteStatus" EntityType="Self.ProductRouteStatus" Schema="Process" store:Type="Tables" />
+    <EntitySet Name="Route" EntityType="Self.Route" Schema="Process" store:Type="Tables" />
+    <EntitySet Name="RouteOperation" EntityType="Self.RouteOperation" Schema="Process" store:Type="Tables" />
+    <EntitySet Name="BillOfMaterial" EntityType="Self.BillOfMaterial" Schema="Product" store:Type="Tables" />
+    <EntitySet Name="CustomerItem" EntityType="Self.CustomerItem" Schema="Product" store:Type="Tables" />
+    <EntitySet Name="Item" EntityType="Self.Item" Schema="Product" store:Type="Tables" />
+    <EntitySet Name="ItemLocation" EntityType="Self.ItemLocation" Schema="Product" store:Type="Tables" />
+    <EntitySet Name="Location" EntityType="Self.Location" Schema="Product" store:Type="Tables" />
+    <EntitySet Name="Picture" EntityType="Self.Picture" Schema="Product" store:Type="Tables" />
+    <EntitySet Name="UserProductLine" EntityType="Self.UserProductLine" Schema="Product" store:Type="Tables" />
+    <EntitySet Name="Calendar" EntityType="Self.Calendar" Schema="Resource" store:Type="Tables" />
+    <EntitySet Name="CalendarDetail" EntityType="Self.CalendarDetail" Schema="Resource" store:Type="Tables" />
+    <EntitySet Name="Equipment" EntityType="Self.Equipment" Schema="Resource" store:Type="Tables" />
+    <EntitySet Name="EquipmentParameter" EntityType="Self.EquipmentParameter" Schema="Resource" store:Type="Tables" />
+    <EntitySet Name="Button" EntityType="Self.Button" Schema="Security" store:Type="Tables" />
+    <EntitySet Name="Menu" EntityType="Self.Menu" Schema="Security" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="Security" store:Type="Tables" />
+    <EntitySet Name="RoleTask" EntityType="Self.RoleTask" Schema="Security" store:Type="Tables" />
+    <EntitySet Name="Task" EntityType="Self.Task" Schema="Security" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="Security" store:Type="Tables" />
+    <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="Security" store:Type="Tables" />
+    <EntitySet Name="CodeDetail" EntityType="Self.CodeDetail" Schema="Setting" store:Type="Tables" />
+    <EntitySet Name="CodeType" EntityType="Self.CodeType" Schema="Setting" store:Type="Tables" />
+    <EntitySet Name="CodeUsage" EntityType="Self.CodeUsage" Schema="Setting" store:Type="Tables" />
+    <EntitySet Name="Option" EntityType="Self.Option" Schema="Setting" store:Type="Tables" />
+    <EntitySet Name="UserPreference" EntityType="Self.UserPreference" Schema="Setting" store:Type="Tables" />
+    <EntitySet Name="tmpRoute" EntityType="Self.tmpRoute" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tmpRoute].[id] AS [id], 
+    [tmpRoute].[RouteID] AS [RouteID], 
+    [tmpRoute].[OperationID] AS [OperationID], 
+    [tmpRoute].[Subrouteid] AS [Subrouteid], 
+    [tmpRoute].[Sequence] AS [Sequence], 
+    [tmpRoute].[SubrouteSeq] AS [SubrouteSeq]
+    FROM [dbo].[tmpRoute] AS [tmpRoute]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ctr_mc1" EntityType="Self.ctr_mc1" store:Type="Views" store:Schema="dbo" store:Name="ctr_mc">
+      <DefiningQuery>SELECT 
+    [ctr_mc1].[ctr_code] AS [ctr_code], 
+    [ctr_mc1].[mc_code] AS [mc_code], 
+    [ctr_mc1].[mc_grp_code] AS [mc_grp_code], 
+    [ctr_mc1].[McType] AS [McType]
+    FROM [dbo].[ctr_mc] AS [ctr_mc1]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Customer1" EntityType="Self.Customer1" store:Type="Views" store:Schema="dbo" store:Name="Customer">
+      <DefiningQuery>SELECT 
+    [Customer1].[CustomerID] AS [CustomerID], 
+    [Customer1].[cust_id] AS [cust_id], 
+    [Customer1].[Category] AS [Category], 
+    [Customer1].[Priority] AS [Priority], 
+    [Customer1].[CompanyName] AS [CompanyName], 
+    [Customer1].[Address] AS [Address], 
+    [Customer1].[BillingAddress] AS [BillingAddress], 
+    [Customer1].[ContactPerson] AS [ContactPerson], 
+    [Customer1].[Phone] AS [Phone], 
+    [Customer1].[Email] AS [Email], 
+    [Customer1].[PictureID] AS [PictureID]
+    FROM [dbo].[Customer] AS [Customer1]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="OperatorAssg" EntityType="Self.OperatorAssg" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [OperatorAssg].[CenterID] AS [CenterID], 
+    [OperatorAssg].[MachID] AS [MachID], 
+    [OperatorAssg].[OperatorID] AS [OperatorID], 
+    [OperatorAssg].[UserName] AS [UserName]
+    FROM [dbo].[OperatorAssg] AS [OperatorAssg]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="part_detail_semicon1" EntityType="Self.part_detail_semicon1" store:Type="Views" store:Schema="dbo" store:Name="part_detail_semicon">
+      <DefiningQuery>SELECT 
+    [part_detail_semicon1].[part_num] AS [part_num], 
+    [part_detail_semicon1].[package] AS [package], 
+    [part_detail_semicon1].[Description] AS [Description], 
+    [part_detail_semicon1].[PartId] AS [PartId]
+    FROM [dbo].[part_detail_semicon] AS [part_detail_semicon1]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PPOrder1" EntityType="Self.PPOrder1" store:Type="Views" store:Schema="dbo" store:Name="PPOrder">
+      <DefiningQuery>SELECT 
+    [PPOrder1].[ID] AS [ID], 
+    [PPOrder1].[MeltingOrderID] AS [MeltingOrderID], 
+    [PPOrder1].[GoldContent] AS [GoldContent], 
+    [PPOrder1].[Size] AS [Size], 
+    [PPOrder1].[BasicChainType] AS [BasicChainType], 
+    [PPOrder1].[AllocWeight] AS [AllocWeight], 
+    [PPOrder1].[Description] AS [Description], 
+    [PPOrder1].[Type] AS [Type], 
+    [PPOrder1].[IssueDate] AS [IssueDate], 
+    [PPOrder1].[status] AS [status], 
+    [PPOrder1].[GenDate] AS [GenDate]
+    FROM [dbo].[PPOrder] AS [PPOrder1]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PPOrderDetail1" EntityType="Self.PPOrderDetail1" store:Type="Views" store:Schema="dbo" store:Name="PPOrderDetail">
+      <DefiningQuery>SELECT 
+    [PPOrderDetail1].[ID] AS [ID], 
+    [PPOrderDetail1].[MeltingOrderID] AS [MeltingOrderID], 
+    [PPOrderDetail1].[PPID] AS [PPID], 
+    [PPOrderDetail1].[PartNo] AS [PartNo], 
+    [PPOrderDetail1].[SalesOrderID] AS [SalesOrderID], 
+    [PPOrderDetail1].[SalesOrderDetID] AS [SalesOrderDetID], 
+    [PPOrderDetail1].[Weight] AS [Weight], 
+    [PPOrderDetail1].[Remark] AS [Remark], 
+    [PPOrderDetail1].[EstCompletionDate] AS [EstCompletionDate]
+    FROM [dbo].[PPOrderDetail] AS [PPOrderDetail1]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PPOrderRoute1" EntityType="Self.PPOrderRoute1" store:Type="Views" store:Schema="dbo" store:Name="PPOrderRoute">
+      <DefiningQuery>SELECT 
+    [PPOrderRoute1].[ID] AS [ID], 
+    [PPOrderRoute1].[PPID] AS [PPID], 
+    [PPOrderRoute1].[PartNo] AS [PartNo], 
+    [PPOrderRoute1].[RouteID] AS [RouteID], 
+    [PPOrderRoute1].[SeqNo] AS [SeqNo], 
+    [PPOrderRoute1].[CentreID] AS [CentreID], 
+    [PPOrderRoute1].[MacCode] AS [MacCode], 
+    [PPOrderRoute1].[MacType] AS [MacType], 
+    [PPOrderRoute1].[Remark] AS [Remark], 
+    [PPOrderRoute1].[MacGroup] AS [MacGroup], 
+    [PPOrderRoute1].[AttributeGroup] AS [AttributeGroup]
+    FROM [dbo].[PPOrderRoute] AS [PPOrderRoute1]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="product_leadtime" EntityType="Self.product_leadtime" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [product_leadtime].[part_num] AS [part_num], 
+    [product_leadtime].[ctr_code] AS [ctr_code], 
+    [product_leadtime].[mc_code] AS [mc_code], 
+    [product_leadtime].[prod_unit] AS [prod_unit], 
+    [product_leadtime].[route_id] AS [route_id], 
+    [product_leadtime].[seq_no] AS [seq_no], 
+    [product_leadtime].[UOM] AS [UOM]
+    FROM [dbo].[product_leadtime] AS [product_leadtime]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="product_working_rate" EntityType="Self.product_working_rate" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [product_working_rate].[part_num] AS [part_num], 
+    [product_working_rate].[ctr_code] AS [ctr_code], 
+    [product_working_rate].[mc_code] AS [mc_code], 
+    [product_working_rate].[prod_unit] AS [prod_unit], 
+    [product_working_rate].[route_id] AS [route_id], 
+    [product_working_rate].[seq_no] AS [seq_no], 
+    [product_working_rate].[UOM] AS [UOM]
+    FROM [dbo].[product_working_rate] AS [product_working_rate]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="RouteDet" EntityType="Self.RouteDet" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [RouteDet].[RouteId] AS [RouteId], 
+    [RouteDet].[ctrcode] AS [ctrcode], 
+    [RouteDet].[maccode] AS [maccode], 
+    [RouteDet].[opseq] AS [opseq], 
+    [RouteDet].[MacType] AS [MacType]
+    FROM [dbo].[RouteDet] AS [RouteDet]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="RouteDetAll" EntityType="Self.RouteDetAll" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [RouteDetAll].[RouteId] AS [RouteId], 
+    [RouteDetAll].[ctrcode] AS [ctrcode], 
+    [RouteDetAll].[maccode] AS [maccode], 
+    [RouteDetAll].[opseq] AS [opseq], 
+    [RouteDetAll].[MacType] AS [MacType]
+    FROM [dbo].[RouteDetAll] AS [RouteDetAll]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="RouteMas1" EntityType="Self.RouteMas1" store:Type="Views" store:Schema="dbo" store:Name="RouteMas">
+      <DefiningQuery>SELECT 
+    [RouteMas1].[ID] AS [ID], 
+    [RouteMas1].[Name] AS [Name], 
+    [RouteMas1].[remark] AS [remark], 
+    [RouteMas1].[UnitID] AS [UnitID], 
+    [RouteMas1].[Type] AS [Type], 
+    [RouteMas1].[Version] AS [Version]
+    FROM [dbo].[RouteMas] AS [RouteMas1]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="shift_det1" EntityType="Self.shift_det1" store:Type="Views" store:Schema="dbo" store:Name="shift_det">
+      <DefiningQuery>SELECT 
+    [shift_det1].[shift_code] AS [shift_code], 
+    [shift_det1].[beg_time] AS [beg_time], 
+    [shift_det1].[end_time] AS [end_time]
+    FROM [dbo].[shift_det] AS [shift_det1]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TM_Rights" EntityType="Self.TM_Rights" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TM_Rights].[User_grp] AS [User_grp], 
+    [TM_Rights].[Unit_id] AS [Unit_id], 
+    [TM_Rights].[Object_id] AS [Object_id], 
+    [TM_Rights].[Rights] AS [Rights], 
+    [TM_Rights].[usergrp_flag] AS [usergrp_flag]
+    FROM [dbo].[TM_Rights] AS [TM_Rights]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="unit_det" EntityType="Self.unit_det" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [unit_det].[LocationName] AS [LocationName], 
+    [unit_det].[Description] AS [Description], 
+    [unit_det].[PictureID] AS [PictureID], 
+    [unit_det].[ThumbNailImage] AS [ThumbNailImage]
+    FROM [dbo].[unit_det] AS [unit_det]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="user_det1" EntityType="Self.user_det1" store:Type="Views" store:Schema="dbo" store:Name="user_det">
+      <DefiningQuery>SELECT 
+    [user_det1].[login_id] AS [login_id], 
+    [user_det1].[user_name] AS [user_name], 
+    [user_det1].[password] AS [password], 
+    [user_det1].[user_title] AS [user_title], 
+    [user_det1].[user_grp] AS [user_grp]
+    FROM [dbo].[user_det] AS [user_det1]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_TS_WOAdjustment" EntityType="Self.View_TS_WOAdjustment" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_TS_WOAdjustment].[WOID] AS [WOID], 
+    [View_TS_WOAdjustment].[PartID] AS [PartID], 
+    [View_TS_WOAdjustment].[RequestedAdjustedQty] AS [RequestedAdjustedQty], 
+    [View_TS_WOAdjustment].[GenDate] AS [GenDate], 
+    [View_TS_WOAdjustment].[OrderCancelledID] AS [OrderCancelledID], 
+    [View_TS_WOAdjustment].[Status] AS [Status], 
+    [View_TS_WOAdjustment].[PPID] AS [PPID]
+    FROM [dbo].[View_TS_WOAdjustment] AS [View_TS_WOAdjustment]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="View_TS_WorkOrder" EntityType="Self.View_TS_WorkOrder" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [View_TS_WorkOrder].[PPID] AS [PPID], 
+    [View_TS_WorkOrder].[status] AS [status], 
+    [View_TS_WorkOrder].[WOID] AS [WOID], 
+    [View_TS_WorkOrder].[PartID] AS [PartID], 
+    [View_TS_WorkOrder].[ReleaseProdQty] AS [ReleaseProdQty], 
+    [View_TS_WorkOrder].[ToolDescription] AS [ToolDescription], 
+    [View_TS_WorkOrder].[RequestedDeliveryDate] AS [RequestedDeliveryDate], 
+    [View_TS_WorkOrder].[ReleasedDate] AS [ReleasedDate], 
+    [View_TS_WorkOrder].[OrderType] AS [OrderType], 
+    [View_TS_WorkOrder].[ID] AS [ID]
+    FROM [dbo].[View_TS_WorkOrder] AS [View_TS_WorkOrder]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="working_rate_except1" EntityType="Self.working_rate_except1" store:Type="Views" store:Schema="dbo" store:Name="working_rate_except">
+      <DefiningQuery>SELECT 
+    [working_rate_except1].[part_num] AS [part_num], 
+    [working_rate_except1].[route_id] AS [route_id], 
+    [working_rate_except1].[WOID] AS [WOID], 
+    [working_rate_except1].[seq_no] AS [seq_no], 
+    [working_rate_except1].[ctr_code] AS [ctr_code], 
+    [working_rate_except1].[mc_code] AS [mc_code], 
+    [working_rate_except1].[UoM] AS [UoM], 
+    [working_rate_except1].[prod_unit] AS [prod_unit]
+    FROM [dbo].[working_rate_except] AS [working_rate_except1]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="WorkOrderAssembly1" EntityType="Self.WorkOrderAssembly1" store:Type="Views" store:Schema="dbo" store:Name="WorkOrderAssembly">
+      <DefiningQuery>SELECT 
+    [WorkOrderAssembly1].[ComponentWO] AS [ComponentWO], 
+    [WorkOrderAssembly1].[AssyWO] AS [AssyWO], 
+    [WorkOrderAssembly1].[AssyQty] AS [AssyQty], 
+    [WorkOrderAssembly1].[ComponentQty] AS [ComponentQty], 
+    [WorkOrderAssembly1].[QtyPer] AS [QtyPer], 
+    [WorkOrderAssembly1].[level] AS [level]
+    FROM [dbo].[WorkOrderAssembly] AS [WorkOrderAssembly1]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="WorkOrderInfo" EntityType="Self.WorkOrderInfo" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [WorkOrderInfo].[WOID] AS [WOID], 
+    [WorkOrderInfo].[CreatedBy] AS [CreatedBy], 
+    [WorkOrderInfo].[PONumber] AS [PONumber], 
+    [WorkOrderInfo].[PartNum] AS [PartNum], 
+    [WorkOrderInfo].[FGDimension] AS [FGDimension], 
+    [WorkOrderInfo].[Description] AS [Description], 
+    [WorkOrderInfo].[Remark] AS [Remark], 
+    [WorkOrderInfo].[CommittedDeliveryDate] AS [CommittedDeliveryDate], 
+    [WorkOrderInfo].[RequestedDeliveryDate] AS [RequestedDeliveryDate], 
+    [WorkOrderInfo].[LineNumber] AS [LineNumber]
+    FROM [dbo].[WorkOrderInfo] AS [WorkOrderInfo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="WorkOrderMac1" EntityType="Self.WorkOrderMac1" store:Type="Views" store:Schema="dbo" store:Name="WorkOrderMac">
+      <DefiningQuery>SELECT 
+    [WorkOrderMac1].[ID] AS [ID], 
+    [WorkOrderMac1].[PartNo] AS [PartNo], 
+    [WorkOrderMac1].[RouteID] AS [RouteID], 
+    [WorkOrderMac1].[SeqNo] AS [SeqNo], 
+    [WorkOrderMac1].[CentreID] AS [CentreID], 
+    [WorkOrderMac1].[MacCode] AS [MacCode], 
+    [WorkOrderMac1].[MacType] AS [MacType], 
+    [WorkOrderMac1].[Remark] AS [Remark], 
+    [WorkOrderMac1].[MacGroup] AS [MacGroup], 
+    [WorkOrderMac1].[AttributeGroup] AS [AttributeGroup], 
+    [WorkOrderMac1].[WOID] AS [WOID]
+    FROM [dbo].[WorkOrderMac] AS [WorkOrderMac1]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="WorkOrderMaster1" EntityType="Self.WorkOrderMaster1" store:Type="Views" store:Schema="dbo" store:Name="WorkOrderMaster">
+      <DefiningQuery>SELECT 
+    [WorkOrderMaster1].[ID] AS [ID], 
+    [WorkOrderMaster1].[PartNo] AS [PartNo], 
+    [WorkOrderMaster1].[Qty] AS [Qty], 
+    [WorkOrderMaster1].[IssueDate] AS [IssueDate], 
+    [WorkOrderMaster1].[DeliveryDate] AS [DeliveryDate], 
+    [WorkOrderMaster1].[Status] AS [Status], 
+    [WorkOrderMaster1].[Location] AS [Location], 
+    [WorkOrderMaster1].[Remark] AS [Remark], 
+    [WorkOrderMaster1].[OrderType] AS [OrderType], 
+    [WorkOrderMaster1].[RouteID] AS [RouteID], 
+    [WorkOrderMaster1].[Customer] AS [Customer], 
+    [WorkOrderMaster1].[CreatedDate] AS [CreatedDate], 
+    [WorkOrderMaster1].[UserID] AS [UserID], 
+    [WorkOrderMaster1].[BalQty] AS [BalQty], 
+    [WorkOrderMaster1].[ToStockQty] AS [ToStockQty], 
+    [WorkOrderMaster1].[InvQty1] AS [InvQty1], 
+    [WorkOrderMaster1].[InvQty2] AS [InvQty2], 
+    [WorkOrderMaster1].[DrawingStatus] AS [DrawingStatus], 
+    [WorkOrderMaster1].[MaterialGrade] AS [MaterialGrade], 
+    [WorkOrderMaster1].[MaterialSupplier] AS [MaterialSupplier], 
+    [WorkOrderMaster1].[PartId] AS [PartId]
+    FROM [dbo].[WorkOrderMaster] AS [WorkOrderMaster1]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="WorkOrderMaterial2" EntityType="Self.WorkOrderMaterial2" store:Type="Views" store:Schema="dbo" store:Name="WorkOrderMaterial">
+      <DefiningQuery>SELECT 
+    [WorkOrderMaterial2].[WOID] AS [WOID], 
+    [WorkOrderMaterial2].[Name] AS [Name], 
+    [WorkOrderMaterial2].[Supplier] AS [Supplier], 
+    [WorkOrderMaterial2].[Value] AS [Value], 
+    [WorkOrderMaterial2].[Diameter] AS [Diameter], 
+    [WorkOrderMaterial2].[InsideDiameter] AS [InsideDiameter], 
+    [WorkOrderMaterial2].[Length] AS [Length], 
+    [WorkOrderMaterial2].[OutsideDiameter] AS [OutsideDiameter], 
+    [WorkOrderMaterial2].[ThinkNess] AS [ThinkNess], 
+    [WorkOrderMaterial2].[Width] AS [Width], 
+    [WorkOrderMaterial2].[QtyPerLength] AS [QtyPerLength], 
+    [WorkOrderMaterial2].[Grade] AS [Grade], 
+    [WorkOrderMaterial2].[Status] AS [Status], 
+    [WorkOrderMaterial2].[UnitPrice] AS [UnitPrice], 
+    [WorkOrderMaterial2].[MatType] AS [MatType], 
+    [WorkOrderMaterial2].[ReqQty] AS [ReqQty]
+    FROM [dbo].[WorkOrderMaterial] AS [WorkOrderMaterial2]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__BillOfMat__Compo__395884C4" Association="Self.FK__BillOfMat__Compo__395884C4">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="BillOfMaterial" EntitySet="BillOfMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BillOfMat__Produ__3864608B" Association="Self.FK__BillOfMat__Produ__3864608B">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="BillOfMaterial" EntitySet="BillOfMaterial" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CalendarDetail_Calendar" Association="Self.FK__CalendarDetail_Calendar">
+      <End Role="Calendar" EntitySet="Calendar" />
+      <End Role="CalendarDetail" EntitySet="CalendarDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CapacityProfile_OrderRelease" Association="Self.FK__CapacityProfile_OrderRelease">
+      <End Role="OrderRelease" EntitySet="OrderRelease" />
+      <End Role="CapacityProfile" EntitySet="CapacityProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Item__ParentItem__0C85DE4D" Association="Self.FK__Item__ParentItem__0C85DE4D">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="Item1" EntitySet="Item" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Item__PictureID__2645B050" Association="Self.FK__Item__PictureID__2645B050">
+      <End Role="Picture" EntitySet="Picture" />
+      <End Role="Item" EntitySet="Item" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ItemLocat__ItemI__1EA48E88" Association="Self.FK__ItemLocat__ItemI__1EA48E88">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="ItemLocation" EntitySet="ItemLocation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ItemLocat__Produ__1F98B2C1" Association="Self.FK__ItemLocat__Produ__1F98B2C1">
+      <End Role="Location" EntitySet="Location" />
+      <End Role="ItemLocation" EntitySet="ItemLocation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Location__Parent__2739D489" Association="Self.FK__Location__Parent__2739D489">
+      <End Role="Location" EntitySet="Location" />
+      <End Role="Location1" EntitySet="Location" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Menu__ParentTask__6A30C649" Association="Self.FK__Menu__ParentTask__6A30C649">
+      <End Role="Task" EntitySet="Task" />
+      <End Role="Menu" EntitySet="Menu" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Menu__TaskId__6B24EA82" Association="Self.FK__Menu__TaskId__6B24EA82">
+      <End Role="Task" EntitySet="Task" />
+      <End Role="Menu" EntitySet="Menu" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Operation__Locat__56B3DD81" Association="Self.FK__Operation__Locat__56B3DD81">
+      <End Role="Location" EntitySet="Location" />
+      <End Role="Operation" EntitySet="Operation" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderReleaseDetail_OrderRelease" Association="Self.FK__OrderReleaseDetail_OrderRelease">
+      <End Role="OrderRelease" EntitySet="OrderRelease" />
+      <End Role="OrderReleaseDetail" EntitySet="OrderReleaseDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RoleTask__RoleId__778AC167" Association="Self.FK__RoleTask__RoleId__778AC167">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="RoleTask" EntitySet="RoleTask" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RoleTask__TaskId__787EE5A0" Association="Self.FK__RoleTask__TaskId__787EE5A0">
+      <End Role="Task" EntitySet="Task" />
+      <End Role="RoleTask" EntitySet="RoleTask" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SalesOrde__Custo__671F4F74" Association="Self.FK__SalesOrde__Custo__671F4F74">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="SalesOrder" EntitySet="SalesOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SalesOrde__Sales__6DCC4D03" Association="Self.FK__SalesOrde__Sales__6DCC4D03">
+      <End Role="SalesOrder" EntitySet="SalesOrder" />
+      <End Role="SalesOrderDetail" EntitySet="SalesOrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SalesOrde__Sales__719CDDE7" Association="Self.FK__SalesOrde__Sales__719CDDE7">
+      <End Role="SalesOrderDetail" EntitySet="SalesOrderDetail" />
+      <End Role="SalesOrderAdjustment" EntitySet="SalesOrderAdjustment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Task__ButtonID__5FB337D6" Association="Self.FK__Task__ButtonID__5FB337D6">
+      <End Role="Button" EntitySet="Button" />
+      <End Role="Task" EntitySet="Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserPrefe__Optio__51300E55" Association="Self.FK__UserPrefe__Optio__51300E55">
+      <End Role="Option" EntitySet="Option" />
+      <End Role="UserPreference" EntitySet="UserPreference" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserPrefe__UserI__5224328E" Association="Self.FK__UserPrefe__UserI__5224328E">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserPreference" EntitySet="UserPreference" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserProdu__Produ__245D67DE" Association="Self.FK__UserProdu__Produ__245D67DE">
+      <End Role="Location" EntitySet="Location" />
+      <End Role="UserProductLine" EntitySet="UserProductLine" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserProdu__UserI__25518C17" Association="Self.FK__UserProdu__UserI__25518C17">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserProductLine" EntitySet="UserProductLine" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserRole__RoleId__70DDC3D8" Association="Self.FK__UserRole__RoleId__70DDC3D8">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserRole__UserId__71D1E811" Association="Self.FK__UserRole__UserId__71D1E811">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserRole" EntitySet="UserRole" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WorkOrder__Mater__2610A626" Association="Self.FK__WorkOrder__Mater__2610A626">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="WorkOrderMaterial1" EntitySet="WorkOrderMaterial1" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WorkOrder__Sales__0880433F" Association="Self.FK__WorkOrder__Sales__0880433F">
+      <End Role="SalesOrderDetail" EntitySet="SalesOrderDetail" />
+      <End Role="WorkOrderDetail" EntitySet="WorkOrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WorkOrder__WorkO__09746778" Association="Self.FK__WorkOrder__WorkO__09746778">
+      <End Role="WorkOrder" EntitySet="WorkOrder" />
+      <End Role="WorkOrderDetail" EntitySet="WorkOrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WorkOrder__WorkO__251C81ED" Association="Self.FK__WorkOrder__WorkO__251C81ED">
+      <End Role="WorkOrder" EntitySet="WorkOrder" />
+      <End Role="WorkOrderMaterial1" EntitySet="WorkOrderMaterial1" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CalendarDetail_Calendar" Association="Self.FK_CalendarDetail_Calendar">
+      <End Role="Calendar" EntitySet="Calendar" />
+      <End Role="CalendarDetail" EntitySet="CalendarDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CodeDetail_CodeType" Association="Self.FK_CodeDetail_CodeType">
+      <End Role="CodeType" EntitySet="CodeType" />
+      <End Role="CodeDetail" EntitySet="CodeDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CodeUsage_CodeType" Association="Self.FK_CodeUsage_CodeType">
+      <End Role="CodeType" EntitySet="CodeType" />
+      <End Role="CodeUsage" EntitySet="CodeUsage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustomerItem_Customer" Association="Self.FK_CustomerItem_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="CustomerItem" EntitySet="CustomerItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustomerItem_Item" Association="Self.FK_CustomerItem_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="CustomerItem" EntitySet="CustomerItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeliveryOrderDetail_DeliveryOrder" Association="Self.FK_DeliveryOrderDetail_DeliveryOrder">
+      <End Role="DeliveryOrder" EntitySet="DeliveryOrder" />
+      <End Role="DeliveryOrderDetail" EntitySet="DeliveryOrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeliveryOrderDetail_SalesOrderDetail" Association="Self.FK_DeliveryOrderDetail_SalesOrderDetail">
+      <End Role="SalesOrderDetail" EntitySet="SalesOrderDetail" />
+      <End Role="DeliveryOrderDetail" EntitySet="DeliveryOrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeliveryOrderDetail_WorkOrder" Association="Self.FK_DeliveryOrderDetail_WorkOrder">
+      <End Role="WorkOrder" EntitySet="WorkOrder" />
+      <End Role="DeliveryOrderDetail" EntitySet="DeliveryOrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Equipment_Calendar" Association="Self.FK_Equipment_Calendar">
+      <End Role="Calendar" EntitySet="Calendar" />
+      <End Role="Equipment" EntitySet="Equipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EquipmentParameter_Equipment" Association="Self.FK_EquipmentParameter_Equipment">
+      <End Role="Equipment" EntitySet="Equipment" />
+      <End Role="EquipmentParameter" EntitySet="EquipmentParameter" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EquipmentParameter_Parameter" Association="Self.FK_EquipmentParameter_Parameter">
+      <End Role="Parameter" EntitySet="Parameter" />
+      <End Role="EquipmentParameter" EntitySet="EquipmentParameter" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InvUsage_InvMas" Association="Self.FK_InvUsage_InvMas">
+      <End Role="Inventory" EntitySet="Inventory" />
+      <End Role="InventoryUsage" EntitySet="InventoryUsage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Item_Route" Association="Self.FK_Item_Route">
+      <End Role="Route" EntitySet="Route" />
+      <End Role="Item" EntitySet="Item" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OperationParamter_Operation" Association="Self.FK_OperationParamter_Operation">
+      <End Role="Operation" EntitySet="Operation" />
+      <End Role="OperationParameter" EntitySet="OperationParameter" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OperationParamter_Parameter" Association="Self.FK_OperationParamter_Parameter">
+      <End Role="Parameter" EntitySet="Parameter" />
+      <End Role="OperationParameter" EntitySet="OperationParameter" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OperationResource_Equipment" Association="Self.FK_OperationResource_Equipment">
+      <End Role="Equipment" EntitySet="Equipment" />
+      <End Role="OperationResource" EntitySet="OperationResource" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OperationResource_Operation" Association="Self.FK_OperationResource_Operation">
+      <End Role="Operation" EntitySet="Operation" />
+      <End Role="OperationResource" EntitySet="OperationResource" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PPOrderDetail_PPOrder" Association="Self.FK_PPOrderDetail_PPOrder">
+      <End Role="PPOrder" EntitySet="PPOrder" />
+      <End Role="PPOrderDetail" EntitySet="PPOrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PPOrderRoute_PPOrder" Association="Self.FK_PPOrderRoute_PPOrder">
+      <End Role="PPOrder" EntitySet="PPOrder" />
+      <End Role="PPOrderRoute" EntitySet="PPOrderRoute" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductRoute_Route" Association="Self.FK_ProductRoute_Route">
+      <End Role="Route" EntitySet="Route" />
+      <End Role="ProductRoute" EntitySet="ProductRoute" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductRouteStatus_ProductRoute" Association="Self.FK_ProductRouteStatus_ProductRoute">
+      <End Role="ProductRoute" EntitySet="ProductRoute" />
+      <End Role="ProductRouteStatus" EntitySet="ProductRouteStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RouteOperation_Route" Association="Self.FK_RouteOperation_Route">
+      <End Role="Route" EntitySet="Route" />
+      <End Role="RouteOperation" EntitySet="RouteOperation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RouteOperation_Route1" Association="Self.FK_RouteOperation_Route1">
+      <End Role="Route" EntitySet="Route" />
+      <End Role="RouteOperation" EntitySet="RouteOperation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoutingOperation_Operation" Association="Self.FK_RoutingOperation_Operation">
+      <End Role="Operation" EntitySet="Operation" />
+      <End Role="RouteOperation" EntitySet="RouteOperation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesOrderCancelDet_SalesOrderCancelled" Association="Self.FK_SalesOrderCancelDet_SalesOrderCancelled">
+      <End Role="SalesOrderCancelled" EntitySet="SalesOrderCancelled" />
+      <End Role="SalesOrderCancelDet" EntitySet="SalesOrderCancelDet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesOrderDetail_Item" Association="Self.FK_SalesOrderDetail_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="SalesOrderDetail" EntitySet="SalesOrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScheduleDetail_Schedule" Association="Self.FK_ScheduleDetail_Schedule">
+      <End Role="Schedule" EntitySet="Schedule" />
+      <End Role="ScheduleDetail" EntitySet="ScheduleDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_PictureID" Association="Self.FK_User_PictureID">
+      <End Role="Picture" EntitySet="Picture" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_SignatureID" Association="Self.FK_User_SignatureID">
+      <End Role="Picture" EntitySet="Picture" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkOrder_Item" Association="Self.FK_WorkOrder_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="WorkOrder" EntitySet="WorkOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkOrder_Route" Association="Self.FK_WorkOrder_Route">
+      <End Role="Route" EntitySet="Route" />
+      <End Role="WorkOrder" EntitySet="WorkOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkOrderAdjustment_SalesOrderAdjustment" Association="Self.FK_WorkOrderAdjustment_SalesOrderAdjustment">
+      <End Role="SalesOrderAdjustment" EntitySet="SalesOrderAdjustment" />
+      <End Role="WorkOrderAdjustment" EntitySet="WorkOrderAdjustment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkOrderDetail_Item" Association="Self.FK_WorkOrderDetail_Item">
+      <End Role="Item" EntitySet="Item" />
+      <End Role="WorkOrderDetail" EntitySet="WorkOrderDetail" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

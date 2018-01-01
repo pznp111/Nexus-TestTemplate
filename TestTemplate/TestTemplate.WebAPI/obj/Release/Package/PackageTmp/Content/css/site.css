@@ -1,0 +1,187 @@
+﻿/*boostrap overwrites*/
+.navbar {
+    margin-bottom: 0;
+    border: 0;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color: #eee;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    background-color: #eee;
+}
+.navbar-default .navbar-nav > .open > a:focus {
+    color: #555;
+    background-color: #393938;
+}
+/*end boostrap overwrites*/
+
+/*#main-content .ng-enter {
+    transition: transform 1s ease;
+    opacity: 0;
+    -webkit-transform: translateX(25px);
+    transform: translateX(25px);
+}
+
+#main-content .ng-enter-active {
+    transition: transform 1s ease;
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+}
+
+#main-content .ng-leave {
+    transition: transform 1s ease;
+    opacity: 1;
+}
+
+#main-content .ng-leave-active {
+    transition: transform 1s ease;
+    opacity: 0;
+}*/
+
+input.k-state-disabled,
+input.k-state-disabled:hover {
+    background-color: #ececec;
+}
+
+.k-grid tbody button.k-button {
+    display: inline;
+    min-width: 64px;
+}
+
+.row-no-padding > [class*='col-'] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.line-padding {
+    padding-bottom: 8px;
+}
+
+.dropdown-menu>li>a {
+    cursor: pointer;
+}
+
+.k-multiselect.k-header {
+    width: 12.3em;
+}
+
+.k-multiselect-wrap li {
+    margin: 1px 0 1px 1px !important;
+}
+
+.k-multiselect-wrap .k-input {
+    color: #d4d4d4;
+    margin: 3px 5px 0;
+}
+
+.k-edit-field .form-control {
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.k-edit-field .input-group {
+    width: 12.4em;
+}
+
+.k-edit-field .input-group .btn {
+    height: 19px;
+    margin: 0;
+}
+.k-edit-field .input-group .k-widget.k-tooltip-validation,
+.k-edit-field .k-multiselect .k-widget.k-tooltip-validation,
+.k-edit-field .k-datepicker .k-widget.k-tooltip-validation {
+    position: absolute;
+    top: 0;
+    right: -30px;   
+}
+
+.swal2-overlay,
+.swal2-modal {
+    z-index: 100004;
+}
+
+
+/*--Kendo Grid Service--*/
+
+.k-required:after {
+    content: '*';
+    color: red;
+    padding-left: 5px;
+    position: absolute;
+    font-size: 11px;
+}
+
+.k-widget.kg-validation {
+    border: 0;
+    -webkit-box-shadow: none;
+    -ms-box-shadow: none;
+    box-shadow: none;
+    background: none;
+    position: absolute;
+}
+
+.kg-validation .glyphicon-exclamation-sign {
+    color: #f1bd4c;
+    cursor: pointer;
+}
+
+.kg-error-message {
+    position: absolute;
+    top: 25px;
+    right: 10px;
+    background: rgba(255, 231, 158, 0.64);
+    padding: 5px;
+    width: 120px;
+    z-index: 1;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.kg-error-message:after {
+    content: ' ';
+    height: 0;
+    position: absolute;
+    width: 0;
+    border: 5px solid transparent;
+    border-bottom-color: rgba(255, 231, 158, 0.64);
+    bottom: 100%;
+    right: 5px;
+}
+
+.k-multiselect.k-header {
+    position: relative;
+}
+.nav-bar-custom {
+    height: 68px;
+    line-height: 35px;
+    color: #ffffff;
+    font-family: Headland One, Open Sans, Tahoma
+}
+
+/*--Kendo Grid Service--*/
+
+@media (max-width: 1555px) {
+    .navbar-nav .fa-fw {
+    }
+}
+
+.custom-nav i,
+.custom-nav span{
+    display: block;
+    margin: auto;
+}
+
+/* customised css*/
+.selector{
+    width:100px;
+    /*margin-left:10px;*/
+}
+.row-margin{
+    margin-top:8px !important;
+    margin-bottom:5px !important;
+    width: 95%;
+    margin: 0 auto;
+}

@@ -1,0 +1,113 @@
+﻿<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                
+                <div class="actions pull-right">
+                    <i class="fa fa-expand"></i>
+                    <i class="fa fa-chevron-down"></i>
+                    <i class="fa fa-times"></i>
+                </div>
+            </div>
+            <div class="panel-body">
+
+                <div class="col-md-10">
+                    <div class="form-group row">
+                        <div class="col-md-8"  style="margin-left: 1%;">
+                            <div class="table ">
+                                <div class="col-md-2" style="padding-left: 0px;">
+                                    <label >Unit Code</label>
+                                </div>
+                                <div class="col-md-4" style="padding-left: 0px;">
+                                    <select id="select_unitCode" class="form-control" ng-click="clickUnitCode"></select>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    <div class="form-group row">
+                        <div class="col-md-8" style="margin-left: 1%;">
+                            <div class="table ">
+
+                                <div class="col-md-2" style="padding-left: 0px;">
+                                    <label >User ID</label>
+                                </div>
+                                <div class="col-md-4" style="padding-left: 0px;">
+                                    <select id="select_userId" class="form-control" ng-click="clickUserId"></select>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-8" style="margin-left: 1%;">
+                            <div class="table ">
+                                <div class="col-md-2" style="padding-left: 0px;">
+                                    <label >Password</label>
+                                </div>
+                                <div class="col-md-4" style="padding-left: 0px;">
+                                    <input type="text" name="tag-password" id="tag-password" class="form-control">
+                                </div>
+                                <div class="col-md-2" style="padding-left: 0px;">
+                                    <button ng-click="overwritePassword()" class="btn btn-primary">Overwrite Password</button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-md-8" id="print-user-tag-table" style="margin-left: 1%;">
+
+                                    <table class="table table-bordered">
+                                        <tr>
+                                            <th></th>
+                                            <th></th>
+
+                                        </tr>
+                                        <tr>
+                                            <td class="custom-td first_col barcode-class">Employee Name</td>
+                                            <td id="employee-name" class="custom-td barcode-class"></td>
+
+                                        </tr>
+
+                                        <tr>
+                                            <td class="custom-td first_col barcode-class">Employee ID</td>
+                                            <td id="employee-id" class="custom-td barcode-class"></td>
+
+                                        </tr>
+
+                                        <tr>
+                                            <td class="custom-td first_col barcode-class">Password</td>
+                                            <td id="password" class="custom-td barcode-class"></td>
+
+                                        </tr>
+                                    </table>
+
+
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <!--
+                <div class="col-md-4" style="padding-left: 0px;">
+                    <label for="exampleInputEmail1">No. of copies</label>
+                </div>
+
+                <div class="col-md-6" style="padding-left: 0px;">
+                    <select id="select_noOfCopues" class="selector"></select>
+                </div>
+                    -->
+                                <div class="col-md-8">
+                                <div class="col-md-6" style="padding-left: 0px;right:0;">
+                                </div>
+                                <div class="col-md-2" style="padding-left: 0px;right:0;">
+                                    <button class="btn btn-primary" ng-click="printDiv()">Print Label</button>
+                                </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                    </div>
+    </div>
+   
+</div>

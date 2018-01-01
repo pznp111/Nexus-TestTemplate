@@ -1,0 +1,105 @@
+﻿<div class="col-md-12">
+    <div class="row">
+        Kit Selection
+    </div>
+
+    <div class="row">
+        
+        <!--<div class="col-md-4" style="height:200px;">
+            <img src="/Content/img/resource.jpg" >
+            </div>-->
+
+        <div class="col-md-3 " style="height:200px;">
+
+            <div class="panel widget-mini" style="width:100%; display: inline-block; height: 100%;border-style: solid;
+				    border-color: #bfbfbf;border-width: 1px; ">
+                <div class="row row-margin" style="border-bottom: 1px solid #ddd;">By Customer and Kit Type</div>
+
+
+                <div class="row row-margin">
+                    <div class="col-sm-6">
+                        Customer
+                    </div>
+
+                    <div class="col-sm-1" style="padding-left: 0px;">
+                        <div class="btn-group" role="group" aria-label="">
+                            <select id="select_customer" class="selector" ng-change="populateKitType()" ng-model="report"></select>
+                      </div>
+                    </div>
+
+                </div>
+
+                <div class="row row-margin">
+                    <div class="col-sm-6">
+                        Kit Type
+                    </div>
+                    <div class="col-sm-1" style="padding-left: 0px;">
+                        <div class="btn-group" role="group" aria-label="">
+                            <select id="select_kittype" class="selector" ng-change="comboMCList_SelectionChangeCommitted()" ng-model="report"></select>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row row-margin">
+                    <div class="col-sm-6">
+                        Customer Kit Type
+                    </div>
+
+                    <div class="col-sm-1" style="padding-left: 0px;">
+                        <select id="select_customerkittype" class="selector"></select>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+            <div class="col-md-4" style="height:200px;">
+                <div class="panel widget-mini" style="width:90%; display: inline-block; height: 100%; border-style: solid;
+				    border-color: #bfbfbf;border-width: 1px;">
+                    <div class="row row-margin" style="border-bottom: 1px solid #ddd;">
+                        By WO Release Date
+                    </div>
+                    <div class="row row-margin">
+                        <div class="col-sm-4">
+                            Start Date
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="date" id="startDate">
+                        </div>
+                    </div>
+
+                    <div class="row row-margin">
+                        <div class="col-sm-4">
+                            End Date
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="date" id="endDate">
+                        </div>
+                    </div>
+
+                    <div class="row row-margin">
+                        <button ng-click="refresh()" class="btn btn-default">Refresh</button>
+                    </div>
+
+                    <!--<div style="margin-top: 10%;display: inline-block;margin-left: 40%;">
+                        <button ng-click="Refresh()">Refresh</button>
+                    </div>-->
+                </div>
+
+            </div>
+
+
+        </div>
+
+    <div class="row" id="tracking-report-table">
+        .table
+    </div>
+
+
+
+
+</div>

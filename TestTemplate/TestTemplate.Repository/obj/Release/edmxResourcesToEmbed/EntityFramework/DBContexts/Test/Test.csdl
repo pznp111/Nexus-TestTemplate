@@ -1,0 +1,551 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HMLVTSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TS_ChildWorkOrder">
+    <Key>
+      <PropertyRef Name="ParentWOID" />
+      <PropertyRef Name="ChildWOID" />
+      <PropertyRef Name="RouteID" />
+    </Key>
+    <Property Name="ParentWOID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ChildWOID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RouteID" Type="Int32" Nullable="false" />
+    <Property Name="ProcOPseq" Type="Int32" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TS_ExStatus">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WOID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ProcOpSeq" Type="Int32" Nullable="false" />
+    <Property Name="ExStatus" Type="Int32" Nullable="false" />
+    <Property Name="UpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="OperatorID" Type="String" MaxLength="16" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="OperatorName" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TS_Lock">
+    <Key>
+      <PropertyRef Name="WOID" />
+    </Key>
+    <Property Name="WOID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LoginName" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="LoginID" Type="String" MaxLength="16" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MacAddress" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TS_MacAddress">
+    <Key>
+      <PropertyRef Name="MACAddress" />
+      <PropertyRef Name="Login" />
+      <PropertyRef Name="Logout" />
+      <PropertyRef Name="LoginDate" />
+    </Key>
+    <Property Name="MACAddress" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Logout" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="LoginDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LogoutDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TS_Mutex">
+    <Key>
+      <PropertyRef Name="MutexFunction" />
+    </Key>
+    <Property Name="MutexFunction" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LoginName" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="LoginID" Type="String" MaxLength="16" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="TS_QC_Equipment">
+    <Key>
+      <PropertyRef Name="WOID" />
+      <PropertyRef Name="WorkCenter" />
+      <PropertyRef Name="RouteID" />
+      <PropertyRef Name="ProcOpSeq" />
+      <PropertyRef Name="McID" />
+    </Key>
+    <Property Name="WOID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="WorkCenter" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RouteID" Type="Int32" Nullable="false" />
+    <Property Name="OpSeq" Type="Int32" Nullable="false" />
+    <Property Name="ProcOpSeq" Type="Int32" Nullable="false" />
+    <Property Name="McID" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TS_WorkOrder" Relationship="Self.FK_TS_QC_Equipment_TS_WorkOrder" FromRole="TS_QC_Equipment" ToRole="TS_WorkOrder" />
+  </EntityType>
+  <EntityType Name="TS_Rework">
+    <Key>
+      <PropertyRef Name="WOID" />
+      <PropertyRef Name="WorkCenter" />
+      <PropertyRef Name="RouteID" />
+      <PropertyRef Name="ProcOpSeq" />
+      <PropertyRef Name="ReworkDate" />
+    </Key>
+    <Property Name="WOID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="WorkCenter" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RouteID" Type="Int32" Nullable="false" />
+    <Property Name="OpSeq" Type="Int32" Nullable="false" />
+    <Property Name="ProcOpSeq" Type="Int32" Nullable="false" />
+    <Property Name="ReworkRouteID" Type="Int32" Nullable="false" />
+    <Property Name="ReworkStartWC" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ReworkStartOpSeq" Type="Int32" Nullable="false" />
+    <Property Name="ReworkStartProcOpSeq" Type="Int32" Nullable="false" />
+    <Property Name="ReworkQty" Type="Int32" Nullable="false" />
+    <Property Name="ReworkDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UserID" Type="String" MaxLength="16" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RouteName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AlertStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ProblemWC" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="ProblemOpSeq" Type="Int32" />
+    <Property Name="ProblemProcOpSeq" Type="Int32" />
+    <Property Name="ProblemOperatorID" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+    <Property Name="ProblemOperatorName" Type="String" MaxLength="64" FixedLength="true" Unicode="false" />
+    <Property Name="ApprovedID" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+    <Property Name="ApprovedName" Type="String" MaxLength="64" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="TS_WorkOrder" Relationship="Self.FK_TS_Rework_TS_WorkOrder" FromRole="TS_Rework" ToRole="TS_WorkOrder" />
+  </EntityType>
+  <EntityType Name="TS_Scrap">
+    <Key>
+      <PropertyRef Name="WOID" />
+      <PropertyRef Name="WorkCenter" />
+      <PropertyRef Name="RouteID" />
+      <PropertyRef Name="ProcOpSeq" />
+      <PropertyRef Name="ScrapDate" />
+    </Key>
+    <Property Name="WOID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="WorkCenter" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RouteID" Type="Int32" Nullable="false" />
+    <Property Name="OpSeq" Type="Int32" Nullable="false" />
+    <Property Name="ProcOpSeq" Type="Int32" Nullable="false" />
+    <Property Name="ScrapQty" Type="Int32" Nullable="false" />
+    <Property Name="ScrapDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ScrapType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserID" Type="String" MaxLength="16" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AlertStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ApprovedID" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+    <Property Name="ApprovedName" Type="String" MaxLength="64" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="TS_WorkOrder" Relationship="Self.FK_TS_Scrap_TS_WorkOrder" FromRole="TS_Scrap" ToRole="TS_WorkOrder" />
+  </EntityType>
+  <EntityType Name="TS_WODispatchBand">
+    <Key>
+      <PropertyRef Name="WOID" />
+      <PropertyRef Name="RouteID" />
+      <PropertyRef Name="McID" />
+      <PropertyRef Name="WorkCenter" />
+      <PropertyRef Name="ProcOpSeq" />
+    </Key>
+    <Property Name="WOID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RouteID" Type="Int32" Nullable="false" />
+    <Property Name="McID" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="WorkCenter" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProcOpSeq" Type="Int32" Nullable="false" />
+    <Property Name="ReleasedProdQty" Type="Int32" Nullable="false" />
+    <Property Name="RequestedDeliveryDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TotalRemainingProcOpSeq" Type="Int32" />
+    <Property Name="SRPTDuration" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="EDDBand" Type="Int32" />
+    <Property Name="SRPTBand" Type="Int32" />
+    <Property Name="BandDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="TS_WorkOrder">
+    <Key>
+      <PropertyRef Name="WOID" />
+    </Key>
+    <Property Name="WOID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PartID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RequestedDeliveryDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CommittedDeliveryDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ReleasedProdQty" Type="Int32" Nullable="false" />
+    <Property Name="ReleasedProdDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ActualProdQty" Type="Int32" Nullable="false" />
+    <Property Name="ActualProdDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ActualRecQty" Type="Int32" Nullable="false" />
+    <Property Name="ActualRecDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CompletedQty" Type="Int32" />
+    <Property Name="CompletedDate" Type="DateTime" Precision="3" />
+    <Property Name="OutstandingQty" Type="Int32" Nullable="false" />
+    <Property Name="OutstandingDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AccumulatedScrapQty" Type="Int32" />
+    <Property Name="AccumulatedScrapDate" Type="DateTime" Precision="3" />
+    <Property Name="TotalActAdjustedQty" Type="Int32" />
+    <Property Name="TotalActAdjustedDate" Type="DateTime" Precision="3" />
+    <Property Name="WOStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ToolDescription" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="PlannerRemark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="ParentWOID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PPID" Type="Int32" Nullable="false" />
+    <Property Name="SalesOrderID" Type="String" MaxLength="50" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ReleasedDate" Type="DateTime" Precision="3" />
+    <Property Name="AlertStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="OrderType" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="OperatorID" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+    <Property Name="OperatorName" Type="String" MaxLength="64" FixedLength="true" Unicode="false" />
+    <Property Name="ApprovedID" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+    <Property Name="ApprovedName" Type="String" MaxLength="64" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="TS_QC_Equipment" Relationship="Self.FK_TS_QC_Equipment_TS_WorkOrder" FromRole="TS_WorkOrder" ToRole="TS_QC_Equipment" />
+    <NavigationProperty Name="TS_Rework" Relationship="Self.FK_TS_Rework_TS_WorkOrder" FromRole="TS_WorkOrder" ToRole="TS_Rework" />
+    <NavigationProperty Name="TS_Scrap" Relationship="Self.FK_TS_Scrap_TS_WorkOrder" FromRole="TS_WorkOrder" ToRole="TS_Scrap" />
+    <NavigationProperty Name="TS_Operation" Relationship="Self.FK_TS_Operation_TS_WorkOrder" FromRole="TS_WorkOrder" ToRole="TS_Operation" />
+    <NavigationProperty Name="TS_WorkOrderCancel" Relationship="Self.FK_TS_WorkOrderCancel_TS_WorkOrder" FromRole="TS_WorkOrder" ToRole="TS_WorkOrderCancel" />
+    <NavigationProperty Name="TS_WorkOrderRoute" Relationship="Self.FK_TS_WorkOrderRoute_TS_WorkOrder" FromRole="TS_WorkOrder" ToRole="TS_WorkOrderRoute" />
+    <NavigationProperty Name="TS_WorkOrderExecution" Relationship="Self.FK_TS_WorkOrderStatus_TS_WorkOrder" FromRole="TS_WorkOrder" ToRole="TS_WorkOrderExecution" />
+  </EntityType>
+  <EntityType Name="TS_WorkOrderCancel">
+    <Key>
+      <PropertyRef Name="WOID" />
+    </Key>
+    <Property Name="WOID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PartID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="WorkCenter" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RouteID" Type="Int32" Nullable="false" />
+    <Property Name="OpSeq" Type="Int32" Nullable="false" />
+    <Property Name="ProcOpSeq" Type="Int32" Nullable="false" />
+    <Property Name="RequestedAdjustQty" Type="Int32" Nullable="false" />
+    <Property Name="RequestedAdjustDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="TotalActAdjustedQty" Type="Int32" />
+    <Property Name="OutstandingAdjustQty" Type="Int32" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TS_WorkOrder" Relationship="Self.FK_TS_WorkOrderCancel_TS_WorkOrder" FromRole="TS_WorkOrderCancel" ToRole="TS_WorkOrder" />
+  </EntityType>
+  <EntityType Name="TS_WorkOrderCancelDetail">
+    <Key>
+      <PropertyRef Name="WOID" />
+      <PropertyRef Name="ActualAdjustDate" />
+    </Key>
+    <Property Name="WOID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PartID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="WorkCenter" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RouteID" Type="Int32" Nullable="false" />
+    <Property Name="OpSeq" Type="Int32" Nullable="false" />
+    <Property Name="ProcOpSeq" Type="Int32" Nullable="false" />
+    <Property Name="ActualAdjustQty" Type="Int32" Nullable="false" />
+    <Property Name="ActualAdjustDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="UserID" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+    <Property Name="UserName" Type="String" MaxLength="64" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TS_WorkOrderExecution">
+    <Key>
+      <PropertyRef Name="WOID" />
+      <PropertyRef Name="ProcOpSeq" />
+    </Key>
+    <Property Name="WOID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PartID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ActualRecQty" Type="Int32" Nullable="false" />
+    <Property Name="ActualRecDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CompletedQty" Type="Int32" Nullable="false" />
+    <Property Name="CompletedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="OutstandingQty" Type="Int32" Nullable="false" />
+    <Property Name="OutstandingDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ScrapQty" Type="Int32" />
+    <Property Name="ScrapDate" Type="DateTime" Precision="3" />
+    <Property Name="AdjustedQty" Type="Int32" />
+    <Property Name="AdjustedDate" Type="DateTime" Precision="3" />
+    <Property Name="McID" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="McType" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="RouteID" Type="Int32" Nullable="false" />
+    <Property Name="WorkCenter" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Opseq" Type="Int32" Nullable="false" />
+    <Property Name="ProcOpSeq" Type="Int32" Nullable="false" />
+    <Property Name="WOStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SetupStartDate" Type="DateTime" Precision="3" />
+    <Property Name="SetupEndDate" Type="DateTime" Precision="3" />
+    <Property Name="ProdStartDate" Type="DateTime" Precision="3" />
+    <Property Name="ProdEndDate" Type="DateTime" Precision="3" />
+    <Property Name="ParentWOID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="TotalSetupDuration" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="ProdTotalDuration" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OperatorID" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+    <Property Name="OperatorName" Type="String" MaxLength="64" FixedLength="true" Unicode="false" />
+    <Property Name="ShiftID" Type="String" MaxLength="24" FixedLength="true" Unicode="false" />
+    <Property Name="SendOutDate" Type="DateTime" Precision="3" />
+    <Property Name="ReceivedDate" Type="DateTime" Precision="3" />
+    <Property Name="QtyUpdated" Type="Int32" />
+    <Property Name="PlannedDuration" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="OrderType" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="TS_WorkOrder" Relationship="Self.FK_TS_WorkOrderStatus_TS_WorkOrder" FromRole="TS_WorkOrderExecution" ToRole="TS_WorkOrder" />
+  </EntityType>
+  <EntityType Name="TS_WorkOrderRoute">
+    <Key>
+      <PropertyRef Name="WOID" />
+      <PropertyRef Name="WorkCenter" />
+      <PropertyRef Name="RouteID" />
+      <PropertyRef Name="ProcOpSeq" />
+    </Key>
+    <Property Name="WOID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="WorkCenter" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RouteID" Type="Int32" Nullable="false" />
+    <Property Name="OpSeq" Type="Int32" Nullable="false" />
+    <Property Name="ProcOpSeq" Type="Int32" Nullable="false" />
+    <Property Name="McID" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="McType" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="PrioritizedNo" Type="Int32" />
+    <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="RouteName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MacGroup" Type="Int32" />
+    <Property Name="AttributeGroup" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TS_WorkOrder" Relationship="Self.FK_TS_WorkOrderRoute_TS_WorkOrder" FromRole="TS_WorkOrderRoute" ToRole="TS_WorkOrder" />
+  </EntityType>
+  <EntityType Name="TS_WorkOrderRouteDispatch">
+    <Key>
+      <PropertyRef Name="WOID" />
+      <PropertyRef Name="WorkCenter" />
+      <PropertyRef Name="RouteID" />
+      <PropertyRef Name="ProcOpSeq" />
+    </Key>
+    <Property Name="WOID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="WorkCenter" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RouteID" Type="Int32" Nullable="false" />
+    <Property Name="OpSeq" Type="Int32" Nullable="false" />
+    <Property Name="ProcOpSeq" Type="Int32" Nullable="false" />
+    <Property Name="McID" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="McType" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="PrioritizedNo" Type="Int32" />
+    <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="RouteName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MacGroup" Type="Int32" />
+    <Property Name="AttributeGroup" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TS_Operation">
+    <Key>
+      <PropertyRef Name="WOID" />
+      <PropertyRef Name="WorkCenter" />
+      <PropertyRef Name="RouteID" />
+      <PropertyRef Name="OpSeq" />
+      <PropertyRef Name="ProcOpSeq" />
+      <PropertyRef Name="McID" />
+      <PropertyRef Name="McType" />
+      <PropertyRef Name="OperatorID" />
+      <PropertyRef Name="OperatorName" />
+    </Key>
+    <Property Name="WOID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="WorkCenter" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RouteID" Type="Int32" Nullable="false" />
+    <Property Name="OpSeq" Type="Int32" Nullable="false" />
+    <Property Name="ProcOpSeq" Type="Int32" Nullable="false" />
+    <Property Name="StartDateTime" Type="DateTime" Precision="3" />
+    <Property Name="StopDateTime" Type="DateTime" Precision="3" />
+    <Property Name="StartType" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="EndType" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="McID" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="McType" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Reason" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OperatorID" Type="String" MaxLength="16" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="OperatorName" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ShiftID" Type="String" MaxLength="24" FixedLength="true" Unicode="false" />
+    <Property Name="AlertStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TS_WorkOrder" Relationship="Self.FK_TS_Operation_TS_WorkOrder" FromRole="TS_Operation" ToRole="TS_WorkOrder" />
+  </EntityType>
+  <EntityType Name="TS_Parameter">
+    <Key>
+      <PropertyRef Name="Threshold" />
+    </Key>
+    <Property Name="Threshold" Type="Int32" Nullable="false" />
+    <Property Name="QCCheck" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SRPTThreshold" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="EDDThreshold" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="WOStatusThreshold" Type="Decimal" Precision="18" Scale="0" />
+  </EntityType>
+  <EntityType Name="TS_PauseOperationReason">
+    <Key>
+      <PropertyRef Name="Reason" />
+    </Key>
+    <Property Name="Reason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TS_QCDocAttachment">
+    <Key>
+      <PropertyRef Name="WOID" />
+      <PropertyRef Name="Directory" />
+      <PropertyRef Name="Filename" />
+      <PropertyRef Name="AttachedDate" />
+      <PropertyRef Name="OperatorID" />
+      <PropertyRef Name="OperatorName" />
+    </Key>
+    <Property Name="WOID" Type="Int32" Nullable="false" />
+    <Property Name="Directory" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Filename" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FileStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CheckDate" Type="DateTime" Precision="3" />
+    <Property Name="AttachedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="OperatorID" Type="String" MaxLength="16" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="OperatorName" Type="String" MaxLength="64" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ApprovedID" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+    <Property Name="ApprovedName" Type="String" MaxLength="64" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TS_ScrapRemark">
+    <Key>
+      <PropertyRef Name="ScrapRemark" />
+    </Key>
+    <Property Name="ScrapRemark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TS_SplitRemark">
+    <Key>
+      <PropertyRef Name="SplitRemark" />
+    </Key>
+    <Property Name="SplitRemark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TS_TrackingRemark">
+    <Key>
+      <PropertyRef Name="Remark" />
+    </Key>
+    <Property Name="Remark" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_TS_QC_Equipment_TS_WorkOrder">
+    <End Role="TS_WorkOrder" Type="Self.TS_WorkOrder" Multiplicity="1" />
+    <End Role="TS_QC_Equipment" Type="Self.TS_QC_Equipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TS_WorkOrder">
+        <PropertyRef Name="WOID" />
+      </Principal>
+      <Dependent Role="TS_QC_Equipment">
+        <PropertyRef Name="WOID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TS_Rework_TS_WorkOrder">
+    <End Role="TS_WorkOrder" Type="Self.TS_WorkOrder" Multiplicity="1" />
+    <End Role="TS_Rework" Type="Self.TS_Rework" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TS_WorkOrder">
+        <PropertyRef Name="WOID" />
+      </Principal>
+      <Dependent Role="TS_Rework">
+        <PropertyRef Name="WOID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TS_Scrap_TS_WorkOrder">
+    <End Role="TS_WorkOrder" Type="Self.TS_WorkOrder" Multiplicity="1" />
+    <End Role="TS_Scrap" Type="Self.TS_Scrap" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TS_WorkOrder">
+        <PropertyRef Name="WOID" />
+      </Principal>
+      <Dependent Role="TS_Scrap">
+        <PropertyRef Name="WOID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TS_Operation_TS_WorkOrder">
+    <End Role="TS_WorkOrder" Type="Self.TS_WorkOrder" Multiplicity="1" />
+    <End Role="TS_Operation" Type="Self.TS_Operation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TS_WorkOrder">
+        <PropertyRef Name="WOID" />
+      </Principal>
+      <Dependent Role="TS_Operation">
+        <PropertyRef Name="WOID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TS_WorkOrderCancel_TS_WorkOrder">
+    <End Role="TS_WorkOrder" Type="Self.TS_WorkOrder" Multiplicity="1" />
+    <End Role="TS_WorkOrderCancel" Type="Self.TS_WorkOrderCancel" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="TS_WorkOrder">
+        <PropertyRef Name="WOID" />
+      </Principal>
+      <Dependent Role="TS_WorkOrderCancel">
+        <PropertyRef Name="WOID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TS_WorkOrderRoute_TS_WorkOrder">
+    <End Role="TS_WorkOrder" Type="Self.TS_WorkOrder" Multiplicity="1" />
+    <End Role="TS_WorkOrderRoute" Type="Self.TS_WorkOrderRoute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TS_WorkOrder">
+        <PropertyRef Name="WOID" />
+      </Principal>
+      <Dependent Role="TS_WorkOrderRoute">
+        <PropertyRef Name="WOID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TS_WorkOrderStatus_TS_WorkOrder">
+    <End Role="TS_WorkOrder" Type="Self.TS_WorkOrder" Multiplicity="1" />
+    <End Role="TS_WorkOrderExecution" Type="Self.TS_WorkOrderExecution" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TS_WorkOrder">
+        <PropertyRef Name="WOID" />
+      </Principal>
+      <Dependent Role="TS_WorkOrderExecution">
+        <PropertyRef Name="WOID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HMLVTS" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="TS_ChildWorkOrder" EntityType="Self.TS_ChildWorkOrder" />
+    <EntitySet Name="TS_ExStatus" EntityType="Self.TS_ExStatus" />
+    <EntitySet Name="TS_Lock" EntityType="Self.TS_Lock" />
+    <EntitySet Name="TS_MacAddress" EntityType="Self.TS_MacAddress" />
+    <EntitySet Name="TS_Mutex" EntityType="Self.TS_Mutex" />
+    <EntitySet Name="TS_QC_Equipment" EntityType="Self.TS_QC_Equipment" />
+    <EntitySet Name="TS_Rework" EntityType="Self.TS_Rework" />
+    <EntitySet Name="TS_Scrap" EntityType="Self.TS_Scrap" />
+    <EntitySet Name="TS_WODispatchBand" EntityType="Self.TS_WODispatchBand" />
+    <EntitySet Name="TS_WorkOrder" EntityType="Self.TS_WorkOrder" />
+    <EntitySet Name="TS_WorkOrderCancel" EntityType="Self.TS_WorkOrderCancel" />
+    <EntitySet Name="TS_WorkOrderCancelDetail" EntityType="Self.TS_WorkOrderCancelDetail" />
+    <EntitySet Name="TS_WorkOrderExecution" EntityType="Self.TS_WorkOrderExecution" />
+    <EntitySet Name="TS_WorkOrderRoute" EntityType="Self.TS_WorkOrderRoute" />
+    <EntitySet Name="TS_WorkOrderRouteDispatch" EntityType="Self.TS_WorkOrderRouteDispatch" />
+    <EntitySet Name="TS_Operation" EntityType="Self.TS_Operation" />
+    <EntitySet Name="TS_Parameter" EntityType="Self.TS_Parameter" />
+    <EntitySet Name="TS_PauseOperationReason" EntityType="Self.TS_PauseOperationReason" />
+    <EntitySet Name="TS_QCDocAttachment" EntityType="Self.TS_QCDocAttachment" />
+    <EntitySet Name="TS_ScrapRemark" EntityType="Self.TS_ScrapRemark" />
+    <EntitySet Name="TS_SplitRemark" EntityType="Self.TS_SplitRemark" />
+    <EntitySet Name="TS_TrackingRemark" EntityType="Self.TS_TrackingRemark" />
+    <AssociationSet Name="FK_TS_QC_Equipment_TS_WorkOrder" Association="Self.FK_TS_QC_Equipment_TS_WorkOrder">
+      <End Role="TS_WorkOrder" EntitySet="TS_WorkOrder" />
+      <End Role="TS_QC_Equipment" EntitySet="TS_QC_Equipment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TS_Rework_TS_WorkOrder" Association="Self.FK_TS_Rework_TS_WorkOrder">
+      <End Role="TS_WorkOrder" EntitySet="TS_WorkOrder" />
+      <End Role="TS_Rework" EntitySet="TS_Rework" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TS_Scrap_TS_WorkOrder" Association="Self.FK_TS_Scrap_TS_WorkOrder">
+      <End Role="TS_WorkOrder" EntitySet="TS_WorkOrder" />
+      <End Role="TS_Scrap" EntitySet="TS_Scrap" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TS_Operation_TS_WorkOrder" Association="Self.FK_TS_Operation_TS_WorkOrder">
+      <End Role="TS_WorkOrder" EntitySet="TS_WorkOrder" />
+      <End Role="TS_Operation" EntitySet="TS_Operation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TS_WorkOrderCancel_TS_WorkOrder" Association="Self.FK_TS_WorkOrderCancel_TS_WorkOrder">
+      <End Role="TS_WorkOrder" EntitySet="TS_WorkOrder" />
+      <End Role="TS_WorkOrderCancel" EntitySet="TS_WorkOrderCancel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TS_WorkOrderRoute_TS_WorkOrder" Association="Self.FK_TS_WorkOrderRoute_TS_WorkOrder">
+      <End Role="TS_WorkOrder" EntitySet="TS_WorkOrder" />
+      <End Role="TS_WorkOrderRoute" EntitySet="TS_WorkOrderRoute" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TS_WorkOrderStatus_TS_WorkOrder" Association="Self.FK_TS_WorkOrderStatus_TS_WorkOrder">
+      <End Role="TS_WorkOrder" EntitySet="TS_WorkOrder" />
+      <End Role="TS_WorkOrderExecution" EntitySet="TS_WorkOrderExecution" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

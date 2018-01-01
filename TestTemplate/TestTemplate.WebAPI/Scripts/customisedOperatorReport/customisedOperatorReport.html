@@ -1,0 +1,116 @@
+﻿
+
+<div id="test" class="row">
+
+
+
+
+
+
+
+
+    <div id="main-contents" class="col-md-12">
+   
+        <!--<div id="main-contents" style="position:fixed;width:80%;right:0;">-->
+        <div class="row row-margin">
+
+
+            <div class="col-md-3 " >
+
+                <div class="panel panel-default full-height">
+                            <div class="panel-heading">
+                                <h3 class="panel-title" style="color:#2e2e2e;">Operator Selection</h3>
+                            </div>
+                <div class ="panel-body">
+                    <form class ="form-horizontal ng-pristine ng-valid">
+
+                                    <div class ="form-group">
+                                        <label class="col-sm-4 control-label control-label-font">
+                                             Operator Name
+                                        </label>
+                                    <div class ="col-sm-8">                                                                        
+                                        <select id="select_username" class=" form-control input-small form-control-height"></select>
+                                    </div>
+                                    </div>
+
+
+
+                    </form>
+                </div>
+
+                </div>
+            </div>
+
+                <div class="col-md-3" >
+
+                 <div class="panel panel-default full-height">
+                       <div class="panel-heading">
+                                <h3 class="panel-title" style="color:#2e2e2e;">WO Execution Date</h3>
+                        </div>
+                        <div class ="panel-body">
+                             <form class ="form-horizontal">
+<!--                                    <div class ="form-group">
+                                        <label class="col-sm-2 control-label">
+                                             Start Date
+                                        </label>
+                                    <div class ="col-sm-10">                                                                        
+                                        <input type="date" id="startDate">
+                                    </div>
+                                    </div>-->
+
+                                    <div class ="form-group">
+                                        <label class="col-sm-2 control-label control-label-font">
+                                             Start Date
+                                        </label>
+                                       <div class='input-group date col-sm-10' id='startDate'>
+                                            <input type='text' class="form-control form-control-height" />
+                                                <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                       </div>
+                                    </div>
+
+<!--                                    <div class ="form-group">
+                                        <label class="col-sm-2 control-label">
+                                             End Date
+                                        </label>
+                                    <div class ="col-sm-10">                                                                        
+                                        <input type="date" id="endDate">
+                                    </div>
+                                    </div>-->
+
+                                   <div class ="form-group">
+                                        <label class="col-sm-2 control-label control-label-font">
+                                             End Date
+                                        </label>
+                                       <div class='input-group date col-sm-10' id='endDate'>
+                                            <input type='text' class="form-control form-control-height" />
+                                                <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                       </div>
+                                    </div>
+
+                                 <div class ="col-sm-offset-2 col-sm-10">
+                                     <button ng-click="Refresh()" class ="btn btn-primary">Refresh</button>
+                                 </div>
+                             </form>
+                    </div>
+               </div>
+                
+
+
+            </div>
+
+            </div>
+
+
+        <!--<div id="multiple" >-->
+        <div id="operator-report-table" >
+        </div>
+
+
+    </div>
+
+
+</div>

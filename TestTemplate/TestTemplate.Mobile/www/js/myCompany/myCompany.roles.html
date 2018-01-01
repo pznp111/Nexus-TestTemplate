@@ -1,0 +1,18 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">{{tenant.name}}</div>
+    <div class="panel-body">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Tenant Role : <b>{{tenant.name}}</b>
+                <div class="actions pull-right">
+                    <i data-fullscreen-widget class="fa fa-expand"></i>
+                    <i data-widget-toggle class="fa fa-chevron-down"></i>
+                    <i data-widget-close class="fa fa-times"></i>
+                </div>
+            </div>
+            <div class="panel-body">
+                <kendo-grid options="roleGridByTenant"></kendo-grid>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+plugins/android.json
+plugins/windows.json
+plugins/wp8.json
+plugins/remote_ios.json
+platforms/
+simulation/

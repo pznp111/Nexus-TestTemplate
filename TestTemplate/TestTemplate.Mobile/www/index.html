@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="lib/animate.css/animate.css" />
+    <link rel="stylesheet" href="lib/components-font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="lib/neuboard-css/simple-line-icons.css" />
+    <link rel="stylesheet" href="lib/sweetalert2/dist/sweetalert2.css" />
+    <link rel="stylesheet" href="lib/toastr/toastr.css" />
+    <link rel="stylesheet" href="css/loading-bar.css" />
+    <!--<link rel="styleSheet" href="lib/angular-ui-grid/ui-grid.css" />-->
+    <link rel="stylesheet" href="lib/kendo/kendo.common.min.css" />
+    <link rel="stylesheet" href="lib/kendo/kendo.default.min.css"  />
+    <link rel="stylesheet" href="lib/kendo/kendo.fiori.min.css" />
+    <link rel="stylesheet" href="lib/neuboard-css/main.css" />
+    <link rel="stylesheet" href="css/site.css" />
+    <link rel="stylesheet" href="css/custom-font.css" />
+    <link rel="stylesheet" href="css/customs.css" />
+</head>
+<body ng-app="erp">
+    <!--[if lte IE 8]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+    <!-- Add your site or application content here -->
+    <div ng-controller="NavbarCtrl" ng-show="currentUser.isAuth">
+        <div ng-include="'/js/layout/main-navbar.html'" class="custom-side-navbar">
+        </div>
+    </div>
+
+    <div class="container" id="main-container-page">
+        <ui-view></ui-view>
+    </div>
+    <footer class="footer">
+        <div class="row">
+            <div class="col-xs-4"></div>
+            <div class="col-xs-4" style="text-align: center">
+                <img src="img/simtech-col-transparent.png" style="width: 125px; height: 70px;" />
+            </div>
+            <div class="col-xs-1"></div>
+            <div class="col-xs-3 pull-right hidden-xs custom-copyright"><span>Copyright &#9400; 2017, <b>SIMTech</b>, <b>POMLab</b></span></div>
+        </div>
+    </footer> 
+
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="lib/navgoco/src/jquery.navgoco.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="lib/angular-cookies/angular-cookies.js"></script>
+    <script src="lib/angular-resource/angular-resource.js"></script>
+    <script src="lib/angular-route/angular-route.js"></script>
+    <script src="lib/angular-sanitize/angular-sanitize.js"></script>
+    <script src="lib/angular-touch/angular-touch.js"></script>
+    <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="lib/ngstorage/ngStorage.js"></script>
+    <script src="lib/angular-messages/angular-messages.js"></script>
+    <script src="lib/angular-loading-bar/build/loading-bar.js"></script>
+    <script src="lib/ng-pluralize-filter/ng-pluralize-filter.js"></script>
+    <script src="lib/angular-breadcrumb/release/angular-breadcrumb.js"></script>
+    <script src="lib/lodash/lodash.js"></script>
+    <script src="lib/sweetalert2/dist/sweetalert2.js"></script>
+    <script src="lib/es6-promise/es6-promise.js"></script>
+    <script src="lib/toastr/toastr.js"></script>
+    <!--<script src="lib/angular-ui-grid/ui-grid.js"></script>-->
+    <script src="lib/kendo/kendo.all.min.js"></script>
+    <script src="lib/kendo/kendo.aspnetmvc.min.js"></script>
+
+    <script src="js/app.module.js"></script>
+    <script src="js/app.directives.js"></script>
+    <script src="js/core/core.module.js"></script>
+    <script src="js/core/constants.js"></script>
+    <script src="js/core/config.js"></script>
+    <script src="js/core/httpProvider.config.js"></script>
+    <script src="js/core/run.js"></script>
+
+    <script src="js/nexusNg/auth.module.js"></script>
+    <script src="js/nexusNg/authInterceptorService.js"></script>
+    <script src="js/nexusNg/auth.validator.js"></script>
+    <script src="js/nexusNg/auth.service.js"></script>
+    
+    <script src="js/common/common.module.js"></script>
+
+    <script src="js/layout/layout.module.js"></script>
+    <script src="js/layout/navbar.controller.js"></script>
+    <script src="js/layout/forgotpassword.controller.js"></script>
+    <script src="js/layout/login.controller.js"></script>
+
+    <script src="js/repository/repository.module.js"></script>
+    <script src="js/repository/repo.service.js"></script>
+    <script src="js/repository/customer.service.js"></script>
+    <script src="js/repository/review.service.js"></script>
+    <script src="js/repository/tenant.service.js"></script>
+
+    <script src="js/dashboard/dashboard.module.js"></script>
+    <script src="js/dashboard/dashboard.controller.js"></script>
+
+    <script src="js/customer/customer.module.js"></script>
+    <script src="js/customer/customer.controller.js"></script>
+    <script src="js/customer/customer.review.controller.js"></script>
+    <script src="js/customer/customer.dashboard.controller.js"></script>
+    
+    <script src="js/common/validation.service.js"></script>
+    <script src="js/common/kendoGrid.service.js"></script>
+    <script src="js/common/notification.service.js"></script>
+
+    <script src="js/myCompany/myCompany.module.js"></script>
+    <script src="js/myCompany/myCompany.controller.js"></script>
+    <script src="js/myCompany/myCompany.roles.controller.js"></script>
+    <script src="js/myCompany/myCompany.rolesSitemap.controller.js"></script>
+    <script src="js/myCompany/myCompany.users.controller.js"></script>
+    <script src="js/myCompany/myCompany.splitReport.controller.js"></script>
+    <script src="js/myCompany/myCompany.masterdatamgmt.service.js"></script>
+    <script src="js/myCompany/myCompany.masterdatamgmtdetail.controller.js"></script>
+    <script src="js/myCompany/tenant.mytab.directive.js"></script>
+
+</body>
+</html>

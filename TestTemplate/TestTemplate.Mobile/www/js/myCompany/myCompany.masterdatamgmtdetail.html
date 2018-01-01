@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+</head>
+<body>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <b>Master Data Management</b>
+                </div>
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div ng-show="toggleShow">
+                                <h2>Current Tenant doesn't have connection for current application.</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="example" ng-show="toggleShowTab">
+                        <p></p>
+                        <div data-kendo-tab-strip="vm.tabstrip" k-options="vm.tabOptions" k-content-urls="[null, null]" id="tabstrip">
+                            <ul></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

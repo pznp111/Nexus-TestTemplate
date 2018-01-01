@@ -1,0 +1,383 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HMLVTSModelStoreContainer" CdmEntityContainer="HMLVTS">
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="HMLVTSModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_ChildWorkOrder">
+      <EntityTypeMapping TypeName="HMLVTSModel.TS_ChildWorkOrder">
+        <MappingFragment StoreEntitySet="TS_ChildWorkOrder">
+          <ScalarProperty Name="ParentWOID" ColumnName="ParentWOID" />
+          <ScalarProperty Name="ChildWOID" ColumnName="ChildWOID" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+          <ScalarProperty Name="ProcOPseq" ColumnName="ProcOPseq" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_ExStatus">
+      <EntityTypeMapping TypeName="HMLVTSModel.TS_ExStatus">
+        <MappingFragment StoreEntitySet="TS_ExStatus">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="WOID" ColumnName="WOID" />
+          <ScalarProperty Name="ProcOpSeq" ColumnName="ProcOpSeq" />
+          <ScalarProperty Name="ExStatus" ColumnName="ExStatus" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="OperatorID" ColumnName="OperatorID" />
+          <ScalarProperty Name="OperatorName" ColumnName="OperatorName" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_Lock">
+      <EntityTypeMapping TypeName="HMLVTSModel.TS_Lock">
+        <MappingFragment StoreEntitySet="TS_Lock">
+          <ScalarProperty Name="WOID" ColumnName="WOID" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="MacAddress" ColumnName="MacAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_MacAddress">
+      <EntityTypeMapping TypeName="HMLVTSModel.TS_MacAddress">
+        <MappingFragment StoreEntitySet="TS_MacAddress">
+          <ScalarProperty Name="MACAddress" ColumnName="MACAddress" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Logout" ColumnName="Logout" />
+          <ScalarProperty Name="LoginDate" ColumnName="LoginDate" />
+          <ScalarProperty Name="LogoutDate" ColumnName="LogoutDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_Mutex">
+      <EntityTypeMapping TypeName="HMLVTSModel.TS_Mutex">
+        <MappingFragment StoreEntitySet="TS_Mutex">
+          <ScalarProperty Name="MutexFunction" ColumnName="MutexFunction" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="LoginID" ColumnName="LoginID" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_QC_Equipment">
+      <EntityTypeMapping TypeName="HMLVTSModel.TS_QC_Equipment">
+        <MappingFragment StoreEntitySet="TS_QC_Equipment">
+          <ScalarProperty Name="WOID" ColumnName="WOID" />
+          <ScalarProperty Name="WorkCenter" ColumnName="WorkCenter" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+          <ScalarProperty Name="OpSeq" ColumnName="OpSeq" />
+          <ScalarProperty Name="ProcOpSeq" ColumnName="ProcOpSeq" />
+          <ScalarProperty Name="McID" ColumnName="McID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_Rework">
+      <EntityTypeMapping TypeName="HMLVTSModel.TS_Rework">
+        <MappingFragment StoreEntitySet="TS_Rework">
+          <ScalarProperty Name="WOID" ColumnName="WOID" />
+          <ScalarProperty Name="WorkCenter" ColumnName="WorkCenter" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+          <ScalarProperty Name="OpSeq" ColumnName="OpSeq" />
+          <ScalarProperty Name="ProcOpSeq" ColumnName="ProcOpSeq" />
+          <ScalarProperty Name="ReworkRouteID" ColumnName="ReworkRouteID" />
+          <ScalarProperty Name="ReworkStartWC" ColumnName="ReworkStartWC" />
+          <ScalarProperty Name="ReworkStartOpSeq" ColumnName="ReworkStartOpSeq" />
+          <ScalarProperty Name="ReworkStartProcOpSeq" ColumnName="ReworkStartProcOpSeq" />
+          <ScalarProperty Name="ReworkQty" ColumnName="ReworkQty" />
+          <ScalarProperty Name="ReworkDate" ColumnName="ReworkDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="RouteName" ColumnName="RouteName" />
+          <ScalarProperty Name="AlertStatus" ColumnName="AlertStatus" />
+          <ScalarProperty Name="ProblemWC" ColumnName="ProblemWC" />
+          <ScalarProperty Name="ProblemOpSeq" ColumnName="ProblemOpSeq" />
+          <ScalarProperty Name="ProblemProcOpSeq" ColumnName="ProblemProcOpSeq" />
+          <ScalarProperty Name="ProblemOperatorID" ColumnName="ProblemOperatorID" />
+          <ScalarProperty Name="ProblemOperatorName" ColumnName="ProblemOperatorName" />
+          <ScalarProperty Name="ApprovedID" ColumnName="ApprovedID" />
+          <ScalarProperty Name="ApprovedName" ColumnName="ApprovedName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_Scrap">
+      <EntityTypeMapping TypeName="HMLVTSModel.TS_Scrap">
+        <MappingFragment StoreEntitySet="TS_Scrap">
+          <ScalarProperty Name="WOID" ColumnName="WOID" />
+          <ScalarProperty Name="WorkCenter" ColumnName="WorkCenter" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+          <ScalarProperty Name="OpSeq" ColumnName="OpSeq" />
+          <ScalarProperty Name="ProcOpSeq" ColumnName="ProcOpSeq" />
+          <ScalarProperty Name="ScrapQty" ColumnName="ScrapQty" />
+          <ScalarProperty Name="ScrapDate" ColumnName="ScrapDate" />
+          <ScalarProperty Name="ScrapType" ColumnName="ScrapType" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="AlertStatus" ColumnName="AlertStatus" />
+          <ScalarProperty Name="ApprovedID" ColumnName="ApprovedID" />
+          <ScalarProperty Name="ApprovedName" ColumnName="ApprovedName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_WODispatchBand">
+      <EntityTypeMapping TypeName="HMLVTSModel.TS_WODispatchBand">
+        <MappingFragment StoreEntitySet="TS_WODispatchBand">
+          <ScalarProperty Name="WOID" ColumnName="WOID" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+          <ScalarProperty Name="McID" ColumnName="McID" />
+          <ScalarProperty Name="WorkCenter" ColumnName="WorkCenter" />
+          <ScalarProperty Name="ProcOpSeq" ColumnName="ProcOpSeq" />
+          <ScalarProperty Name="ReleasedProdQty" ColumnName="ReleasedProdQty" />
+          <ScalarProperty Name="RequestedDeliveryDate" ColumnName="RequestedDeliveryDate" />
+          <ScalarProperty Name="TotalRemainingProcOpSeq" ColumnName="TotalRemainingProcOpSeq" />
+          <ScalarProperty Name="SRPTDuration" ColumnName="SRPTDuration" />
+          <ScalarProperty Name="EDDBand" ColumnName="EDDBand" />
+          <ScalarProperty Name="SRPTBand" ColumnName="SRPTBand" />
+          <ScalarProperty Name="BandDate" ColumnName="BandDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_WorkOrder">
+      <EntityTypeMapping TypeName="HMLVTSModel.TS_WorkOrder">
+        <MappingFragment StoreEntitySet="TS_WorkOrder">
+          <ScalarProperty Name="WOID" ColumnName="WOID" />
+          <ScalarProperty Name="PartID" ColumnName="PartID" />
+          <ScalarProperty Name="RequestedDeliveryDate" ColumnName="RequestedDeliveryDate" />
+          <ScalarProperty Name="CommittedDeliveryDate" ColumnName="CommittedDeliveryDate" />
+          <ScalarProperty Name="ReleasedProdQty" ColumnName="ReleasedProdQty" />
+          <ScalarProperty Name="ReleasedProdDate" ColumnName="ReleasedProdDate" />
+          <ScalarProperty Name="ActualProdQty" ColumnName="ActualProdQty" />
+          <ScalarProperty Name="ActualProdDate" ColumnName="ActualProdDate" />
+          <ScalarProperty Name="ActualRecQty" ColumnName="ActualRecQty" />
+          <ScalarProperty Name="ActualRecDate" ColumnName="ActualRecDate" />
+          <ScalarProperty Name="CompletedQty" ColumnName="CompletedQty" />
+          <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
+          <ScalarProperty Name="OutstandingQty" ColumnName="OutstandingQty" />
+          <ScalarProperty Name="OutstandingDate" ColumnName="OutstandingDate" />
+          <ScalarProperty Name="AccumulatedScrapQty" ColumnName="AccumulatedScrapQty" />
+          <ScalarProperty Name="AccumulatedScrapDate" ColumnName="AccumulatedScrapDate" />
+          <ScalarProperty Name="TotalActAdjustedQty" ColumnName="TotalActAdjustedQty" />
+          <ScalarProperty Name="TotalActAdjustedDate" ColumnName="TotalActAdjustedDate" />
+          <ScalarProperty Name="WOStatus" ColumnName="WOStatus" />
+          <ScalarProperty Name="ToolDescription" ColumnName="ToolDescription" />
+          <ScalarProperty Name="PlannerRemark" ColumnName="PlannerRemark" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="ParentWOID" ColumnName="ParentWOID" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="PPID" ColumnName="PPID" />
+          <ScalarProperty Name="SalesOrderID" ColumnName="SalesOrderID" />
+          <ScalarProperty Name="ReleasedDate" ColumnName="ReleasedDate" />
+          <ScalarProperty Name="AlertStatus" ColumnName="AlertStatus" />
+          <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+          <ScalarProperty Name="OperatorID" ColumnName="OperatorID" />
+          <ScalarProperty Name="OperatorName" ColumnName="OperatorName" />
+          <ScalarProperty Name="ApprovedID" ColumnName="ApprovedID" />
+          <ScalarProperty Name="ApprovedName" ColumnName="ApprovedName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_WorkOrderCancel">
+      <EntityTypeMapping TypeName="HMLVTSModel.TS_WorkOrderCancel">
+        <MappingFragment StoreEntitySet="TS_WorkOrderCancel">
+          <ScalarProperty Name="WOID" ColumnName="WOID" />
+          <ScalarProperty Name="PartID" ColumnName="PartID" />
+          <ScalarProperty Name="WorkCenter" ColumnName="WorkCenter" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+          <ScalarProperty Name="OpSeq" ColumnName="OpSeq" />
+          <ScalarProperty Name="ProcOpSeq" ColumnName="ProcOpSeq" />
+          <ScalarProperty Name="RequestedAdjustQty" ColumnName="RequestedAdjustQty" />
+          <ScalarProperty Name="RequestedAdjustDate" ColumnName="RequestedAdjustDate" />
+          <ScalarProperty Name="TotalActAdjustedQty" ColumnName="TotalActAdjustedQty" />
+          <ScalarProperty Name="OutstandingAdjustQty" ColumnName="OutstandingAdjustQty" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_WorkOrderCancelDetail">
+      <EntityTypeMapping TypeName="HMLVTSModel.TS_WorkOrderCancelDetail">
+        <MappingFragment StoreEntitySet="TS_WorkOrderCancelDetail">
+          <ScalarProperty Name="WOID" ColumnName="WOID" />
+          <ScalarProperty Name="PartID" ColumnName="PartID" />
+          <ScalarProperty Name="WorkCenter" ColumnName="WorkCenter" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+          <ScalarProperty Name="OpSeq" ColumnName="OpSeq" />
+          <ScalarProperty Name="ProcOpSeq" ColumnName="ProcOpSeq" />
+          <ScalarProperty Name="ActualAdjustQty" ColumnName="ActualAdjustQty" />
+          <ScalarProperty Name="ActualAdjustDate" ColumnName="ActualAdjustDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_WorkOrderExecution">
+      <EntityTypeMapping TypeName="HMLVTSModel.TS_WorkOrderExecution">
+        <MappingFragment StoreEntitySet="TS_WorkOrderExecution">
+          <ScalarProperty Name="WOID" ColumnName="WOID" />
+          <ScalarProperty Name="PartID" ColumnName="PartID" />
+          <ScalarProperty Name="ActualRecQty" ColumnName="ActualRecQty" />
+          <ScalarProperty Name="ActualRecDate" ColumnName="ActualRecDate" />
+          <ScalarProperty Name="CompletedQty" ColumnName="CompletedQty" />
+          <ScalarProperty Name="CompletedDate" ColumnName="CompletedDate" />
+          <ScalarProperty Name="OutstandingQty" ColumnName="OutstandingQty" />
+          <ScalarProperty Name="OutstandingDate" ColumnName="OutstandingDate" />
+          <ScalarProperty Name="ScrapQty" ColumnName="ScrapQty" />
+          <ScalarProperty Name="ScrapDate" ColumnName="ScrapDate" />
+          <ScalarProperty Name="AdjustedQty" ColumnName="AdjustedQty" />
+          <ScalarProperty Name="AdjustedDate" ColumnName="AdjustedDate" />
+          <ScalarProperty Name="McID" ColumnName="McID" />
+          <ScalarProperty Name="McType" ColumnName="McType" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+          <ScalarProperty Name="WorkCenter" ColumnName="WorkCenter" />
+          <ScalarProperty Name="Opseq" ColumnName="Opseq" />
+          <ScalarProperty Name="ProcOpSeq" ColumnName="ProcOpSeq" />
+          <ScalarProperty Name="WOStatus" ColumnName="WOStatus" />
+          <ScalarProperty Name="SetupStartDate" ColumnName="SetupStartDate" />
+          <ScalarProperty Name="SetupEndDate" ColumnName="SetupEndDate" />
+          <ScalarProperty Name="ProdStartDate" ColumnName="ProdStartDate" />
+          <ScalarProperty Name="ProdEndDate" ColumnName="ProdEndDate" />
+          <ScalarProperty Name="ParentWOID" ColumnName="ParentWOID" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="TotalSetupDuration" ColumnName="TotalSetupDuration" />
+          <ScalarProperty Name="ProdTotalDuration" ColumnName="ProdTotalDuration" />
+          <ScalarProperty Name="OperatorID" ColumnName="OperatorID" />
+          <ScalarProperty Name="OperatorName" ColumnName="OperatorName" />
+          <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+          <ScalarProperty Name="SendOutDate" ColumnName="SendOutDate" />
+          <ScalarProperty Name="ReceivedDate" ColumnName="ReceivedDate" />
+          <ScalarProperty Name="QtyUpdated" ColumnName="QtyUpdated" />
+          <ScalarProperty Name="PlannedDuration" ColumnName="PlannedDuration" />
+          <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_WorkOrderRoute">
+      <EntityTypeMapping TypeName="HMLVTSModel.TS_WorkOrderRoute">
+        <MappingFragment StoreEntitySet="TS_WorkOrderRoute">
+          <ScalarProperty Name="WOID" ColumnName="WOID" />
+          <ScalarProperty Name="WorkCenter" ColumnName="WorkCenter" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+          <ScalarProperty Name="OpSeq" ColumnName="OpSeq" />
+          <ScalarProperty Name="ProcOpSeq" ColumnName="ProcOpSeq" />
+          <ScalarProperty Name="McID" ColumnName="McID" />
+          <ScalarProperty Name="McType" ColumnName="McType" />
+          <ScalarProperty Name="PrioritizedNo" ColumnName="PrioritizedNo" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="RouteName" ColumnName="RouteName" />
+          <ScalarProperty Name="MacGroup" ColumnName="MacGroup" />
+          <ScalarProperty Name="AttributeGroup" ColumnName="AttributeGroup" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_WorkOrderRouteDispatch">
+      <EntityTypeMapping TypeName="HMLVTSModel.TS_WorkOrderRouteDispatch">
+        <MappingFragment StoreEntitySet="TS_WorkOrderRouteDispatch">
+          <ScalarProperty Name="WOID" ColumnName="WOID" />
+          <ScalarProperty Name="WorkCenter" ColumnName="WorkCenter" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+          <ScalarProperty Name="OpSeq" ColumnName="OpSeq" />
+          <ScalarProperty Name="ProcOpSeq" ColumnName="ProcOpSeq" />
+          <ScalarProperty Name="McID" ColumnName="McID" />
+          <ScalarProperty Name="McType" ColumnName="McType" />
+          <ScalarProperty Name="PrioritizedNo" ColumnName="PrioritizedNo" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="RouteName" ColumnName="RouteName" />
+          <ScalarProperty Name="MacGroup" ColumnName="MacGroup" />
+          <ScalarProperty Name="AttributeGroup" ColumnName="AttributeGroup" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_Operation">
+      <EntityTypeMapping TypeName="HMLVTSModel.TS_Operation">
+        <MappingFragment StoreEntitySet="TS_Operation">
+          <ScalarProperty Name="WOID" ColumnName="WOID" />
+          <ScalarProperty Name="WorkCenter" ColumnName="WorkCenter" />
+          <ScalarProperty Name="RouteID" ColumnName="RouteID" />
+          <ScalarProperty Name="OpSeq" ColumnName="OpSeq" />
+          <ScalarProperty Name="ProcOpSeq" ColumnName="ProcOpSeq" />
+          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+          <ScalarProperty Name="StopDateTime" ColumnName="StopDateTime" />
+          <ScalarProperty Name="StartType" ColumnName="StartType" />
+          <ScalarProperty Name="EndType" ColumnName="EndType" />
+          <ScalarProperty Name="McID" ColumnName="McID" />
+          <ScalarProperty Name="McType" ColumnName="McType" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="OperatorID" ColumnName="OperatorID" />
+          <ScalarProperty Name="OperatorName" ColumnName="OperatorName" />
+          <ScalarProperty Name="ShiftID" ColumnName="ShiftID" />
+          <ScalarProperty Name="AlertStatus" ColumnName="AlertStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_Parameter">
+      <EntityTypeMapping TypeName="HMLVTSModel.TS_Parameter">
+        <MappingFragment StoreEntitySet="TS_Parameter">
+          <ScalarProperty Name="Threshold" ColumnName="Threshold" />
+          <ScalarProperty Name="QCCheck" ColumnName="QCCheck" />
+          <ScalarProperty Name="SRPTThreshold" ColumnName="SRPTThreshold" />
+          <ScalarProperty Name="EDDThreshold" ColumnName="EDDThreshold" />
+          <ScalarProperty Name="WOStatusThreshold" ColumnName="WOStatusThreshold" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_PauseOperationReason">
+      <EntityTypeMapping TypeName="HMLVTSModel.TS_PauseOperationReason">
+        <MappingFragment StoreEntitySet="TS_PauseOperationReason">
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_QCDocAttachment">
+      <EntityTypeMapping TypeName="HMLVTSModel.TS_QCDocAttachment">
+        <MappingFragment StoreEntitySet="TS_QCDocAttachment">
+          <ScalarProperty Name="WOID" ColumnName="WOID" />
+          <ScalarProperty Name="Directory" ColumnName="Directory" />
+          <ScalarProperty Name="Filename" ColumnName="Filename" />
+          <ScalarProperty Name="FileStatus" ColumnName="FileStatus" />
+          <ScalarProperty Name="CheckDate" ColumnName="CheckDate" />
+          <ScalarProperty Name="AttachedDate" ColumnName="AttachedDate" />
+          <ScalarProperty Name="OperatorID" ColumnName="OperatorID" />
+          <ScalarProperty Name="OperatorName" ColumnName="OperatorName" />
+          <ScalarProperty Name="ApprovedID" ColumnName="ApprovedID" />
+          <ScalarProperty Name="ApprovedName" ColumnName="ApprovedName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_ScrapRemark">
+      <EntityTypeMapping TypeName="HMLVTSModel.TS_ScrapRemark">
+        <MappingFragment StoreEntitySet="TS_ScrapRemark">
+          <ScalarProperty Name="ScrapRemark" ColumnName="ScrapRemark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_SplitRemark">
+      <EntityTypeMapping TypeName="HMLVTSModel.TS_SplitRemark">
+        <MappingFragment StoreEntitySet="TS_SplitRemark">
+          <ScalarProperty Name="SplitRemark" ColumnName="SplitRemark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TS_TrackingRemark">
+      <EntityTypeMapping TypeName="HMLVTSModel.TS_TrackingRemark">
+        <MappingFragment StoreEntitySet="TS_TrackingRemark">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

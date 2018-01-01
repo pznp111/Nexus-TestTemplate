@@ -1,0 +1,152 @@
+﻿
+    <div class="col-md-12">
+
+
+
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="form-group" style="width:30%;display:inline-block;">
+                        <label>Machine Type</label>
+                        <select id="select_mctype" class="selector form-control " ng-change="changeMcType()" ng-model="mctype"></select>
+                    </div>
+                    <div class="form-group" style="width:30%;display:inline-block;">
+                        <label>Work Center</label>
+                        <select id="select_wc" class="selector form-control " ng-change="changeWorkCenter()" ng-model="wc"></select>
+                    </div>
+                    <div class="form-group" style="width:30%;display:inline-block;">
+                        <label>Machine ID</label>
+                        <select id="select_mcid" class="selector form-control "></select>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-default" ng-click="refresh()">Refresh</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!--<div class="col-sm-2">
+                Machine Type
+            </div>
+
+            <div class="col-sm-4">
+                Work Center
+            </div>
+
+
+            <div class="col-sm-4" id="mcid-tag">
+                Machine ID
+            </div>-->
+        </div>
+    
+        <!--<div class="row">
+            <div class="col-sm-2">
+                <select id="select_mctype" class="selector form-control " ng-change="changeMcType()" ng-model="mctype"></select>
+            </div>
+            <div class="col-sm-4">
+                <select id="select_wc" class="selector form-control " ng-change="changeWorkCenter()" ng-model="wc"></select>
+            </div>
+
+            <div class="col-sm-4" id ="mcid-selector">
+                <select id="select_mcid" class="selector form-control "></select>
+            </div>
+
+            <div class="col-sm-2" >
+                <button type="button" class="btn btn-default"  ng-click="refresh()">Refresh</button>
+            </div>
+        </div>-->
+        <div class="row">
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Prioritized WOs</h3>
+                    </div>
+
+                    <div class="panel-body">
+                        <div id="priority-table1" ng-click="getDiv(event)"></div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                    <button type="button" class="btn btn-default" ng-click="moveUp()">Move Up</button>
+                    <button type="button" class="btn btn-default" ng-click="moveDown()">Move Down</button>
+                    <button type="button" class="btn btn-default" ng-click="confirm()">Confirm</button>
+            </div>
+         </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="form-group" style="width:49%;display:inline-block;">
+                            <label>Machine ID</label>
+                            <input type="text" class="form-control " id="priority-machine-id" readonly>
+                        </div>
+                        <div class="form-group" style="width:49%;display:inline-block;">
+                            <label>Machine Type</label>
+                            <input type="text" class="form-control " id="priority-machine-type" readonly>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <button type="button" class="btn btn-default" ng-click="reAssign()">Re-Assign to other M/c</button>
+                <button type="button" class="btn btn-default" ng-click="undo()">Undo Re-Assign</button>
+            </div>
+        </div>
+
+                <!--<div class="row">-->
+                    <!--<div class="row">Prioritized WOs</div>
+                    <div class="row">
+
+                        <div class="col-md-8 table-block" id="priority-table1" ng-click="getDiv(event)"></div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-default" ng-click="moveUp()">Move Up</button>
+                            <button type="button" class="btn btn-default" ng-click="moveDown()">Move Down</button>
+                            <button type="button" class="btn btn-default" ng-click="confirm()">Confirm</button>
+
+                        </div>
+                    </div>-->
+                    <!--<div class="row">
+                        <div class="col-md-2">Machine ID</div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control " id="priority-machine-id" readonly>
+                        </div>
+                        <div class="col-md-2">Machine Type</div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control " id="priority-machine-type" readonly>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-default" ng-click="reAssign()">Re-Assign to other M/c</button>
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-default" ng-click="undo()">Undo Re-Assign</button>
+                        </div>
+                    </div>-->
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="k-grid k-widget k-reorderable table-block" id="priority-table2">
+                                        <div class="k-grid-header" style="padding-right: 17px;"><div class="k-grid-header-wrap k-auto-scrollable" data-role="resizable" style="touch-action: pan-y;"><table role="grid"><colgroup><col style="width:150px"><col style="width:150px"><col style="width:150px"><col style="width:150px"><col style="width:150px"><col style="width:150px"><col style="width:150px"><col style="width:150px"><col style="width:150px"></colgroup><thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader" data-field="woid" rowspan="1" data-title="Work Order" data-index="0" id="91151f05-050c-4cb0-99e6-571541950281" class="k-header k-with-icon" data-role="columnsorter"><a class="k-header-column-menu" href="#" tabindex="-1"><span class="k-icon k-i-arrowhead-s">Column Settings</span></a><a class="k-link" href="#">Work Order</a></th><th scope="col" role="columnheader" data-field="partID" rowspan="1" data-title="Part ID" data-index="1" id="ba63018e-5434-449c-993d-220acf870bfc" class="k-header k-with-icon" data-role="columnsorter"><a class="k-header-column-menu" href="#" tabindex="-1"><span class="k-icon k-i-arrowhead-s">Column Settings</span></a><a class="k-link" href="#">Part ID</a></th><th scope="col" role="columnheader" data-field="releaseProdQty" rowspan="1" data-title="Actual Prod Qty" data-index="2" id="664d6985-cb38-4ce5-a423-58f45ebc86f1" class="k-header k-with-icon" data-role="columnsorter"><a class="k-header-column-menu" href="#" tabindex="-1"><span class="k-icon k-i-arrowhead-s">Column Settings</span></a><a class="k-link" href="#">Actual Prod Qty</a></th><th scope="col" role="columnheader" data-field="requestedDeliveryDate" rowspan="1" data-title="Req'ed Del'y Date" data-index="3" id="08986124-6d4f-4c41-bc14-d85decbb1fd8" class="k-header k-with-icon" data-role="columnsorter"><a class="k-header-column-menu" href="#" tabindex="-1"><span class="k-icon k-i-arrowhead-s">Column Settings</span></a><a class="k-link" href="#">Req'ed Del'y Date</a></th><th scope="col" role="columnheader" data-field="workCentre" rowspan="1" data-title="Work Center" data-index="4" id="058fbec2-3ed4-4adc-934a-b246e22c5faa" class="k-header k-with-icon" data-role="columnsorter"><a class="k-header-column-menu" href="#" tabindex="-1"><span class="k-icon k-i-arrowhead-s">Column Settings</span></a><a class="k-link" href="#">Work Center</a></th><th scope="col" role="columnheader" data-field="routeID" rowspan="1" data-title="Route ID" data-index="5" id="546a44fa-109c-4eff-9d1b-7d5d982ca3bb" class="k-header k-with-icon" data-role="columnsorter"><a class="k-header-column-menu" href="#" tabindex="-1"><span class="k-icon k-i-arrowhead-s">Column Settings</span></a><a class="k-link" href="#">Route ID</a></th><th scope="col" role="columnheader" data-field="routeName" rowspan="1" data-title="Route Name" data-index="6" id="92d19d77-90b0-4727-bd5d-d59ad8c3adac" class="k-header k-with-icon" data-role="columnsorter"><a class="k-header-column-menu" href="#" tabindex="-1"><span class="k-icon k-i-arrowhead-s">Column Settings</span></a><a class="k-link" href="#">Route Name</a></th><th scope="col" role="columnheader" data-field="seqNo" rowspan="1" data-title="OpSeq" data-index="7" id="225f2078-6367-41ff-b500-7c3609e120cb" class="k-header k-with-icon" data-role="columnsorter"><a class="k-header-column-menu" href="#" tabindex="-1"><span class="k-icon k-i-arrowhead-s">Column Settings</span></a><a class="k-link" href="#">OpSeq</a></th><th scope="col" role="columnheader" data-field="procSeqNo" rowspan="1" data-title="Proc OpSeq" data-index="8" id="1ec96b6b-697e-4052-8b6c-64130d24393b" class="k-header k-with-icon" data-role="columnsorter"><a class="k-header-column-menu" href="#" tabindex="-1"><span class="k-icon k-i-arrowhead-s">Column Settings</span></a><a class="k-link" href="#">Proc OpSeq</a></th></tr></thead></table></div></div>
+                                        <table class="k-selectable">
+                                            <tbody id="priority-table2-body"></tbody>
+                                        </table>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                     </div>
+ </div>
+
+
+
+                  

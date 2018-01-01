@@ -1,0 +1,63 @@
+﻿<section id="main-wrapper" class="theme-default">
+    <!-- Left Sidebar Navigation -->
+    <aside class="sidebar sidebar-left" ng-include="'Scripts/myCompany/sideBar.html'"></aside>
+    <!-- Content wraper -->
+    <section class="main-content-wrapper">
+        <!-- Main content view  -->
+        <section id="main-content">
+            <div ui-view>
+                <div class="panel panel-default">
+                    <div class="panel-heading"><b>{{tenant.name}} Detail Information</b></div>
+                    <div class="panel-body">
+                        <div class="row" style="margin-top: 50px; margin-bottom: 60px;">
+                            <div class="col-xs-4">
+                                <div class="box box-success">
+                                    <div style="margin-top: 30px;">
+                                        <center>
+                                            <img src="../../Content/img/office-icon.png" style="width: 70px;" /><br /><br />
+                                            <span style="font-weight: bold; font-size: 17px;">{{tenant.name}}</span>
+                                            <div style="padding-bottom: 30px;">
+                                                <span style="font-weight: bold; font-size: 12px;">{{tenant.contactPerson}}</span> &nbsp;|&nbsp; <span style="font-weight: bold; font-size: 12px;">{{tenant.phoneNo}}</span>
+                                            </div>
+                                        </center>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-8">
+                                <div class="tenant-detail-lst row">
+                                    <div class="col-xs-3"><i class="fa fa-user" aria-hidden="true"></i> Contact Person</div>
+                                    <div class="col-xs-9">{{tenant.contactPerson}}</div>
+                                </div>
+                                <div class="tenant-detail-lst row">
+                                    <div class="col-xs-3"><i class="fa fa-phone" aria-hidden="true"></i> Phone Number</div>
+                                    <div class="col-xs-9">{{tenant.phoneNo}}</div>
+                                </div>
+                                <div class="tenant-detail-lst row">
+                                    <div class="col-xs-3"><i class="fa fa-envelope-o" aria-hidden="true"></i> Email</div>
+                                    <div class="col-xs-9">{{tenant.email}}</div>
+                                </div>
+                                <div class="tenant-detail-lst row">
+                                    <div class="col-xs-3"><i class="fa fa-fax" aria-hidden="true"></i> Fax</div>
+                                    <div class="col-xs-9">{{tenant.fax}}</div>
+                                </div>
+                                <div class="tenant-detail-lst row">
+                                    <div class="col-xs-3"><i class="fa fa-map-marker" aria-hidden="true" style="padding-right: 5px;"></i> Mailing Address</div>
+                                    <div class="col-xs-9">BLK {{tenant.address.blockNo}}, # {{tenant.address.floorNo}}-{{tenant.address.unitNo}}, {{tenant.address.streetName}}, {{tenant.address.city}}, {{tenant.address.country}}, S-{{tenant.address.pinCode}}</div>
+                                </div>
+                                <div class="tenant-detail-lst row">
+                                    <div class="col-xs-3"><i class="fa fa-paper-plane" aria-hidden="true"></i> Billing Address</div>
+                                    <div class="col-xs-9">BLK {{tenant.billingAddress.blockNo}}, # {{tenant.billingAddress.floorNo}}-{{tenant.billingAddress.unitNo}}, {{tenant.billingAddress.streetName}}, {{tenant.billingAddress.city}}, {{tenant.billingAddress.country}}, S-{{tenant.address.pinCode}}</div>
+                                </div>
+                                <div class="tenant-detail-lst row">
+                                    <div class="col-xs-3"><i class="fa fa-comment-o" aria-hidden="true"></i> Remarks</div>
+                                    <div class="col-xs-9">{{tenant.remarks}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    <!-- /Content wraper-->
+</section>
