@@ -1060,6 +1060,17 @@
             var reason = String($('#select_wotracking-pausereason option:selected').text()).trim();
             $("#select_wotracking-pausereason-input").val(reason);
         }
+        //'*******************************************************************
+        //'Title     :  woRemarkChanged
+        //'Function  : 
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        $scope.woRemarkChanged = function () {
+            var reason = String($('#select_wotrackingremark option:selected').text()).trim();
+            $("#select_wotrackingremark-input").val(reason);
+        }
 
         //'*******************************************************************
         //'Title     :  woSelected
@@ -1416,7 +1427,11 @@
             $("#wotracking-table2-machine").val($scope.McID);
             $("#wotracking-table2-machineType").val($scope.McType);
             $("#wotracking-table2-opseq").val($scope.ProcOpSeq);
-            $("#select_wotrackingremark").val($scope.Remark);
+            console.log("$scope.Remark", $scope.Remark);
+            if ($scope.Remark != "" && $scope.Remark != null ) {
+                $("#select_wotrackingremark").val($scope.Remark);
+                $("#select_wotrackingremark-input").val($scope.Remark);
+            }
 
 
             GenerateWOSummaryScrap();
@@ -2827,7 +2842,10 @@
             $scope.ProdStartDate = String($scope.selectedWOIDData['prodStartDate']).trim();
             $scope.ProdEndDate = String($scope.selectedWOIDData['prodEndDate']).trim();
             $scope.ParentWOID = String($scope.selectedWOIDData['parentWOID']).trim();
-            $scope.Remark = String($scope.selectedWOIDData['remark']).trim();
+            if ($scope.selectedWOIDData['remark'] != null) {
+                $scope.Remark = String($scope.selectedWOIDData['remark']).trim();
+            }
+            
             //  $scope.PPID = $scope.selectedWOIDData['partID'];
             // $scope.SalesOrderID = $scope.selectedWOIDData['partID'];
             //  $scope.ReleasedDate = $scope.selectedWOIDData['partID'];
@@ -3989,23 +4007,23 @@
 
             $("#wotracking-table1").kendoGrid({
                 dataSource: {
-                    data,
-                    pageSize: 20
+                    data
+                    //    ,
+                    //pageSize: 20
                 },
                 dataType: "json",
                 selectable: "true",
-                height: 250,
-                pageable: {
-                    refresh: true,
-                    pageSizes: true,
-                    buttonCount: 5
-                },
+                height: 200,
+                //pageable: {
+                //    refresh: true,
+                //    pageSizes: true,
+                //    buttonCount: 5
+                //},
 
-                pageable: true,
+               // pageable: true,
 
                 //pageSize: 10,
                 sortable: true,
-                pageable: true,
                 //groupable: true,
                 filterable: true,
                 columnMenu: true,
@@ -4236,23 +4254,23 @@
 
             $("#wotracking-tableSubAssembly").kendoGrid({
                 dataSource: {
-                    data,
-                    pageSize: 20
+                    data
+                    //    ,
+                    //pageSize: 20
                 },
                 dataType: "json",
                 selectable: "true",
-                height: 250,
-                pageable: {
-                    refresh: true,
-                    pageSizes: true,
-                    buttonCount: 5
-                },
+                height: 200,
+                //pageable: {
+                //    refresh: true,
+                //    pageSizes: true,
+                //    buttonCount: 5
+                //},
 
-                pageable: true,
+               // pageable: true,
 
                 //pageSize: 10,
                 sortable: true,
-                pageable: true,
                 //groupable: true,
                 filterable: true,
                 columnMenu: true,
@@ -5067,7 +5085,13 @@
 
         }
 
-
+        //'*******************************************************************
+        //'Title     :  findSelectorFullInfo
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    : find procopseq by woid
+        //'*******************************************************************
         function findSelectorFullInfo(woid) {
             console.log("findSelectorFullInfo",woid);
             console.log("findSelectorFullInfo selectData", $scope.selectData);
@@ -5096,7 +5120,6 @@
                 console.log("GenerateScrapRemark", response);
                 if (response.length != 0) {
                     if (response[0].data.success) {
-                        //  $scope.selectData = response[0].data.result;
                         createSelect(response[0].data.result, "preprocessremark");
                         createSelect(response[0].data.result, "wotracking-scrap-remark");
                         //   createSelect(response[0].data.result, "select_input_woid");
@@ -5308,10 +5331,10 @@
             $scope.fnCheckPriorityConfigVar = false;
             var promiseArray1 = [];
             promiseArray1.push(
-$http.post(config.baseUrlApi + 'HMLVTS/fnCheckPriorityConfig', {
-    'WorkCenter': $scope.WorkCenter
-})
-);
+            $http.post(config.baseUrlApi + 'HMLVTS/fnCheckPriorityConfig', {
+                'WorkCenter': $scope.WorkCenter
+                })
+            );
 
             $q.all(promiseArray1).then(function (response) {
                 console.log("fnCheckPriorityConfig", response);
@@ -5524,7 +5547,8 @@ $http.post(config.baseUrlApi + 'HMLVTS/fnCheckPriorityConfig', {
                         'McID': $scope.McID,//
                         'TotalSetupDuration': parseFloat(TotalSetupDuration),//
                         'ProdTotalDuration': convertDatetimeToSecond(subcontime),//
-                        'Remark': String($('#select_wotrackingremark option:selected').text()).trim(),//
+                       // 'Remark': String($('#select_wotrackingremark option:selected').text()).trim(),//
+                        'Remark': String($('#select_wotrackingremark-input').val()).trim(),//
                         'WOID': $scope.selectedWOIDData['woid'],//
                         'ProcOpSeq': $scope.ProcOpSeq,//
                         'WorkCenter': $scope.WorkCenter//
@@ -5860,7 +5884,8 @@ $http.post(config.baseUrlApi + 'HMLVTS/fnCheckPriorityConfig', {
                    'McID': $scope.McID,//
                    'TotalSetupDuration': parseFloat(TotalSetupDuration),//
                    'ProdTotalDuration': convertDatetimeToSecond(subcontime),//
-                   'Remark': String($('#select_wotrackingremark option:selected').text()).trim(),//
+                   //'Remark': String($('#select_wotrackingremark option:selected').text()).trim(),//
+                   'Remark': String($('#select_wotrackingremark-input').val()).trim(),//
                    'WOID': $scope.selectedWOIDData['woid'],//
                    'ProcOpSeq': $scope.ProcOpSeq,//
                    'WorkCenter': $scope.WorkCenter//
@@ -6645,7 +6670,8 @@ $http.post(config.baseUrlApi + 'HMLVTS/fnCheckPriorityConfig', {
                         'McID': $scope.McID,//
                         'TotalSetupDuration': parseFloat(TotalSetupDuration),//
                         'ProdTotalDuration': convertDatetimeToSecond(subcontime),//
-                        'Remark': String($('#select_wotrackingremark option:selected').text()).trim(),//
+                        //'Remark': String($('#select_wotrackingremark option:selected').text()).trim(),//
+                        'Remark': String($('#select_wotrackingremark-input').val()).trim(),//
                         'WOID': $scope.selectedWOIDData['woid'],//
                         'ProcOpSeq': $scope.ProcOpSeq,//
                         'WorkCenter': $scope.WorkCenter//
@@ -6803,7 +6829,8 @@ $http.post(config.baseUrlApi + 'HMLVTS/fnCheckPriorityConfig', {
                         'McID': $scope.McID,//
                         'TotalSetupDuration': parseFloat(TotalSetupDuration),//
                         'ProdTotalDuration': convertDatetimeToSecond(subcontime),//
-                        'Remark': String($('#select_wotrackingremark option:selected').text()).trim(),//
+                        //'Remark': String($('#select_wotrackingremark option:selected').text()).trim(),//
+                        'Remark': String($('#select_wotrackingremark-input').val()).trim(),//
                         'WOID': $scope.selectedWOIDData['woid'],//
                         'ProcOpSeq': $scope.ProcOpSeq,//
                         'WorkCenter': $scope.WorkCenter//
@@ -7123,7 +7150,8 @@ $http.post(config.baseUrlApi + 'HMLVTS/fnCheckPriorityConfig', {
                    'McID': $scope.McID,//
                    'TotalSetupDuration': parseFloat(TotalSetupDuration),//
                    'ProdTotalDuration': convertDatetimeToSecond(subcontime),//
-                   'Remark': String($('#select_wotrackingremark option:selected').text()).trim(),//
+                   // 'Remark': String($('#select_wotrackingremark option:selected').text()).trim(),//
+                   'Remark': String($('#select_wotrackingremark-input').val()).trim(),//
                    'WOID': $scope.selectedWOIDData['woid'],//
                    'ProcOpSeq': $scope.ProcOpSeq,//
                    'WorkCenter': $scope.WorkCenter//
@@ -7347,7 +7375,8 @@ $http.post(config.baseUrlApi + 'HMLVTS/fnCheckPriorityConfig', {
                 'McID': $scope.McID,//
                 'TotalSetupDuration': parseFloat(TotalSetupDuration),//
                 'ProdTotalDuration': convertDatetimeToSecond(subcontime),//
-                'Remark': String($('#select_wotrackingremark option:selected').text()).trim(),//
+               //'Remark': String($('#select_wotrackingremark option:selected').text()).trim(),//
+                'Remark': String($('#select_wotrackingremark-input').val()).trim(),//
                 'WOID': $scope.selectedWOIDData['woid'],//
                 'ProcOpSeq': $scope.ProcOpSeq,//
                 'WorkCenter': $scope.WorkCenter//
@@ -7877,7 +7906,7 @@ $http.post(config.baseUrlApi + 'HMLVTS/fnCheckPriorityConfig', {
                    
 
                     GenerateWOSummary();
-                    GenerateWOSummaryScrap
+                    GenerateWOSummaryScrap();
                     $scope.WOGlobalWOReceivedQty = $scope.PreviousRecQty;
                     //3 - actual receive qty WIP-td3_1
                     //4 completed qty
@@ -9428,7 +9457,8 @@ $http.post(config.baseUrlApi + 'HMLVTS/fnCheckPriorityConfig', {
                    'McID': $scope.McID,//
                    'TotalSetupDuration': parseFloat(TotalSetupDuration),//
                    'ProdTotalDuration': convertDatetimeToSecond(subcontime),//
-                   'Remark': String($('#select_wotrackingremark option:selected').text()).trim(),//
+                  // 'Remark': String($('#select_wotrackingremark option:selected').text()).trim(),//
+                   'Remark': String($('#select_wotrackingremark-input').val()).trim(),//
                    'WOID': $scope.selectedWOIDData['woid'],//
                    'ProcOpSeq': $scope.ProcOpSeq,//
                    'WorkCenter': $scope.WorkCenter//
@@ -9565,7 +9595,8 @@ $http.post(config.baseUrlApi + 'HMLVTS/fnCheckPriorityConfig', {
                     //'McID': $scope.McID,//
                     'TotalSetupDuration': parseFloat(TotalSetupDuration),//
                     'ProdTotalDuration': parseFloat(subcontime),//
-                    'Type': String($('#select_wotrackingremark option:selected').text()).trim(),//
+                   // 'Type': String($('#select_wotrackingremark option:selected').text()).trim(),//
+                    'Type': String($('#select_wotrackingremark-input').val()).trim(),//
                     'WOID': $scope.selectedWOIDData['woid'],//
                     'ProcOpSeq': $scope.ProcOpSeq,//
                     'WorkCenter': $scope.WorkCenter//
@@ -10487,7 +10518,7 @@ $http.post(config.baseUrlApi + 'HMLVTS/fnCheckPriorityConfig', {
             //var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
             //var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : "";
             //var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
-           // return hDisplay + ":" + mDisplay + ":" + sDisplay;
+            // return hDisplay + ":" + mDisplay + ":" + sDisplay;
 
             return h + ":" + m + ":" + s;
         }

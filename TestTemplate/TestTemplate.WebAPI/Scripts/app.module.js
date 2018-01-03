@@ -46,7 +46,8 @@
         'erp.wostatus',
         'erp.releasedReport',
         'erp.lockReport',
-        'erp.wotracking'
+        'erp.wotracking',
+        'erp.qctracking'
 
     ]);
 })();

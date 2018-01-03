@@ -1178,16 +1178,16 @@
 
                         },
                         {
-                            field: "opSeq", title: "Op Seq", width: 150
+                            field: "opSeq", title: "Op Seq", width: 50
                         },
                          {
-                             field: "procOpSeq", title: "ProcOpSeq", width: 150
+                             field: "procOpSeq", title: "ProcOpSeq", width: 50
                          },
                          {
                              field: "mcID", title: "Machine ID", width: 150
                          },
                          {
-                             field: "mcType", title: "Machine Type", width: 150
+                             field: "mcType", title: "Machine Type", width: 100
                          },
                          {
                              field: "column7", title: "Start Time", width: 150
@@ -1196,7 +1196,7 @@
                              field: "column8", title: "End Time", width: 150
                          },
                          {
-                             field: "SetupStartDate", title: "Setup Duration(HH:MM:SS)", width: 150
+                             field: "setupStartDate", title: "Setup Duration(HH:MM:SS)", width: 150
                          },
                          {
                              field: "prodEndDate", title: "Production Duration(HH:MM:SS)", width: 150
@@ -1205,13 +1205,13 @@
                              field: "plannedDuration", title: "Planned Duration(HH:MM:SS)", width: 150
                          },
                          {
-                             field: "scrapQty", title: "Scrap Qty", width: 150
+                             field: "scrapQty", title: "Scrap Qty", width: 100
                          },
                          {
                              field: "operatorName", title: "Operator Name", width: 150
                          },
                          {
-                             field: "shiftID", title: "Shift ID", width: 150
+                             field: "shiftID", title: "Shift ID", width: 50
                          },
                          {
                              field: "remark", title: "Remarks", width: 150

@@ -382,7 +382,7 @@ div.tab button.active {
     border-top: 1px solid #ddd;
     font-family: "Open Sans", Helvetica, Arial, sans-serif;
     /*color: #565656;*/
-        font-size: 0.6em;
+        font-size: 0.85em;
         font-weight: bold;
         height:10px;white-space:nowrap;
 
@@ -692,13 +692,14 @@ ol.example li.placeholder:before {
 .table-control-padding-font{
     padding:1px !important;
     font-size:0.65em;
-        background-color: #27b6af !important;
+        background-color: #1d212a !important;
             color: white;
 }
 
 .table-control-padding-font-1{
     padding:1px !important;
-    font-size:0.65em;
+    font-size:0.85em;
+    font-weight: bold;
 }
 
 .remove-margin-bottom{

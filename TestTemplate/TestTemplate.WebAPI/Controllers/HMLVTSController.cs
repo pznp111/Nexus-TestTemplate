@@ -4252,6 +4252,36 @@ namespace TestTemplate.WebAPI.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
+        [HttpGet]
+        public HttpResponseMessage GenerateQCWOList()
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.GenerateQCWOList();
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
+        [HttpPost]
+        public HttpResponseMessage GetCurrentShiftID([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.GetCurrentShiftID(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
         
 
 

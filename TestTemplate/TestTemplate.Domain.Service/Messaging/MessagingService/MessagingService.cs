@@ -146,6 +146,7 @@ namespace TestTemplate.Domain.Service.Messaging.MessagingService
         public string AccumulatedScrapQty { get; set; }
         public string AccumulatedScrapDate { get; set; }
         public string DiscardReason { get; set; }
+        public string CurrentTime { get; set; }
 
     }
 }

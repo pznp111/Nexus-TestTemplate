@@ -306,7 +306,7 @@
                // pageable: true,
 
                 //pageSize: 10,
-                // sortable: true,
+                 sortable: true,
                 resizable: true,
                // pageable: true,
                 //groupable: true,
@@ -323,25 +323,25 @@
 
                  },
                  {
-                     field: "woid", title: "Work Order", width: 150
+                     field: "woid", title: "Work Order", width: 120
 
                  },
 
                  {
-                     field: "poNumber", title: "PO Number", width: 150
+                     field: "poNumber", title: "PO Number", width: 120
 
                  },
                 {
                     field: "partID", title: "PartNo.", width: 150
                 },
                  {
-                     field: "workcenter", title: "Work Center", width: 150
+                     field: "workcenter", title: "Work Center", width: 100
                  },
                   {
-                      field: "procOpSeq", title: "Proc Op Seq", width: 150
+                      field: "procOpSeq", title: "Proc Op Seq", width: 80
                   },
                  {
-                     field: "scrapQty", title: "Scrap Qty", width: 150
+                     field: "scrapQty", title: "Scrap Qty", width: 80
 
                  },
                  {
@@ -349,7 +349,7 @@
 
                  },
                  {
-                     field: "scrapType", title: "Scrap Type", width: 150
+                     field: "scrapType", title: "Scrap Type", width: 100
 
                  },
                  {
@@ -363,7 +363,7 @@
                     field: "remark", title: "Remark", width: 150
                 },
                 {
-                    field: "alertStatus", title: "Alert Status", width: 150
+                    field: "alertStatus", title: "Alert Status", width: 100
                 }
                 ]
             })

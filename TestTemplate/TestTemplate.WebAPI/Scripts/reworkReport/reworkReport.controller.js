@@ -295,7 +295,7 @@
                // pageable: true,
 
                 //pageSize: 10,
-                // sortable: true,
+                //fd sortable: true,
                 resizable: true,
                 //pageable: true,
                 //groupable: true,
@@ -312,7 +312,7 @@
 
                  },
                  {
-                     field: "woid", title: "Work Order", width: 150
+                     field: "woid", title: "Work Order", width: 120
 
                  },
 
@@ -330,10 +330,10 @@
                      field: "routeName", title: "Route Name", width: 150
                  },
                   {
-                      field: "procOpSeq", title: "Proc Op Seq", width: 150
+                      field: "procOpSeq", title: "Proc Op Seq", width: 80
                   },
                   {
-                      field: "opSeq", title: "Op Seq", width: 150
+                      field: "opSeq", title: "Op Seq", width: 80
                   },
                  {
                      field: "reworkStartWC", title: "Rework Start Work Centre", width: 200

@@ -263,7 +263,7 @@
                // pageable: true,
 
                 //pageSize: 10,
-                // sortable: true,
+                 sortable: true,
                 resizable: true,
               //  pageable: true,
                 //groupable: true,
@@ -280,19 +280,19 @@
 
                  },
                  {
-                     field: "woid", title: "Work Order", width: 150
+                     field: "woid", title: "Work Order", width: 120
 
                  },
 
                  {
-                     field: "poNumber", title: "PO Number", width: 150
+                     field: "poNumber", title: "PO Number", width: 120
 
                  },
                 {
                     field: "partID", title: "PartNo.", width: 150
                 },
                  {
-                     field: "actualProdQty", title: "Actual Production Qty", width: 150
+                     field: "actualProdQty", title: "Actual Production Qty", width: 80
                  },
                  {
                      field: "plannerRemark", title: "Planner Remarks", width: 150
@@ -304,7 +304,7 @@
                     field: "operatorName", title: "Operator Name", width: 150
                 },
                 {
-                    field: "releasedProdDate", title: "Released Production Date", width: 150
+                    field: "releasedProdDate", title: "Released Production Date", width: 120
                 },
                 //{
                 //    field: "alertStatus", title: "Alert Status", width: 150
@@ -372,7 +372,7 @@
                 //pageable: true,
 
                 //pageSize: 10,
-                // sortable: true,
+                 sortable: true,
                 resizable: true,
                 //pageable: true,
                 //groupable: true,
@@ -389,19 +389,19 @@
 
                  },
                  {
-                     field: "woid", title: "Work Order", width: 150
+                     field: "woid", title: "Work Order", width: 120
 
                  },
 
                  {
-                     field: "poNumber", title: "PO Number", width: 150
+                     field: "poNumber", title: "PO Number", width: 120
 
                  },
                 {
                     field: "partID", title: "PartNo.", width: 150
                 },
                  {
-                     field: "actualProdQty", title: "Actual Production Qty", width: 150
+                     field: "actualProdQty", title: "Actual Production Qty", width: 80
                  },
                  {
                      field: "plannerRemark", title: "Planner Remarks", width: 150
@@ -419,7 +419,7 @@
                     field: "remark", title: "Remark", width: 150
                 },
                 {
-                    field: "woStatus", title: "WO Status", width: 150
+                    field: "woStatus", title: "WO Status", width: 80
                 }               
                 ]
             })

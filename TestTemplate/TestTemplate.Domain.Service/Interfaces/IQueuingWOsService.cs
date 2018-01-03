@@ -373,7 +373,9 @@ namespace TestTemplate.Domain.Service.Interfaces
         QueryResponse CheckAnyChildNotCompletedOwn2(MessagingService request);
         QueryResponse GenerateOperatorList(MessagingService request);
         QueryResponse cmdConfirm_ClickCase10(MessagingService request);
-        
+        QueryResponse GetCurrentShiftID(MessagingService request);     
+        QueryResponse GenerateQCWOList();
+
 
 
 

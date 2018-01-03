@@ -396,11 +396,12 @@ var outSide = [];//for tab toggling
                 var expectedDate = new Date(dateTime[0], dateTime[1] - 1, dateTime[2]);
                 console.log("highlight requestedDeliveryDate expectedDate", expectedDate);
                 var today = new Date();
+                today.setHours(0, 0, 0, 0);
                 var compareDate = expectedDate;
                 compareDate.setDate(compareDate.getDate() - $scope.threshold);
 
 
-                if (today >= expectedDate) {
+                if (today > expectedDate) {
                     //red
                     $scope.highlight.push("#FFCCFF");
                 } else {

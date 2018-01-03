@@ -46,6 +46,26 @@ namespace TestTemplate.Domain.Service.Implementations
 
         }
 
+        public QueryResponse GenerateQCWOList()
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().GenerateQCWOList());
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+
+        }
+
         public QueryResponse GenerateWOLock()
         {
             QueryResponse response = new QueryResponse();
@@ -5793,7 +5813,29 @@ namespace TestTemplate.Domain.Service.Implementations
 
         }
 
+        public QueryResponse GetCurrentShiftID(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().GetCurrentShiftID(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+
+        }
+
         
+
+
 
 
 

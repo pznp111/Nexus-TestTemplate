@@ -20,6 +20,14 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
             return _query;
         }
 
+        public Query GenerateQCWOList()
+        {
+            _query = new Query(NamedQuery.GenerateQCWOList);
+            return _query;
+        }
+
+        
+
         public Query GenerateWOLock()
         {
             _query = new Query(NamedQuery.GenerateWOLock);
@@ -3157,7 +3165,17 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
             return _query;
         }
 
+
+        public Query GetCurrentShiftID(MessagingService request)
+        {
+            _query = new Query(NamedQuery.GetCurrentShiftID);
+            _query.Add(new Criterion("@CurrentTime", request.CurrentTime));
+            return _query;
+        }
+
+
         
+
 
 
 

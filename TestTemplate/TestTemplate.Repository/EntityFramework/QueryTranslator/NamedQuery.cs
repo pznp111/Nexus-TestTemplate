@@ -29,6 +29,7 @@ namespace TestTemplate.Repository.EntityFramework.QueryTranslator
         public const string SENTIMENT_SCORE_BY_REVIEW_DATE = "usp_Sentiment_Query_SentimentScoreByReviewDate";
         public const string SENTIMENT_SCORE_BY_REVIEW_DATE_MONTH = "usp_Sentiment_Query_SentimentScoreByReviewDateMonth";
 
+        public const string GenerateQCWOList = "GenerateQCWOList";
         public const string fnCheckPrioriftyConfig = "fnCheckPrioriftyConfig";
         public const string CheckAnyChildNotCompleted1 = "CheckAnyChildNotCompleted1";
         public const string CheckAnyChildNotCompleted2 = "CheckAnyChildNotCompleted2";
@@ -339,6 +340,7 @@ namespace TestTemplate.Repository.EntityFramework.QueryTranslator
         public const string CheckAnyChildNotCompletedOwn2 = "CheckAnyChildNotCompletedOwn2";
         public const string GenerateOperatorList = "GenerateOperatorList";
         public const string cmdConfirm_ClickCase10 = "cmdConfirm_ClickCase10";
+        public const string GetCurrentShiftID = "GetCurrentShiftID";
         #endregion "Sentiment"
     }
 }

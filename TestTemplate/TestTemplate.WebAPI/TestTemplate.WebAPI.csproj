@@ -252,6 +252,9 @@
     <Content Include="Scripts\operatorReport\operatorReport.controller.js" />
     <Content Include="Scripts\operatorReport\operatorReport.html" />
     <Content Include="Scripts\operatorReport\operatorReport.module.js" />
+    <Content Include="Scripts\qctracking\qctracking.controller.js" />
+    <Content Include="Scripts\qctracking\qctracking.html" />
+    <Content Include="Scripts\qctracking\qctracking.module.js" />
     <Content Include="Scripts\releasedReport\releasedReport.controller.js" />
     <Content Include="Scripts\releasedReport\releasedReport.html" />
     <Content Include="Scripts\releasedReport\releasedReport.module.js" />

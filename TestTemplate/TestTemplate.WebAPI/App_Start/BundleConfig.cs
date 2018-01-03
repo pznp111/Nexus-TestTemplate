@@ -188,7 +188,10 @@ namespace TestTemplate.WebAPI
                         "~/Scripts/lockReport/lockReport.controller.js",
 
                         "~/Scripts/wotracking/wotracking.module.js",
-                        "~/Scripts/wotracking/wotracking.controller.js"
+                        "~/Scripts/wotracking/wotracking.controller.js",
+
+                        "~/Scripts/qctracking/qctracking.module.js",
+                        "~/Scripts/qctracking/qctracking.controller.js"
 
 
                         ));

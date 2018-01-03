@@ -762,29 +762,47 @@
             // instantiate a loader
             //var loader = new THREE.OBJLoader();
 
-            //// load a resource
+            // load a resource
             //loader.load(
-            //    // resource URL
-            //    'C:/Nexus Web Dashboard/Original Version updated/Configuration_NEXUS/TestTemplate/TestTemplate/TestTemplate/TestTemplate.WebAPI/Content/box.obj',
-            //    // called when resource is loaded
+            //     resource URL
+            //    'Content/box.obj',
+            //     called when resource is loaded
             //    function (object) {
 
             //        scene.add(object);
 
             //    },
-            //    // called when loading is in progresses
+            //     called when loading is in progresses
             //    function (xhr) {
 
             //        console.log((xhr.loaded / xhr.total * 100) + '% loaded');
 
             //    },
-            //    // called when loading has errors
+            //     called when loading has errors
             //    function (error) {
 
             //        console.log('An error happened');
 
             //    }
             //);
+        //    var loader = new THREE.OBJLoader();
+        //    loader.load('Content/img/box.obj', function (object) {
+
+        //        object.traverse(function (child) {
+
+        //            if (child instanceof THREE.Mesh) {
+
+        //                child.material.map = texture;
+
+        //            }
+
+        //        });
+
+        //        object.position.y = -95;
+        //        scene.add(object);
+
+        //   // }, onProgress, onError);
+        //});
 
 
             console.log("$scope.McID", $scope.McID);
@@ -969,8 +987,12 @@
             //var cubeGeometryNew = new THREE.BoxGeometry(40, 40, 40);
             // var color1 = new THREE.Color("rgb(244, 66, 66)");
             var color1 = new THREE.Color(getColor(String(machine).trim()));
-            console.log("makeVoxel",color1);
+            console.log("makeVoxel", color1);
             var cubeMaterialNew = new THREE.MeshLambertMaterial({ color1, overdraw: 0.5 });
+            var textureCraft = new THREE.TextureLoader().load('Content/img/crate.gif');
+            var cubeTestTextureMaterial = new THREE.MeshBasicMaterial({ map: textureCraft });
+
+
             console.log("makeVoxel cubeMaterialNew", cubeMaterialNew);
             console.log("makeVoxel cubeMaterialNew1", new THREE.MeshLambertMaterial({ color, overdraw: 0.5 }));
             cubeMaterialNew.color.b = color1.b;
@@ -979,7 +1001,8 @@
 
 
 
-            var voxel = new THREE.Mesh(cubeGeometry, cubeMaterialNew);
+            //  var voxel = new THREE.Mesh(cubeGeometry, cubeMaterialNew);
+            var voxel = new THREE.Mesh(cubeGeometry, cubeTestTextureMaterial);
             voxel.position.copy(new THREE.Vector3(x, y, z));//.add(intersect.face.normal);
             voxel.position.divideScalar(50).floor().multiplyScalar(50).addScalar(25);
             voxel.McID = machine;

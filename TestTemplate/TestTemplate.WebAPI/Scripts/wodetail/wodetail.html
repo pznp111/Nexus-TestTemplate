@@ -113,7 +113,12 @@
 </div>
 
 <div class="row row-custom-margin">
+
+    <div class="row">
                                     <div class ="col-md-6" >
+
+                                        <div class="row " style="margin-left: 0px;">
+                                            <div class="col-sm-12">
                                     <div class ="panel panel-default">
                                         <div class="panel-heading">
                                             <h3 class ="panel-title">
@@ -147,7 +152,34 @@
                                         </div>
 
                                      </div>
+                                                </div>
                                         </div>
+                                        <div class="row ">
+                                                        <div class="row row-custom-margin" style="margin-top:15px; margin-left: 5px;">
+        <div class="col-sm-3">
+            <div class="yellow-background col-sm-1 small-border" style="height:100%;width:10%;">&nbsp;</div>
+            <div class="col-sm-4" style="font-size:0.6em">Processing or completed</div>
+        </div>
+
+        <div class="col-sm-3">
+            <div class="col-sm-1 small-border" style="height:100%;width:10%;background:#fff;">&nbsp;</div>
+            <div class="col-sm-4" style="font-size:0.6em">To be started</div>
+        </div>
+
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-click ="ExecutionHistory()">Execution History</button>
+        </div>
+
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fileUploadModal" >QC Attachment</button>
+        </div>
+
+
+    </div>
+                                        </div>
+                                        </div>
+
+        
                                          <div class ="col-md-3" >
                                              
 
@@ -190,31 +222,19 @@
                                      </div>
 
                                                  </div>
+
+        </div>
+
+
+
+
+
                                              </div>
 
             
 </div>
 
-    <div class="row row-custom-margin" style="margin-top:15px; margin-left: 5px;">
-        <div class="col-sm-3">
-            <div class="yellow-background col-sm-1 small-border" style="height:100%;width:10%;">&nbsp;</div>
-            <div class="col-sm-4" style="font-size:0.6em">Processing or completed</div>
-        </div>
 
-        <div class="col-sm-3">
-            <div class="col-sm-1 small-border" style="height:100%;width:10%;background:#fff;">&nbsp;</div>
-            <div class="col-sm-4" style="font-size:0.6em">To be started</div>
-        </div>
-
-        <div class="col-sm-3">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-click ="ExecutionHistory()">Execution History</button>
-        </div>
-
-        <div class="col-sm-3">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fileUploadModal" >QC Attachment</button>
-        </div>
-
-    </div>
 
 
 <div id="myModal" class="modal fade" role="dialog">
