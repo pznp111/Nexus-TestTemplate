@@ -31,7 +31,12 @@ namespace TestTemplate.Domain.Service.Interfaces
         QueryResponse productionPauseCase20_1(MessagingService request);
         QueryResponse productionPauseCase20_1_1(MessagingService request);
         QueryResponse setupPauseCase20_1(MessagingService request);
+        QueryResponse cmdQCResume_ClickCase10(MessagingService request);
+
         
+        QueryResponse QCPauseCase20_1(MessagingService request);
+        
+
         QueryResponse productionPauseCase20_2(MessagingService request);
         QueryResponse productionPauseCase20_3(MessagingService request);
         QueryResponse cmdConfirm_ClickCase40_1(MessagingService request);
@@ -39,6 +44,7 @@ namespace TestTemplate.Domain.Service.Interfaces
         
         QueryResponse setupStartCase40_1(MessagingService request);
         QueryResponse setupStartCase40_2(MessagingService request);
+        QueryResponse setupStartCase40_2_1(MessagingService request);
         QueryResponse setupStartCase40_3(MessagingService request);
         QueryResponse setupStartCase40_4(MessagingService request);
         QueryResponse setupStartCase40_5(MessagingService request);
@@ -100,10 +106,12 @@ namespace TestTemplate.Domain.Service.Interfaces
         QueryResponse CalculateTimeSpan1(MessagingService request);
         QueryResponse CalculateTimeSpan2(MessagingService request);
         QueryResponse CalculateTimeSpan3(MessagingService request);
+        QueryResponse CalculateTimeSpan3_1(MessagingService request);
         QueryResponse CalculateTimeSpan4(MessagingService request);
         QueryResponse CalculateTimeSpan5(MessagingService request);
         QueryResponse CalculateTimeSpan6(MessagingService request);
         QueryResponse CalculateTimeSpan7(MessagingService request);
+        QueryResponse CalculateTimeSpan7_1(MessagingService request);
         QueryResponse CheckSubconWOOpnStatus(MessagingService request);
         QueryResponse CalculateSubconTimeSpan(MessagingService request);
         
@@ -112,6 +120,8 @@ namespace TestTemplate.Domain.Service.Interfaces
         QueryResponse fnTrackSetupConfig(MessagingService request);
         QueryResponse CheckWOOpnStatus1(MessagingService request);
         QueryResponse CheckWOOpnStatus2(MessagingService request);
+        QueryResponse CheckQCWOOpnStatus1(MessagingService request);
+        QueryResponse CheckQCWOOpnStatus2(MessagingService request);
         QueryResponse CheckWOOpnStatus2_1(MessagingService request);
         QueryResponse CheckWOOpnStatus3(MessagingService request);
         QueryResponse CheckWOOpnStatus3_1(MessagingService request);
@@ -119,6 +129,7 @@ namespace TestTemplate.Domain.Service.Interfaces
         QueryResponse UpdateQtyFromPreviousProcOpSeq2(MessagingService request);
 
         QueryResponse comboWO_Selected_wotraking(MessagingService request);
+        QueryResponse comboWO_Selected_wotraking1(MessagingService request);
         QueryResponse fnUpdateRoute(MessagingService request);
         QueryResponse getWOdetail(MessagingService request);
         QueryResponse FunctionUnLockWO(MessagingService request);
@@ -150,6 +161,7 @@ namespace TestTemplate.Domain.Service.Interfaces
         QueryResponse Generate_RouteDetail3(MessagingService request);
         QueryResponse CalculateDuration1(MessagingService request);
         QueryResponse CalculateDuration2(MessagingService request);
+        QueryResponse CalculateQCDuration(MessagingService request);      
         QueryResponse CalculateDuration3(MessagingService request);
 
 
@@ -184,6 +196,7 @@ namespace TestTemplate.Domain.Service.Interfaces
 
         QueryResponse cmdUpdateReceived_ClickCase7(MessagingService request);
         QueryResponse cmdUpdateReceived_ClickCase10_1(MessagingService request);
+        QueryResponse cmdUpdateReceived_ClickCase10_1_1(MessagingService request);
         QueryResponse cmdUpdateReceived_ClickCase10_2(MessagingService request);
         QueryResponse cmdUpdateReceived_ClickCase30(MessagingService request);
 
@@ -191,6 +204,7 @@ namespace TestTemplate.Domain.Service.Interfaces
         QueryResponse cmdUpdateReceived_ClickCase80_2(MessagingService request);
         QueryResponse cmdUpdateReceived_ClickCase95_1(MessagingService request);
         QueryResponse cmdUpdateReceived_ClickCase95_2(MessagingService request);
+        QueryResponse cmdUpdateReceived_ClickCase95_3(MessagingService request);
         QueryResponse UpdateWorkOrderQty(MessagingService request);
         QueryResponse CheckAnyChildNotCompleted1(MessagingService request);
         QueryResponse CheckAnyChildNotCompleted2(MessagingService request);
@@ -373,7 +387,24 @@ namespace TestTemplate.Domain.Service.Interfaces
         QueryResponse CheckAnyChildNotCompletedOwn2(MessagingService request);
         QueryResponse GenerateOperatorList(MessagingService request);
         QueryResponse cmdConfirm_ClickCase10(MessagingService request);
-        QueryResponse GetCurrentShiftID(MessagingService request);     
+        QueryResponse GetCurrentShiftID(MessagingService request);
+        QueryResponse GenerateQCEquipmentList(MessagingService request);
+        QueryResponse GenerateSeletedQCEquipmentList(MessagingService request);
+        QueryResponse cmdAdd_Click(MessagingService request);
+        QueryResponse cmdDelete_Click(MessagingService request);
+
+        QueryResponse fnUpdateOperator1(MessagingService request);
+        QueryResponse fnUpdateOperator2(MessagingService request);
+        QueryResponse fnUpdateOperator3(MessagingService request);
+        QueryResponse fnUpdateOperator4(MessagingService request);
+        QueryResponse fnUpdateOperator5(MessagingService request);
+        QueryResponse fnUpdateOperator6(MessagingService request);
+        QueryResponse fnUpdateOperator7(MessagingService request);
+        
+
+
+
+
         QueryResponse GenerateQCWOList();
 
 

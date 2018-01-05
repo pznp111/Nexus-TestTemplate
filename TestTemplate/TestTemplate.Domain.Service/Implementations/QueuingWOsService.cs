@@ -763,6 +763,47 @@ namespace TestTemplate.Domain.Service.Implementations
 
         }
 
+
+        public QueryResponse CheckQCWOOpnStatus1(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().CheckQCWOOpnStatus1(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+
+        }
+
+        public QueryResponse CheckQCWOOpnStatus2(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().CheckQCWOOpnStatus2(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+
+        }
+
         public QueryResponse CheckWOOpnStatus2_1(Messaging.MessagingService.MessagingService request)
         {
             QueryResponse response = new QueryResponse();
@@ -1003,7 +1044,49 @@ namespace TestTemplate.Domain.Service.Implementations
 
         }
 
+        public QueryResponse cmdQCResume_ClickCase10(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().cmdQCResume_ClickCase10(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+
+        }
+
         
+
+        public QueryResponse QCPauseCase20_1(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().QCPauseCase20_1(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+
+        }
+
+
 
         public QueryResponse productionPauseCase20_2(Messaging.MessagingService.MessagingService request)
         {
@@ -1111,6 +1194,26 @@ namespace TestTemplate.Domain.Service.Implementations
             try
             {
                 result = iStoredQueryRepository.Translate(new QueryFactory().comboWO_Selected_wotraking(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+
+        }
+
+        public QueryResponse comboWO_Selected_wotraking1(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().comboWO_Selected_wotraking1(request));
                 response.Success = true;
                 response.Result = result;
                 response.TotalRecords = result.Rows.Count;
@@ -1699,6 +1802,26 @@ namespace TestTemplate.Domain.Service.Implementations
             return response;
 
         }
+
+        public QueryResponse setupStartCase40_2_1(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().setupStartCase40_2_1(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+
+        }
         public QueryResponse setupStopCase30_1(Messaging.MessagingService.MessagingService request)
         {
             QueryResponse response = new QueryResponse();
@@ -2208,6 +2331,46 @@ namespace TestTemplate.Domain.Service.Implementations
 
         }
 
+        public QueryResponse CalculateTimeSpan3_1(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().CalculateTimeSpan3_1(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+
+        }
+
+        public QueryResponse CalculateTimeSpan7_1(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().CalculateTimeSpan7_1(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+
+        }
+
         public QueryResponse CalculateTimeSpan7(Messaging.MessagingService.MessagingService request)
         {
             QueryResponse response = new QueryResponse();
@@ -2412,6 +2575,28 @@ namespace TestTemplate.Domain.Service.Implementations
             return response;
 
         }
+
+        public QueryResponse CalculateQCDuration(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().CalculateQCDuration(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+
+        }
+
+        
 
         public QueryResponse CalculateDuration3(Messaging.MessagingService.MessagingService request)
         {
@@ -4898,6 +5083,25 @@ namespace TestTemplate.Domain.Service.Implementations
             }
             return response;
         }
+
+        public QueryResponse cmdUpdateReceived_ClickCase10_1_1(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().cmdUpdateReceived_ClickCase10_1_1(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+        }
         public QueryResponse cmdUpdateReceived_ClickCase10_2(Messaging.MessagingService.MessagingService request)
         {
             QueryResponse response = new QueryResponse();
@@ -4996,6 +5200,25 @@ namespace TestTemplate.Domain.Service.Implementations
             try
             {
                 result = iStoredQueryRepository.Translate(new QueryFactory().cmdUpdateReceived_ClickCase95_2(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+        }
+
+        public QueryResponse cmdUpdateReceived_ClickCase95_3(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().cmdUpdateReceived_ClickCase95_3(request));
                 response.Success = true;
                 response.Result = result;
                 response.TotalRecords = result.Rows.Count;
@@ -5833,7 +6056,235 @@ namespace TestTemplate.Domain.Service.Implementations
 
         }
 
+        public QueryResponse GenerateQCEquipmentList(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().GenerateQCEquipmentList(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+
+        }
+
+        public QueryResponse GenerateSeletedQCEquipmentList(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().GenerateSeletedQCEquipmentList(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+
+        }
+
+        public QueryResponse cmdAdd_Click(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().cmdAdd_Click(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+
+        }
+
+        public QueryResponse cmdDelete_Click(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().cmdDelete_Click(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+
+        }
+
+
+        public QueryResponse fnUpdateOperator1(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().fnUpdateOperator1(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+
+        }
+
+        public QueryResponse fnUpdateOperator2(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().fnUpdateOperator2(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+
+        }
+
+        public QueryResponse fnUpdateOperator3(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().fnUpdateOperator3(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+
+        }
+
+        public QueryResponse fnUpdateOperator4(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().fnUpdateOperator4(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+
+        }
+
+        public QueryResponse fnUpdateOperator5(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().fnUpdateOperator5(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+
+        }
+
+        public QueryResponse fnUpdateOperator6(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().fnUpdateOperator6(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+
+        }
+
+        public QueryResponse fnUpdateOperator7(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().fnUpdateOperator7(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+
+        }
+
+
         
+
+
+
+
+
+
 
 
 

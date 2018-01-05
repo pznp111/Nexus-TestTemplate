@@ -124,7 +124,7 @@
         function load() {
            // $('#ScrapModal').modal('show');
             //RefreshData();
-
+           // $("#updateReceiveModal").toggle("show");
             //************************ Clear input on screen **********************************//
             document.getElementById("WIP-td2_1").innerHTML = "";
             document.getElementById("WIP-td3_1").innerHTML = "";
@@ -158,7 +158,7 @@
             GenerateScrapRemark();
 
          //   $("#select_wotracking-woid option[value=2017060005.01]").attr('selected', 'selected');
-            $("#select_wotracking-woid").val('2017060005.01');
+          //  $("#select_wotracking-woid").val('2017060005.01');
             //document.getElementById("select_wotracking-woid").value = "2017060005.01";
 
             //todo line 321 - 328 bypass  WOGlobalOnHoldBypassApproved
@@ -397,7 +397,8 @@
 
 
             if (config.paraSkipWOTrackingPrompt) {
-                UpdateReceivedOKCase10();
+                var newReceived = parseInt(String($("#wotracking-newReceived").val()).trim());
+                UpdateReceivedOKCase10(newReceived);
             } else {
                 //case1
                 //if (config.TrackingDefaultOK) {
@@ -5392,7 +5393,7 @@
                     }
                 }
             } else {
-                alert("Please update received qty!", "0");
+                alert("Please update received qty!");
             }
         }
 
@@ -5429,7 +5430,7 @@
 
                 }
             } else {
-                alert("Please update received qty!", "0"); // to check
+                alert("Please update received qty!"); 
             }
         }
 
@@ -5691,7 +5692,7 @@
                     });
                 }
             } else {
-                setupStartCase12();
+                setupStartCase15();
             }
         }
 
@@ -5708,7 +5709,8 @@
                 //todo line3946-3970
                 console.log("setupStartCase12 subassembly", $scope.subAssembly);
                 for (var i = 0; i < $scope.subAssembly.length;i++){
-                    if (String($scope.subAssembly[i]['woStatus']).tirm().toLowerCase() !="completed") {
+                    if (String($scope.subAssembly[i]['woStatus']).tirm().toLowerCase() != "completed") {
+                        alert("Unable to proceed due to dependent Work Order is not completed.");
                         setupStartCase50();
                     }
                 }
@@ -7896,8 +7898,8 @@
         //'Output    : 
         //'Remark    :
         //'*******************************************************************
-        function cmdUpdateReceived_ClickCase2() {
-            console.log("cmdUpdateReceived_ClickCase2");
+        function cmdUpdateReceived_ClickCase5() {
+            console.log("cmdUpdateReceived_ClickCase5");
             if (config.DefaultReceiveQty) {
                 if (config.skipReceiveQty) {
                     $scope.strparaPreScrapQty = 0;
@@ -7948,7 +7950,7 @@
             $scope.PreScrapQty = "";
             $scope.newReceived = "";
 
-            $('#updateReceiveModal').modal('toggle');
+            $('#updateReceiveModal').modal('show');
 
 
         }
@@ -8634,7 +8636,7 @@
 
                     $q.all(promiseArray).then(function (response) {
                         console.log("UpdateWorkOrderQty.1", response);
-                        cmdUpdate_ClickCase80();
+                        cmdUpdateReceived_ClickCase80();
                     });
 
                 }
@@ -8960,7 +8962,7 @@
             });
 
             $q.all(promiseArray2).then(function (response) {
-                console.log("cmdUpdate_ClickCase80_2", response);
+                console.log("cmdUpdate_ClickCase95_2", response);
 
             });
         }

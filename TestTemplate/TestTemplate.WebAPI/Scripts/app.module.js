@@ -24,7 +24,7 @@
         'erp.customer',
         'erp.myCompany',
         'erp.review',
-       // 'erp.configuration',
+        'erp.configuration',
         'erp.report',
         //'erp.multiple',
         'erp.priority',

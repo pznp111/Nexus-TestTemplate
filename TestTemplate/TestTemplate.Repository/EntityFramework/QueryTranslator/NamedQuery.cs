@@ -47,6 +47,7 @@ namespace TestTemplate.Repository.EntityFramework.QueryTranslator
 
         public const string cmdUpdateReceived_ClickCase7 = "cmdUpdateReceived_ClickCase7";
         public const string cmdUpdateReceived_ClickCase10_1 = "cmdUpdateReceived_ClickCase10_1";
+        public const string cmdUpdateReceived_ClickCase10_1_1 = "cmdUpdateReceived_ClickCase10_1_1";
         public const string cmdUpdateReceived_ClickCase10_2 = "cmdUpdateReceived_ClickCase10_2";
         public const string cmdUpdateReceived_ClickCase30 = "cmdUpdateReceived_ClickCase30";
 
@@ -54,10 +55,13 @@ namespace TestTemplate.Repository.EntityFramework.QueryTranslator
         public const string cmdUpdateReceived_ClickCase80_2 = "cmdUpdateReceived_ClickCase80_2";
         public const string cmdUpdateReceived_ClickCase95_1 = "cmdUpdateReceived_ClickCase95_1";
         public const string cmdUpdateReceived_ClickCase95_2 = "cmdUpdateReceived_ClickCase95_2";
+        public const string cmdUpdateReceived_ClickCase95_3 = "cmdUpdateReceived_ClickCase95_3";
         public const string GenerateMcIDByWorkCenter = "GenerateMcIDByWorkCenter";
         public const string productionPauseCase20_1 = "productionPauseCase20_1";
         public const string productionPauseCase20_1_1 = "productionPauseCase20_1_1";
         public const string setupPauseCase20_1 = "setupPauseCase20_1";
+        public const string cmdQCResume_ClickCase10 = "cmdQCResume_ClickCase10";
+        public const string QCPauseCase20_1 = "QCPauseCase20_1";
         public const string productionPauseCase20_2 = "productionPauseCase20_2";
         public const string productionPauseCase20_3 = "productionPauseCase20_3";
         public const string CalculateSubconTimeSpan = "CalculateSubconTimeSpan";
@@ -80,6 +84,7 @@ namespace TestTemplate.Repository.EntityFramework.QueryTranslator
         public const string setupStopCase40_1 = "setupStopCase40_1";
         public const string setupStartCase40_1 = "setupStartCase40_1";
         public const string setupStartCase40_2 = "setupStartCase40_2";
+        public const string setupStartCase40_2_1 = "setupStartCase40_2_1";
         public const string setupStartCase40_3 = "setupStartCase40_3";
         public const string setupStartCase40_4 = "setupStartCase40_4";
         public const string setupStartCase40_5 = "setupStartCase40_5";
@@ -90,6 +95,8 @@ namespace TestTemplate.Repository.EntityFramework.QueryTranslator
         public const string fnTrackSetupConfig = "fnTrackSetupConfig";
         public const string CheckWOOpnStatus1 = "CheckWOOpnStatus1";
         public const string CheckWOOpnStatus2 = "CheckWOOpnStatus2";
+        public const string CheckQCWOOpnStatus1 = "CheckQCWOOpnStatus1";
+        public const string CheckQCWOOpnStatus2 = "CheckQCWOOpnStatus2";
         public const string CheckWOOpnStatus2_1 = "CheckWOOpnStatus2_1";
         public const string CheckWOOpnStatus3 = "CheckWOOpnStatus3";
         public const string CheckWOOpnStatus3_1 = "CheckWOOpnStatus3_1";
@@ -99,6 +106,7 @@ namespace TestTemplate.Repository.EntityFramework.QueryTranslator
         public const string UpdateQtyFromPreviousProcOpSeq2 = "UpdateQtyFromPreviousProcOpSeq2";
         public const string UpdateWorkOrderQty = "UpdateWorkOrderQty";
         public const string comboWO_Selected_wotraking = "comboWO_Selected_wotraking";
+        public const string comboWO_Selected_wotraking1 = "comboWO_Selected_wotraking1";
         public const string spGenerateDynamicWOStatusList = "spGenerateDynamicWOStatusList";
         public const string spGenerateDynamicWOStatusListStatement1 = "spGenerateDynamicWOStatusListStatement1";
         public const string spGenerateDynamicWOStatusListStatement = "spGenerateDynamicWOStatusListStatement";
@@ -287,16 +295,19 @@ namespace TestTemplate.Repository.EntityFramework.QueryTranslator
         public const string CalculateTimeSpan1 = "CalculateTimeSpan1";
         public const string CalculateTimeSpan2 = "CalculateTimeSpan2";
         public const string CalculateTimeSpan3 = "CalculateTimeSpan3";
+        public const string CalculateTimeSpan3_1 = "CalculateTimeSpan3_1";
         public const string CalculateTimeSpan4 = "CalculateTimeSpan4";
         public const string CalculateTimeSpan5 = "CalculateTimeSpan5";
         public const string CalculateTimeSpan6 = "CalculateTimeSpan6";
         public const string CalculateTimeSpan7 = "CalculateTimeSpan7";
+        public const string CalculateTimeSpan7_1 = "CalculateTimeSpan7_1";
         public const string GenerateUserNameList = "GenerateUserNameList";
 
         public const string AddQCEquipment = "AddQCEquipment";
         public const string GenerateOperatorReport = "GenerateOperatorReport";
         public const string CalculateDuration1 = "CalculateDuration1";
         public const string CalculateDuration2 = "CalculateDuration2";
+        public const string CalculateQCDuration = "CalculateQCDuration";
         public const string CalculateDuration3 = "CalculateDuration3";
 
         public const string populateWOlist = "populateWOlist";
@@ -341,6 +352,17 @@ namespace TestTemplate.Repository.EntityFramework.QueryTranslator
         public const string GenerateOperatorList = "GenerateOperatorList";
         public const string cmdConfirm_ClickCase10 = "cmdConfirm_ClickCase10";
         public const string GetCurrentShiftID = "GetCurrentShiftID";
+        public const string GenerateQCEquipmentList = "GenerateQCEquipmentList";
+        public const string GenerateSeletedQCEquipmentList = "GenerateSeletedQCEquipmentList";
+        public const string cmdAdd_Click = "cmdAdd_Click";
+        public const string cmdDelete_Click = "cmdDelete_Click";
+        public const string fnUpdateOperator1 = "fnUpdateOperator1";
+        public const string fnUpdateOperator2 = "fnUpdateOperator2";
+        public const string fnUpdateOperator3 = "fnUpdateOperator3";
+        public const string fnUpdateOperator4 = "fnUpdateOperator4";
+        public const string fnUpdateOperator5 = "fnUpdateOperator5";
+        public const string fnUpdateOperator6 = "fnUpdateOperator6";
+        public const string fnUpdateOperator7 = "fnUpdateOperator7";
         #endregion "Sentiment"
     }
 }
