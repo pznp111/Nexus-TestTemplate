@@ -47,6 +47,8 @@ namespace TestTemplate.Repository.EntityFramework.QueryTranslator
 
         public const string cmdUpdateReceived_ClickCase7 = "cmdUpdateReceived_ClickCase7";
         public const string cmdUpdateReceived_ClickCase10_1 = "cmdUpdateReceived_ClickCase10_1";
+        public const string cmdScrap_ClickCase10_1 = "cmdScrap_ClickCase10_1";
+        
         public const string cmdUpdateReceived_ClickCase10_1_1 = "cmdUpdateReceived_ClickCase10_1_1";
         public const string cmdUpdateReceived_ClickCase10_2 = "cmdUpdateReceived_ClickCase10_2";
         public const string cmdUpdateReceived_ClickCase30 = "cmdUpdateReceived_ClickCase30";
@@ -79,6 +81,7 @@ namespace TestTemplate.Repository.EntityFramework.QueryTranslator
         public const string setupStartCase10_2 = "setupStartCase10_2";
         public const string productionStopCase10_1 = "productionStopCase10_1";
         public const string productionStopCase10_2 = "productionStopCase10_2";
+        public const string QCStopCase10_2 = "QCStopCase10_2";
         public const string productionStopCase10_3 = "productionStopCase10_3";
         public const string cmdConfirm_ClickCase40_1 = "cmdConfirm_ClickCase40_1";
         public const string setupStopCase40_1 = "setupStopCase40_1";
@@ -339,7 +342,9 @@ namespace TestTemplate.Repository.EntityFramework.QueryTranslator
         public const string ScrapbutConfirm_Click3 = "ScrapbutConfirm_Click3";
         public const string btnCancelWO_ClickCase20_1 = "btnCancelWO_ClickCase20_1";
         public const string btnCancelWO_ClickCase20_2 = "btnCancelWO_ClickCase20_2";
+        public const string btnCancelWO_ClickCase20_2_1 = "btnCancelWO_ClickCase20_2_1";
         public const string btnCancelWO_ClickCase30_1 = "btnCancelWO_ClickCase30_1";
+        public const string btnCancelWO_ClickCase30_1_1 = "btnCancelWO_ClickCase30_1_1";
         public const string btnCancelWO_ClickCase40_1 = "btnCancelWO_ClickCase40_1";
         public const string btnCancelWO_ClickCase40_2 = "btnCancelWO_ClickCase40_2";
         public const string btnCancelWO_ClickCase40_3 = "btnCancelWO_ClickCase40_3";

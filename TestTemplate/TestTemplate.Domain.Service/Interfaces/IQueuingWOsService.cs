@@ -97,6 +97,8 @@ namespace TestTemplate.Domain.Service.Interfaces
         QueryResponse productionResumeCase10_4(MessagingService request);
         QueryResponse productionStopCase10_1(MessagingService request);
         QueryResponse productionStopCase10_2(MessagingService request);
+        QueryResponse QCStopCase10_2(MessagingService request);
+        
         QueryResponse productionStopCase10_3(MessagingService request);
         QueryResponse fnValidateUserNameMCAssign(MessagingService request);
         QueryResponse fnCheckPriorityConfig(MessagingService request);
@@ -196,6 +198,7 @@ namespace TestTemplate.Domain.Service.Interfaces
 
         QueryResponse cmdUpdateReceived_ClickCase7(MessagingService request);
         QueryResponse cmdUpdateReceived_ClickCase10_1(MessagingService request);
+        QueryResponse cmdScrap_ClickCase10_1(MessagingService request);        
         QueryResponse cmdUpdateReceived_ClickCase10_1_1(MessagingService request);
         QueryResponse cmdUpdateReceived_ClickCase10_2(MessagingService request);
         QueryResponse cmdUpdateReceived_ClickCase30(MessagingService request);
@@ -375,7 +378,9 @@ namespace TestTemplate.Domain.Service.Interfaces
 
         QueryResponse btnCancelWO_ClickCase20_1(MessagingService request);
         QueryResponse btnCancelWO_ClickCase20_2(MessagingService request);
+        QueryResponse btnCancelWO_ClickCase20_2_1(MessagingService request);
         QueryResponse btnCancelWO_ClickCase30_1(MessagingService request);
+        QueryResponse btnCancelWO_ClickCase30_1_1(MessagingService request);
         QueryResponse btnCancelWO_ClickCase40_1(MessagingService request);
         QueryResponse btnCancelWO_ClickCase40_2(MessagingService request);
         QueryResponse btnCancelWO_ClickCase40_3(MessagingService request);

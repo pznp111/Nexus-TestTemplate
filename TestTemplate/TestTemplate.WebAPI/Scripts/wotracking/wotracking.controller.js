@@ -363,7 +363,7 @@
             if (config.paraSkipWOTrackingPrompt) {
                 SaveCompleteOKCase5();
             } else {
-                var answer = confirm("Confirm to save received qty?");
+                var answer = confirm("Confirm to update completed qty?");
                 if (answer) {
                     var newReceived = parseInt(String($("#saveCompleteModal-new").val()).trim());
                     SaveCompleteOKCase5(newReceived);
@@ -422,7 +422,13 @@
             $("wotracking-newReceived").val("");
         }
 
-
+        //'*******************************************************************
+        //'Title     :    SaveCompleteOKCase5
+        //'Function  :    
+        //'Input     :
+        //'Output    :
+        //'Remark    :
+        //'*******************************************************************
         function SaveCompleteOKCase5(newReceived) {
             console.log("SaveCompleteOKCase5");
             //todo: line 111 check isNumeric
@@ -435,6 +441,14 @@
             }
         }
 
+
+        //'*******************************************************************
+        //'Title     :    SaveCompleteOKCase10
+        //'Function  :    
+        //'Input     :
+        //'Output    :
+        //'Remark    :
+        //'*******************************************************************
         function SaveCompleteOKCase10(newReceived) {
             console.log("SaveCompleteOKCase10");
             console.log("SaveCompleteOKCase10 newReceived", newReceived);
@@ -454,6 +468,15 @@
             }
         }
 
+
+
+        //'*******************************************************************
+        //'Title     :    UpdateReceivedOKCase10
+        //'Function  :    
+        //'Input     :
+        //'Output    :
+        //'Remark    :
+        //'*******************************************************************
         function UpdateReceivedOKCase10(newReceived) {
 
 
@@ -7401,7 +7424,7 @@
 
             $q.all(promiseArray1).then(function (response) {
                 console.log("productionStopCase10_1", response);
-                CalculateTimeSpan("Production");
+                CalculateTimeSpan("QC");
             });
             $q.all(promiseArray2).then(function (response) {
                 console.log("productionStopCase10_2", response);
@@ -7977,7 +8000,7 @@
             }
 
             $("#saveCompleteModal-new").val($scope.OutstandingQty);
-            $("#modal-woid1").val($scope.selectedWOIDData["woid"]);
+            $("#modalWOID1").val($scope.selectedWOIDData["woid"]);
             //$("#preprocess-woid").val($scope.selectedWOIDData["woid"]);
             // $("#preprocess-scrapQty").val("");
             $scope.PreScrapQty = "";
@@ -8323,7 +8346,13 @@
 
             }
         }
-
+        //'*******************************************************************
+        //'Title     :  cmdUpdate_clickCase18
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
         function cmdUpdate_clickCase18() {
             console.log("cmdUpdate_clickCase18");
             var promiseArray = UpdateWorkOrderQty();
@@ -8728,13 +8757,13 @@
             var promiseArray1 = [];
             var promiseArray2 = [];
             promiseArray1.push(
-              $http.post(config.baseUrlApi + 'HMLVTS/cmdUpdate_ClickCase80_1', {
+              $http.post(config.baseUrlApi + 'HMLVTS/cmdUpdateReceived_ClickCase80_1', {
                   'WOID': $scope.selectedWOIDData['woid'],//
                   'EndDate': getCurrentDatetime()
               })
           );
             promiseArray2.push(
-              $http.post(config.baseUrlApi + 'HMLVTS/cmdUpdate_ClickCase80_2', {
+              $http.post(config.baseUrlApi + 'HMLVTS/cmdUpdateReceived_ClickCase80_2', {
                   'WOID': $scope.selectedWOIDData['woid'],//
                   'WOStatus': $scope.WOStatus
               })
@@ -9804,6 +9833,7 @@
             var promiseArray2 = [];
             var promiseArray3 = [];
             var currentdate = getCurrentDatetime();
+            $scope.WOExecutionStatus = "Completed";
             promiseArray1.push(
             $http.post(config.baseUrlApi + 'HMLVTS/btnCancelWO_ClickCase40_1', {
                 'WOStatus': $scope.WOExecutionStatus,//        
@@ -9851,8 +9881,7 @@
                 promiseArray3.push(
                 $http.post(config.baseUrlApi + 'HMLVTS/btnCancelWO_ClickCase40_3', {
                     'StopDateTime':getCurrentDatetime(),
-                    'endType': endtype,//        
-                    'McID': $scope.McID,//
+                    'endType': endtype,//                         
                     'WOID': $scope.selectedWOIDData['woid'],//
                     'ProcOpSeq': $scope.ProcOpSeq,//
                     'WorkCenter': $scope.WorkCenter
@@ -10058,7 +10087,7 @@
             $q.all(promiseArray1).then(function (response) {
                 console.log("btnScrap_ClickCase20 cmdUpdate_ClickCase10_2", response);
                 if ($scope.selectedWOIDData['woid'].indexOf("-") != -1) {
-                    btnScrap_ClickCase30();
+                    btnScrap_ClickCase30(); //to check to check tocheck, seems like btnScrap_clickCase30 is the same as btnScrap_clickCase50
                 } else {
                     btnScrap_ClickCase30();
                 }
@@ -10152,7 +10181,8 @@
         //'*******************************************************************
         function btnScrap_ClickCase50() {
             console.log("btnScrap_ClickCase50");
-            //todo:line6355
+            //todo:line6355 however, btnScrap_ClickCase50 seems exactly the same as btnScrap_ClickCase30 ??????
+            //
         }
 
 
@@ -10292,8 +10322,6 @@
                // $("#saveCompleteModal-current").val($scope.CompletedQty);
 
             }
-
-
         }
 
         //'*******************************************************************

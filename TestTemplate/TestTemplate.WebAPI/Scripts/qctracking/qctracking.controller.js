@@ -15,6 +15,7 @@
         $scope.ReceivedQty = '';
 
         $scope.tenant = tenant;
+        $scope.ScrapScrapQty = 0;
 
         $scope.layout = {};
         $scope.layout.tenantMaster = false;
@@ -36,6 +37,33 @@
         function load() {
             generatePauseReasonList();
             GenerateQCWOList();
+            GenerateScrapRemark();
+        }
+
+        //'*******************************************************************
+        //'Title     :  GenerateScrapRemark
+        //'Function  :  preprocess remark list 
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function GenerateScrapRemark() {
+            var promiseArray1 = [];
+            promiseArray1.push(
+            $http.get(config.baseUrlApi + 'HMLVTS/GenerateScrapRemark')
+         );
+
+            $q.all(promiseArray1).then(function (response) {
+                console.log("GenerateScrapRemark", response);
+                if (response.length != 0) {
+                    if (response[0].data.success) {
+                      //  createSelect(response[0].data.result, "preprocessremark");
+                        createSelect(response[0].data.result, "qctracking-scrap-remark");
+                        //   createSelect(response[0].data.result, "select_input_woid");
+                    }
+
+                }
+            });
         }
 
 
@@ -473,7 +501,8 @@
 
                     var Duration = parseFloat($scope.ReceivedQty) * timeperunit;
                     var time = secondsToHms(Duration);
-                    console.log();
+                    console.log("time receiveQty",$scope.ReceivedQty);
+                    console.log("time",time);
                     $("#qctracking-table3-qctotalduration").val(time);
                 } else {
                     $("#qctracking-table3-qctotalduration").val("0:0:0");
@@ -614,6 +643,1094 @@
 
 
         }
+
+
+
+
+        //'*******************************************************************
+        //'Title     :  btnCancelWO_Click
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    : function to control cancel work order
+        //'*******************************************************************
+        $scope.btnCancelWO_Click = function () {
+            // var select_WOID = String($('#select_wotracking-woid option:selected').text()).trim();
+            var select_WOID = String($('#select_qctracking-woid-input').val()).trim();
+
+            if (select_WOID == "") {
+                alert("Please enter Work Order");
+            } else {
+                if (String(document.getElementById("WIP-td5_1").innerHTML).trim() == "") {
+                    alert("Please update received qty!");
+                } else {
+                    var operatorName = String($("#qctracking-table3-operatorName").val()).trim();
+                    var password = String($("#qctracking-table3-password").val()).trim();
+                    if (operatorName == "" || password == "") {
+                        console.log("btnCancel_Click1");
+                        alert("Please enter Operator Name or scan Operator ID");
+                    } else {
+                        var promiseArray1 = ValidateOperatorName(false);
+                        console.log("ValidateOperatorName", promiseArray1);
+                        $q.all(promiseArray1).then(function (response) {
+                            console.log("Token/GetToken", response);
+                            if (response.length != 0 && response[0].data != undefined && response[0].data.success != null && response[0].data.success) {
+                                console.log("btnCancel_Click2");
+                                ///*** if user check pass****//
+                                var answer = confirm("This work order will be discarded. Confirm to cancel ?");
+                                //todo to implement, trackingdefault ok in model so that default button can change
+                                //if (config.TrackingDefaultOK) {
+                                //        setupStartCase5();
+                                //} else {
+                                //    if (answer) {
+                                //        setupStartCase5();
+                                //    }
+                                //}
+
+                                if (answer) {
+                                    $scope.DiscardReason = prompt("Cancel WO Reason", "");
+                                    console.log("DiscardReason");
+
+                                    if ($("#inspection-row-2").css("display") == "none") {
+                                        btnCancelWO_ClickCase20();
+                                    } else {
+                                        btnCancelWO_ClickCase30();
+                                    }                                 
+                                }
+                            } else {
+                                console.log("btnCancel_Click3");
+                                $("#qctracking-table3-operatorName").val("");
+                                $("#qctracking-table3-password").val("");
+                            }
+                        });
+                    }
+                }
+            }
+        }
+
+
+        //'*******************************************************************
+        //'Title     :  btnCancelWO_ClickCase20
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function btnCancelWO_ClickCase20() {
+            console.log("btnCancelWO_ClickCase20");
+            var promiseArray1 = [];
+            var promiseArray2 = [];
+            var promiseArray3 = [];
+
+            //
+
+            //if ($scope.fnTrackSetupConfigVar == true || config.BypassSetup) { // if bypass setup
+            //    if ($("#production-row-2").css("display") == "none") {
+            //        endtype = 'JobEnd';
+            //    }
+            //} else {
+
+            //    if (($("#setup-row-2").css("display") == "none") && ($("#setup-row-5").css("display") == "none") && ($("#production-row-2").css("display") == "none")
+            //        ) {
+            //        endtype = 'JobEnd';
+            //    } else if (($("#setup-row-2").css("display") == "none") && ($("#setup-row-5").css("display") != "none") && ($("#production-row-2").css("display") != "none") ||
+            //        ($("#setup-row-2").css("display") == "none") && ($("#setup-row-5").css("display") == "none") && ($("#production-row-2").css("display") != "none")) {
+            //        endtype = 'SetupEnd';
+            //    }
+            //}
+
+            var endtype = "QCEnd";
+            promiseArray1.push(
+            $http.post(config.baseUrlApi + 'HMLVTS/btnCancelWO_ClickCase20_1', {
+                'endType': endtype,//                   
+                'WOID': $scope.selectedWOIDData['woid'],//
+                'ProcOpSeq': $scope.ProcOpSeq,//
+                'WorkCenter': $scope.WorkCenter//
+            })
+        );
+
+            $q.all(promiseArray1).then(function (response) {
+                console.log("btnCancelWO_ClickCase20_1", response);
+
+
+                //var TotalSetupDuration = 0;
+                //var subcontime = 0;
+                //if (String($scope.McType).trim() == "Subcon") {
+
+                //    if (String($("#wotracking-table3-total").val()).trim() == '') {
+                //        subcontime = 0;
+                //    }
+                //    TotalSetupDuration = 0;
+                //    //  $("#wotracking-table3-productiontotalduration").val(String($("#wotracking-table3-total").val()).trim());
+                //    subcontime = String($("#wotracking-table3-total").val().trim());
+
+                //    $("#wotracking-table3-total").val("0.00");
+                //} else {
+                //    if (String($("#wotracking-table3-setuptotalduration").val()).trim() == "") {
+                //        $("#wotracking-table3-setuptotalduration").val("0.00") //todo display in hour
+                //    }
+                //    if (String($("#wotracking-table3-productiontotalduration").val()).trim() == "") {
+                //        $("#wotracking-table3-productiontotalduration").val("0.00")// todo display in hour
+                //    }
+                //    subcontime = String($("#wotracking-table3-productiontotalduration").val()).trim();
+                //    TotalSetupDuration = $("#wotracking-table3-setuptotalduration").val();
+                //}
+
+
+                var ProdTotalDuration = String($('#qctracking-table3-qctotalduration').val()).trim();
+                console.log("cmdQCStop_ClickCase10 time", ProdTotalDuration);
+
+                if (ProdTotalDuration == "") {
+                    ProdTotalDuration = "0:0:0";
+                }
+
+
+                ProdTotalDuration = convertDatetimeToSecond(ProdTotalDuration);
+
+                $scope.WOExecutionStatus = "Completed";
+                var currentdate = getCurrentDatetime();
+                promiseArray2.push(
+                $http.post(config.baseUrlApi + 'HMLVTS/btnCancelWO_ClickCase20_2_1', {
+                    'WOStatus': $scope.WOExecutionStatus,//
+                    'ProdEndDate': currentdate,
+                    'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),//
+                    'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),//
+                    //'McID': $scope.McID,//
+                    //'TotalSetupDuration': parseFloat(TotalSetupDuration),//
+                    'ProdTotalDuration': ProdTotalDuration,//
+                    'WOID': $scope.selectedWOIDData['woid'],//
+                    'ProcOpSeq': $scope.ProcOpSeq,//
+                    'WorkCenter': $scope.WorkCenter//
+                })
+            );
+
+
+                $q.all(promiseArray2).then(function (response) {
+                    console.log("btnCancelWO_ClickCase20_2_1", response);
+
+                    promiseArray3.push(
+                      $http.post(config.baseUrlApi + 'HMLVTS/cmdUpdateReceived_ClickCase80_1', {
+                          'WOID': $scope.selectedWOIDData['woid'],//
+                          'EndDate': currentdate
+                      })
+                  );
+
+                    $q.all(promiseArray3).then(function (response) {
+                        console.log("btnCancelWO_ClickCase20 cmdUpdateReceived_ClickCase80_1", response);
+                        btnCancelWO_ClickCase40();
+                    });
+
+                });
+
+            });
+        }
+
+        //'*******************************************************************
+        //'Title     :  btnCancelWO_ClickCase30
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function btnCancelWO_ClickCase30() {
+            console.log("btnCancelWO_ClickCase30");
+            var promiseArray1 = [];
+            var currentdate = getCurrentDatetime();
+            promiseArray1.push(
+            $http.post(config.baseUrlApi + 'HMLVTS/btnCancelWO_ClickCase30_1_1', {
+                'WOStatus': $scope.WOExecutionStatus,//        
+                'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),//
+                'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),//
+                'WOID': $scope.selectedWOIDData['woid'],//
+                'ProcOpSeq': $scope.ProcOpSeq,//
+                'WorkCenter': $scope.WorkCenter//
+            })
+        );
+
+
+            $q.all(promiseArray1).then(function (response) {
+                console.log("btnCancelWO_ClickCase30_1_1", response);
+                btnCancelWO_ClickCase40();
+            });
+        }
+
+
+        //'*******************************************************************
+        //'Title     :  btnCancelWO_ClickCase40
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function btnCancelWO_ClickCase40() {
+            console.log("btnCancelWO_ClickCase40");
+            var promiseArray1 = [];
+            var promiseArray2 = [];
+            var promiseArray3 = [];
+            var currentdate = getCurrentDatetime();
+
+            $scope.WOExecutionStatus = "Completed";
+            promiseArray1.push(
+            $http.post(config.baseUrlApi + 'HMLVTS/btnCancelWO_ClickCase40_1', {
+                'WOStatus': $scope.WOExecutionStatus,//        
+                'WOID': $scope.selectedWOIDData['woid'],//
+                'ProcOpSeq': $scope.ProcOpSeq
+            })
+        );
+
+
+            $q.all(promiseArray1).then(function (response) {
+                console.log("btnCancelWO_ClickCase40_1", response);
+
+
+                $scope.WOExecutionStatus = "Completed";
+                promiseArray2.push(
+                $http.post(config.baseUrlApi + 'HMLVTS/btnCancelWO_ClickCase40_2', {
+                    'WOStatus': $scope.WOExecutionStatus,//        
+                    'WOID': $scope.selectedWOIDData['woid'],//
+                    'DiscardReason': $scope.DiscardReason
+                })
+            );
+
+
+                $q.all(promiseArray2).then(function (response) {
+                    console.log("btnCancelWO_ClickCase40_2", response);
+                    if ($("#inspection-row-2").css("display") == "none") {
+                        var endtype = 'QCEnd';
+                        promiseArray3.push(
+                        $http.post(config.baseUrlApi + 'HMLVTS/btnCancelWO_ClickCase40_3', {
+                            'StopDateTime': getCurrentDatetime(),
+                            'endType': endtype,//        
+                            'WOID': $scope.selectedWOIDData['woid'],//
+                            'ProcOpSeq': $scope.ProcOpSeq,//
+                            'WorkCenter': $scope.WorkCenter
+                        })
+                    );
+
+                        $q.all(promiseArray3).then(function (response) {
+                            console.log("btnCancelWO_ClickCase40_3", response);
+
+                            //todo:location.reload();
+
+                        });
+                    }
+
+                });
+            });
+        }
+        
+
+
+        //Scrap functions:
+
+
+        //'*******************************************************************
+        //'Title     :  ScrapConfirm
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    : button click for confirm in scrap model
+        //'*******************************************************************
+        $scope.ScrapConfirm = function () {
+            var scrapQty = $("#ScrapModal-qty").val();
+            var scrapRemark = String($('#select_qctracking-scrap-remark option:selected').text()).trim();
+            var radio = $('input[name="State1"]:checked').val();
+
+            var success1 = false;
+            var success2 = false;
+            var success3 = false;
+
+            if (String(scrapQty).trim() == "") {
+                alert("Please enter scrap Qty");
+            } else {
+                scrapQty = parseInt(scrapQty);
+                if (scrapQty <= 0) {
+                    alert("Scrap Qty must be > 0");
+                } else {
+                    if (scrapQty > $scope.ScrapOutstandingQty) {
+                        alert("Scrap Qty > Outstanding Qty!");
+                    } else if (scrapRemark == "") {
+                        alert("Please enter the scrap remark.");
+                    } else if (scrapRemark.length >= 100) {
+                        alert("Remark must be < 100 characters!");
+                    } else if ($scope.WOGlobalWOOpnState != 7 && scrapQty == $scope.ScrapOutstandingQty) {
+                        alert("Please stop production or enter recieved date before complete the work order.");
+                    } else {
+                        var promiseArray1 = [];
+                        var promiseArray2 = [];
+                        var promiseArray3 = [];
+                        var currentdate = getCurrentDatetime();
+                        promiseArray1.push(
+                            $http.post(config.baseUrlApi + 'HMLVTS/butConfirm_Click1', {
+                                'WOID': $scope.selectedWOIDData['woid'],//
+                                'ProcOpSeq': $scope.ProcOpSeq,//
+                                'WorkCenter': $scope.WorkCenter,
+                                'RouteID': $scope.RouteID,
+                                'OpSeq': $scope.OpSeq,
+                                'ScrapQty': scrapQty,
+                                'Type': scrapRemark,
+                                'ScrapType': radio,
+                                'ScrapDate': currentdate,
+                                'UserID': String($("#qctracking-table3-operatorName").val()).trim(),//
+                                'UserName': String($("#qctracking-table3-operatorName").val()).trim(),//
+                                'Status': "Pending",
+                                'ApprovedID': String($("#qctracking-table3-operatorName").val()).trim(),//
+                                'ApprovedName': String($("#qctracking-table3-operatorName").val()).trim(),//
+                            })
+                        );
+
+                        $q.all(promiseArray1).then(function (response) {
+                            console.log("butConfirm_Click1", response);
+                            if (response.length != 0 && response[0].data.success) {
+                                success1 = true;
+                            }
+
+                            promiseArray2.push(
+                               $http.post(config.baseUrlApi + 'HMLVTS/butConfirm_Click2', {
+                                   'WOID': $scope.selectedWOIDData['woid'],//
+                                   'ScrapQty': scrapQty,
+                                   'AccumulatedScrapDate': currentdate
+                               })
+                           );
+
+                            $q.all(promiseArray2).then(function (response) {
+                                console.log("butConfirm_Click2", response);
+                                if (response.length != 0 && response[0].data.success) {
+                                    success2 = true;
+                                }
+
+                                promiseArray3.push(
+                                   $http.post(config.baseUrlApi + 'HMLVTS/butConfirm_Click3', {
+                                       'WOID': $scope.selectedWOIDData['woid'],//
+                                       'ScrapQty': scrapQty,
+                                       'AccumulatedScrapDate': currentdate,
+                                       'ProcOpSeq': $scope.ProcOpSeq
+                                   })
+                               );
+
+                                $q.all(promiseArray3).then(function (response) {
+                                    console.log("butConfirm_Click3", response);
+                                    if (response.length != 0 && response[0].data.success) {
+                                        success3 = true;
+                                    }
+
+                                    if (success1 && success2 && success3) {
+                                        alert("Scrap successfully added!");
+                                        //fetch WO summary
+                                        GenerateWOSummary();
+                                        //fetch WO summary - scrap + unaccountable qty
+                                        //GenerateWOSummaryScrap();  loop hole here, wosummary is execute after btnScrap_clickCase0 due to behaviour of angularjs, so need to control here
+
+
+                                        var promiseArray1 = [];
+                                        promiseArray1.push(
+                                            $http.post(config.baseUrlApi + 'HMLVTS/GenerateWOSummaryScrap', {
+                                                "WOID": $scope.selectedWOIDData['woid'],
+                                                "ProcOpSeq": $scope.ProcOpSeq
+                                            }
+                                        )
+                                        );
+
+                                        $q.all(promiseArray1).then(function (response) {
+                                            console.log("GenerateWOSummaryScrap", response);
+                                            if (response.length != 0 && response[0].data.success && response[0].data.result.length != 0) {
+                                                console.log("GenerateWOSummaryScrap loop1");
+                                                if (response[0].data.result[0]['sumScrapQty'] != null &&
+                                                    response[0].data.result[0]['sumScrapQty'] != 0 &&
+                                                    response[0].data.result[0]['sumScrapQty'] != ""
+                                                    ) {
+                                                    console.log("GenerateWOSummaryScrap loop2");
+                                                    $("#WIP-tr-3").css("display", "block");
+                                                    $scope.ScrapScrapQty = response[0].data.result[0]['sumScrapQty'];
+                                                    document.getElementById("WIP-td3_1").innerHTML = response[0].data.result[0]['sumScrapQty'];
+                                                    document.getElementById("WIP-td3_2").innerHTML = response[0].data.result[0]['latestScrapDate'];
+
+                                                } else {
+                                                    console.log("GenerateWOSummaryScrap loop3");
+                                                    $("#WIP-tr-3").css("display", "none");
+                                                }
+
+                                            }
+
+                                            $('#ScrapModal').modal('toggle');
+                                            btnScrap_ClickCase0();
+                                        });
+
+
+
+
+
+
+
+
+
+
+                                        //$('#ScrapModal').modal('toggle');
+                                        //btnScrap_ClickCase0();
+                                    } else {
+                                        alert("ERROR:SCRAP ERROR");
+                                    }
+
+                                });
+                            });
+                        });
+                    }
+                }
+            }
+        }
+
+        //'*******************************************************************
+        //'Title     :  btnScrap_Click
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    : function to control scrap
+        //'*******************************************************************
+        $scope.btnScrap_Click = function () {
+            // console.log("btnScrap_Click outstanding", $scope.OutstandingQty);
+
+            $scope.ScrapOutstandingQty = parseInt(document.getElementById("WIP-td9_1").innerHTML);
+
+            //to check for user right
+            //var select_WOID = String($('#select_wotracking-woid option:selected').text()).trim();
+            var select_WOID = String($('#select_qctracking-woid-input').val()).trim();
+
+            if (select_WOID == "") {
+                alert("Please enter Work Order");
+            } else {
+                if (String(document.getElementById("WIP-td5_1").innerHTML).trim() == "") {
+                    alert("Please update received qty!");
+                } else {
+                    var operatorName = String($("#qctracking-table3-operatorName").val()).trim();
+                    var password = String($("#qctracking-table3-password").val()).trim();
+                    if (operatorName == "" || password == "") {
+                        console.log("btnScrap_Click1");
+                        alert("Please enter Operator Name or scan Operator ID");
+                    } else {
+                        var promiseArray1 = ValidateOperatorName(false);
+                        console.log("ValidateOperatorName", promiseArray1);
+                        $q.all(promiseArray1).then(function (response) {
+                            console.log("Token/GetToken", response);
+                            if (response.length != 0 && response[0].data != undefined && response[0].data.success != null && response[0].data.success) {
+                                console.log("btnScrap_Click2");
+                                //btnScrap_ClickCase30();
+                                document.getElementById("modalWOID2").innerHTML = $scope.selectedWOIDData['woid'];
+                                $('#ScrapModal').modal('show');
+                            } else {
+                                console.log("btnScrap_Click3");
+                                $("#qctracking-table3-operatorName").val("");
+                                $("#qctracking-table3-password").val("");
+                            }
+                        });
+                    }
+                }
+            }
+
+
+
+        }
+
+        //'*******************************************************************
+        //'Title     :  btnScrap_ClickCase0
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function btnScrap_ClickCase0() {
+            console.log("btnScrap_ClickCase0");
+            $scope.ScrapActualRecQty = String(document.getElementById("WIP-td5_1").innerHTML).trim();
+            $scope.ScrapCompletedQty = String(document.getElementById("WIP-td6_1").innerHTML).trim();
+            // $scope.ScrapScrapQty = String(document.getElementById("WIP-td3_1").innerHTM).trim();
+            $scope.ScrapTotalActAdjustedQty = String(document.getElementById("WIP-td8_1").innerHTML).trim();
+            $scope.ScrapstrOutstandingQty = String(document.getElementById("WIP-td9_1").innerHTML).trim();
+            console.log('btnScrap_ClickCase0.0 ScrapScrapQty', $scope.ScrapScrapQty);
+            if ($scope.ScrapActualRecQty == "") {
+                $scope.ScrapActualRecQty = 0;
+            } else {
+                $scope.ScrapActualRecQty = parseInt($scope.ScrapActualRecQty);
+            }
+
+            if ($scope.ScrapCompletedQty == "") {
+                $scope.ScrapCompletedQty = 0;
+            } else {
+                $scope.ScrapCompletedQty = parseInt($scope.ScrapCompletedQty);
+            }
+
+            if ($scope.ScrapScrapQty == "") {
+                $scope.ScrapScrapQty = 0;
+            } else {
+                $scope.ScrapScrapQty = parseInt($scope.ScrapScrapQty);
+            }
+
+            if ($scope.ScrapTotalActAdjustedQty == "") {
+                $scope.ScrapTotalActAdjustedQty = 0;
+            } else {
+                $scope.ScrapTotalActAdjustedQty = parseInt($scope.ScrapTotalActAdjustedQty);
+            }
+
+            if ($scope.ScrapstrOutstandingQty == "") {
+                $scope.ScrapstrOutstandingQty = 0;
+            } else {
+                $scope.ScrapstrOutstandingQty = parseInt($scope.ScrapstrOutstandingQty);
+            }
+
+
+            console.log('btnScrap_ClickCase0 ScrapActualRecQty', $scope.ScrapActualRecQty);
+            console.log('btnScrap_ClickCase0 ScrapCompletedQty', $scope.ScrapCompletedQty);
+            console.log('btnScrap_ClickCase0 ScrapScrapQty', $scope.ScrapScrapQty);
+
+
+            if ($scope.ScrapCompletedQty == $scope.ScrapActualRecQty - $scope.ScrapScrapQty) {
+                if ($scope.WOGlobalWOOpnState != 7) {
+                    alert("Please confirm received before complete the work order.");
+                    btnScrap_ClickCase100();
+                } else {
+                    $scope.WOExecutionStatus = "Completed";
+                    btnScrap_ClickCase10();
+                }
+            } else {
+                if ($scope.ScrapCompletedQty > $scope.ScrapActualRecQty - $scope.ScrapScrapQty) {
+                    alert("Please enter the correct completed qty. Max qty is " + $scope.ScrapActualRecQty - $scope.ScrapScrapQty);
+                    btnScrap_ClickCase100();
+                } else {
+                    btnScrap_ClickCase10();
+                }
+            }
+
+
+        }
+
+
+        //'*******************************************************************
+        //'Title     :  btnScrap_ClickCase10
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function btnScrap_ClickCase10() {
+            console.log("btnScrap_ClickCase10");
+            var currentdate = getCurrentDatetime();
+            var promiseArray1 = [];
+
+            var ProdTotalDuration = String($('#qctracking-table3-qctotalduration').val()).trim();
+            console.log("cmdQCStop_ClickCase10 time", ProdTotalDuration);
+
+            if (ProdTotalDuration == "") {
+                ProdTotalDuration = "0:0:0";
+            }
+
+
+            ProdTotalDuration = convertDatetimeToSecond(ProdTotalDuration);
+
+
+            console.log('btnScrap_ClickCase10 ScrapActualRecQty', $scope.ScrapActualRecQty);
+            console.log('btnScrap_ClickCase10 ScrapCompletedQty', $scope.ScrapCompletedQty);
+            console.log('btnScrap_ClickCase10 ScrapScrapQty', $scope.ScrapScrapQty);
+
+
+            $scope.ScrapOutstandingQty = $scope.ScrapActualRecQty - ($scope.ScrapCompletedQty + $scope.ScrapScrapQty);
+
+            console.log();
+            promiseArray1.push(
+              $http.post(config.baseUrlApi + 'HMLVTS/cmdScrap_ClickCase10_1', {
+                  //'ActualRecQty': $scope.ActualRecQty,//
+                  'ActualRecQty': $scope.ScrapActualRecQty,
+                  'ActualRecDate': currentdate,//
+                  'CompletedQty': $scope.ScrapCompletedQty,//
+                  'CompletedDate': currentdate,//
+                  'OutstandingQty': $scope.ScrapOutstandingQty,//
+                  'OutstandingDate': currentdate,//
+                  'WOStatus': $scope.WOExecutionStatus,//
+                  //'TotalSetupDuration': parseFloat(TotalSetupDuration),//
+                  'ProdTotalDuration': ProdTotalDuration,
+                  'WOID': $scope.selectedWOIDData['woid'],
+                  'WorkCenter': $scope.WorkCenter,//
+                  'ProcOpSeq': $scope.ProcOpSeq//
+              })
+          );
+
+            $q.all(promiseArray1).then(function (response) {
+                console.log("btnScrap_ClickCase10 cmdScrap_ClickCase10_1", response);
+                btnScrap_ClickCase15();
+            });
+        }
+
+
+
+        //'*******************************************************************
+        //'Title     :  btnScrap_ClickCase15
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function btnScrap_ClickCase15() {
+            console.log("btnScrap_ClickCase15");
+            if ($scope.WOExecutionStatus == "Completed") {
+                btnScrap_ClickCase20();
+            } else {
+                btnScrap_ClickCase100();
+            }
+
+        }
+
+
+        //'*******************************************************************
+        //'Title     :  btnScrap_ClickCase20
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function btnScrap_ClickCase20() {
+            console.log("btnScrap_ClickCase20");
+            var promiseArray1 = [];
+            var currentdate = getCurrentDatetime();
+            promiseArray1.push(
+              $http.post(config.baseUrlApi + 'HMLVTS/cmdUpdateReceived_ClickCase10_2', {
+                  'WOID': $scope.selectedWOIDData['woid'],//
+                  'ProcOpSeq': $scope.ProcOpSeq,//
+                  'ExStatus': 9,
+                  'UpdatedDate': currentdate,
+                  'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),//
+                  'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),//
+                  'reason': ''
+              })
+          );
+
+            $q.all(promiseArray1).then(function (response) {
+                console.log("btnScrap_ClickCase20 cmdUpdate_ClickCase10_2", response);
+                if ($scope.selectedWOIDData['woid'].indexOf("-") != -1) {
+                    btnScrap_ClickCase30();//to check to check tocheck, seems like btnScrap_clickCase30 is the same as btnScrap_clickCase50
+                } else {
+                    btnScrap_ClickCase30();
+                }
+            });
+        }
+
+
+        //'*******************************************************************
+        //'Title     :  btnScrap_ClickCase30
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function btnScrap_ClickCase30() {
+            console.log("btnScrap_ClickCase30");
+            var promiseArray1 = [];
+            promiseArray1.push(
+              $http.post(config.baseUrlApi + 'HMLVTS/cmdUpdateReceived_ClickCase30', {
+                  'WOID': $scope.selectedWOIDData['woid']
+              })
+          );
+            $q.all(promiseArray1).then(function (response) {
+                console.log("btnScrap_ClickCase30 cmdUpdateReceived_ClickCase30", response);
+                console.log("btnScrap_ClickCase30 length", response.length);
+                console.log("btnScrap_ClickCase30 length1", response[0].data.result.length);
+                if (response.length != 0 && response[0].data.result.length != 0) {
+                    $scope.LastProcOpSeq = response[0].data.result[0]['lastProcOpSeq'];
+                    console.log("btnScrap_ClickCase30.1");
+                    console.log("btnScrap_ClickCase30.1 procopseq", $scope.ProcOpSeq);
+                    console.log("btnScrap_ClickCase30.1 LastProcOpSeq", $scope.LastProcOpSeq);
+                    if ($scope.ProcOpSeq >= $scope.LastProcOpSeq) {
+                        console.log("btnScrap_ClickCase30.2");
+                        $scope.WOStatus = "Completed";
+                        var promiseArray = UpdateWorkOrderQty();
+                        $q.all(promiseArray).then(function (response) {
+                            console.log("UpdateWorkOrderQty.1", response);
+                            btnScrap_ClickCase80();
+                        });
+                    } else {
+                        console.log("btnScrap_ClickCase30.3");
+                        if ($scope.WOExecutionStatus == "Completed") {
+                            console.log("btnScrap_ClickCase30.4");
+                            if ($scope.CompletedQty > 0) {
+                                console.log("btnScrap_ClickCase30.5");
+                                RefreshData();
+                            } else {
+                                console.log("btnScrap_ClickCase30.6");
+                                $scope.WOStatus = "Completed";
+                                var promiseArray = UpdateWorkOrderQty();
+
+                                $q.all(promiseArray).then(function (response) {
+                                    console.log("UpdateWorkOrderQty.1", response);
+                                    btnScrap_ClickCase80();
+                                });
+                            }
+                        } else {
+                            console.log("btnScrap_ClickCase30.7");
+                            btnScrap_ClickCase100();
+                        }
+                    }
+                } else {
+                    alert("No route sequence found. ");
+                    $scope.WOStatus = "Completed";
+                    var promiseArray = UpdateWorkOrderQty();
+                    $q.all(promiseArray).then(function (response) {
+                        console.log("UpdateWorkOrderQty.1", response);
+                        btnScrap_ClickCase80();
+                    });
+                }
+            });
+        }
+
+
+        //'*******************************************************************
+        //'Title     :  btnScrap_ClickCase50
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function btnScrap_ClickCase50() {
+            console.log("btnScrap_ClickCase50");
+            //todo:line6355 however, btnScrap_ClickCase50 seems exactly the same as btnScrap_ClickCase30 ??????
+            //
+        }
+
+
+        //'*******************************************************************
+        //'Title     :  btnScrap_ClickCase80
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function btnScrap_ClickCase80() {
+            console.log("btnScrap_ClickCase80");
+            var promiseArray1 = [];
+            var promiseArray2 = [];
+            promiseArray1.push(
+              $http.post(config.baseUrlApi + 'HMLVTS/cmdUpdateReceived_ClickCase80_1', {
+                  'WOID': $scope.selectedWOIDData['woid'],//
+                  'EndDate': getCurrentDatetime()
+              })
+          );
+            promiseArray2.push(
+              $http.post(config.baseUrlApi + 'HMLVTS/cmdUpdateReceived_ClickCase80_2', {
+                  'WOID': $scope.selectedWOIDData['woid'],//
+                  'WOStatus': $scope.WOStatus
+              })
+          );
+            $q.all(promiseArray1).then(function (response) {
+                console.log("btnScrap_ClickCase80 cmdUpdateReceived_ClickCase80_1", response);
+                $q.all(promiseArray2).then(function (response) {
+                    console.log(" btnScrap_ClickCase80cmdUpdateReceived_ClickCase80_2", response);
+                    btnScrap_ClickCase90();
+                });
+            });
+        }
+
+
+        //'*******************************************************************
+        //'Title     :  btnScrap_ClickCase80
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function btnScrap_ClickCase90() {
+            console.log("btnScrap_ClickCase90");
+            if ($scope.selectedWOIDData['woid'].indexOf("-") != -1) {
+                btnScrap_ClickCase92();
+            } else {
+                btnScrap_ClickCase95();
+            }
+        }
+
+        //'*******************************************************************
+        //'Title     :  btnScrap_ClickCase92
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function btnScrap_ClickCase92() {
+            console.log("btnScrap_ClickCase92");
+            if (CheckAnyChildNotCompleted1() == 0) // check all child WOs completed ?
+            {
+                //all child WOs completed
+                WOStatus = "Completed";
+                cmdUpdate_ClickCase95();
+            }
+
+
+        }
+
+
+        //'*******************************************************************
+        //'Title     :  btnScrap_ClickCase95
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function btnScrap_ClickCase95() {
+            console.log("btnScrap_ClickCase95");
+            var promiseArray1 = [];
+            var promiseArray2 = [];
+            var promiseArray3 = [];
+
+            promiseArray1.push(
+              $http.post(config.baseUrlApi + 'HMLVTS/cmdUpdateReceived_ClickCase95_1', {
+                  'WOID': $scope.selectedWOIDData['woid']
+
+              })
+          );
+
+
+            promiseArray3.push(
+              $http.post(config.baseUrlApi + 'HMLVTS/cmdUpdateReceived_ClickCase95_3', {
+                  'WOID': $scope.selectedWOIDData['woid']
+
+              })
+          );
+
+
+
+            $q.all(promiseArray1).then(function (response) {
+                console.log("cmdUpdate_ClickCase95 cmdUpdateReceived_ClickCase95_1", response);
+
+                $q.all(promiseArray3).then(function (response) {
+                    console.log("cmdUpdate_ClickCase95 cmdUpdateReceived_ClickCase95_3", response);
+                    if (response.length != 0 && response[0].data.success && response[0].data.result.length != 0) {
+                        $scope.PPID = response[0].data.result[0]['ppid'];
+                        $scope.SalesOrderID = response[0].data.result[0]['salesOrderID'];
+                        $scope.ReleasedDate = response[0].data.result[0]['releasedDate'];
+                    }
+
+                    promiseArray2.push(
+                        $http.post(config.baseUrlApi + 'HMLVTS/cmdUpdateReceived_ClickCase95_2', {
+                            'id': $scope.PPID,
+                            'Status': $scope.WOStatus
+
+                        })
+                    );
+
+                    $q.all(promiseArray2).then(function (response) {
+                        console.log("cmdUpdate_ClickCase95 cmdUpdateReceived_ClickCase95_2", response);
+                        //location.reload();
+                    });
+
+                });
+
+
+
+            });
+
+        }
+
+        //'*******************************************************************
+        //'Title     :  btnScrap_ClickCase100
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function btnScrap_ClickCase100() {
+            console.log("btnScrap_ClickCase100");
+            //fetch WO summary
+            GenerateWOSummary();
+            //fetch WO summary - scrap + unaccountable qty
+            GenerateWOSummaryScrap();
+
+            console.log("btnScrap_ClickCase100.1", $scope.CompletedQty);
+            //if ($scope.McType.toLowerCase() == "inhouse") {
+            //    CheckWOOpnStatus();
+            //    ReCheck($scope.selectedWOID);
+            //    console.log("btnScrap_ClickCasel2", $scope.CompletedQty);
+            //    //$("#saveCompleteModal-current").val($scope.CompletedQty);
+
+            //} else {
+            //    CheckSubconWOOpnStatus();
+            //    ReCheck($scope.selectedWOID);
+            //    console.log("btnScrap_ClickCase13", $scope.CompletedQty);
+            //    // $("#saveCompleteModal-current").val($scope.CompletedQty);
+
+            //}
+        }
+
+
+        //'*******************************************************************
+        //'Title     :  cmdQCResume_Click
+        //'Function  :  
+        //'Input     :  
+        //'Output    :  
+        //'Remark    :
+        //'*******************************************************************
+        $scope.cmdQCStop_Click = function () {
+            console.log("cmdQCStop_Click");
+
+            var operatorName = String($("#qctracking-table3-operatorName").val()).trim();
+            var password = String($("#qctracking-table3-password").val()).trim();
+            if (operatorName == "" || password == "") {
+                console.log("cmdQCStop_Click.1");
+                alert("Please enter Operator Name or scan Operator ID");
+            } else {
+                console.log("cmdQCStop_Click.2");
+                // console.log("test validate", ValidateOperatorName(false));
+
+
+                var promiseArray1 = ValidateOperatorName(false);
+                console.log("ValidateOperatorName", promiseArray1);
+                $q.all(promiseArray1).then(function (response) {
+                    console.log("Token/GetToken", response);
+                    //todo: check whether the current login id and firstname is the same as the return result
+                    //global function line 277 loops
+                    if (response.length != 0 && response[0].data != undefined && response[0].data.success != null && response[0].data.success) {
+                        console.log("cmdQCStop_Click.3");
+                        cmdQCStop_ClickCase5();
+                    } else {
+                        console.log("cmdQCStop_Click.4");
+                        $("#qctracking-table3-operatorName").val("");
+                        $("#qctracking-table3-password").val("");
+                    }
+                });
+
+            }
+        }
+
+            //'*******************************************************************
+            //'Title     :  cmdQCStop_ClickCase5
+            //'Function  :  
+            //'Input     :  
+            //'Output    :  
+            //'Remark    :
+            //'*******************************************************************
+            function cmdQCStop_ClickCase5() {
+                console.log("cmdQCStop_ClickCase5");
+                if (config.strSkipWOTrackingPrompt) {
+                    cmdQCStop_ClickCase10();
+                } else {
+
+                    var answer = confirm("Confirm to stop QC?");
+                    //todo to implement, trackingdefault ok in model so that default button can change
+                    //if (config.TrackingDefaultOK) {
+                    //        setupStartCase5();
+                    //} else {
+                    //    if (answer) {
+                    //        setupStartCase5();
+                    //    }
+                    //}
+
+                    if (answer) {
+                        cmdQCStop_ClickCase10();
+                    }
+                }
+
+            }
+
+
+            //'*******************************************************************
+            //'Title     :  cmdQCStop_ClickCase5
+            //'Function  :  
+            //'Input     :  
+            //'Output    :  
+            //'Remark    :
+            //'*******************************************************************
+            function cmdQCStop_ClickCase10() {
+                console.log("cmdQCStop_ClickCase10");
+                var promiseArray1 = [];
+                var promiseArray2 = [];
+                var promiseArray3 = [];
+                var currentdate = getCurrentDatetime();
+                promiseArray1.push(
+                            $http.post(config.baseUrlApi + 'HMLVTS/productionStopCase10_1', {
+                                'StopDateTime': currentdate,
+                                'endType': 'QCEnd',
+                                'WOID': $scope.selectedWOIDData['woid'],
+                                'McID': $scope.McID,
+                                'WorkCenter': $scope.WorkCenter,
+                                'ProcOpSeq': $scope.ProcOpSeq
+
+                            })
+                         );
+                //productionStopCase10_1
+                //"UPDATE [TS_Operation] SET StopDateTime = @StopDateTime, "
+                //        + "EndType = @EndType "
+                //        + "where WOID = @WOID "
+                //        + "and McID = @McID "
+                //        + "and WorkCenter = @WorkCenter "
+                //        + "and ProcOpSeq = @ProcOpSeq "
+                //        + "and EndType is NULL "
+
+
+                var ProdTotalDuration = String($('#qctracking-table3-qctotalduration').val()).trim();
+                console.log("cmdQCStop_ClickCase10 time", ProdTotalDuration);
+
+                if (ProdTotalDuration == "") {
+                    ProdTotalDuration = "0:0:0";
+                }
+
+
+               ProdTotalDuration = convertDatetimeToSecond(ProdTotalDuration);
+             
+
+                console.log("cmdQCStop_ClickCase10 time converted", ProdTotalDuration);
+                $scope.WOExecutionStatus = "ProcessingStop";
+                promiseArray2.push(
+                $http.post(config.baseUrlApi + 'HMLVTS/QCStopCase10_2', {
+                    'WOStatus': $scope.WOExecutionStatus,//
+                    'ProdEndDate': currentdate,
+                    'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),//
+                    'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),//
+                    'McID': $scope.McID,//
+                    'ProdTotalDuration': ProdTotalDuration,//
+                    'Remark': String($('#select_qctrackingremark-input').val()).trim(),//
+                    'WOID': $scope.selectedWOIDData['woid'],//
+                    'ProcOpSeq': $scope.ProcOpSeq,//
+                    'WorkCenter': $scope.WorkCenter//
+
+                })
+             );
+                //QCStopCase10_2
+                //"UPDATE [TS_WorkOrderExecution] SET WOStatus = @WOStatus, "
+                //        + "ProdEndDate = @ProdEndDate, "
+                //        + "OperatorID = @OperatorID, "
+                //        + "OperatorName = @OperatorName, "
+                //        + "McID = @McID, "
+                //        + "Remark = @Remark, " //gh 2014Dec11
+                //        + "ProdTotalDuration = @ProdTotalDuration "
+                //        + "where WOID = @WOID "
+                //        + "and WorkCenter = @WorkCenter "
+                //        + "and ProcOpSeq = @ProcOpSeq "
+
+                promiseArray3.push(
+                    $http.post(config.baseUrlApi + 'HMLVTS/productionStopCase10_3', {
+                        'WOID': $scope.selectedWOIDData['woid'],//
+                        'ProcOpSeq': $scope.ProcOpSeq,//
+                        'ExStatus': 8,
+                        'UpdatedDate': currentdate,
+                        'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),//
+                        'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),//
+                        'reason': ''
+                    })
+            );
+
+                //"INSERT INTO [TS_ExStatus] "
+                //        + "( WOID, ProcOpSeq, ExStatus, UpdatedDate, OperatorID, OperatorName, Reason ) "
+                //        + "VALUES ( @WOID, @ProcOpSeq, @ExStatus, @UpdatedDate, @OperatorID, @OperatorName, @Reason ) "
+                $q.all(promiseArray1).then(function (response) {
+                    console.log("cmdQCStop_Click productionStopCase10_1", response);
+                    CalculateTimeSpan("Production");
+                });
+                $q.all(promiseArray2).then(function (response) {
+                    console.log("cmdQCStop_Click QCStopCase10_2", response);
+                });
+                $q.all(promiseArray3).then(function (response) {
+                    console.log("cmdQCStop_Click productionStopCase10_3", response);
+
+                    CheckQCWOOpnStatus();
+                    $scope.reload = true;
+                    $scope.cmdUpdate_Click();
+                
+                });
+
+
+            }
         
         //'*******************************************************************
         //'Title     :  cmdQCResume_Click
@@ -624,24 +1741,55 @@
         //'*******************************************************************
         $scope.cmdQCResume_Click = function () {
             console.log("cmdQCResume_Click");
-            var promiseArray1 = fnValidateUserNameMCAssign();
 
-            $q.all(promiseArray1).then(function (response) {
-                console.log("fnValidateUserNameMCAssign", response);
-                if (response.length != 0 && response[0].data.success && response[0].data.result.length != 0) {
-                    //  if(true){
-                    $("#qctracking-table3-operatorName").val(authService.currentUser.userName);
-                    $("#qctracking-table3-loginName").val(authService.currentUser.userName);
-                    cmdQCResume_ClickCase5();
-
-                } else {
-                    alert("Operator is not assigned to operate this machine.");
-                    $("#qctracking-table3-operatorName").val("");
-                    $("#qctracking-table3-password").val("");
+            var operatorName = String($("#qctracking-table3-operatorName").val()).trim();
+            var password = String($("#qctracking-table3-password").val()).trim();
+            if (operatorName == "" || password == "") {
+                console.log("cmdQCResume_Click.1");
+                alert("Please enter Operator Name or scan Operator ID");
+            } else {
+                console.log("cmdQCResume_Click.2");
+                // console.log("test validate", ValidateOperatorName(false));
 
 
-                }
-            });
+                var promiseArray1 = ValidateOperatorName(false);
+                console.log("ValidateOperatorName", promiseArray1);
+                $q.all(promiseArray1).then(function (response) {
+                    console.log("Token/GetToken", response);
+                    //todo: check whether the current login id and firstname is the same as the return result
+                    //global function line 277 loops
+                    if (response.length != 0 && response[0].data != undefined && response[0].data.success != null && response[0].data.success) {
+                        console.log("cmdQCResume_Click.3");
+                        cmdQCResume_ClickCase5();
+                    } else {
+                        console.log("cmdQCResume_Click.4");
+                        $("#qctracking-table3-operatorName").val("");
+                        $("#qctracking-table3-password").val("");
+                    }
+                });
+
+
+            }
+
+
+            //var promiseArray1 = fnValidateUserNameMCAssign();
+
+            //$q.all(promiseArray1).then(function (response) {
+            //    console.log("fnValidateUserNameMCAssign", response);
+            //    if (response.length != 0 && response[0].data.success && response[0].data.result.length != 0) {
+            //        //  if(true){
+            //        $("#qctracking-table3-operatorName").val(authService.currentUser.userName);
+            //        $("#qctracking-table3-loginName").val(authService.currentUser.userName);
+                    
+
+            //    } else {
+            //        alert("Operator is not assigned to operate this machine.");
+            //        $("#qctracking-table3-operatorName").val("");
+            //        $("#qctracking-table3-password").val("");
+
+
+            //    }
+            //});
 
         }
 
@@ -852,7 +2000,7 @@
             var currentdate = getCurrentDatetime();
 
                 promiseArray1.push(
-                $http.post(config.baseUrlApi + 'HMLVTS/QCPauseCase20_1', {// Multiple Operator
+                $http.post(config.baseUrlApi + 'HMLVTS/QCPauseCase20_1', {
                     'StopDateTime': currentdate,
                     'endType': 'QCPause',
                     'WOID': $scope.selectedWOIDData['woid'],
@@ -887,8 +2035,8 @@
                        'McID': $scope.McID,
                        'McType': $scope.McType,
                        'reason': reason,
-                       'OperatorID': String($("#wotracking-table3-operatorName").val()).trim(),
-                       'OperatorName': String($("#wotracking-table3-operatorName").val()).trim(),
+                       'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),
+                       'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),
                        'ShiftID': '0'
                    })
                );
@@ -911,7 +2059,7 @@
 
                          })
                 );
-                        console.log("setupPauseCase20_3", response);
+                        //console.log("setupPauseCase20_3", response);
                         CheckQCWOOpnStatus();
 
                         //reload();
@@ -920,6 +2068,785 @@
             });
         }
 
+        //'*******************************************************************
+        //'Title     :  cmdUpdateReceived_Click
+        //'Function  :  
+        //'Input     :  
+        //'Output    :  
+        //'Remark    :
+        //'*******************************************************************
+        $scope.cmdUpdate_Click = function () {
+            console.log("cmdUpdate_Click")
+            var select_WOID = String($('#select_qctracking-woid-input').val()).trim();
+
+            var ReceivedQty = 0;
+            if (String(document.getElementById("WIP-td9_1").innerHTML).trim() != "") {
+                ReceivedQty = parseInt(String(document.getElementById("WIP-td9_1").innerHTML).trim());
+            }
+
+            console.log("ReceivedQty", ReceivedQty);
+            $("#qctracking-newReceived").val(ReceivedQty);
+            $("#qctracking-currentReceived").val(ReceivedQty);
+
+            if (select_WOID == "") {
+                alert("Please enter Work Order");
+            } else {
+                cmdUpdate_ClickCase1();
+            }
+
+        }
+
+        //'*******************************************************************
+        //'Title     :  cmdUpdate_ClickCase1
+        //'Function  :  
+        //'Input     :  
+        //'Output    :  
+        //'Remark    :
+        //'*******************************************************************
+        function cmdUpdate_ClickCase1() {
+            console.log("cmdUpdate_ClickCase1");
+            if ($("#inspection-row-2").css("display") == "block") {
+                alert("Please start operation first.");
+            } else {
+                cmdUpdate_ClickCase2();
+            }
+        }
+
+        //'*******************************************************************
+        //'Title     :  cmdUpdate_ClickCase2
+        //'Function  :  
+        //'Input     :  
+        //'Output    :  
+        //'Remark    :
+        //'*******************************************************************
+        function cmdUpdate_ClickCase2() {
+            console.log("cmdUpdate_ClickCase2");
+            var operatorName = String($("#qctracking-table3-operatorName").val()).trim();
+            var password = String($("#qctracking-table3-password").val()).trim();
+            if (operatorName == "" || password == "") {
+                console.log("cmdQCStart_ClickCase15.1");
+                alert("Please enter Operator Name or scan Operator ID");
+            } else {
+                console.log("cmdUpdate_ClickCase2.2");
+                // console.log("test validate", ValidateOperatorName(false));
+
+
+                var promiseArray1 = ValidateOperatorName(false);
+                console.log("ValidateOperatorName", promiseArray1);
+                $q.all(promiseArray1).then(function (response) {
+                    console.log("Token/GetToken", response);
+                    //todo: check whether the current login id and firstname is the same as the return result
+                    //global function line 277 loops
+                    if (response.length != 0 && response[0].data != undefined && response[0].data.success != null && response[0].data.success) {
+                        console.log("cmdUpdate_ClickCase2.3");
+                        cmdUpdate_ClickCase5();
+                    } else {
+                        console.log("cmdUpdate_ClickCase2.4");
+                        $("#qctracking-table3-operatorName").val("");
+                        $("#qctracking-table3-password").val("");
+                    }
+                });
+            }
+        }
+
+        //'*******************************************************************
+        //'Title     :  cmdUpdate_ClickCase5
+        //'Function  :  
+        //'Input     :  
+        //'Output    :  
+        //'Remark    :
+        //'*******************************************************************
+        function cmdUpdate_ClickCase5() {
+            console.log("cmdUpdate_ClickCase5");
+            if (config.WOGlobalDefaultCompletedQty) {
+                console.log("cmdUpdate_ClickCase5.1");
+                //if (config.DefaultReceiveQty) {
+                if (config.skipReceiveQty) {
+
+                    $scope.WOGlobalWOCompletedQty = $scope.CompletedQty + $scope.OutstandingQty;
+
+
+
+                    console.log("cmdUpdate_ClickCase5.3");
+                    $scope.strparaPreScrapQty = 0;
+                    console.log("test2 strparaPreScrapQty cmdUpdate_ClickCase5", $scope.strparaPreScrapQty);
+                    console.log("test2 ScrapScrapQty cmdUpdate_ClickCase5", $scope.ScrapScrapQty);
+                    // GenerateWOSummary();
+                    // GenerateWOSummaryScrap
+                    $scope.WOGlobalWOReceivedQty = $scope.PreviousRecQty;
+                    //3 - actual receive qty WIP-td3_1
+                    //4 completed qty
+                    //7 OutstandingQty
+                    document.getElementById("WIP-td5_1").innerHTML = $scope.WOGlobalWOReceivedQty;
+                    document.getElementById("WIP-td5_2").innerHTML = getCurrentDatetime().replace("T");
+
+                    document.getElementById("WIP-td9_1").innerHTML = $scope.OutstandingQty + $scope.WOGlobalWOReceivedQty + $scope.strparaPreScrapQty;
+                    document.getElementById("WIP-td9_2").innerHTML = getCurrentDatetime().replace("T");
+                    CalculateDuration();
+                    cmdUpdate_ClickCase8();
+                } else {
+                    console.log("cmdUpdate_ClickCase5.4");
+                    cmdUpdate_ClickCase6();
+                }
+
+                //} else {
+                //    console.log("cmdUpdate_ClickCase5.5");
+                //    cmdUpdate_ClickCase6();
+                //}
+            } else {
+                console.log("cmdUpdate_ClickCase5.6");
+                cmdUpdate_ClickCase6();
+            }
+        }
+
+        //'*******************************************************************
+        //'Title     :  cmdUpdateReceived_ClickCase6
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function cmdUpdate_ClickCase6() {
+
+            if (String(document.getElementById("WIP-td5_1").innerHTML).trim() != "" && ($scope.PreviousRecQty == undefined ||  $scope.PreviousRecQty == "")) {
+                $scope.PreviousRecQty = parseInt(String(document.getElementById("WIP-td5_1").innerHTML).trim());
+            }
+            console.log("cmdUpdate_ClickCase6", $scope.PreviousRecQty);
+            //$scope.ReceivedQty = $scope.PreviousRecQty;
+            $("#qctracking-newReceived").val($scope.PreviousRecQty);
+            console.log("scope", $scope.WOGlobalWOCompletedQty);
+            console.log("scope", $scope);
+
+
+            if ($("#saveCompleteModal-current").val() == "") {
+                console.log("saveCompleteModal1", $scope.CompletedQty);
+                $("#saveCompleteModal-current").val(parseInt(String(document.getElementById("WIP-td6_1").innerHTML).trim()));
+            }
+
+            $("#saveCompleteModal-new").val($scope.OutstandingQty);
+           // $("#modalWOID1").val($scope.selectedWOIDData["woid"]);
+            //$("#preprocess-woid").val($scope.selectedWOIDData["woid"]);
+            // $("#preprocess-scrapQty").val("");
+            $scope.PreScrapQty = "";
+            $scope.newReceived = "";
+
+
+            document.getElementById("saveCompleteModalWOID").innerHTML = $scope.selectedWOIDData['woid'];
+            $('#saveCompleteModal').modal('show');
+
+
+        }
+
+
+        //'*******************************************************************
+        //'Title     :  cmdUpdateReceived_ClickCase8
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function cmdUpdate_ClickCase8() {
+            console.log("cmdUpdateReceived_ClickCase8");
+            $scope.ActualRecQty = String(document.getElementById("WIP-td5_1").innerHTML).trim();
+            if ($scope.ActualRecQty == "") {
+                $scope.ActualRecQty = 0;
+            }
+
+            if ($scope.CompletedQty == "") {
+                $scope.CompletedQty = 0;
+            }
+
+            if ($scope.ScrapQty == "") {
+                $scope.ScrapQty = 0;
+            }
+
+            if ($scope.TotalActAdjustedQty == "") {
+                $scope.TotalActAdjustedQty = 0;
+            }
+            if (String(document.getElementById("WIP-td9_1").innerHTML).trim() == "") {
+                $scope.OutstandingQty = 0;
+            }
+
+            console.log("cmdUpdate_ClickCase8 ActualRecQty", $scope.ActualRecQty);
+            console.log("cmdUpdate_ClickCase8 ScrapQty", $scope.ScrapQty);
+
+            console.log("cmdUpdate_ClickCase8 completed", $scope.CompletedQty);
+            console.log("cmdUpdate_ClickCase8 ScrapScrapQty", $scope.ScrapScrapQty);
+
+            // if ($scope.CompletedQty == $scope.ActualRecQty - $scope.ScrapQty) { //completed to check
+            if ($scope.CompletedQty == $scope.ActualRecQty - $scope.ScrapScrapQty) { //completed
+                console.log("cmdUpdate_ClickCase8.1");
+                if ($scope.WOGlobalWOOpnState != 7) {
+                    console.log("cmdUpdateReceived_ClickCase8.2");
+                   
+                        alert("Please stop QC before complete the work order.");
+                    // cmdUpdate_ClickCase100();
+                } else {
+                    console.log("cmdUpdate_ClickCase8.3");
+                    $scope.WOExecutionStatus = "Completed";
+                    cmdUpdate_ClickCase10();
+                }
+                //console.log("cmdUpdateReceived_ClickCase8.1");
+                //$scope.WOExecutionStatus = "Completed"; // update status only for completed job
+                //cmdUpdate_ClickCase10();
+                //            } else if ($scope.CompletedQty > $scope.ActualRecQty - $scope.ScrapQty) { //do more than completed
+            } else if ($scope.CompletedQty > $scope.ActualRecQty) { //do more than completed
+                console.log("cmdUpdate_ClickCase8.4");
+                console.log("cmdUpdate_ClickCase8.4 ActualRecQty", $scope.ActualRecQty);
+                console.log("cmdUpdate_ClickCase8.4 ScrapQty", $scope.ScrapQty);
+                alert("Please enter the correct completed qty. Max qty is " + $scope.ActualRecQty - $scope.ScrapQty);
+                cmdUpdate_ClickCase100();
+            } else { // havent complete
+                console.log("cmdUpdate_ClickCase8.5");
+                cmdUpdate_ClickCase10();
+            }
+        }
+
+        //'*******************************************************************
+        //'Title     :  cmdUpdate_ClickCase95
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function cmdUpdate_ClickCase100() {
+            console.log("cmdUpdate_ClickCase100");
+            //fetch WO summary
+            GenerateWOSummary();
+            //fetch WO summary - scrap + unaccountable qty
+            GenerateWOSummaryScrap();
+
+            console.log("cmdUpdate_ClickCase100.1", $scope.CompletedQty);
+            //if ($scope.McType.toLowerCase() == "inhouse") {
+            //    ReCheck($scope.selectedWOID);
+            //    //CheckWOOpnStatus();
+            //    console.log("saveCompleteModal2", $scope.CompletedQty);
+            //    $("#saveCompleteModal-current").val($scope.CompletedQty);
+
+            //} else {
+            //    ReCheck($scope.selectedWOID);
+            //    //CheckSubconWOOpnStatus();
+            //    console.log("saveCompleteModal3", $scope.CompletedQty);
+            //    $("#saveCompleteModal-current").val($scope.CompletedQty);
+
+            //}
+
+
+        }
+
+
+        //'*******************************************************************
+        //'Title     :  cmdUpdate_ClickCase10
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function cmdUpdate_ClickCase10() {
+            console.log("cmdUpdate_ClickCase10");
+            var currentdate = getCurrentDatetime();
+            var promiseArray1 = [];
+            var promiseArray2 = [];
+
+            var ProdTotalDuration = String($('#qctracking-table3-qctotalduration').val()).trim();
+            if (ProdTotalDuration == "") {
+                ProdTotalDuration = "0:0:0";
+            }
+            ProdTotalDuration = convertDatetimeToSecond(ProdTotalDuration);
+            promiseArray1.push(
+              $http.post(config.baseUrlApi + 'HMLVTS/cmdUpdateReceived_ClickCase10_1_1', {
+                  'ActualRecQty': parseInt($scope.ActualRecQty),//
+                  'ActualRecDate': currentdate,//
+                  'CompletedQty': $scope.CompletedQty,//
+                  'CompletedDate': currentdate,//
+                  'OutstandingQty': $scope.ActualRecQty - $scope.CompletedQty - $scope.ScrapScrapQty,//
+                  'OutstandingDate': currentdate,//
+                  'WOStatus': $scope.WOExecutionStatus,//
+                  'ProdTotalDuration': ProdTotalDuration,//
+                  'WOID': $scope.selectedWOIDData['woid'],
+                  'WorkCenter': $scope.WorkCenter,//
+                  'ProcOpSeq': $scope.ProcOpSeq//
+              })
+          );
+
+
+
+            $q.all(promiseArray1).then(function (response) {
+                console.log("cmdUpdate_ClickCase10 cmdUpdate_ClickCase10_1_1", response);
+                cmdUpdate_ClickCase15();
+            });
+
+        }
+
+
+        //'*******************************************************************
+        //'Title     :  cmdUpdate_ClickCase15
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function cmdUpdate_ClickCase15() {
+            console.log("cmdUpdate_ClickCase15");
+            if ($scope.WOExecutionStatus == "Completed") {
+                cmdUpdate_ClickCase20();
+            } else {
+                var promiseArray = [];
+                promiseArray.push(
+              $http.post(config.baseUrlApi + 'HMLVTS/cmdUpdate_ClickCase15', {
+                  'WOID': $scope.selectedWOIDData['woid']
+              })
+          );
+                $q.all(promiseArray).then(function (response) {
+                    console.log("cmdUpdate_ClickCase15", response);
+
+                    if (response.length != 0 && response[0].data.success && response[0].data.result.length != 0) {
+                        $scope.LastProcOpSeq = response[0].data.result[0]['LastProcOpSeq'];
+                        if ($scope.ProcOpSeq >= $scope.LastProcOpSeq) {
+                            cmdUpdate_ClickCase18();
+                        } else {
+                            cmdUpdate_ClickCase100();
+                        }
+                    } else {
+                        alert("No route sequence found. ");
+                    }
+                    cmdUpdateReceived_ClickCase100();
+                });
+
+            }
+        }
+
+
+        //'*******************************************************************
+        //'Title     :  cmdUpdate_clickCase18
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function cmdUpdate_clickCase18() {
+            console.log("cmdUpdate_clickCase18");
+            var promiseArray = UpdateWorkOrderQty();
+
+            $q.all(promiseArray).then(function (response) {
+                console.log("UpdateWorkOrderQty", response);
+                fnAddFGInventory();
+                cmdUpdateReceived_ClickCase100();
+            });
+        }
+
+
+        //'*******************************************************************
+        //'Title     :  cmdUpdate_ClickCase20
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function cmdUpdate_ClickCase20() {
+            console.log("cmdUpdate_ClickCase20");
+            var promiseArray1 = [];
+            var currentdate = getCurrentDatetime();
+            promiseArray1.push(
+              $http.post(config.baseUrlApi + 'HMLVTS/cmdUpdateReceived_ClickCase10_2', {
+                  'WOID': $scope.selectedWOIDData['woid'],//
+                  'ProcOpSeq': $scope.ProcOpSeq,//
+                  'ExStatus': 9,
+                  'UpdatedDate': currentdate,
+                  'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),//
+                  'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),//
+                  'reason': ''
+              })
+          );
+
+            $q.all(promiseArray1).then(function (response) {
+                console.log("cmdUpdate_ClickCase10_2.2", response);
+                if ($scope.selectedWOIDData['woid'].indexOf("-") != -1) {
+                    cmdUpdate_ClickCase50();
+                } else {
+                    cmdUpdate_ClickCase30();
+                }
+            });
+        }
+
+
+        //'*******************************************************************
+        //'Title     :  cmdUpdate_ClickCase30
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function cmdUpdate_ClickCase30() {
+            console.log("cmdUpdate_ClickCase30");
+            var promiseArray1 = [];
+            promiseArray1.push(
+              $http.post(config.baseUrlApi + 'HMLVTS/cmdUpdateReceived_ClickCase30', {
+                  'WOID': $scope.selectedWOIDData['woid']
+              })
+          );
+
+            $q.all(promiseArray1).then(function (response) {
+                console.log("cmdUpdate_ClickCase30 cmdUpdateReceived_ClickCase30", response);
+                console.log("cmdUpdate_ClickCase30 length", response.length);
+                console.log("cmdUpdate_ClickCase30 length1", response[0].data.result.length);
+                if (response.length != 0 && response[0].data.result.length != 0) {
+
+                    $scope.LastProcOpSeq = response[0].data.result[0]['lastProcOpSeq'];
+                    console.log("cmdUpdate_ClickCase30.1");
+                    console.log("cmdUpdate_ClickCase30.1 procopseq", $scope.ProcOpSeq);
+                    console.log("cmdUpdate_ClickCase30.1 LastProcOpSeq", $scope.LastProcOpSeq);
+                    if ($scope.ProcOpSeq >= $scope.LastProcOpSeq) {
+                        console.log("cmdUpdate_ClickCase30.2");
+                        $scope.WOStatus = "Completed";
+                        var promiseArray = UpdateWorkOrderQty();
+
+                        $q.all(promiseArray).then(function (response) {
+                            console.log("UpdateWorkOrderQty.1", response);
+                            cmdUpdate_ClickCase80();
+                        });
+                    } else {
+                        console.log("cmdUpdate_ClickCase30.3");
+                        if ($scope.WOExecutionStatus == "Completed") {
+                            console.log("cmdUpdate_ClickCase30.4");
+                            if ($scope.CompletedQty > 0) {
+                                console.log("cmdUpdate_ClickCase30.5");
+                                RefreshData();
+
+                            } else {
+                                console.log("cmdUpdate_ClickCase30.6");
+                                $scope.WOStatus = "Completed";
+                                var promiseArray = UpdateWorkOrderQty();
+
+                                $q.all(promiseArray).then(function (response) {
+                                    console.log("UpdateWorkOrderQty.1", response);
+                                    cmdUpdate_ClickCase80();
+                                });
+
+                            }
+                        } else {
+                            console.log("cmdUpdate_ClickCase30.7");
+                            cmdUpdate_ClickCase100();
+                        }
+                    }
+
+
+                } else {
+                    alert("No route sequence found. ");
+                    $scope.WOStatus = "Completed";
+
+                    var promiseArray = UpdateWorkOrderQty();
+
+                    $q.all(promiseArray).then(function (response) {
+                        console.log("UpdateWorkOrderQty.1", response);
+                        cmdUpdateReceived_ClickCase80();
+                    });
+
+                }
+
+
+            });
+        }
+
+
+        //'*******************************************************************
+        //'Title     :  cmdUpdate_ClickCase50
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function cmdUpdate_ClickCase50() {
+            console.log("cmdUpdate_ClickCase50");
+            var promiseArray1 = [];
+            promiseArray1.push(
+              $http.post(config.baseUrlApi + 'HMLVTS/cmdUpdateReceived_ClickCase30', {
+                  'WOID': $scope.selectedWOIDData['woid']
+              })
+          );
+
+            $q.all(promiseArray1).then(function (response) {
+                console.log("cmdUpdate_ClickCase50 cmdUpdateReceived_ClickCase30", response);
+                if (response.length != 0 && response[0].data.result.length != 0) {
+
+                    $scope.LastProcOpSeq = response[0].data.result[0]['lastProcOpSeq'];
+
+                    //console.log("cmdUpdateReceived_ClickCase30.1");
+                    //console.log("cmdUpdateReceived_ClickCase30.1 procopseq", $scope.ProcOpSeq);
+                    //console.log("cmdUpdateReceived_ClickCase30.1 LastProcOpSeq", $scope.LastProcOpSeq);
+
+                    if ($scope.ProcOpSeq >= $scope.LastProcOpSeq) {
+                        $scope.WOStatus = "Completed";
+                        var promiseArray = UpdateWorkOrderQty();
+
+                        $q.all(promiseArray).then(function (response) {
+                            console.log("UpdateWorkOrderQty.1", response);
+                            cmdUpdate_ClickCase80();
+                        });
+                    } else {
+                        if ($scope.WOExecutionStatus == "Completed") {
+                            if ($scope.CompletedQty > 0) {
+                                RefreshData();
+                            } else {
+                                $scope.WOStatus = "Completed";
+                                var promiseArray = UpdateWorkOrderQty();
+
+                                $q.all(promiseArray).then(function (response) {
+                                    console.log("UpdateWorkOrderQty.1", response);
+                                    cmdUpdate_ClickCase80();
+                                });
+
+                            }
+                        } else {
+                            cmdUpdate_ClickCase100();
+                        }
+                    }
+
+
+                } else {
+                    alert("No route sequence found. ");
+                    $scope.WOStatus = "Completed";
+
+                    var promiseArray = UpdateWorkOrderQty();
+
+                    $q.all(promiseArray).then(function (response) {
+                        console.log("UpdateWorkOrderQty.1", response);
+                        cmdUpdate_ClickCase80();
+                    });
+
+                }
+
+
+            });
+        }
+        //'*******************************************************************
+        //'Title     :  cmdUpdate_ClickCase80
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function cmdUpdate_ClickCase80() {
+            console.log("cmdUpdate_ClickCase80");
+            var promiseArray1 = [];
+            var promiseArray2 = [];
+            promiseArray1.push(
+              $http.post(config.baseUrlApi + 'HMLVTS/cmdUpdateReceived_ClickCase80_1', {
+                  'WOID': $scope.selectedWOIDData['woid'],//
+                  'EndDate': getCurrentDatetime()
+              })
+          );
+            promiseArray2.push(
+              $http.post(config.baseUrlApi + 'HMLVTS/cmdUpdateReceived_ClickCase80_2', {
+                  'WOID': $scope.selectedWOIDData['woid'],//
+                  'WOStatus': $scope.WOStatus
+              })
+          );
+            $q.all(promiseArray1).then(function (response) {
+                console.log("cmdUpdateReceived_ClickCase80_1", response);
+                $q.all(promiseArray2).then(function (response) {
+                    console.log("cmdUpdateReceived_ClickCase80_2", response);
+                    cmdUpdate_ClickCase90();
+                });
+            });
+
+
+        }
+
+        //'*******************************************************************
+        //'Title     :  cmdUpdate_ClickCase90
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function cmdUpdate_ClickCase90() {
+            console.log("cmdUpdate_ClickCase90");
+            if ($scope.selectedWOIDData['woid'].indexOf("-") != -1) {
+                cmdUpdate_ClickCase92();
+            } else {
+                cmdUpdate_ClickCase95();
+            }
+        }
+
+        //'*******************************************************************
+        //'Title     :  cmdUpdate_ClickCase92
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function cmdUpdate_ClickCase92() {
+            console.log("cmdUpdate_ClickCase92");
+
+
+
+            //this is a dummy post to control folw
+            var promiseArray1 = [];
+            var promiseArray2 = [];
+            promiseArray1.push(
+            $http.post(config.baseUrlApi + 'HMLVTS/GenerateWOSummary1', {
+                "WOID": $scope.selectedWOID['woid']
+            })
+            );
+
+            promiseArray2.push(
+            $http.post(config.baseUrlApi + 'HMLVTS/GenerateWOSummary1', {
+                "WOID": $scope.selectedWOID['woid']
+            })
+            );
+
+
+            $q.all(promiseArray1).then(function (response) {
+                CheckAnyChildNotCompleted1();
+                $q.all(promiseArray2).then(function (response) {
+                    console.log("GenerateWOSummary1", response);
+
+
+
+                    for (var i = 0; i < $scope.RecursiveWOID.length; i++) {
+                        if (String($scope.RecursiveWOID[i]['woid']).toLowerCase().trim() == $scope.selectedWOID['woid']) {
+                            if (String($scope.RecursiveWOID[i]['woStatus']).toLowerCase().trim() == "completed" || $scope.RecursiveWOID[i]['newwoStatus'] == 'Completed') { // if previously not completed but now need to update
+                                WOStatus = "Completed";
+                                cmdUpdate_ClickCase95();
+
+                            }
+                        }
+                    }
+
+                });
+            });
+        }
+
+        //'*******************************************************************
+        //'Title     :  cmdUpdate_ClickCase95
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    :
+        //'*******************************************************************
+        function cmdUpdate_ClickCase95() {
+            console.log("cmdUpdate_ClickCase95");
+
+            console.log("cmdUpdateReceived_ClickCase95");
+
+            var promiseArray1 = [];
+            var promiseArray2 = [];
+            var promiseArray3 = [];
+
+            promiseArray1.push(
+              $http.post(config.baseUrlApi + 'HMLVTS/cmdUpdateReceived_ClickCase95_1', {
+                  'WOID': $scope.selectedWOIDData['woid']
+
+              })
+          );
+
+
+            promiseArray3.push(
+              $http.post(config.baseUrlApi + 'HMLVTS/cmdUpdateReceived_ClickCase95_3', {
+                  'WOID': $scope.selectedWOIDData['woid']
+
+              })
+          );
+
+
+
+            $q.all(promiseArray1).then(function (response) {
+                console.log("cmdUpdate_ClickCase95 cmdUpdateReceived_ClickCase95_1", response);
+
+                $q.all(promiseArray3).then(function (response) {
+                    console.log("cmdUpdate_ClickCase95 cmdUpdateReceived_ClickCase95_3", response);
+                    if (response.length != 0 && response[0].data.success && response[0].data.result.length != 0) {
+                        $scope.PPID = response[0].data.result[0]['ppid'];
+                        $scope.SalesOrderID = response[0].data.result[0]['salesOrderID'];
+                        $scope.ReleasedDate = response[0].data.result[0]['releasedDate'];
+                    }
+
+                    promiseArray2.push(
+                        $http.post(config.baseUrlApi + 'HMLVTS/cmdUpdateReceived_ClickCase95_2', {
+                            'id': $scope.PPID,
+                            'Status': $scope.WOStatus
+
+                        })
+                    );
+
+                    $q.all(promiseArray2).then(function (response) {
+                        console.log("cmdUpdate_ClickCase95 cmdUpdateReceived_ClickCase95_2", response);
+                        //location.reload();
+                    });
+
+                });
+
+
+
+            });
+        }
+
+
+        //'*******************************************************************
+        //'Title     :    SaveCompleteOK
+        //'Function  :    
+        //'Input     :
+        //'Output    :
+        //'Remark    :
+        //'*******************************************************************
+        $scope.SaveCompleteOK = function () {
+            console.log("SaveCompleteOK");
+            if (config.paraSkipWOTrackingPrompt) {
+                SaveCompleteOKCase5();
+            } else {
+                var answer = confirm("Confirm to save received qty?");
+                if (answer) {
+                    var newReceived = parseInt(String($("#saveCompleteModal-new").val()).trim());
+                    SaveCompleteOKCase5(newReceived);
+                }
+            }
+        }
+
+        //'*******************************************************************
+        //'Title     :    SaveCompleteOKCase5
+        //'Function  :    
+        //'Input     :
+        //'Output    :
+        //'Remark    :
+        //'*******************************************************************
+        function SaveCompleteOKCase5(newReceived) {
+            console.log("SaveCompleteOKCase5");
+            //todo: line 111 check isNumeric
+            console.log("SaveCompleteOKCase5.1", newReceived);
+            console.log("SaveCompleteOKCase5.2", isNaN(newReceived));
+            if (String(newReceived).trim() != "" && !isNaN(newReceived)) {
+                SaveCompleteOKCase10(newReceived);
+            } else {
+                alert("Please enter the correct completed qty.");
+            }
+        }
+
+        //'*******************************************************************
+        //'Title     :    SaveCompleteOKCase10
+        //'Function  :    
+        //'Input     :
+        //'Output    :
+        //'Remark    :
+        //'*******************************************************************
+        function SaveCompleteOKCase10(newReceived) {
+            console.log("SaveCompleteOKCase10");
+            console.log("SaveCompleteOKCase10 newReceived", newReceived);
+            console.log("SaveCompleteOKCase10 $scope.OutstandingQty", $scope.OutstandingQty);
+            if (newReceived <= $scope.OutstandingQty) {
+
+                console.log("SaveCompleteOKCase10 newReceived", newReceived);
+                //  console.log("SaveCompleteOKCase10 CompletedQty", $scope.CompletedQty);
+                // $scope.CompletedQty = $scope.CompletedQty + parseInt(newReceived);
+                $scope.CompletedQty = parseInt(newReceived);
+                console.log("SaveCompleteOKCase10 CompletedQty", $scope.CompletedQty);
+                //$scope.CompletedQty = $scope.WOGlobalWOCompletedQty;
+                $('#saveCompleteModal').modal('toggle');
+                cmdUpdate_ClickCase8();
+            } else {
+                alert("Please enter the correct received qty. Max qty is " + $scope.OutstandingQty);
+            }
+        }
 
         //'*******************************************************************
         //'Title     :  cmdUpdateReceived_Click
@@ -1115,10 +3042,10 @@
 
            // var TotalSetupDuration = 0;
             var ProdTotalDuration = String($('#qctracking-table3-qctotalduration').val()).trim();
-            if (ProdTotalDuration = "") {
+            if (ProdTotalDuration == "") {
                 ProdTotalDuration = "0:0:0";
             }
-
+            ProdTotalDuration = convertDatetimeToSecond(ProdTotalDuration);
             $scope.WOExecutionStatus = "ProcessingStart";
             promiseArray2.push(
                $http.post(config.baseUrlApi + 'HMLVTS/setupStartCase40_2_1', {
@@ -1128,7 +3055,7 @@
                    'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),//
                    'ShiftID': 0,//
                    'McID': $scope.McID,//
-                   'ProdTotalDuration': convertDatetimeToSecond(ProdTotalDuration),//
+                   'ProdTotalDuration': ProdTotalDuration,//
                    'Remark': String($('#select_qctrackingremark-input').val()).trim(),//
                    'WOID': $scope.selectedWOIDData['woid'],//
                    'ProcOpSeq': $scope.ProcOpSeq,//
@@ -1392,7 +3319,7 @@
                                 $("#select_qctracking-pausereason").prop("disabled", false);
                                 //$("#select_qctracking-pausereason-input").val("");
                                 $("#select_qctracking-pausereason").val("");
-
+                                $("#select_qctracking-pausereason-input").val("");
                                 $("#qc-tracking-updatereceive").hide();
                                 $("#qc-tracking-update").show();
                             } else if ($scope.WOGlobalWOOpnState == 6) { //Job pause
@@ -1427,14 +3354,14 @@
 
 
                             console.log("QtyUpdated", $scope.QtyUpdated);
-                            if ($scope.QtyUpdated < 2) {//Multiple Operator
+                            if ($scope.QtyUpdated < 2) {
 
 
                                 //to check, this statement is not in wotracking, might assigned in some other places
                                 //if (String(document.getElementById("WIP-td5_1").innerHTML).trim() != "") {
                                 //    $scope.PreviousRecQty = parseInt(String(document.getElementById("WIP-td5_1").innerHTML).trim());
                                 //}
-                                
+                                $scope.PreviousRecQty = document.getElementById("WIP-td5_1").innerHTML;
                                 document.getElementById("WIP-td5_1").innerHTML = "";
                                 document.getElementById("WIP-td5_2").innerHTML = "";
                                 $("#qc-tracking-updatereceive").show();
@@ -1511,9 +3438,9 @@
                          );
 
                         $q.all(promiseArray2).then(function (response) {
-                            console.log("CalculateTimeSpan QC", response);
+                            console.log("CalculateTimeSpan QC2", response);
                             console.log("CalculateTimeSpan2", response);
-                            var SumDuration;
+                            var SumDuration = 0;
                             if (response.length != 0  && response[0].data.success  && response[0].data.result.length != 0) {
                                     for (var i = 0; i < response[0].data.result.length; i++) {
                                         if (response[0].data.result[i]['totalDuration'] != "" || response[0].data.result[i]['totalDuration'] != null) {
@@ -1528,6 +3455,7 @@
                                     console.log("CalculateTimeSpan setup2 time full", SumDuration)
                                     SumDuration = SumDuration * 60;
                                     var time = secondsToHms(SumDuration);
+                                    console.log("time1",time);
                                     $("#qctracking-table3-qctotalduration").val(time);
                             } else {
                                 SumDuration = 0;
@@ -1539,6 +3467,7 @@
                                 console.log("CalculateTimeSpan setup2 time full", SumDuration)
                                 SumDuration = SumDuration * 60;
                                 var time = secondsToHms(SumDuration);
+                                console.log("time1", time);
                                 $("#qctracking-table3-qctotalduration").val(time);
                             }
 
@@ -1580,6 +3509,7 @@
                                     //.toString('HH:mm:ss');
                                     var time = secondsToHms(SumDuration);
                                     //todo:display this.txtSetupDurationHr.Text
+                                    console.log("time1", time);
                                     $("#qctracking-table3-qctotalduration").val(time);
                                   //  updataSetupDurationTable()
                                 }
@@ -1594,6 +3524,7 @@
                                 //.toString('HH:mm:ss');
                                 var time = secondsToHms(SumDuration);
                                 //todo:display this.txtSetupDurationHr.Text
+                                console.log("time1", time);
                                 $("#qctracking-table3-qctotalduration").val(time);
                             }
                         });
@@ -1604,14 +3535,15 @@
             }
 
             var ProdTotalDuration = String($('#qctracking-table3-qctotalduration').val()).trim();
-            if(ProdTotalDuration = ""){
+            if(ProdTotalDuration == ""){
                 ProdTotalDuration = "0:0:0";
             }
+            ProdTotalDuration = convertDatetimeToSecond(ProdTotalDuration);
             var promiseArray4 = [];
             promiseArray4.push(
                 $http.post(config.baseUrlApi + 'HMLVTS/CalculateTimeSpan7_1', {
                    // 'TotalSetupDuration': TotalSetupDuration,
-                    'ProdTotalDuration': convertDatetimeToSecond(ProdTotalDuration),
+                    'ProdTotalDuration': ProdTotalDuration,
                     'WOID': WOID,
                     'WorkCenter': WorkCenter,
                     'ProcOpSeq': ProcOpSeq
@@ -3335,7 +5267,7 @@
 
                 $q.all(promiseArray2).then(function (response) {
                     console.log("cmdUpdateReceived_ClickCase95_2", response);
-
+                    //location.reload();
                 });
 
                 });
@@ -3394,7 +5326,30 @@
             });
         }
 
+        //'*******************************************************************
+        //'Title     :  fnValidateUserNameMCAssign
+        //'Function  :  Validate username
+        //'Input     :  
+        //'Output    :  
+        //'Remark    :
+        //'*******************************************************************
+        function fnValidateUserNameMCAssign() {//to check might not be useful, this is to check the mac address
+            var OperatorName = $("#qctracking-table3-operatorName").val();
 
+            var promiseArray1 = [];
+            promiseArray1.push(
+            $http.post(config.baseUrlApi + 'HMLVTS/fnValidateUserNameMCAssign', {
+                'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),
+                'McID': $scope.McID
+            })
+            );
+
+            return promiseArray1;
+
+
+
+
+        }
 
         //'****************************************************************************************************
         //'Title     :  UpdateWorkOrderQty
@@ -3423,6 +5378,112 @@
             return promiseArray1;
         }
 
+
+        function fnUpdateOperator(UpdateType) {
+            var promiseArray1 = [];
+            var promiseArray2 = [];
+            var promiseArray3 = [];
+            var currentdate = getCurrentDatetime();
+            promiseArray1.push(
+            $http.post(config.baseUrlApi + 'HMLVTS/fnUpdateOperator1', {
+                'WOID': $scope.selectedWOIDData['woid'],
+                'ProcOpSeq': $scope.ProcOpSeq,
+                'OperatorID': String($("#qctracking-table3-operatorName").val()).trim()
+            })
+            );
+
+            $q.all(promiseArray1).then(function (response) {
+                console.log("fnUpdateOperator1", response);
+                if (response.length != 0 && response[0].data.success && response[0].data.result.length != 0) {
+
+                    if (UpdateType == 1) {
+                        promiseArray2.push(
+                            $http.post(config.baseUrlApi + 'HMLVTS/fnUpdateOperator2', {
+                                'WOID': $scope.selectedWOIDData['woid'],
+                                'ProcOpSeq': $scope.ProcOpSeq,
+                                'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),
+                                'ReceivedDate': currentdate
+                            })
+                        );
+                    } else if (UpdateType == 2) {
+                        promiseArray2.push(
+                            $http.post(config.baseUrlApi + 'HMLVTS/fnUpdateOperator3', {
+                                'WOID': $scope.selectedWOIDData['woid'],
+                                'ProcOpSeq': $scope.ProcOpSeq,
+                                'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),
+                                'CompletedDate': currentdate
+                            })
+                        );
+                    } else if (UpdateType == 3) {
+                        promiseArray2.push(
+                            $http.post(config.baseUrlApi + 'HMLVTS/fnUpdateOperator4', {
+                                'WOID': $scope.selectedWOIDData['woid'],
+                                'ProcOpSeq': $scope.ProcOpSeq,
+                                'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),
+                                'OperatorStatus': $scope.WOExecutionStatus
+                            })
+                        );
+                    }
+
+                    $q.all(promiseArray2).then(function (response) {
+                        console.log("fnUpdateOperator second", response);
+
+                    });
+
+                } else {
+                    if (UpdateType == 1) {
+                        promiseArray3.push(
+                            $http.post(config.baseUrlApi + 'HMLVTS/fnUpdateOperator5', {
+                                'WOID': $scope.selectedWOIDData['woid'],
+                                'WorkCenter': $scope.WorkCenter,
+                                'ProcOpSeq': $scope.ProcOpSeq,
+                                'McID': $scope.McID,
+                                'McType': $scope.McType,
+                                'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),
+                                'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),
+                                'ReceivedQty': $scope.ReceivedQty,
+                                'ReceivedDate': currentdate
+                            })
+                        );
+
+                    } else if (UpdateType == 2) {
+                        promiseArray3.push(
+                            $http.post(config.baseUrlApi + 'HMLVTS/fnUpdateOperator6', {
+                                'WOID': $scope.selectedWOIDData['woid'],
+                                'WorkCenter': $scope.WorkCenter,
+                                'ProcOpSeq': $scope.ProcOpSeq,
+                                'McID': $scope.McID,
+                                'McType': $scope.McType,
+                                'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),
+                                'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),
+                                'CompletedQty': $scope.CompletedQty,
+                                'CompletedDate': currentdate
+                            })
+                        );
+                    } else if (UpdateType == 3) {
+                        promiseArray3.push(
+                            $http.post(config.baseUrlApi + 'HMLVTS/fnUpdateOperator7', {
+                                'WOID': $scope.selectedWOIDData['woid'],
+                                'WorkCenter': $scope.WorkCenter,
+                                'ProcOpSeq': $scope.ProcOpSeq,
+                                'McID': $scope.McID,
+                                'McType': $scope.McType,
+                                'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),
+                                'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),
+                                'OperatorStatus': $scope.WOExecutionStatus
+                            })
+                        );
+                    }
+
+                    $q.all(promiseArray3).then(function (response) {
+                        console.log("fnUpdateOperator third", response);
+
+                    });
+
+
+                }
+            });
+        }
 
 
         //'*******************************************************************
@@ -3455,14 +5516,6 @@
                 alert("Please key in username/password");
             }
             return promiseArray1;
-
-
-
-
-
-
-
-
         }
 
         //'*******************************************************************
@@ -3473,7 +5526,7 @@
         //'Remark    :
         //'*******************************************************************
         function createSelect(rawData, itemName) {
-            //console.log("itemName", itemName);
+            console.log("itemName", itemName);
             console.log("rawdata", rawData);
             var myDiv = document.getElementById("select_" + itemName);
             var myDiv1 = document.getElementById("select_input_woid");
@@ -3529,104 +5582,42 @@
                     myDiv.appendChild(option);
                 }
             }
+
+            if (itemName == "preprocessremark") {
+                var option1 = document.createElement("option");
+                option1.value = "";
+                option1.text = "";
+                myDiv.appendChild(option1);
+
+                for (var i = 0; i < rawData.length; i++) {
+                    var option = document.createElement("option");
+                    option.value = String(rawData[i]["scrapRemark"]).trim();//Subcon QC
+                    option.text = String(rawData[i]["scrapRemark"]).trim();
+                    //  console.log("option",option);
+                    myDiv.appendChild(option);
+                }
+            }//wotracking-scrap-remark
+
+            if (itemName == "qctracking-scrap-remark") {
+                //var option1 = document.createElement("option");
+                //option1.value = "";
+                //option1.text = "";
+                //myDiv.appendChild(option1);
+
+                for (var i = 0; i < rawData.length; i++) {
+                    var option = document.createElement("option");
+                    option.value = String(rawData[i]["scrapRemark"]).trim();//Subcon QC
+                    option.text = String(rawData[i]["scrapRemark"]).trim();
+                    //  console.log("option",option);
+                    myDiv.appendChild(option);
+                }
+            }//
         }
         }
 
 
 
-    function fnUpdateOperator(UpdateType) {
-        var promiseArray1 = [];
-        var promiseArray2 = [];
-        var promiseArray3 = [];
-        var currentdate = getCurrentDatetime();
-        promiseArray1.push(
-        $http.post(config.baseUrlApi + 'HMLVTS/fnUpdateOperator1', {
-            'WOID': $scope.selectedWOIDData['woid'],
-            'ProcOpSeq': $scope.ProcOpSeq,
-            'OperatorID': String($("#qctracking-table3-operatorName").val()).trim()
-            })
-        );
 
-        $q.all(promiseArray1).then(function (response) {
-            console.log("fnUpdateOperator1", response);
-            if (response.length != 0 && response[0].data.success && response[0].data.result.length != 0) {
-
-                if (UpdateType == 1) {
-                    promiseArray2.push(
-                        $http.post(config.baseUrlApi + 'HMLVTS/fnUpdateOperator2', {
-                            'WOID': $scope.selectedWOIDData['woid'],
-                            'ProcOpSeq': $scope.ProcOpSeq,
-                            'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),
-                            'ReceivedDate': currentdate
-                        })
-                    );
-                } else if (UpdateType == 2) {
-                    promiseArray2.push(
-                        $http.post(config.baseUrlApi + 'HMLVTS/fnUpdateOperator3', {
-                            'WOID': $scope.selectedWOIDData['woid'],
-                            'ProcOpSeq': $scope.ProcOpSeq,
-                            'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),
-                            'CompletedDate': currentdate
-                        })
-                    );
-                } else if (UpdateType == 3) {
-                    promiseArray2.push(
-                        $http.post(config.baseUrlApi + 'HMLVTS/fnUpdateOperator4', {
-                            'WOID': $scope.selectedWOIDData['woid'],
-                            'ProcOpSeq': $scope.ProcOpSeq,
-                            'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),
-                            'OperatorStatus': $scope.WOExecutionStatus
-                        })
-                    );
-                }
-
-            } else {
-                if (UpdateType == 1) {
-                    promiseArray3.push(
-                        $http.post(config.baseUrlApi + 'HMLVTS/fnUpdateOperator5', {
-                            'WOID': $scope.selectedWOIDData['woid'],
-                            'WorkCenter': $scope.WorkCenter,
-                            'ProcOpSeq': $scope.ProcOpSeq,
-                            'McID': $scope.McID,
-                            'McType': $scope.McType,
-                            'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),
-                            'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),
-                            'ReceivedQty': $scope.ReceivedQty,
-                            'ReceivedDate': currentdate
-                        })
-                    );
-
-                } else if (UpdateType == 2) {
-                    promiseArray3.push(
-                        $http.post(config.baseUrlApi + 'HMLVTS/fnUpdateOperator6', {
-                            'WOID': $scope.selectedWOIDData['woid'],
-                            'WorkCenter': $scope.WorkCenter,
-                            'ProcOpSeq': $scope.ProcOpSeq,
-                            'McID': $scope.McID,
-                            'McType': $scope.McType,
-                            'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),
-                            'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),
-                            'CompletedQty': $scope.CompletedQty,
-                            'CompletedDate': currentdate
-                        })
-                    );
-                } else if (UpdateType == 3) {
-                    promiseArray3.push(
-                        $http.post(config.baseUrlApi + 'HMLVTS/fnUpdateOperator7', {
-                            'WOID': $scope.selectedWOIDData['woid'],
-                            'WorkCenter': $scope.WorkCenter,
-                            'ProcOpSeq': $scope.ProcOpSeq,
-                            'McID': $scope.McID,
-                            'McType': $scope.McType,
-                            'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),
-                            'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),
-                            'OperatorStatus': $scope.WOExecutionStatus
-                        })
-                    );
-                }
-            }
-        });
-    }
 
 
         //*********************helper funtion  ******************************************************************************//

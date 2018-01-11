@@ -2427,6 +2427,20 @@ namespace TestTemplate.WebAPI.Controllers
         }
 
         [HttpPost]
+        public HttpResponseMessage QCStopCase10_2([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.QCStopCase10_2(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
         public HttpResponseMessage productionStopCase10_3([FromBody]MessagingService request)
         {
             //ITS_WorkOrderService service = new TS_WorkOrderService();
@@ -2893,6 +2907,22 @@ namespace TestTemplate.WebAPI.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
+
+        [HttpPost]
+        public HttpResponseMessage cmdScrap_ClickCase10_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.cmdScrap_ClickCase10_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        
 
         [HttpPost]
         public HttpResponseMessage cmdUpdateReceived_ClickCase10_1_1([FromBody]MessagingService request)
@@ -4233,6 +4263,20 @@ namespace TestTemplate.WebAPI.Controllers
         }
 
         [HttpPost]
+        public HttpResponseMessage btnCancelWO_ClickCase20_2_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.btnCancelWO_ClickCase20_2_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
         public HttpResponseMessage btnCancelWO_ClickCase20_2([FromBody]MessagingService request)
         {
             //ITS_WorkOrderService service = new TS_WorkOrderService();
@@ -4253,6 +4297,20 @@ namespace TestTemplate.WebAPI.Controllers
             IQueuingWOsService service = new QueuingWOsService();
 
             var result = service.btnCancelWO_ClickCase30_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage btnCancelWO_ClickCase30_1_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.btnCancelWO_ClickCase30_1_1(request);
             if (result == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);

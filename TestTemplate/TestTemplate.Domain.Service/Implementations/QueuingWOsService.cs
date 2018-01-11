@@ -1680,6 +1680,28 @@ namespace TestTemplate.Domain.Service.Implementations
 
         }
 
+        public QueryResponse QCStopCase10_2(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().QCStopCase10_2(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+
+        }
+
+        
+
         public QueryResponse productionStopCase10_3(Messaging.MessagingService.MessagingService request)
         {
             QueryResponse response = new QueryResponse();
@@ -5084,6 +5106,27 @@ namespace TestTemplate.Domain.Service.Implementations
             return response;
         }
 
+        public QueryResponse cmdScrap_ClickCase10_1(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().cmdScrap_ClickCase10_1(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+        }
+
+        
+
         public QueryResponse cmdUpdateReceived_ClickCase10_1_1(Messaging.MessagingService.MessagingService request)
         {
             QueryResponse response = new QueryResponse();
@@ -5793,6 +5836,26 @@ namespace TestTemplate.Domain.Service.Implementations
 
         }
 
+        public QueryResponse btnCancelWO_ClickCase20_2_1(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().btnCancelWO_ClickCase20_2_1(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+
+        }
+
         public QueryResponse btnCancelWO_ClickCase30_1(Messaging.MessagingService.MessagingService request)
         {
             QueryResponse response = new QueryResponse();
@@ -5800,6 +5863,26 @@ namespace TestTemplate.Domain.Service.Implementations
             try
             {
                 result = iStoredQueryRepository.Translate(new QueryFactory().btnCancelWO_ClickCase30_1(request));
+                response.Success = true;
+                response.Result = result;
+                response.TotalRecords = result.Rows.Count;
+            }
+            catch (Exception e)
+            {
+                response.Success = false;
+                response.Message = e.Message;
+            }
+            return response;
+
+        }
+
+        public QueryResponse btnCancelWO_ClickCase30_1_1(Messaging.MessagingService.MessagingService request)
+        {
+            QueryResponse response = new QueryResponse();
+            DataTable result;
+            try
+            {
+                result = iStoredQueryRepository.Translate(new QueryFactory().btnCancelWO_ClickCase30_1_1(request));
                 response.Success = true;
                 response.Result = result;
                 response.TotalRecords = result.Rows.Count;
