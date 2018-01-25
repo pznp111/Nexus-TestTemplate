@@ -1,0 +1,8 @@
+@model List<Nexus.Net.Models.Response.Sitemap>
+
+<ul class="nav navbar-nav">
+    @foreach (var sitemap in Model)
+    {
+        <li><a href="@sitemap.Tag">@sitemap.SiteMapTitle</a></li>
+    }
+</ul>

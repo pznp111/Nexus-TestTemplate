@@ -1,0 +1,47 @@
+﻿  <div class="panel panel-default">
+    <div class="panel-heading">
+        <b>{{tenant.name}} Users Information</b>
+    </div>
+    <div class="panel-body">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="box box-success" style="padding-top: 20px; padding-bottom: 20px;">
+                                <center>
+                                    <img src="../../Content/img/office-icon.png" style="width: 70px;" /><br /><br />
+                                    <span style="font-weight: bold; font-size: 17px;">{{tenant.name}}</span>
+                                </center>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="row" style="padding-top: 35px;">
+                                <div class="col-xs-12">
+                                    <div class="row line-padding ">
+                                        <div class="col-md-5"><i class="fa fa-ticket" aria-hidden="true"></i>&nbsp;No. Of License</div>
+                                        <div class="col-md-7"><b>{{noLicenseCount}}</b></div>
+                                    </div>
+
+                                    <div class="row line-padding ">
+                                        <div class="col-md-5"><i class="fa fa-user" aria-hidden="true" style="padding-right: 3px;"></i>&nbsp;No. Of Active User</div>
+                                        <div class="col-md-7"><b>{{noActiveUser}}</b></div>
+                                    </div>
+
+                                    <div class="row line-padding ">
+                                        <div class="col-md-5"><i class="fa fa-bolt" aria-hidden="true" style="padding-right: 6px;"></i>&nbsp;Remaining License</div>
+                                        <div class="col-md-7" ng-style="customStyle.style"><b>{{noRemainingLicense}}</b></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-2"></div>
+                    </div>
+                </div>
+                <div class="panel-body">
+                    <kendo-grid options="userGridByTenant" k-on-filter-menu-init="filterInit(kendoEvent)"></kendo-grid>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

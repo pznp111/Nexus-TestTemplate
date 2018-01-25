@@ -1,0 +1,2798 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SIMAPS_MOMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="InvMa">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateIn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="InvType" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="PartNo" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="WorkOrder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SubWorkOrder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ReservedWorkOrder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SeqNo" Type="Int32" />
+    <Property Name="CenterID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Customer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Qty" Type="Int32" Nullable="false" />
+    <Property Name="BalQty" Type="Int32" Nullable="false" />
+    <Property Name="Remarks" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ActualBalQty" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="CapacityProfile">
+    <Key>
+      <PropertyRef Name="OrderCapacityID" />
+    </Key>
+    <Property Name="OrderCapacityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReleaseID" Type="Int32" Nullable="false" />
+    <Property Name="OperationID" Type="Int32" Nullable="false" />
+    <Property Name="OperationSequence" Type="Int32" />
+    <Property Name="ResourceID" Type="Int32" Nullable="false" />
+    <Property Name="UsedRatio" Type="Double" />
+    <Property Name="ProducedQuantity" Type="Double" Nullable="false" />
+    <Property Name="ProductionDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="OrderRelease" Relationship="Self.FK__CapacityProfile_OrderRelease" FromRole="CapacityProfile" ToRole="OrderRelease" />
+  </EntityType>
+  <EntityType Name="DailyLoadingPlan">
+    <Key>
+      <PropertyRef Name="PPOrderID" />
+    </Key>
+    <Property Name="PPOrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="Byte" Nullable="false" />
+    <Property Name="Quantity" Type="Double" Nullable="false" />
+    <Property Name="IssuedDate" Type="Int32" Nullable="false" />
+    <Property Name="PartID" Type="Int32" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ParentID" Type="Int32" />
+    <Property Name="CreatedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="OrderRelease">
+    <Key>
+      <PropertyRef Name="ReleaseID" />
+    </Key>
+    <Property Name="ReleaseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderNo" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PartID" Type="Int32" Nullable="false" />
+    <Property Name="PartName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LocationID" Type="Int32" />
+    <Property Name="ReceivedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DueDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ReleasedDate" Type="DateTime" Precision="3" />
+    <Property Name="OriginalQuantity" Type="Double" Nullable="false" />
+    <Property Name="PlanQuantity" Type="Double" Nullable="false" />
+    <Property Name="InventoryQuantity" Type="Double" Nullable="false" />
+    <Property Name="ProductionQuantity" Type="Double" Nullable="false" />
+    <Property Name="ProductionDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Byte" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ReservedString1" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="ReservedString2" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="ReservedString3" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="ReservedString4" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="ReservedString5" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="ReservedString6" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="ReservedString7" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="ReservedString8" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="ReservedString9" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="ReservedString10" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ReservedString11" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ReservedString12" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ReservedDate1" Type="DateTime" Precision="3" />
+    <Property Name="ReservedDate2" Type="DateTime" Precision="3" />
+    <Property Name="ReservedDate3" Type="DateTime" Precision="3" />
+    <Property Name="ReservedFlag1" Type="Boolean" />
+    <Property Name="ReservedFlag2" Type="Boolean" />
+    <Property Name="ReservedFlag3" Type="Boolean" />
+    <Property Name="ReservedInt1" Type="Int32" />
+    <Property Name="ReservedInt2" Type="Int32" />
+    <Property Name="ReservedInt3" Type="Int32" />
+    <Property Name="ReservedFloat1" Type="Double" />
+    <Property Name="ReservedFloat2" Type="Double" />
+    <Property Name="ReservedFloat3" Type="Double" />
+    <Property Name="CreatedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="CapacityProfiles" Relationship="Self.FK__CapacityProfile_OrderRelease" FromRole="OrderRelease" ToRole="CapacityProfile" />
+    <NavigationProperty Name="OrderReleaseDetails" Relationship="Self.FK__OrderReleaseDetail_OrderRelease" FromRole="OrderRelease" ToRole="OrderReleaseDetail" />
+  </EntityType>
+  <EntityType Name="OrderReleaseDetail">
+    <Key>
+      <PropertyRef Name="ReleaseDetailID" />
+    </Key>
+    <Property Name="ReleaseDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ReleaseID" Type="Int32" Nullable="false" />
+    <Property Name="ProductionQuantity" Type="Double" Nullable="false" />
+    <Property Name="ProductionDate" Type="DateTime" Precision="3" />
+    <Property Name="Remark" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="OrderRelease" Relationship="Self.FK__OrderReleaseDetail_OrderRelease" FromRole="OrderReleaseDetail" ToRole="OrderRelease" />
+  </EntityType>
+  <EntityType Name="Schedule">
+    <Key>
+      <PropertyRef Name="ScheduleID" />
+    </Key>
+    <Property Name="ScheduleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UnitId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Version" Type="Int32" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="RuleSetID" Type="Int32" />
+    <Property Name="String1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="ScheduleDetails" Relationship="Self.FK_ScheduleDetail_Schedule" FromRole="Schedule" ToRole="ScheduleDetail" />
+  </EntityType>
+  <EntityType Name="ScheduleDetail">
+    <Key>
+      <PropertyRef Name="ScheduleDetailID" />
+    </Key>
+    <Property Name="ScheduleDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ScheduleID" Type="Int32" Nullable="false" />
+    <Property Name="ScheduleType" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="OperationID" Type="Int32" Nullable="false" />
+    <Property Name="OperationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MachineID" Type="Int32" Nullable="false" />
+    <Property Name="MachineName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Sequence" Type="Int32" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="ShiftName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UnitRunTime" Type="Double" Nullable="false" />
+    <Property Name="RunTime" Type="Double" Nullable="false" />
+    <Property Name="Quantity" Type="Double" Nullable="false" />
+    <Property Name="WorkOrderID" Type="Int32" />
+    <Property Name="WorkOrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Int1" Type="Int32" />
+    <Property Name="Int2" Type="Int32" />
+    <Property Name="Int3" Type="Int32" />
+    <Property Name="Int4" Type="Int32" />
+    <Property Name="Int5" Type="Int32" />
+    <Property Name="Int6" Type="Int32" />
+    <Property Name="Float1" Type="Double" />
+    <Property Name="Float2" Type="Double" />
+    <Property Name="Date1" Type="DateTime" Precision="3" />
+    <Property Name="Date2" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Schedule" Relationship="Self.FK_ScheduleDetail_Schedule" FromRole="ScheduleDetail" ToRole="Schedule" />
+  </EntityType>
+  <EntityType Name="ctr_mc">
+    <Key>
+      <PropertyRef Name="ctr_code" />
+      <PropertyRef Name="mc_code" />
+    </Key>
+    <Property Name="ctr_code" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="mc_code" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="mc_grp_code" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="part_detail_semicon">
+    <Key>
+      <PropertyRef Name="part_num" />
+    </Key>
+    <Property Name="unit_id" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="part_num" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="cust_id" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="packagelc" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="package" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="leadcount" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="padsize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="device" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="pkg_dimension" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="grp" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="exception_flag" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="route_id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="cust_id_erp" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="bodysize" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="applyfor" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="mold_compound_id" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="mark_instruction_id" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="lf_part_id" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="updatedatetime" Type="DateTime" Precision="3" />
+    <Property Name="gold_content" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="ends_used" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="hooks_used" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="alt_ends_used" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="alt_hooks_used" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="earring_ends" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="safety_stock" Type="Int32" />
+  </EntityType>
+  <EntityType Name="PPOrder">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MeltingOrderID" Type="Int32" />
+    <Property Name="GoldContent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Size" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="BasicChainType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AllocWeight" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="IssueDate" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="GenDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="PPOrderDetails" Relationship="Self.FK_PPOrderDetail_PPOrder" FromRole="PPOrder" ToRole="PPOrderDetail" />
+    <NavigationProperty Name="PPOrderRoutes" Relationship="Self.FK_PPOrderRoute_PPOrder" FromRole="PPOrder" ToRole="PPOrderRoute" />
+  </EntityType>
+  <EntityType Name="PPOrderDetail">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MeltingOrderID" Type="Int32" />
+    <Property Name="PPID" Type="Int32" />
+    <Property Name="PartNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SublotID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SalesOrderID" Type="Int32" Nullable="false" />
+    <Property Name="SalesOrderDetID" Type="Int32" />
+    <Property Name="Weight" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EstCompletionDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="PPOrder" Relationship="Self.FK_PPOrderDetail_PPOrder" FromRole="PPOrderDetail" ToRole="PPOrder" />
+  </EntityType>
+  <EntityType Name="PPOrderRoute">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PPID" Type="Int32" Nullable="false" />
+    <Property Name="PartNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="RouteID" Type="Int32" Nullable="false" />
+    <Property Name="SeqNo" Type="Int32" Nullable="false" />
+    <Property Name="CentreID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MacCode" Type="String" MaxLength="200" FixedLength="true" Unicode="false" />
+    <Property Name="MacType" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MacGroup" Type="Int32" />
+    <Property Name="AttributeGroup" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PPOrder" Relationship="Self.FK_PPOrderRoute_PPOrder" FromRole="PPOrderRoute" ToRole="PPOrder" />
+  </EntityType>
+  <EntityType Name="Right">
+    <Key>
+      <PropertyRef Name="User_grp" />
+      <PropertyRef Name="Unit_id" />
+      <PropertyRef Name="Object_id" />
+      <PropertyRef Name="usergrp_flag" />
+    </Key>
+    <Property Name="User_grp" Type="String" MaxLength="16" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Unit_id" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Object_id" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Rights" Type="Int16" Nullable="false" />
+    <Property Name="usergrp_flag" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RouteMa">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="UnitID" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="SalesOrderCancelDet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderCancelledID" Type="Int32" Nullable="false" />
+    <Property Name="PPID" Type="Int32" Nullable="false" />
+    <Property Name="PlannedWt" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="CancelledWt" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="BalWt" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="SalesOrderCancelled" Relationship="Self.FK_SalesOrderCancelDet_SalesOrderCancelled" FromRole="SalesOrderCancelDet" ToRole="SalesOrderCancelled" />
+  </EntityType>
+  <EntityType Name="SalesOrderCancelled">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderNo" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OrderDetID" Type="Int32" Nullable="false" />
+    <Property Name="OrigQty" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="PlannedQty" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CancelledQty" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="BalQty" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="GenDate" Type="DateTime" Precision="3" />
+    <Property Name="Remark" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="status" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SalesOrderCancelDets" Relationship="Self.FK_SalesOrderCancelDet_SalesOrderCancelled" FromRole="SalesOrderCancelled" ToRole="SalesOrderCancelDet" />
+  </EntityType>
+  <EntityType Name="shift_det">
+    <Key>
+      <PropertyRef Name="shift_code" />
+    </Key>
+    <Property Name="shift_code" Type="String" MaxLength="24" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="beg_time" Type="Int16" Nullable="false" />
+    <Property Name="end_time" Type="Int16" Nullable="false" />
+    <Property Name="team_id" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="user_det">
+    <Key>
+      <PropertyRef Name="login_id" />
+    </Key>
+    <Property Name="login_id" Type="String" MaxLength="16" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+    <Property Name="user_name" Type="String" MaxLength="64" FixedLength="true" Unicode="false" />
+    <Property Name="user_grp" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+    <Property Name="user_title" Type="String" MaxLength="24" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="working_Rate_except">
+    <Key>
+      <PropertyRef Name="part_num" />
+      <PropertyRef Name="mc_code" />
+    </Key>
+    <Property Name="part_num" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="mc_code" Type="String" MaxLength="32" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="prod_unit" Type="Decimal" Precision="6" Scale="0" />
+    <Property Name="route_id" Type="Int32" />
+    <Property Name="ctr_code" Type="String" MaxLength="32" FixedLength="true" Unicode="false" />
+    <Property Name="seq_no" Type="Int32" />
+  </EntityType>
+  <EntityType Name="WorkOrderAssembly">
+    <Key>
+      <PropertyRef Name="AssyWO" />
+      <PropertyRef Name="ComponentWO" />
+    </Key>
+    <Property Name="AssyWO" Type="Int32" Nullable="false" />
+    <Property Name="ComponentWO" Type="Int32" Nullable="false" />
+    <Property Name="QtyPer" Type="Double" />
+    <Property Name="Level" Type="Int32" />
+  </EntityType>
+  <EntityType Name="WorkorderMac">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WOID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PartNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RouteID" Type="Int32" Nullable="false" />
+    <Property Name="SeqNo" Type="Int32" Nullable="false" />
+    <Property Name="CentreID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MacCode" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MacType" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MacGroup" Type="Int32" />
+    <Property Name="AttributeGroup" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="WorkOrderMaster">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Location" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Customer" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PartNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Qty" Type="Int32" Nullable="false" />
+    <Property Name="ToStockQty" Type="Int32" Nullable="false" />
+    <Property Name="InvQty1" Type="Int32" Nullable="false" />
+    <Property Name="InvQty2" Type="Int32" Nullable="false" />
+    <Property Name="BalQty" Type="Int32" Nullable="false" />
+    <Property Name="OrderType" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="IssueDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DeliveryDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="RouteID" Type="Int32" />
+    <Property Name="DrawingStatus" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="MaterialGrade" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="MaterialSupplier" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="UserID" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="drawing1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="drawing2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="drawing3" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="drawing4" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="MinQty" Type="Int32" />
+    <Property Name="MaxQty" Type="Int32" />
+    <Property Name="FGDimension1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FGDimension2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FGDimension3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="WorkOrderMaterial">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WOID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Supplier" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="Grade" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="MatType" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="ReqQty" Type="Int32" />
+    <Property Name="Value" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Diameter" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Length" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Thinkness" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Width" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="OutsideDiameter" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="InsideDiameter" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Availability" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="sodID" Type="Int32" />
+    <Property Name="QtyLength" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="Inventory">
+    <Key>
+      <PropertyRef Name="InventoryID" />
+    </Key>
+    <Property Name="InventoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LocationID" Type="Int32" />
+    <Property Name="DateIn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Type" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="WorkOrderID" Type="Int32" />
+    <Property Name="SequenceNo" Type="Int32" />
+    <Property Name="OperationName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="BalanceQuantity" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Remarks" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="String1" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String2" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="String4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Int1" Type="Int32" />
+    <Property Name="Int2" Type="Int32" />
+    <Property Name="Float1" Type="Double" />
+    <Property Name="Float2" Type="Double" />
+    <Property Name="Date1" Type="DateTime" Precision="3" />
+    <Property Name="Date2" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="InventoryUsages" Relationship="Self.FK_InvUsage_InvMas" FromRole="Inventory" ToRole="InventoryUsage" />
+  </EntityType>
+  <EntityType Name="InventoryUsage">
+    <Key>
+      <PropertyRef Name="InventoryUsageID" />
+    </Key>
+    <Property Name="InventoryUsageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InventoryID" Type="Int32" Nullable="false" />
+    <Property Name="UsageType" Type="Int32" Nullable="false" />
+    <Property Name="UsedByOrderID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="DateOut" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Remarks" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Inventory" Relationship="Self.FK_InvUsage_InvMas" FromRole="InventoryUsage" ToRole="Inventory" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Priority" Type="Int32" />
+    <Property Name="CompanyName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="BillingAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPerson" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="PictureID" Type="Int32" />
+    <Property Name="String1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="SalesOrders" Relationship="Self.FK__SalesOrde__Custo__671F4F74" FromRole="Customer" ToRole="SalesOrder" />
+    <NavigationProperty Name="CustomerItems" Relationship="Self.FK_CustomerItem_Customer" FromRole="Customer" ToRole="CustomerItem" />
+  </EntityType>
+  <EntityType Name="DeliveryOrder">
+    <Key>
+      <PropertyRef Name="DeliveryOrderID" />
+    </Key>
+    <Property Name="DeliveryOrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DeliveryOrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="Byte" Nullable="false" />
+    <Property Name="ShipDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Byte" Nullable="false" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="InvoiceAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ShipAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Currency" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Int1" Type="Int32" />
+    <Property Name="Int2" Type="Int32" />
+    <Property Name="Int3" Type="Int32" />
+    <Property Name="Int4" Type="Int32" />
+    <Property Name="Flag1" Type="Boolean" />
+    <Property Name="Flag2" Type="Boolean" />
+    <Property Name="Flag3" Type="Boolean" />
+    <Property Name="Flag4" Type="Boolean" />
+    <Property Name="String1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String6" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String7" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String8" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String9" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String10" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String11" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String12" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="DeliveryOrderDetails" Relationship="Self.FK_DeliveryOrderDetail_DeliveryOrder" FromRole="DeliveryOrder" ToRole="DeliveryOrderDetail" />
+  </EntityType>
+  <EntityType Name="DeliveryOrderDetail">
+    <Key>
+      <PropertyRef Name="DeliveryOrderLineID" />
+    </Key>
+    <Property Name="DeliveryOrderLineID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DeliveryOrderID" Type="Int32" Nullable="false" />
+    <Property Name="WorkOrderID" Type="Int32" />
+    <Property Name="SalesOrderLineID" Type="Int32" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Quantity" Type="Double" Nullable="false" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="String1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String10" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String11" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String12" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String13" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String14" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String15" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String16" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String17" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String18" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String19" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String20" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String21" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String22" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String23" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String24" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String25" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String26" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String27" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String28" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String29" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String30" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String31" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String32" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String33" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String34" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String35" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String36" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String37" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String38" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String39" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String40" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String41" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String42" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String43" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String44" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String45" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String46" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String47" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String48" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String49" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String50" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Flag1" Type="Boolean" />
+    <Property Name="Flag2" Type="Boolean" />
+    <Property Name="Flag3" Type="Boolean" />
+    <Property Name="Flag4" Type="Boolean" />
+    <Property Name="Flag5" Type="Boolean" />
+    <Property Name="Flag6" Type="Boolean" />
+    <Property Name="Flag7" Type="Boolean" />
+    <Property Name="Flag8" Type="Boolean" />
+    <Property Name="Flag9" Type="Boolean" />
+    <Property Name="Flag10" Type="Boolean" />
+    <Property Name="Flag11" Type="Boolean" />
+    <Property Name="Flag12" Type="Boolean" />
+    <Property Name="Flag13" Type="Boolean" />
+    <Property Name="Flag14" Type="Boolean" />
+    <Property Name="Flag15" Type="Boolean" />
+    <Property Name="Flag16" Type="Boolean" />
+    <Property Name="Flag17" Type="Boolean" />
+    <Property Name="Flag18" Type="Boolean" />
+    <Property Name="Flag19" Type="Boolean" />
+    <Property Name="Flag20" Type="Boolean" />
+    <Property Name="Flag21" Type="Boolean" />
+    <Property Name="Flag22" Type="Boolean" />
+    <Property Name="Flag23" Type="Boolean" />
+    <Property Name="Flag24" Type="Boolean" />
+    <Property Name="Flag25" Type="Boolean" />
+    <Property Name="Flag26" Type="Boolean" />
+    <Property Name="Flag27" Type="Boolean" />
+    <Property Name="Flag28" Type="Boolean" />
+    <Property Name="Flag29" Type="Boolean" />
+    <Property Name="Flag30" Type="Boolean" />
+    <Property Name="Flag31" Type="Boolean" />
+    <Property Name="Flag32" Type="Boolean" />
+    <Property Name="Flag33" Type="Boolean" />
+    <Property Name="Flag34" Type="Boolean" />
+    <Property Name="Flag35" Type="Boolean" />
+    <Property Name="Flag36" Type="Boolean" />
+    <Property Name="Flag37" Type="Boolean" />
+    <Property Name="Flag38" Type="Boolean" />
+    <Property Name="Flag39" Type="Boolean" />
+    <Property Name="Flag40" Type="Boolean" />
+    <Property Name="Flag41" Type="Boolean" />
+    <Property Name="Flag42" Type="Boolean" />
+    <Property Name="Flag43" Type="Boolean" />
+    <Property Name="Flag44" Type="Boolean" />
+    <Property Name="Flag45" Type="Boolean" />
+    <Property Name="Flag46" Type="Boolean" />
+    <Property Name="Flag47" Type="Boolean" />
+    <Property Name="Flag48" Type="Boolean" />
+    <Property Name="Flag49" Type="Boolean" />
+    <Property Name="Flag50" Type="Boolean" />
+    <Property Name="Int1" Type="Int32" />
+    <Property Name="Int2" Type="Int32" />
+    <Property Name="Int3" Type="Int32" />
+    <Property Name="Int4" Type="Int32" />
+    <Property Name="Int5" Type="Int32" />
+    <Property Name="Int6" Type="Int32" />
+    <Property Name="Float1" Type="Double" />
+    <Property Name="Float2" Type="Double" />
+    <Property Name="Float3" Type="Double" />
+    <Property Name="Float4" Type="Double" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="DeliveryOrder" Relationship="Self.FK_DeliveryOrderDetail_DeliveryOrder" FromRole="DeliveryOrderDetail" ToRole="DeliveryOrder" />
+    <NavigationProperty Name="SalesOrderDetail" Relationship="Self.FK_DeliveryOrderDetail_SalesOrderDetail" FromRole="DeliveryOrderDetail" ToRole="SalesOrderDetail" />
+    <NavigationProperty Name="WorkOrder" Relationship="Self.FK_DeliveryOrderDetail_WorkOrder" FromRole="DeliveryOrderDetail" ToRole="WorkOrder" />
+  </EntityType>
+  <EntityType Name="SalesOrder">
+    <Key>
+      <PropertyRef Name="SalesOrderID" />
+    </Key>
+    <Property Name="SalesOrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SalesOrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OrderType" Type="Byte" Nullable="false" />
+    <Property Name="PurchaseOrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DueDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ShipDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Byte" Nullable="false" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="SalesPersonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactPersonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LocationID" Type="Int32" />
+    <Property Name="TotalItems" Type="Int32" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="TotalQuantity" Type="Double" />
+    <Property Name="BalanceAmount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="BalanceQuantity" Type="Double" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="String1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Float1" Type="Double" />
+    <Property Name="Float2" Type="Double" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK__SalesOrde__Custo__671F4F74" FromRole="SalesOrder" ToRole="Customer" />
+    <NavigationProperty Name="SalesOrderDetails" Relationship="Self.FK__SalesOrde__Sales__6DCC4D03" FromRole="SalesOrder" ToRole="SalesOrderDetail" />
+  </EntityType>
+  <EntityType Name="SalesOrderAdjustment">
+    <Key>
+      <PropertyRef Name="SalesOrderAjustmentID" />
+    </Key>
+    <Property Name="SalesOrderAjustmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SalesOrderDetailID" Type="Int32" Nullable="false" />
+    <Property Name="OrigianlQty" Type="Double" />
+    <Property Name="PlannedQty" Type="Double" />
+    <Property Name="ReducedQty" Type="Double" />
+    <Property Name="BalanceQty" Type="Double" />
+    <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="SalesOrderDetail" Relationship="Self.FK__SalesOrde__Sales__719CDDE7" FromRole="SalesOrderAdjustment" ToRole="SalesOrderDetail" />
+    <NavigationProperty Name="WorkOrderAdjustments" Relationship="Self.FK_WorkOrderAdjustment_SalesOrderAdjustment" FromRole="SalesOrderAdjustment" ToRole="WorkOrderAdjustment" />
+  </EntityType>
+  <EntityType Name="SalesOrderDetail">
+    <Key>
+      <PropertyRef Name="SalesOrderLinelID" />
+    </Key>
+    <Property Name="SalesOrderLinelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SalesOrderID" Type="Int32" Nullable="false" />
+    <Property Name="OrderQty" Type="Double" />
+    <Property Name="ProductID" Type="Int32" />
+    <Property Name="LineNumber" Type="Int32" Nullable="false" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="DueDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Byte" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="String1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Int1" Type="Int32" />
+    <Property Name="Int2" Type="Int32" />
+    <Property Name="Float1" Type="Double" />
+    <Property Name="Float2" Type="Double" />
+    <Property Name="Date1" Type="DateTime" Precision="3" />
+    <Property Name="Date2" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="DeliveryOrderDetails" Relationship="Self.FK_DeliveryOrderDetail_SalesOrderDetail" FromRole="SalesOrderDetail" ToRole="DeliveryOrderDetail" />
+    <NavigationProperty Name="SalesOrder" Relationship="Self.FK__SalesOrde__Sales__6DCC4D03" FromRole="SalesOrderDetail" ToRole="SalesOrder" />
+    <NavigationProperty Name="SalesOrderAdjustments" Relationship="Self.FK__SalesOrde__Sales__719CDDE7" FromRole="SalesOrderDetail" ToRole="SalesOrderAdjustment" />
+    <NavigationProperty Name="WorkOrderDetails" Relationship="Self.FK__WorkOrder__Sales__0880433F" FromRole="SalesOrderDetail" ToRole="WorkOrderDetail" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_SalesOrderDetail_Item" FromRole="SalesOrderDetail" ToRole="Item" />
+  </EntityType>
+  <EntityType Name="WorkOrder">
+    <Key>
+      <PropertyRef Name="WorkOrderID" />
+    </Key>
+    <Property Name="WorkOrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WorkOrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="Quantity" Type="Double" Nullable="false" />
+    <Property Name="OrderType" Type="Byte" Nullable="false" />
+    <Property Name="IssueDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DueDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CompletedDate" Type="DateTime" Precision="3" />
+    <Property Name="Priority" Type="Int16" />
+    <Property Name="ParentWorkOrderID" Type="Int32" />
+    <Property Name="Status" Type="Byte" Nullable="false" />
+    <Property Name="LocationID" Type="Int32" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="RouteID" Type="Int32" />
+    <Property Name="Remarks" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String5" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String6" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String7" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String8" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Int1" Type="Int32" />
+    <Property Name="Int2" Type="Int32" />
+    <Property Name="Int3" Type="Int32" />
+    <Property Name="Int4" Type="Int32" />
+    <Property Name="Int5" Type="Int32" />
+    <Property Name="Int6" Type="Int32" />
+    <Property Name="Float1" Type="Double" />
+    <Property Name="Float2" Type="Double" />
+    <Property Name="Date1" Type="DateTime" Precision="3" />
+    <Property Name="Date2" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="DeliveryOrderDetails" Relationship="Self.FK_DeliveryOrderDetail_WorkOrder" FromRole="WorkOrder" ToRole="DeliveryOrderDetail" />
+    <NavigationProperty Name="WorkOrderDetails" Relationship="Self.FK__WorkOrder__WorkO__09746778" FromRole="WorkOrder" ToRole="WorkOrderDetail" />
+    <NavigationProperty Name="WorkOrderMaterial1" Relationship="Self.FK__WorkOrder__WorkO__251C81ED" FromRole="WorkOrder" ToRole="WorkOrderMaterial1" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_WorkOrder_Item" FromRole="WorkOrder" ToRole="Item" />
+    <NavigationProperty Name="Route" Relationship="Self.FK_WorkOrder_Route" FromRole="WorkOrder" ToRole="Route" />
+  </EntityType>
+  <EntityType Name="WorkOrderAdjustment">
+    <Key>
+      <PropertyRef Name="WorkOrderAjustmentID" />
+    </Key>
+    <Property Name="WorkOrderAjustmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SalesOrderAdjustID" Type="Int32" Nullable="false" />
+    <Property Name="WorkOrderID" Type="Int32" Nullable="false" />
+    <Property Name="PlannedQty" Type="Double" Nullable="false" />
+    <Property Name="ReducedQty" Type="Double" Nullable="false" />
+    <Property Name="BalanceQty" Type="Double" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="SalesOrderAdjustment" Relationship="Self.FK_WorkOrderAdjustment_SalesOrderAdjustment" FromRole="WorkOrderAdjustment" ToRole="SalesOrderAdjustment" />
+  </EntityType>
+  <EntityType Name="WorkOrderCost">
+    <Key>
+      <PropertyRef Name="WorkOrderCostId" />
+    </Key>
+    <Property Name="WorkOrderCostId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WorkOrderId" Type="Int32" Nullable="false" />
+    <Property Name="WorkOrderNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="Quantity" Type="Double" Nullable="false" />
+    <Property Name="CustomerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="String1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String3" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="String4" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Flag1" Type="Boolean" />
+    <Property Name="Flag2" Type="Boolean" />
+    <Property Name="Int1" Type="Int32" />
+    <Property Name="Int2" Type="Int32" />
+    <Property Name="Float1" Type="Double" />
+    <Property Name="Float2" Type="Double" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="WorkOrderDetail">
+    <Key>
+      <PropertyRef Name="WorkOrderLineID" />
+    </Key>
+    <Property Name="WorkOrderLineID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WorkOrderID" Type="Int32" Nullable="false" />
+    <Property Name="SalesOrderLineID" Type="Int32" />
+    <Property Name="ItemID" Type="Int32" />
+    <Property Name="Quantity" Type="Double" Nullable="false" />
+    <Property Name="MaxString1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Int1" Type="Int32" />
+    <Property Name="Int2" Type="Int32" />
+    <Property Name="Int3" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Int4" Type="Int32" />
+    <Property Name="Int5" Type="Int32" />
+    <Property Name="Float1" Type="Double" />
+    <Property Name="Float2" Type="Double" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="SalesOrderDetail" Relationship="Self.FK__WorkOrder__Sales__0880433F" FromRole="WorkOrderDetail" ToRole="SalesOrderDetail" />
+    <NavigationProperty Name="WorkOrder" Relationship="Self.FK__WorkOrder__WorkO__09746778" FromRole="WorkOrderDetail" ToRole="WorkOrder" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_WorkOrderDetail_Item" FromRole="WorkOrderDetail" ToRole="Item" />
+  </EntityType>
+  <EntityType Name="WorkOrderMaterial1">
+    <Key>
+      <PropertyRef Name="WorkOrderMaterialId" />
+    </Key>
+    <Property Name="WorkOrderMaterialId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WorkOrderId" Type="Int32" Nullable="false" />
+    <Property Name="MaterialId" Type="Int32" Nullable="false" />
+    <Property Name="UnitMeasureID" Type="Int32" Nullable="false" />
+    <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="Availability" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="Quantity" Type="Double" />
+    <Property Name="Ratio" Type="Double" />
+    <NavigationProperty Name="WorkOrder" Relationship="Self.FK__WorkOrder__WorkO__251C81ED" FromRole="WorkOrderMaterial1" ToRole="WorkOrder" />
+    <NavigationProperty Name="Item" Relationship="Self.FK__WorkOrder__Mater__2610A626" FromRole="WorkOrderMaterial1" ToRole="Item" />
+  </EntityType>
+  <EntityType Name="Operation">
+    <Key>
+      <PropertyRef Name="OperationId" />
+    </Key>
+    <Property Name="OperationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OperationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="Byte" Nullable="false" />
+    <Property Name="Categroy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Instruction" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Version" Type="Int32" />
+    <Property Name="LocationID" Type="Int32" />
+    <Property Name="SizeMin" Type="Double" />
+    <Property Name="SizeMultiple" Type="Double" />
+    <Property Name="Cost" Type="Double" />
+    <Property Name="Pretime" Type="Double" />
+    <Property Name="Posttime" Type="Double" />
+    <Property Name="Duration" Type="Double" />
+    <Property Name="DurationPer" Type="Double" />
+    <Property Name="UOM" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Location" Relationship="Self.FK__Operation__Locat__56B3DD81" FromRole="Operation" ToRole="Location" />
+    <NavigationProperty Name="OperationParameters" Relationship="Self.FK_OperationParamter_Operation" FromRole="Operation" ToRole="OperationParameter" />
+    <NavigationProperty Name="OperationResources" Relationship="Self.FK_OperationResource_Operation" FromRole="Operation" ToRole="OperationResource" />
+    <NavigationProperty Name="RouteOperations" Relationship="Self.FK_RoutingOperation_Operation" FromRole="Operation" ToRole="RouteOperation" />
+  </EntityType>
+  <EntityType Name="OperationParameter">
+    <Key>
+      <PropertyRef Name="OperationParamterId" />
+    </Key>
+    <Property Name="OperationParamterId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OperationID" Type="Int32" Nullable="false" />
+    <Property Name="ParamterID" Type="Int32" />
+    <Property Name="Value" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MinValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaxValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UOM" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="NoofReading" Type="Int16" />
+    <Property Name="MaxString1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Int1" Type="Int32" />
+    <Property Name="Int2" Type="Int32" />
+    <Property Name="Int3" Type="Int32" />
+    <Property Name="Int4" Type="Int32" />
+    <Property Name="Int5" Type="Int32" />
+    <Property Name="Int6" Type="Int32" />
+    <Property Name="Int7" Type="Int32" />
+    <Property Name="Int8" Type="Int32" />
+    <Property Name="Float1" Type="Double" />
+    <Property Name="Float2" Type="Double" />
+    <Property Name="Float3" Type="Double" />
+    <Property Name="Float4" Type="Double" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Operation" Relationship="Self.FK_OperationParamter_Operation" FromRole="OperationParameter" ToRole="Operation" />
+    <NavigationProperty Name="Parameter" Relationship="Self.FK_OperationParamter_Parameter" FromRole="OperationParameter" ToRole="Parameter" />
+  </EntityType>
+  <EntityType Name="OperationRate">
+    <Key>
+      <PropertyRef Name="OperationRateId" />
+    </Key>
+    <Property Name="OperationRateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RouteID" Type="Int32" />
+    <Property Name="RouteOperationId" Type="Int32" />
+    <Property Name="OperationID" Type="Int32" />
+    <Property Name="ResourceID" Type="Int32" />
+    <Property Name="ItemID" Type="Int32" />
+    <Property Name="Instruction" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Cost" Type="Double" />
+    <Property Name="Pretime" Type="Double" />
+    <Property Name="Posttime" Type="Double" />
+    <Property Name="RunTime" Type="Double" />
+    <Property Name="UOM" Type="Int32" />
+    <Property Name="IsDefault" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="OperationResource">
+    <Key>
+      <PropertyRef Name="OperationResourceId" />
+    </Key>
+    <Property Name="OperationResourceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OperationID" Type="Int32" Nullable="false" />
+    <Property Name="ResourceID" Type="Int32" />
+    <Property Name="Instruction" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Cost" Type="Double" />
+    <Property Name="Pretime" Type="Double" />
+    <Property Name="Posttime" Type="Double" />
+    <Property Name="Duration" Type="Double" />
+    <Property Name="DurationPer" Type="Double" />
+    <Property Name="IsDefault" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Operation" Relationship="Self.FK_OperationResource_Operation" FromRole="OperationResource" ToRole="Operation" />
+    <NavigationProperty Name="Equipment" Relationship="Self.FK_OperationResource_Equipment" FromRole="OperationResource" ToRole="Equipment" />
+  </EntityType>
+  <EntityType Name="Parameter">
+    <Key>
+      <PropertyRef Name="ParameterID" />
+    </Key>
+    <Property Name="ParameterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParameterName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="Byte" Nullable="false" />
+    <Property Name="DataType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DefaultValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MinValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaxValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UOM" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="OperationParameters" Relationship="Self.FK_OperationParamter_Parameter" FromRole="Parameter" ToRole="OperationParameter" />
+    <NavigationProperty Name="EquipmentParameters" Relationship="Self.FK_EquipmentParameter_Parameter" FromRole="Parameter" ToRole="EquipmentParameter" />
+  </EntityType>
+  <EntityType Name="ProductRoute">
+    <Key>
+      <PropertyRef Name="ProductRouteId" />
+    </Key>
+    <Property Name="ProductRouteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductRouteName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="Int32" Nullable="false" />
+    <Property Name="CustomerId" Type="Int32" Nullable="false" />
+    <Property Name="ProductId" Type="Int32" Nullable="false" />
+    <Property Name="RouteId" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="Byte" Nullable="false" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Version" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsDefault" Type="Boolean" />
+    <Property Name="String1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Int1" Type="Int32" />
+    <Property Name="Int2" Type="Int32" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Route" Relationship="Self.FK_ProductRoute_Route" FromRole="ProductRoute" ToRole="Route" />
+    <NavigationProperty Name="ProductRouteStatus" Relationship="Self.FK_ProductRouteStatus_ProductRoute" FromRole="ProductRoute" ToRole="ProductRouteStatus" />
+  </EntityType>
+  <EntityType Name="ProductRouteStatu">
+    <Key>
+      <PropertyRef Name="ProductRouteStatusId" />
+    </Key>
+    <Property Name="ProductRouteStatusId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductRouteId" Type="Int32" Nullable="false" />
+    <Property Name="StepNo" Type="Int32" Nullable="false" />
+    <Property Name="ApprovedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+    <Property Name="Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="ProductRoute" Relationship="Self.FK_ProductRouteStatus_ProductRoute" FromRole="ProductRouteStatus" ToRole="ProductRoute" />
+  </EntityType>
+  <EntityType Name="Route">
+    <Key>
+      <PropertyRef Name="RouteId" />
+    </Key>
+    <Property Name="RouteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RouteName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="Byte" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Version" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsDefault" Type="Boolean" />
+    <Property Name="LocationID" Type="Int32" />
+    <Property Name="TraceLevel" Type="Byte" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="WorkOrders" Relationship="Self.FK_WorkOrder_Route" FromRole="Route" ToRole="WorkOrder" />
+    <NavigationProperty Name="ProductRoutes" Relationship="Self.FK_ProductRoute_Route" FromRole="Route" ToRole="ProductRoute" />
+    <NavigationProperty Name="Items" Relationship="Self.FK_Item_Route" FromRole="Route" ToRole="Item" />
+    <NavigationProperty Name="RouteOperations" Relationship="Self.FK_RouteOperation_Route" FromRole="Route" ToRole="RouteOperation" />
+    <NavigationProperty Name="RouteOperations1" Relationship="Self.FK_RouteOperation_Route1" FromRole="Route" ToRole="RouteOperation" />
+  </EntityType>
+  <EntityType Name="RouteOperation">
+    <Key>
+      <PropertyRef Name="RouteOperationId" />
+    </Key>
+    <Property Name="RouteOperationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RouteId" Type="Int32" Nullable="false" />
+    <Property Name="OperationId" Type="Int32" />
+    <Property Name="SubrouteId" Type="Int32" />
+    <Property Name="Sequence" Type="Int32" />
+    <Property Name="DefaultResourceID" Type="Int32" />
+    <Property Name="Instruction" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Operation" Relationship="Self.FK_RoutingOperation_Operation" FromRole="RouteOperation" ToRole="Operation" />
+    <NavigationProperty Name="Route" Relationship="Self.FK_RouteOperation_Route" FromRole="RouteOperation" ToRole="Route" />
+    <NavigationProperty Name="Route1" Relationship="Self.FK_RouteOperation_Route1" FromRole="RouteOperation" ToRole="Route" />
+  </EntityType>
+  <EntityType Name="BillOfMaterial">
+    <Key>
+      <PropertyRef Name="BillOfMaterialId" />
+    </Key>
+    <Property Name="BillOfMaterialId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductAssemblyId" Type="Int32" Nullable="false" />
+    <Property Name="ComponentId" Type="Int32" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="UOMCode" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="BOMLevel" Type="Int16" Nullable="false" />
+    <Property Name="PerAssemblyQty" Type="Double" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Item" Relationship="Self.FK__BillOfMat__Compo__395884C4" FromRole="BillOfMaterial" ToRole="Item" />
+    <NavigationProperty Name="Item1" Relationship="Self.FK__BillOfMat__Produ__3864608B" FromRole="BillOfMaterial" ToRole="Item" />
+  </EntityType>
+  <EntityType Name="CustomerItem">
+    <Key>
+      <PropertyRef Name="CustomerItemID" />
+    </Key>
+    <Property Name="CustomerItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="ItemID" Type="Int32" Nullable="false" />
+    <Property Name="ParentItemID" Type="Int32" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="InternalTAT" Type="Int32" />
+    <Property Name="ExternalTAT" Type="Int32" />
+    <Property Name="PriceUomID" Type="Int32" />
+    <Property Name="String1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String5" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="String6" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="String7" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="String8" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Int1" Type="Int32" />
+    <Property Name="Int2" Type="Int32" />
+    <Property Name="Int3" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Int4" Type="Int32" />
+    <Property Name="Float1" Type="Double" />
+    <Property Name="Float2" Type="Double" />
+    <Property Name="Flag1" Type="Boolean" />
+    <Property Name="Flag2" Type="Boolean" />
+    <Property Name="Flag3" Type="Boolean" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Customer" Relationship="Self.FK_CustomerItem_Customer" FromRole="CustomerItem" ToRole="Customer" />
+    <NavigationProperty Name="Item" Relationship="Self.FK_CustomerItem_Item" FromRole="CustomerItem" ToRole="Item" />
+  </EntityType>
+  <EntityType Name="Item">
+    <Key>
+      <PropertyRef Name="ItemID" />
+    </Key>
+    <Property Name="ItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ItemName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="Byte" Nullable="false" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Subcategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="StandardCost" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="UnitPrice" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="PictureID" Type="Int32" />
+    <Property Name="MakeFlag" Type="Boolean" />
+    <Property Name="SafetyStockLevel" Type="Int16" />
+    <Property Name="ReorderPoint" Type="Int16" />
+    <Property Name="Group1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Group2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Group3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Group4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Group5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Group6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ParentItemID" Type="Int32" />
+    <Property Name="String1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String4" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String5" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String6" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String7" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String8" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String9" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Date1" Type="DateTime" Precision="3" />
+    <Property Name="Date2" Type="DateTime" Precision="3" />
+    <Property Name="Date3" Type="DateTime" Precision="3" />
+    <Property Name="Date4" Type="DateTime" Precision="3" />
+    <Property Name="Date5" Type="DateTime" Precision="3" />
+    <Property Name="Flag1" Type="Boolean" />
+    <Property Name="Flag2" Type="Boolean" />
+    <Property Name="Flag3" Type="Boolean" />
+    <Property Name="Flag4" Type="Boolean" />
+    <Property Name="Flag5" Type="Boolean" />
+    <Property Name="Int1" Type="Int32" />
+    <Property Name="Int2" Type="Int32" />
+    <Property Name="Int3" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Int4" Type="Int32" />
+    <Property Name="Int5" Type="Int32" />
+    <Property Name="Int6" Type="Int32" />
+    <Property Name="Int7" Type="Int32" />
+    <Property Name="Int8" Type="Int32" />
+    <Property Name="Int9" Type="Int32" />
+    <Property Name="Int10" Type="Int32" />
+    <Property Name="Float1" Type="Double" />
+    <Property Name="Float2" Type="Double" />
+    <Property Name="Float3" Type="Double" />
+    <Property Name="Float4" Type="Double" />
+    <Property Name="Float5" Type="Double" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="SalesOrderDetails" Relationship="Self.FK_SalesOrderDetail_Item" FromRole="Item" ToRole="SalesOrderDetail" />
+    <NavigationProperty Name="WorkOrders" Relationship="Self.FK_WorkOrder_Item" FromRole="Item" ToRole="WorkOrder" />
+    <NavigationProperty Name="WorkOrderDetails" Relationship="Self.FK_WorkOrderDetail_Item" FromRole="Item" ToRole="WorkOrderDetail" />
+    <NavigationProperty Name="WorkOrderMaterial1" Relationship="Self.FK__WorkOrder__Mater__2610A626" FromRole="Item" ToRole="WorkOrderMaterial1" />
+    <NavigationProperty Name="Route" Relationship="Self.FK_Item_Route" FromRole="Item" ToRole="Route" />
+    <NavigationProperty Name="BillOfMaterials" Relationship="Self.FK__BillOfMat__Compo__395884C4" FromRole="Item" ToRole="BillOfMaterial" />
+    <NavigationProperty Name="BillOfMaterials1" Relationship="Self.FK__BillOfMat__Produ__3864608B" FromRole="Item" ToRole="BillOfMaterial" />
+    <NavigationProperty Name="CustomerItems" Relationship="Self.FK_CustomerItem_Item" FromRole="Item" ToRole="CustomerItem" />
+    <NavigationProperty Name="Item1" Relationship="Self.FK__Item__ParentItem__0C85DE4D" FromRole="Item" ToRole="Item1" />
+    <NavigationProperty Name="Item2" Relationship="Self.FK__Item__ParentItem__0C85DE4D" FromRole="Item1" ToRole="Item" />
+    <NavigationProperty Name="Picture" Relationship="Self.FK__Item__PictureID__2645B050" FromRole="Item" ToRole="Picture" />
+    <NavigationProperty Name="ItemLocations" Relationship="Self.FK__ItemLocat__ItemI__1EA48E88" FromRole="Item" ToRole="ItemLocation" />
+  </EntityType>
+  <EntityType Name="ItemLocation">
+    <Key>
+      <PropertyRef Name="ItemLocationId" />
+    </Key>
+    <Property Name="ItemLocationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductLineId" Type="Int32" Nullable="false" />
+    <Property Name="ItemId" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Item" Relationship="Self.FK__ItemLocat__ItemI__1EA48E88" FromRole="ItemLocation" ToRole="Item" />
+    <NavigationProperty Name="Location" Relationship="Self.FK__ItemLocat__Produ__1F98B2C1" FromRole="ItemLocation" ToRole="Location" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="LocationId" />
+    </Key>
+    <Property Name="LocationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LocationName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Subcategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CalendarId" Type="Int32" />
+    <Property Name="ParentLocationId" Type="Int32" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Operations" Relationship="Self.FK__Operation__Locat__56B3DD81" FromRole="Location" ToRole="Operation" />
+    <NavigationProperty Name="ItemLocations" Relationship="Self.FK__ItemLocat__Produ__1F98B2C1" FromRole="Location" ToRole="ItemLocation" />
+    <NavigationProperty Name="Location1" Relationship="Self.FK__Location__Parent__2739D489" FromRole="Location" ToRole="Location1" />
+    <NavigationProperty Name="Location2" Relationship="Self.FK__Location__Parent__2739D489" FromRole="Location1" ToRole="Location" />
+    <NavigationProperty Name="UserProductLines" Relationship="Self.FK__UserProdu__Produ__245D67DE" FromRole="Location" ToRole="UserProductLine" />
+  </EntityType>
+  <EntityType Name="Picture">
+    <Key>
+      <PropertyRef Name="PictureID" />
+    </Key>
+    <Property Name="PictureID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ThumbNailImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ThumbnailImageFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LargeImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="LargeImageFileName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Items" Relationship="Self.FK__Item__PictureID__2645B050" FromRole="Picture" ToRole="Item" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_User_PictureID" FromRole="Picture" ToRole="User" />
+    <NavigationProperty Name="Users1" Relationship="Self.FK_User_SignatureID" FromRole="Picture" ToRole="User" />
+  </EntityType>
+  <EntityType Name="UserProductLine">
+    <Key>
+      <PropertyRef Name="UserProductLineID" />
+    </Key>
+    <Property Name="UserProductLineID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="ProductLineID" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Location" Relationship="Self.FK__UserProdu__Produ__245D67DE" FromRole="UserProductLine" ToRole="Location" />
+    <NavigationProperty Name="User" Relationship="Self.FK__UserProdu__UserI__25518C17" FromRole="UserProductLine" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Calendar">
+    <Key>
+      <PropertyRef Name="CalendarId" />
+    </Key>
+    <Property Name="CalendarId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CalendarName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="Byte" Nullable="false" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DefaultValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="StartTime" Type="Int32" />
+    <Property Name="EndTime" Type="Int32" />
+    <Property Name="StartDate" Type="DateTime" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Precision="0" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="CalendarDetails" Relationship="Self.FK__CalendarDetail_Calendar" FromRole="Calendar" ToRole="CalendarDetail" />
+    <NavigationProperty Name="CalendarDetails1" Relationship="Self.FK_CalendarDetail_Calendar" FromRole="Calendar" ToRole="CalendarDetail" />
+    <NavigationProperty Name="Equipments" Relationship="Self.FK_Equipment_Calendar" FromRole="Calendar" ToRole="Equipment" />
+  </EntityType>
+  <EntityType Name="CalendarDetail">
+    <Key>
+      <PropertyRef Name="CalendarDetailId" />
+    </Key>
+    <Property Name="CalendarDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CalendarDetailName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ParentCalendarId" Type="Int32" Nullable="false" />
+    <Property Name="CalendarId" Type="Int32" Nullable="false" />
+    <Property Name="Sequence" Type="Int32" Nullable="false" />
+    <Property Name="Priority" Type="Int32" />
+    <Property Name="Interval" Type="Int32" />
+    <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Calendar" Relationship="Self.FK__CalendarDetail_Calendar" FromRole="CalendarDetail" ToRole="Calendar" />
+    <NavigationProperty Name="Calendar1" Relationship="Self.FK_CalendarDetail_Calendar" FromRole="CalendarDetail" ToRole="Calendar" />
+  </EntityType>
+  <EntityType Name="Equipment">
+    <Key>
+      <PropertyRef Name="EquipmentId" />
+    </Key>
+    <Property Name="EquipmentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EquipmentName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Subcategory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="Int32" />
+    <Property Name="ParentEquipmentID" Type="Int32" />
+    <Property Name="LocationID" Type="Int32" />
+    <Property Name="CalendarID" Type="Int32" />
+    <Property Name="String1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="String2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="MaxString2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Float1" Type="Double" />
+    <Property Name="Float2" Type="Double" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="OperationResources" Relationship="Self.FK_OperationResource_Equipment" FromRole="Equipment" ToRole="OperationResource" />
+    <NavigationProperty Name="Calendar" Relationship="Self.FK_Equipment_Calendar" FromRole="Equipment" ToRole="Calendar" />
+    <NavigationProperty Name="EquipmentParameters" Relationship="Self.FK_EquipmentParameter_Equipment" FromRole="Equipment" ToRole="EquipmentParameter" />
+  </EntityType>
+  <EntityType Name="EquipmentParameter">
+    <Key>
+      <PropertyRef Name="EquipmentParameterID" />
+    </Key>
+    <Property Name="EquipmentParameterID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EquipmentID" Type="Int32" Nullable="false" />
+    <Property Name="ParameterID" Type="Int32" Nullable="false" />
+    <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MinValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaxValue" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Parameter" Relationship="Self.FK_EquipmentParameter_Parameter" FromRole="EquipmentParameter" ToRole="Parameter" />
+    <NavigationProperty Name="Equipment" Relationship="Self.FK_EquipmentParameter_Equipment" FromRole="EquipmentParameter" ToRole="Equipment" />
+  </EntityType>
+  <EntityType Name="Button">
+    <Key>
+      <PropertyRef Name="ButtonId" />
+    </Key>
+    <Property Name="ButtonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ButtonName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="DisplayText" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="ImageFileName" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+    <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Tasks" Relationship="Self.FK__Task__ButtonID__5FB337D6" FromRole="Button" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="Menu">
+    <Key>
+      <PropertyRef Name="MenuId" />
+    </Key>
+    <Property Name="MenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentTaskId" Type="Int32" Nullable="false" />
+    <Property Name="TaskId" Type="Int32" Nullable="false" />
+    <Property Name="SortSequence" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Task" Relationship="Self.FK__Menu__ParentTask__6A30C649" FromRole="Menu" ToRole="Task" />
+    <NavigationProperty Name="Task1" Relationship="Self.FK__Menu__TaskId__6B24EA82" FromRole="Menu" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="StartTaskId" Type="Int32" />
+    <Property Name="GlobalAccess" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="RoleTasks" Relationship="Self.FK__RoleTask__RoleId__778AC167" FromRole="Role" ToRole="RoleTask" />
+    <NavigationProperty Name="UserRoles" Relationship="Self.FK__UserRole__RoleId__70DDC3D8" FromRole="Role" ToRole="UserRole" />
+  </EntityType>
+  <EntityType Name="RoleTask">
+    <Key>
+      <PropertyRef Name="RoleTaskId" />
+    </Key>
+    <Property Name="RoleTaskId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="TaskId" Type="Int32" Nullable="false" />
+    <Property Name="AccessMode" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Role" Relationship="Self.FK__RoleTask__RoleId__778AC167" FromRole="RoleTask" ToRole="Role" />
+    <NavigationProperty Name="Task" Relationship="Self.FK__RoleTask__TaskId__787EE5A0" FromRole="RoleTask" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="TaskId" />
+    </Key>
+    <Property Name="TaskId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Type" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="ModuleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Group" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayText" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="ActionName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ButtonID" Type="Int32" />
+    <Property Name="Setting" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+    <Property Name="Selection" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+    <Property Name="OrderBy" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+    <Property Name="MaxExecutionTime" Type="Int32" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Button" Relationship="Self.FK__Task__ButtonID__5FB337D6" FromRole="Task" ToRole="Button" />
+    <NavigationProperty Name="Menus" Relationship="Self.FK__Menu__ParentTask__6A30C649" FromRole="Task" ToRole="Menu" />
+    <NavigationProperty Name="Menus1" Relationship="Self.FK__Menu__TaskId__6B24EA82" FromRole="Task" ToRole="Menu" />
+    <NavigationProperty Name="RoleTasks" Relationship="Self.FK__RoleTask__TaskId__787EE5A0" FromRole="Task" ToRole="RoleTask" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoginId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordHash" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PasswordSalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PasswordQuestion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordAnswerHash" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordAnswerSalt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsLockedOut" Type="Boolean" />
+    <Property Name="LastLoginDate" Type="DateTime" Precision="3" />
+    <Property Name="LastPasswordChangedDate" Type="DateTime" Precision="3" />
+    <Property Name="LastLockoutDate" Type="DateTime" Precision="3" />
+    <Property Name="FailedPasswordAttemptCount" Type="Int32" />
+    <Property Name="LanguageCode" Type="String" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PictureID" Type="Int32" />
+    <Property Name="SignatureID" Type="Int32" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Picture" Relationship="Self.FK_User_PictureID" FromRole="User" ToRole="Picture" />
+    <NavigationProperty Name="Picture1" Relationship="Self.FK_User_SignatureID" FromRole="User" ToRole="Picture" />
+    <NavigationProperty Name="UserProductLines" Relationship="Self.FK__UserProdu__UserI__25518C17" FromRole="User" ToRole="UserProductLine" />
+    <NavigationProperty Name="UserPreferences" Relationship="Self.FK__UserPrefe__UserI__5224328E" FromRole="User" ToRole="UserPreference" />
+    <NavigationProperty Name="UserRoles" Relationship="Self.FK__UserRole__UserId__71D1E811" FromRole="User" ToRole="UserRole" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="UserRoleId" />
+    </Key>
+    <Property Name="UserRoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="Role" Relationship="Self.FK__UserRole__RoleId__70DDC3D8" FromRole="UserRole" ToRole="Role" />
+    <NavigationProperty Name="User" Relationship="Self.FK__UserRole__UserId__71D1E811" FromRole="UserRole" ToRole="User" />
+  </EntityType>
+  <EntityType Name="CodeDetail">
+    <Key>
+      <PropertyRef Name="CodeDetailId" />
+    </Key>
+    <Property Name="CodeDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodeTypeId" Type="Int32" />
+    <Property Name="CodeNo" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="CodeType" Relationship="Self.FK_CodeDetail_CodeType" FromRole="CodeDetail" ToRole="CodeType" />
+  </EntityType>
+  <EntityType Name="CodeType">
+    <Key>
+      <PropertyRef Name="CodeTypeId" />
+    </Key>
+    <Property Name="CodeTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodeTypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DataType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="CodeDetails" Relationship="Self.FK_CodeDetail_CodeType" FromRole="CodeType" ToRole="CodeDetail" />
+    <NavigationProperty Name="CodeUsages" Relationship="Self.FK_CodeUsage_CodeType" FromRole="CodeType" ToRole="CodeUsage" />
+  </EntityType>
+  <EntityType Name="CodeUsage">
+    <Key>
+      <PropertyRef Name="CodeUsageId" />
+    </Key>
+    <Property Name="CodeUsageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodeTypeId" Type="Int32" />
+    <Property Name="TableName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ColumnName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Nullable="false" annotation:StoreGeneratedPattern="Computed" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="CodeType" Relationship="Self.FK_CodeUsage_CodeType" FromRole="CodeUsage" ToRole="CodeType" />
+  </EntityType>
+  <EntityType Name="Option">
+    <Key>
+      <PropertyRef Name="OptionId" />
+    </Key>
+    <Property Name="OptionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OptionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ModuleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Category" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="DataType" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="DefaultSetting" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="UserPreferences" Relationship="Self.FK__UserPrefe__Optio__51300E55" FromRole="Option" ToRole="UserPreference" />
+  </EntityType>
+  <EntityType Name="UserPreference">
+    <Key>
+      <PropertyRef Name="UserPreferenceId" />
+    </Key>
+    <Property Name="UserPreferenceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="OptionId" Type="Int32" Nullable="false" />
+    <Property Name="Setting" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+    <Property Name="VersionStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+    <NavigationProperty Name="User" Relationship="Self.FK__UserPrefe__UserI__5224328E" FromRole="UserPreference" ToRole="User" />
+    <NavigationProperty Name="Option" Relationship="Self.FK__UserPrefe__Optio__51300E55" FromRole="UserPreference" ToRole="Option" />
+  </EntityType>
+  <EntityType Name="tmpRoute">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="RouteID" />
+      <PropertyRef Name="OperationID" />
+      <PropertyRef Name="Sequence" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RouteID" Type="Int32" Nullable="false" />
+    <Property Name="OperationID" Type="Int32" Nullable="false" />
+    <Property Name="Subrouteid" Type="Int32" />
+    <Property Name="Sequence" Type="Int32" Nullable="false" />
+    <Property Name="SubrouteSeq" Type="Int32" />
+  </EntityType>
+  <Association Name="FK__CapacityProfile_OrderRelease">
+    <End Role="OrderRelease" Type="Self.OrderRelease" Multiplicity="1" />
+    <End Role="CapacityProfile" Type="Self.CapacityProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderRelease">
+        <PropertyRef Name="ReleaseID" />
+      </Principal>
+      <Dependent Role="CapacityProfile">
+        <PropertyRef Name="ReleaseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderReleaseDetail_OrderRelease">
+    <End Role="OrderRelease" Type="Self.OrderRelease" Multiplicity="1" />
+    <End Role="OrderReleaseDetail" Type="Self.OrderReleaseDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OrderRelease">
+        <PropertyRef Name="ReleaseID" />
+      </Principal>
+      <Dependent Role="OrderReleaseDetail">
+        <PropertyRef Name="ReleaseID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ScheduleDetail_Schedule">
+    <End Role="Schedule" Type="Self.Schedule" Multiplicity="1" />
+    <End Role="ScheduleDetail" Type="Self.ScheduleDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Schedule">
+        <PropertyRef Name="ScheduleID" />
+      </Principal>
+      <Dependent Role="ScheduleDetail">
+        <PropertyRef Name="ScheduleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PPOrderDetail_PPOrder">
+    <End Role="PPOrder" Type="Self.PPOrder" Multiplicity="0..1" />
+    <End Role="PPOrderDetail" Type="Self.PPOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PPOrder">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PPOrderDetail">
+        <PropertyRef Name="PPID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PPOrderRoute_PPOrder">
+    <End Role="PPOrder" Type="Self.PPOrder" Multiplicity="1" />
+    <End Role="PPOrderRoute" Type="Self.PPOrderRoute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PPOrder">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PPOrderRoute">
+        <PropertyRef Name="PPID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesOrderCancelDet_SalesOrderCancelled">
+    <End Role="SalesOrderCancelled" Type="Self.SalesOrderCancelled" Multiplicity="1" />
+    <End Role="SalesOrderCancelDet" Type="Self.SalesOrderCancelDet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesOrderCancelled">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SalesOrderCancelDet">
+        <PropertyRef Name="OrderCancelledID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InvUsage_InvMas">
+    <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
+    <End Role="InventoryUsage" Type="Self.InventoryUsage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inventory">
+        <PropertyRef Name="InventoryID" />
+      </Principal>
+      <Dependent Role="InventoryUsage">
+        <PropertyRef Name="InventoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SalesOrde__Custo__671F4F74">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="SalesOrder" Type="Self.SalesOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="SalesOrder">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustomerItem_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+    <End Role="CustomerItem" Type="Self.CustomerItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="CustomerItem">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeliveryOrderDetail_DeliveryOrder">
+    <End Role="DeliveryOrder" Type="Self.DeliveryOrder" Multiplicity="1" />
+    <End Role="DeliveryOrderDetail" Type="Self.DeliveryOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeliveryOrder">
+        <PropertyRef Name="DeliveryOrderID" />
+      </Principal>
+      <Dependent Role="DeliveryOrderDetail">
+        <PropertyRef Name="DeliveryOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeliveryOrderDetail_SalesOrderDetail">
+    <End Role="SalesOrderDetail" Type="Self.SalesOrderDetail" Multiplicity="0..1" />
+    <End Role="DeliveryOrderDetail" Type="Self.DeliveryOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesOrderDetail">
+        <PropertyRef Name="SalesOrderLinelID" />
+      </Principal>
+      <Dependent Role="DeliveryOrderDetail">
+        <PropertyRef Name="SalesOrderLineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeliveryOrderDetail_WorkOrder">
+    <End Role="WorkOrder" Type="Self.WorkOrder" Multiplicity="0..1" />
+    <End Role="DeliveryOrderDetail" Type="Self.DeliveryOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkOrder">
+        <PropertyRef Name="WorkOrderID" />
+      </Principal>
+      <Dependent Role="DeliveryOrderDetail">
+        <PropertyRef Name="WorkOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SalesOrde__Sales__6DCC4D03">
+    <End Role="SalesOrder" Type="Self.SalesOrder" Multiplicity="1" />
+    <End Role="SalesOrderDetail" Type="Self.SalesOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesOrder">
+        <PropertyRef Name="SalesOrderID" />
+      </Principal>
+      <Dependent Role="SalesOrderDetail">
+        <PropertyRef Name="SalesOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SalesOrde__Sales__719CDDE7">
+    <End Role="SalesOrderDetail" Type="Self.SalesOrderDetail" Multiplicity="1" />
+    <End Role="SalesOrderAdjustment" Type="Self.SalesOrderAdjustment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesOrderDetail">
+        <PropertyRef Name="SalesOrderLinelID" />
+      </Principal>
+      <Dependent Role="SalesOrderAdjustment">
+        <PropertyRef Name="SalesOrderDetailID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkOrderAdjustment_SalesOrderAdjustment">
+    <End Role="SalesOrderAdjustment" Type="Self.SalesOrderAdjustment" Multiplicity="1" />
+    <End Role="WorkOrderAdjustment" Type="Self.WorkOrderAdjustment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesOrderAdjustment">
+        <PropertyRef Name="SalesOrderAjustmentID" />
+      </Principal>
+      <Dependent Role="WorkOrderAdjustment">
+        <PropertyRef Name="SalesOrderAdjustID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WorkOrder__Sales__0880433F">
+    <End Role="SalesOrderDetail" Type="Self.SalesOrderDetail" Multiplicity="0..1" />
+    <End Role="WorkOrderDetail" Type="Self.WorkOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalesOrderDetail">
+        <PropertyRef Name="SalesOrderLinelID" />
+      </Principal>
+      <Dependent Role="WorkOrderDetail">
+        <PropertyRef Name="SalesOrderLineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SalesOrderDetail_Item">
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="SalesOrderDetail" Type="Self.SalesOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="SalesOrderDetail">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WorkOrder__WorkO__09746778">
+    <End Role="WorkOrder" Type="Self.WorkOrder" Multiplicity="1" />
+    <End Role="WorkOrderDetail" Type="Self.WorkOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkOrder">
+        <PropertyRef Name="WorkOrderID" />
+      </Principal>
+      <Dependent Role="WorkOrderDetail">
+        <PropertyRef Name="WorkOrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WorkOrder__WorkO__251C81ED">
+    <End Role="WorkOrder" Type="Self.WorkOrder" Multiplicity="1" />
+    <End Role="WorkOrderMaterial1" Type="Self.WorkOrderMaterial1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkOrder">
+        <PropertyRef Name="WorkOrderID" />
+      </Principal>
+      <Dependent Role="WorkOrderMaterial1">
+        <PropertyRef Name="WorkOrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkOrder_Item">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="WorkOrder" Type="Self.WorkOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="WorkOrder">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkOrder_Route">
+    <End Role="Route" Type="Self.Route" Multiplicity="0..1" />
+    <End Role="WorkOrder" Type="Self.WorkOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Route">
+        <PropertyRef Name="RouteId" />
+      </Principal>
+      <Dependent Role="WorkOrder">
+        <PropertyRef Name="RouteID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkOrderDetail_Item">
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="WorkOrderDetail" Type="Self.WorkOrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="WorkOrderDetail">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WorkOrder__Mater__2610A626">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="WorkOrderMaterial1" Type="Self.WorkOrderMaterial1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="WorkOrderMaterial1">
+        <PropertyRef Name="MaterialId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Operation__Locat__56B3DD81">
+    <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+    <End Role="Operation" Type="Self.Operation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationId" />
+      </Principal>
+      <Dependent Role="Operation">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OperationParamter_Operation">
+    <End Role="Operation" Type="Self.Operation" Multiplicity="1" />
+    <End Role="OperationParameter" Type="Self.OperationParameter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operation">
+        <PropertyRef Name="OperationId" />
+      </Principal>
+      <Dependent Role="OperationParameter">
+        <PropertyRef Name="OperationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OperationResource_Operation">
+    <End Role="Operation" Type="Self.Operation" Multiplicity="1" />
+    <End Role="OperationResource" Type="Self.OperationResource" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operation">
+        <PropertyRef Name="OperationId" />
+      </Principal>
+      <Dependent Role="OperationResource">
+        <PropertyRef Name="OperationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoutingOperation_Operation">
+    <End Role="Operation" Type="Self.Operation" Multiplicity="0..1" />
+    <End Role="RouteOperation" Type="Self.RouteOperation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Operation">
+        <PropertyRef Name="OperationId" />
+      </Principal>
+      <Dependent Role="RouteOperation">
+        <PropertyRef Name="OperationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OperationParamter_Parameter">
+    <End Role="Parameter" Type="Self.Parameter" Multiplicity="0..1" />
+    <End Role="OperationParameter" Type="Self.OperationParameter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parameter">
+        <PropertyRef Name="ParameterID" />
+      </Principal>
+      <Dependent Role="OperationParameter">
+        <PropertyRef Name="ParamterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OperationResource_Equipment">
+    <End Role="Equipment" Type="Self.Equipment" Multiplicity="0..1" />
+    <End Role="OperationResource" Type="Self.OperationResource" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipment">
+        <PropertyRef Name="EquipmentId" />
+      </Principal>
+      <Dependent Role="OperationResource">
+        <PropertyRef Name="ResourceID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EquipmentParameter_Parameter">
+    <End Role="Parameter" Type="Self.Parameter" Multiplicity="1" />
+    <End Role="EquipmentParameter" Type="Self.EquipmentParameter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parameter">
+        <PropertyRef Name="ParameterID" />
+      </Principal>
+      <Dependent Role="EquipmentParameter">
+        <PropertyRef Name="ParameterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductRoute_Route">
+    <End Role="Route" Type="Self.Route" Multiplicity="1" />
+    <End Role="ProductRoute" Type="Self.ProductRoute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Route">
+        <PropertyRef Name="RouteId" />
+      </Principal>
+      <Dependent Role="ProductRoute">
+        <PropertyRef Name="RouteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductRouteStatus_ProductRoute">
+    <End Role="ProductRoute" Type="Self.ProductRoute" Multiplicity="1" />
+    <End Role="ProductRouteStatus" Type="Self.ProductRouteStatu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductRoute">
+        <PropertyRef Name="ProductRouteId" />
+      </Principal>
+      <Dependent Role="ProductRouteStatus">
+        <PropertyRef Name="ProductRouteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Item_Route">
+    <End Role="Route" Type="Self.Route" Multiplicity="0..1" />
+    <End Role="Item" Type="Self.Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Route">
+        <PropertyRef Name="RouteId" />
+      </Principal>
+      <Dependent Role="Item">
+        <PropertyRef Name="Int5" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RouteOperation_Route">
+    <End Role="Route" Type="Self.Route" Multiplicity="1" />
+    <End Role="RouteOperation" Type="Self.RouteOperation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Route">
+        <PropertyRef Name="RouteId" />
+      </Principal>
+      <Dependent Role="RouteOperation">
+        <PropertyRef Name="RouteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RouteOperation_Route1">
+    <End Role="Route" Type="Self.Route" Multiplicity="0..1" />
+    <End Role="RouteOperation" Type="Self.RouteOperation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Route">
+        <PropertyRef Name="RouteId" />
+      </Principal>
+      <Dependent Role="RouteOperation">
+        <PropertyRef Name="SubrouteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BillOfMat__Compo__395884C4">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="BillOfMaterial" Type="Self.BillOfMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="BillOfMaterial">
+        <PropertyRef Name="ComponentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BillOfMat__Produ__3864608B">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="BillOfMaterial" Type="Self.BillOfMaterial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="BillOfMaterial">
+        <PropertyRef Name="ProductAssemblyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CustomerItem_Item">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="CustomerItem" Type="Self.CustomerItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="CustomerItem">
+        <PropertyRef Name="ItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Item__ParentItem__0C85DE4D">
+    <End Role="Item" Type="Self.Item" Multiplicity="0..1" />
+    <End Role="Item1" Type="Self.Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="Item1">
+        <PropertyRef Name="ParentItemID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Item__PictureID__2645B050">
+    <End Role="Picture" Type="Self.Picture" Multiplicity="0..1" />
+    <End Role="Item" Type="Self.Item" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Picture">
+        <PropertyRef Name="PictureID" />
+      </Principal>
+      <Dependent Role="Item">
+        <PropertyRef Name="PictureID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ItemLocat__ItemI__1EA48E88">
+    <End Role="Item" Type="Self.Item" Multiplicity="1" />
+    <End Role="ItemLocation" Type="Self.ItemLocation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Item">
+        <PropertyRef Name="ItemID" />
+      </Principal>
+      <Dependent Role="ItemLocation">
+        <PropertyRef Name="ItemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ItemLocat__Produ__1F98B2C1">
+    <End Role="Location" Type="Self.Location" Multiplicity="1" />
+    <End Role="ItemLocation" Type="Self.ItemLocation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationId" />
+      </Principal>
+      <Dependent Role="ItemLocation">
+        <PropertyRef Name="ProductLineId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Location__Parent__2739D489">
+    <End Role="Location" Type="Self.Location" Multiplicity="0..1" />
+    <End Role="Location1" Type="Self.Location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationId" />
+      </Principal>
+      <Dependent Role="Location1">
+        <PropertyRef Name="ParentLocationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserProdu__Produ__245D67DE">
+    <End Role="Location" Type="Self.Location" Multiplicity="1" />
+    <End Role="UserProductLine" Type="Self.UserProductLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="LocationId" />
+      </Principal>
+      <Dependent Role="UserProductLine">
+        <PropertyRef Name="ProductLineID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_PictureID">
+    <End Role="Picture" Type="Self.Picture" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Picture">
+        <PropertyRef Name="PictureID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="PictureID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_SignatureID">
+    <End Role="Picture" Type="Self.Picture" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Picture">
+        <PropertyRef Name="PictureID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="SignatureID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserProdu__UserI__25518C17">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserProductLine" Type="Self.UserProductLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserProductLine">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CalendarDetail_Calendar">
+    <End Role="Calendar" Type="Self.Calendar" Multiplicity="1" />
+    <End Role="CalendarDetail" Type="Self.CalendarDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calendar">
+        <PropertyRef Name="CalendarId" />
+      </Principal>
+      <Dependent Role="CalendarDetail">
+        <PropertyRef Name="CalendarId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CalendarDetail_Calendar">
+    <End Role="Calendar" Type="Self.Calendar" Multiplicity="1" />
+    <End Role="CalendarDetail" Type="Self.CalendarDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calendar">
+        <PropertyRef Name="CalendarId" />
+      </Principal>
+      <Dependent Role="CalendarDetail">
+        <PropertyRef Name="ParentCalendarId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Equipment_Calendar">
+    <End Role="Calendar" Type="Self.Calendar" Multiplicity="0..1" />
+    <End Role="Equipment" Type="Self.Equipment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Calendar">
+        <PropertyRef Name="CalendarId" />
+      </Principal>
+      <Dependent Role="Equipment">
+        <PropertyRef Name="CalendarID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EquipmentParameter_Equipment">
+    <End Role="Equipment" Type="Self.Equipment" Multiplicity="1" />
+    <End Role="EquipmentParameter" Type="Self.EquipmentParameter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Equipment">
+        <PropertyRef Name="EquipmentId" />
+      </Principal>
+      <Dependent Role="EquipmentParameter">
+        <PropertyRef Name="EquipmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Task__ButtonID__5FB337D6">
+    <End Role="Button" Type="Self.Button" Multiplicity="0..1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Button">
+        <PropertyRef Name="ButtonId" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="ButtonID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Menu__ParentTask__6A30C649">
+    <End Role="Task" Type="Self.Task" Multiplicity="1" />
+    <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="TaskId" />
+      </Principal>
+      <Dependent Role="Menu">
+        <PropertyRef Name="ParentTaskId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Menu__TaskId__6B24EA82">
+    <End Role="Task" Type="Self.Task" Multiplicity="1" />
+    <End Role="Menu" Type="Self.Menu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="TaskId" />
+      </Principal>
+      <Dependent Role="Menu">
+        <PropertyRef Name="TaskId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RoleTask__RoleId__778AC167">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="RoleTask" Type="Self.RoleTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="RoleTask">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserRole__RoleId__70DDC3D8">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RoleTask__TaskId__787EE5A0">
+    <End Role="Task" Type="Self.Task" Multiplicity="1" />
+    <End Role="RoleTask" Type="Self.RoleTask" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="TaskId" />
+      </Principal>
+      <Dependent Role="RoleTask">
+        <PropertyRef Name="TaskId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserPrefe__UserI__5224328E">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserPreference" Type="Self.UserPreference" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserPreference">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserRole__UserId__71D1E811">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="UserRole">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CodeDetail_CodeType">
+    <End Role="CodeType" Type="Self.CodeType" Multiplicity="0..1" />
+    <End Role="CodeDetail" Type="Self.CodeDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CodeType">
+        <PropertyRef Name="CodeTypeId" />
+      </Principal>
+      <Dependent Role="CodeDetail">
+        <PropertyRef Name="CodeTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CodeUsage_CodeType">
+    <End Role="CodeType" Type="Self.CodeType" Multiplicity="0..1" />
+    <End Role="CodeUsage" Type="Self.CodeUsage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CodeType">
+        <PropertyRef Name="CodeTypeId" />
+      </Principal>
+      <Dependent Role="CodeUsage">
+        <PropertyRef Name="CodeTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserPrefe__Optio__51300E55">
+    <End Role="Option" Type="Self.Option" Multiplicity="1" />
+    <End Role="UserPreference" Type="Self.UserPreference" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Option">
+        <PropertyRef Name="OptionId" />
+      </Principal>
+      <Dependent Role="UserPreference">
+        <PropertyRef Name="OptionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SIMAPS_MOM" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="InvMas" EntityType="Self.InvMa" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="CapacityProfiles" EntityType="Self.CapacityProfile" />
+    <EntitySet Name="DailyLoadingPlans" EntityType="Self.DailyLoadingPlan" />
+    <EntitySet Name="OrderReleases" EntityType="Self.OrderRelease" />
+    <EntitySet Name="OrderReleaseDetails" EntityType="Self.OrderReleaseDetail" />
+    <EntitySet Name="Schedules" EntityType="Self.Schedule" />
+    <EntitySet Name="ScheduleDetails" EntityType="Self.ScheduleDetail" />
+    <EntitySet Name="ctr_mc" EntityType="Self.ctr_mc" />
+    <EntitySet Name="part_detail_semicon" EntityType="Self.part_detail_semicon" />
+    <EntitySet Name="PPOrders" EntityType="Self.PPOrder" />
+    <EntitySet Name="PPOrderDetails" EntityType="Self.PPOrderDetail" />
+    <EntitySet Name="PPOrderRoutes" EntityType="Self.PPOrderRoute" />
+    <EntitySet Name="Rights" EntityType="Self.Right" />
+    <EntitySet Name="RouteMas" EntityType="Self.RouteMa" />
+    <EntitySet Name="SalesOrderCancelDets" EntityType="Self.SalesOrderCancelDet" />
+    <EntitySet Name="SalesOrderCancelleds" EntityType="Self.SalesOrderCancelled" />
+    <EntitySet Name="shift_det" EntityType="Self.shift_det" />
+    <EntitySet Name="user_det" EntityType="Self.user_det" />
+    <EntitySet Name="working_Rate_except" EntityType="Self.working_Rate_except" />
+    <EntitySet Name="WorkOrderAssemblies" EntityType="Self.WorkOrderAssembly" />
+    <EntitySet Name="WorkorderMacs" EntityType="Self.WorkorderMac" />
+    <EntitySet Name="WorkOrderMasters" EntityType="Self.WorkOrderMaster" />
+    <EntitySet Name="WorkOrderMaterials" EntityType="Self.WorkOrderMaterial" />
+    <EntitySet Name="Inventories" EntityType="Self.Inventory" />
+    <EntitySet Name="InventoryUsages" EntityType="Self.InventoryUsage" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <EntitySet Name="DeliveryOrders" EntityType="Self.DeliveryOrder" />
+    <EntitySet Name="DeliveryOrderDetails" EntityType="Self.DeliveryOrderDetail" />
+    <EntitySet Name="SalesOrders" EntityType="Self.SalesOrder" />
+    <EntitySet Name="SalesOrderAdjustments" EntityType="Self.SalesOrderAdjustment" />
+    <EntitySet Name="SalesOrderDetails" EntityType="Self.SalesOrderDetail" />
+    <EntitySet Name="WorkOrders" EntityType="Self.WorkOrder" />
+    <EntitySet Name="WorkOrderAdjustments" EntityType="Self.WorkOrderAdjustment" />
+    <EntitySet Name="WorkOrderCosts" EntityType="Self.WorkOrderCost" />
+    <EntitySet Name="WorkOrderDetails" EntityType="Self.WorkOrderDetail" />
+    <EntitySet Name="WorkOrderMaterial1" EntityType="Self.WorkOrderMaterial1" />
+    <EntitySet Name="Operations" EntityType="Self.Operation" />
+    <EntitySet Name="OperationParameters" EntityType="Self.OperationParameter" />
+    <EntitySet Name="OperationRates" EntityType="Self.OperationRate" />
+    <EntitySet Name="OperationResources" EntityType="Self.OperationResource" />
+    <EntitySet Name="Parameters" EntityType="Self.Parameter" />
+    <EntitySet Name="ProductRoutes" EntityType="Self.ProductRoute" />
+    <EntitySet Name="ProductRouteStatus" EntityType="Self.ProductRouteStatu" />
+    <EntitySet Name="Routes" EntityType="Self.Route" />
+    <EntitySet Name="RouteOperations" EntityType="Self.RouteOperation" />
+    <EntitySet Name="BillOfMaterials" EntityType="Self.BillOfMaterial" />
+    <EntitySet Name="CustomerItems" EntityType="Self.CustomerItem" />
+    <EntitySet Name="Items" EntityType="Self.Item" />
+    <EntitySet Name="ItemLocations" EntityType="Self.ItemLocation" />
+    <EntitySet Name="Locations" EntityType="Self.Location" />
+    <EntitySet Name="Pictures" EntityType="Self.Picture" />
+    <EntitySet Name="UserProductLines" EntityType="Self.UserProductLine" />
+    <EntitySet Name="Calendars" EntityType="Self.Calendar" />
+    <EntitySet Name="CalendarDetails" EntityType="Self.CalendarDetail" />
+    <EntitySet Name="Equipments" EntityType="Self.Equipment" />
+    <EntitySet Name="EquipmentParameters" EntityType="Self.EquipmentParameter" />
+    <EntitySet Name="Buttons" EntityType="Self.Button" />
+    <EntitySet Name="Menus" EntityType="Self.Menu" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="RoleTasks" EntityType="Self.RoleTask" />
+    <EntitySet Name="Tasks" EntityType="Self.Task" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+    <EntitySet Name="CodeDetails" EntityType="Self.CodeDetail" />
+    <EntitySet Name="CodeTypes" EntityType="Self.CodeType" />
+    <EntitySet Name="CodeUsages" EntityType="Self.CodeUsage" />
+    <EntitySet Name="Options" EntityType="Self.Option" />
+    <EntitySet Name="UserPreferences" EntityType="Self.UserPreference" />
+    <EntitySet Name="tmpRoutes" EntityType="Self.tmpRoute" />
+    <AssociationSet Name="FK__CapacityProfile_OrderRelease" Association="Self.FK__CapacityProfile_OrderRelease">
+      <End Role="OrderRelease" EntitySet="OrderReleases" />
+      <End Role="CapacityProfile" EntitySet="CapacityProfiles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderReleaseDetail_OrderRelease" Association="Self.FK__OrderReleaseDetail_OrderRelease">
+      <End Role="OrderRelease" EntitySet="OrderReleases" />
+      <End Role="OrderReleaseDetail" EntitySet="OrderReleaseDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ScheduleDetail_Schedule" Association="Self.FK_ScheduleDetail_Schedule">
+      <End Role="Schedule" EntitySet="Schedules" />
+      <End Role="ScheduleDetail" EntitySet="ScheduleDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PPOrderDetail_PPOrder" Association="Self.FK_PPOrderDetail_PPOrder">
+      <End Role="PPOrder" EntitySet="PPOrders" />
+      <End Role="PPOrderDetail" EntitySet="PPOrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PPOrderRoute_PPOrder" Association="Self.FK_PPOrderRoute_PPOrder">
+      <End Role="PPOrder" EntitySet="PPOrders" />
+      <End Role="PPOrderRoute" EntitySet="PPOrderRoutes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesOrderCancelDet_SalesOrderCancelled" Association="Self.FK_SalesOrderCancelDet_SalesOrderCancelled">
+      <End Role="SalesOrderCancelled" EntitySet="SalesOrderCancelleds" />
+      <End Role="SalesOrderCancelDet" EntitySet="SalesOrderCancelDets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InvUsage_InvMas" Association="Self.FK_InvUsage_InvMas">
+      <End Role="Inventory" EntitySet="Inventories" />
+      <End Role="InventoryUsage" EntitySet="InventoryUsages" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SalesOrde__Custo__671F4F74" Association="Self.FK__SalesOrde__Custo__671F4F74">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="SalesOrder" EntitySet="SalesOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustomerItem_Customer" Association="Self.FK_CustomerItem_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="CustomerItem" EntitySet="CustomerItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeliveryOrderDetail_DeliveryOrder" Association="Self.FK_DeliveryOrderDetail_DeliveryOrder">
+      <End Role="DeliveryOrder" EntitySet="DeliveryOrders" />
+      <End Role="DeliveryOrderDetail" EntitySet="DeliveryOrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeliveryOrderDetail_SalesOrderDetail" Association="Self.FK_DeliveryOrderDetail_SalesOrderDetail">
+      <End Role="SalesOrderDetail" EntitySet="SalesOrderDetails" />
+      <End Role="DeliveryOrderDetail" EntitySet="DeliveryOrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeliveryOrderDetail_WorkOrder" Association="Self.FK_DeliveryOrderDetail_WorkOrder">
+      <End Role="WorkOrder" EntitySet="WorkOrders" />
+      <End Role="DeliveryOrderDetail" EntitySet="DeliveryOrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SalesOrde__Sales__6DCC4D03" Association="Self.FK__SalesOrde__Sales__6DCC4D03">
+      <End Role="SalesOrder" EntitySet="SalesOrders" />
+      <End Role="SalesOrderDetail" EntitySet="SalesOrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SalesOrde__Sales__719CDDE7" Association="Self.FK__SalesOrde__Sales__719CDDE7">
+      <End Role="SalesOrderDetail" EntitySet="SalesOrderDetails" />
+      <End Role="SalesOrderAdjustment" EntitySet="SalesOrderAdjustments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkOrderAdjustment_SalesOrderAdjustment" Association="Self.FK_WorkOrderAdjustment_SalesOrderAdjustment">
+      <End Role="SalesOrderAdjustment" EntitySet="SalesOrderAdjustments" />
+      <End Role="WorkOrderAdjustment" EntitySet="WorkOrderAdjustments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WorkOrder__Sales__0880433F" Association="Self.FK__WorkOrder__Sales__0880433F">
+      <End Role="SalesOrderDetail" EntitySet="SalesOrderDetails" />
+      <End Role="WorkOrderDetail" EntitySet="WorkOrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SalesOrderDetail_Item" Association="Self.FK_SalesOrderDetail_Item">
+      <End Role="Item" EntitySet="Items" />
+      <End Role="SalesOrderDetail" EntitySet="SalesOrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WorkOrder__WorkO__09746778" Association="Self.FK__WorkOrder__WorkO__09746778">
+      <End Role="WorkOrder" EntitySet="WorkOrders" />
+      <End Role="WorkOrderDetail" EntitySet="WorkOrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WorkOrder__WorkO__251C81ED" Association="Self.FK__WorkOrder__WorkO__251C81ED">
+      <End Role="WorkOrder" EntitySet="WorkOrders" />
+      <End Role="WorkOrderMaterial1" EntitySet="WorkOrderMaterial1" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkOrder_Item" Association="Self.FK_WorkOrder_Item">
+      <End Role="Item" EntitySet="Items" />
+      <End Role="WorkOrder" EntitySet="WorkOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkOrder_Route" Association="Self.FK_WorkOrder_Route">
+      <End Role="Route" EntitySet="Routes" />
+      <End Role="WorkOrder" EntitySet="WorkOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkOrderDetail_Item" Association="Self.FK_WorkOrderDetail_Item">
+      <End Role="Item" EntitySet="Items" />
+      <End Role="WorkOrderDetail" EntitySet="WorkOrderDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WorkOrder__Mater__2610A626" Association="Self.FK__WorkOrder__Mater__2610A626">
+      <End Role="Item" EntitySet="Items" />
+      <End Role="WorkOrderMaterial1" EntitySet="WorkOrderMaterial1" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Operation__Locat__56B3DD81" Association="Self.FK__Operation__Locat__56B3DD81">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Operation" EntitySet="Operations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OperationParamter_Operation" Association="Self.FK_OperationParamter_Operation">
+      <End Role="Operation" EntitySet="Operations" />
+      <End Role="OperationParameter" EntitySet="OperationParameters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OperationResource_Operation" Association="Self.FK_OperationResource_Operation">
+      <End Role="Operation" EntitySet="Operations" />
+      <End Role="OperationResource" EntitySet="OperationResources" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoutingOperation_Operation" Association="Self.FK_RoutingOperation_Operation">
+      <End Role="Operation" EntitySet="Operations" />
+      <End Role="RouteOperation" EntitySet="RouteOperations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OperationParamter_Parameter" Association="Self.FK_OperationParamter_Parameter">
+      <End Role="Parameter" EntitySet="Parameters" />
+      <End Role="OperationParameter" EntitySet="OperationParameters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OperationResource_Equipment" Association="Self.FK_OperationResource_Equipment">
+      <End Role="Equipment" EntitySet="Equipments" />
+      <End Role="OperationResource" EntitySet="OperationResources" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EquipmentParameter_Parameter" Association="Self.FK_EquipmentParameter_Parameter">
+      <End Role="Parameter" EntitySet="Parameters" />
+      <End Role="EquipmentParameter" EntitySet="EquipmentParameters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductRoute_Route" Association="Self.FK_ProductRoute_Route">
+      <End Role="Route" EntitySet="Routes" />
+      <End Role="ProductRoute" EntitySet="ProductRoutes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductRouteStatus_ProductRoute" Association="Self.FK_ProductRouteStatus_ProductRoute">
+      <End Role="ProductRoute" EntitySet="ProductRoutes" />
+      <End Role="ProductRouteStatus" EntitySet="ProductRouteStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Item_Route" Association="Self.FK_Item_Route">
+      <End Role="Route" EntitySet="Routes" />
+      <End Role="Item" EntitySet="Items" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RouteOperation_Route" Association="Self.FK_RouteOperation_Route">
+      <End Role="Route" EntitySet="Routes" />
+      <End Role="RouteOperation" EntitySet="RouteOperations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RouteOperation_Route1" Association="Self.FK_RouteOperation_Route1">
+      <End Role="Route" EntitySet="Routes" />
+      <End Role="RouteOperation" EntitySet="RouteOperations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BillOfMat__Compo__395884C4" Association="Self.FK__BillOfMat__Compo__395884C4">
+      <End Role="Item" EntitySet="Items" />
+      <End Role="BillOfMaterial" EntitySet="BillOfMaterials" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BillOfMat__Produ__3864608B" Association="Self.FK__BillOfMat__Produ__3864608B">
+      <End Role="Item" EntitySet="Items" />
+      <End Role="BillOfMaterial" EntitySet="BillOfMaterials" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CustomerItem_Item" Association="Self.FK_CustomerItem_Item">
+      <End Role="Item" EntitySet="Items" />
+      <End Role="CustomerItem" EntitySet="CustomerItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Item__ParentItem__0C85DE4D" Association="Self.FK__Item__ParentItem__0C85DE4D">
+      <End Role="Item" EntitySet="Items" />
+      <End Role="Item1" EntitySet="Items" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Item__PictureID__2645B050" Association="Self.FK__Item__PictureID__2645B050">
+      <End Role="Picture" EntitySet="Pictures" />
+      <End Role="Item" EntitySet="Items" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ItemLocat__ItemI__1EA48E88" Association="Self.FK__ItemLocat__ItemI__1EA48E88">
+      <End Role="Item" EntitySet="Items" />
+      <End Role="ItemLocation" EntitySet="ItemLocations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ItemLocat__Produ__1F98B2C1" Association="Self.FK__ItemLocat__Produ__1F98B2C1">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="ItemLocation" EntitySet="ItemLocations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Location__Parent__2739D489" Association="Self.FK__Location__Parent__2739D489">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="Location1" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserProdu__Produ__245D67DE" Association="Self.FK__UserProdu__Produ__245D67DE">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="UserProductLine" EntitySet="UserProductLines" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_PictureID" Association="Self.FK_User_PictureID">
+      <End Role="Picture" EntitySet="Pictures" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_SignatureID" Association="Self.FK_User_SignatureID">
+      <End Role="Picture" EntitySet="Pictures" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserProdu__UserI__25518C17" Association="Self.FK__UserProdu__UserI__25518C17">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserProductLine" EntitySet="UserProductLines" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CalendarDetail_Calendar" Association="Self.FK__CalendarDetail_Calendar">
+      <End Role="Calendar" EntitySet="Calendars" />
+      <End Role="CalendarDetail" EntitySet="CalendarDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CalendarDetail_Calendar" Association="Self.FK_CalendarDetail_Calendar">
+      <End Role="Calendar" EntitySet="Calendars" />
+      <End Role="CalendarDetail" EntitySet="CalendarDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Equipment_Calendar" Association="Self.FK_Equipment_Calendar">
+      <End Role="Calendar" EntitySet="Calendars" />
+      <End Role="Equipment" EntitySet="Equipments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EquipmentParameter_Equipment" Association="Self.FK_EquipmentParameter_Equipment">
+      <End Role="Equipment" EntitySet="Equipments" />
+      <End Role="EquipmentParameter" EntitySet="EquipmentParameters" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Task__ButtonID__5FB337D6" Association="Self.FK__Task__ButtonID__5FB337D6">
+      <End Role="Button" EntitySet="Buttons" />
+      <End Role="Task" EntitySet="Tasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Menu__ParentTask__6A30C649" Association="Self.FK__Menu__ParentTask__6A30C649">
+      <End Role="Task" EntitySet="Tasks" />
+      <End Role="Menu" EntitySet="Menus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Menu__TaskId__6B24EA82" Association="Self.FK__Menu__TaskId__6B24EA82">
+      <End Role="Task" EntitySet="Tasks" />
+      <End Role="Menu" EntitySet="Menus" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RoleTask__RoleId__778AC167" Association="Self.FK__RoleTask__RoleId__778AC167">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="RoleTask" EntitySet="RoleTasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserRole__RoleId__70DDC3D8" Association="Self.FK__UserRole__RoleId__70DDC3D8">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="UserRole" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RoleTask__TaskId__787EE5A0" Association="Self.FK__RoleTask__TaskId__787EE5A0">
+      <End Role="Task" EntitySet="Tasks" />
+      <End Role="RoleTask" EntitySet="RoleTasks" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserPrefe__UserI__5224328E" Association="Self.FK__UserPrefe__UserI__5224328E">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserPreference" EntitySet="UserPreferences" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserRole__UserId__71D1E811" Association="Self.FK__UserRole__UserId__71D1E811">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UserRole" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CodeDetail_CodeType" Association="Self.FK_CodeDetail_CodeType">
+      <End Role="CodeType" EntitySet="CodeTypes" />
+      <End Role="CodeDetail" EntitySet="CodeDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CodeUsage_CodeType" Association="Self.FK_CodeUsage_CodeType">
+      <End Role="CodeType" EntitySet="CodeTypes" />
+      <End Role="CodeUsage" EntitySet="CodeUsages" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserPrefe__Optio__51300E55" Association="Self.FK__UserPrefe__Optio__51300E55">
+      <End Role="Option" EntitySet="Options" />
+      <End Role="UserPreference" EntitySet="UserPreferences" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

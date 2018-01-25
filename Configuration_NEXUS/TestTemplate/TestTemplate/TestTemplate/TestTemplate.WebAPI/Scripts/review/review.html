@@ -1,0 +1,133 @@
+﻿<div class="col-md-10">
+<div class="tab custab">
+    <button class="tablinks active" onclick="openCity(event, 'PauseReason')">Pause Reason</button>
+    <button class="tablinks" onclick="openCity(event, 'ScrapRemark')">Scrap Remark</button>
+    <button class="tablinks" onclick="openCity(event, 'DeliveryDateAlertThreshold')">Delivery Date Alert Threshold</button>
+    <button class="tablinks" onclick="openCity(event, 'WOStatus')">WO Status Released Start Date Threshold</button>
+    <button class="tablinks" onclick="openCity(event, 'TrackingRemark')">Tracking Remark</button>
+</div>
+
+<div id="PauseReason" class="tabcontent" >
+    <div class="row">
+        <div class="col-md-2">Operation Pause Reason</div>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        </div>
+        <div class="row">
+            <div class="col-md-2"><label>Pause Reason</label></div>
+            <div class="col-md-4">
+                <input type="text" class="form-control " id="pause-reason">
+            </div>
+        </div>
+        <p>&nbsp;</p>
+
+        <div class="row">
+            
+                <div class="col-md-4" id="pause-reason-table" style="margin-left: 1%;"></div>
+                <div class="col-md-1">
+                    <button type="button" class="btn btn-default" ng-click="addPausedReason()">Add</button>
+                    <button type="button" class="btn btn-default" ng-click="removePausedReason()">Delete</button>
+
+                </div>
+            </div>
+    </div>
+
+<div id="ScrapRemark" class="tabcontent">
+    <div class="row">
+        <div class="col-md-2">Scrap Remarks</div>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+    </div>
+    <div class="row">
+        <div class="col-md-2"><b>Scrap Remark</b></div>
+        <div class="col-md-4">
+            <input type="text" class="form-control " id="scrap-remark">
+        </div>
+        </div>
+    <p>&nbsp;</p>
+
+    <div class="row">
+        <div class="col-md-4" id="scrap-remark-table" style="margin-left: 1%;"></div>
+        <div class="col-md-1">
+            <button type="button" class = "btn btn-default" ng-click="addScrapRemark()">Add</button>
+            <button type="button" class = "btn btn-default" ng-click="removeScrapRemark()">Delete</button>
+
+        </div>
+    </div>
+</div>
+
+<div id="DeliveryDateAlertThreshold" class="tabcontent">
+    <div class="row">
+        <div class="col-md-2">Request Delivery Date Alert Threshold</div>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+    </div>
+    <div class="row">
+        <div class="col-md-2"><b>Current Value</b></div>
+        <div class="col-md-4">
+            <input class="form-control " type="text" id="current-value-alert" readonly placeholder="Disabled input text">
+            </div>
+            <div class="col-md-2"><b>Days</b></div>
+        </div>
+    <p>&nbsp;</p>
+
+    <div class="row">
+        <div class="col-md-2"><b>New Value</b></div>
+        <div class="col-md-2">
+            <input class="form-control " type="number" min="0" id="new-value-alert">
+        </div>
+        <div class="col-md-1"><b>Days</b></div>
+        <div class="col-md-2"><button type="button" id="update-thread"  class = "btn btn-default" ng-click="UpdateThreshold()">Update</button></div>
+    </div>
+</div>
+
+<div id="WOStatus" class="tabcontent">
+    <div class="row">
+        <div class="col-md-2">WO Status Released Start Date Threshold</div>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+    </div>
+    <div class="row">
+        <div class="col-md-2"><b>Current Value</b></div>
+        <div class="col-md-4">
+            <input class="form-control" type="text" id="current-value-wostatus" readonly placeholder="Disabled input text">
+        </div>
+        <div class="col-md-2"><b>Days</b></div>
+        
+    </div>
+    <p>&nbsp;</p>
+
+    <div class="row">
+        <div class="col-md-2"><b>New Value</b></div>
+        <div class="col-md-4">
+            <input class="form-control" type="text" id="new-value-wostatus">
+            </div>
+            <div class="col-md-1"><b>Days</b></div>
+            <div class="col-md-2"><button type="button" id="update-release-thread" class="btn btn-default" ng-click="UpdateReleaseThreshold()">Update</button></div>
+        </div>
+</div>
+
+<div id="TrackingRemark" class="tabcontent">
+    <div class="row">
+        <div class="col-md-2">Tracking Remark</div>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+    </div>
+    <div class="row">
+        <div class="col-md-2"><b>Tracking Remark</b></div>
+        <div class="col-md-4">
+            <input type="text" class="form-control" id="tracking-remark">
+            </div>
+        </div>
+    <p>&nbsp;</p>
+
+    <div class="row">
+        <div class="col-md-4" id="tracking-remark-table" style="margin-left: 1%;"></div>
+        <div class="col-md-1">
+            <button type="button" class = "btn btn-default" ng-click="addTrackingRemark()">Add</button>
+            <button type="button" class = "btn btn-default" ng-click="addScrapRemark()">Delete</button>
+
+        </div>
+    </div>
+</div>
+</div>

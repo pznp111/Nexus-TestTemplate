@@ -1,0 +1,395 @@
+﻿<div class="col-md-12 col-md-12 ng-scope">
+
+
+    <!--<div class="row split-table-margin">
+
+        <div class="col-sm-2">
+            <label>Work Order Selection</label>
+        </div>
+        <div class="col-sm-4">
+            <select id="select_reworklist" class="selector form-control split-selector" ng-change="reworkSelected()" ng-model="reworklist"></select>
+        </div>
+
+    </div>-->
+
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-default">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title"></h3>
+                    <!--<div class="actions pull-right">
+                        <i class="fa fa-expand"></i>
+                        <i class="fa fa-chevron-down"></i>
+                        <i class="fa fa-times"></i>
+                    </div>-->
+                </div>
+
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label>Work Order Selection</label>
+                        <select id="select_reworklist" class="selector form-control split-selector" ng-change="reworkSelected()" ng-model="reworklist"></select>
+             </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    <div id="toToggle" style="display:none;">
+                        <div class="row split-table-margin">
+
+                            <div class="col-sm-4">
+                                <label>Work Order Information</label>
+                            </div>
+
+                        </div>
+
+                        <div class="row split-table-margin">
+
+                            <div class="row">
+
+                                <div class ="col-md-6" id="rework-table1">
+                                    <div class ="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class ="panel-title">
+                                                Work Order Detail
+                                            </h3>
+                                        </div>
+
+                                        <div class="panel-body">
+                                            <table class ="table">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Part No</td>
+                                                        <td id="table1-td1"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Part Family</td>
+                                                        <td id="table1-td2"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Planner Remarks</td>
+                                                        <td id="table1-td3"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Production Remarks</td>
+                                                        <td id="table1-td4"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Part Description</td>
+                                                        <td id="table1-td5"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>SO Line Number</td>
+                                                        <td id="table1-td6"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Part Family</td>
+                                                        <td id="table1-td7"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>SO Remark</td>
+                                                        <td id="table1-td8"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                              <!--  <div class="col-md-8 split-table col-md-8 split-table k-grid k-widget k-reorderable" id="rework-table1">
+                                    <div class="gridTitle">
+                                        <h1 style="margin-top:5%;">Work Order Detail</h1>
+                                    </div>
+                                    <table class="k-selectable">
+                                        <tbody>
+                                            <tr class="reproduce-kendo-row">
+                                                <th class="reproduce-kendo-row">Part No</th>
+                                                <td id="table1-td1"></td>
+                                            </tr>
+                                            <tr class="reproduce-kendo-row">
+                                                <th class="reproduce-kendo-row">Part Family</th>
+                                                <td id="table1-td2"></td>
+                                            </tr>
+                                            <tr class="reproduce-kendo-row">
+                                                <th class="reproduce-kendo-row">Planner Remarks</th>
+                                                <td id="table1-td3"></td>
+                                            </tr>
+                                            <tr class="reproduce-kendo-row">
+                                                <th class="reproduce-kendo-row">Production Remarks</th>
+                                                <td id="table1-td4"></td>
+                                            </tr>
+                                            <tr class="reproduce-kendo-row">
+                                                <th class="reproduce-kendo-row">Part Description</th>
+                                                <td id="table1-td5"></td>
+                                            </tr>
+                                            <tr class="reproduce-kendo-row">
+                                                <th class="reproduce-kendo-row">PO Number</th>
+                                                <td id="table1-td6"></td>
+                                            </tr>
+                                            <tr class="reproduce-kendo-row">
+                                                <th class="reproduce-kendo-row">SO Line Number</th>
+                                                <td id="table1-td7"></td>
+                                            </tr>
+                                            <tr class="reproduce-kendo-row">
+                                                <th class="reproduce-kendo-row">SO Remark</th>
+                                                <td id="table1-td8"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>-->
+
+                                <div class ="col-md-6" >
+                                    <div class ="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class ="panel-title">
+                                                
+                                            </h3>
+                                        </div>
+
+                                        <div class="panel-body">
+                                            <div id="rework-table2"></div>
+
+                                        </div>
+
+                                     </div>
+
+                                </div>
+
+<!--                                <div class="col-md-6 fix-height" id="rework-table2" style="display:block;background:white;    width: 500px;">
+
+                                </div>-->
+
+                            </div>
+
+
+                            <div class="row">
+
+                                  <div class ="col-md-6" id="rework-table3">
+                                    <div class ="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class ="panel-title">
+                                                WO Summary
+                                            </h3>
+                                        </div>
+
+                                        <div class="panel-body">
+                                            <table class ="table">
+                                                <tbody>
+                                                    <tr >
+                                                        <th ></th>
+                                                        <th >Piece</th>
+                                                        <td id="table3-td0" class="reproduce-kendo-row">Date/Time</td>
+                                                    </tr>
+                                                    <tr >
+                                                        <th id="table3-td1" >Max Rework Qty</th>
+                                                        <th id="table3-td2" ></th>
+                                                        <td id="table3-td3"></td>
+                                                    </tr>                                                                                        
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                   </div>
+<!--                                <div class="col-md-8 split-table col-md-8 split-table-short k-grid k-widget k-reorderable" id="rework-table3">
+                                    <div class="gridTitle">
+                                        <h1 style="margin-top:5%;">WO Summary</h1>
+                                    </div>
+                                    <table class="k-selectable">
+                                        <tbody>
+                                            <tr class="reproduce-kendo-row">
+                                                <th class="reproduce-kendo-row"></th>
+                                                <th class="reproduce-kendo-row">Piece</th>
+                                                <td id="table3-td1" class="reproduce-kendo-row">Date/Time</td>
+                                            </tr>
+                                            <tr class="reproduce-kendo-row">
+                                                <th id="table2-td1" class="reproduce-kendo-row">Max Rework Qty</th>
+                                                <th id="table2-td2" class="reproduce-kendo-row"></th>
+                                                <td id="table2-td3" class="reproduce-kendo-row"></td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+
+                                </div>-->
+
+                                <div class ="col-md-6">
+                                    <div class ="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class ="panel-title">
+                                                Rework Qty
+                                            </h3>
+                                        </div>
+
+                                        <div class="panel-body">
+                                            <input type="text" class="form-control " id="rework-qty">
+                                        </div>
+                                    </div>
+
+                                   </div>
+
+<!--                                <div class="col-md-6 fix-height split-table-short">
+                                    <div class="row split-table-margin">
+
+                                        <div class="col-md-1">
+                                            Rework Qty
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="text" class="form-control " id="rework-qty">
+                                        </div>
+
+                                    </div>
+                                </div>-->
+                            </div>
+
+                            <div class="row">
+
+                               <div class ="col-md-6" >
+                                    <div class ="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class ="panel-title">
+                                                Current Work Order Route
+                                            </h3>
+                                        </div>
+
+                                        <div class="panel-body">
+                                            <form class ="form-horizontal">
+                                                <div class ="form-group">
+                                                    <label class =" col-sm-2 control-label">Route Name</label>
+                                                    <div class ="col-sm-10">
+                                                         <input type="text" class="form-control " id="current-route" readonly>
+                                                    </div>
+                                                </div>
+
+                                                <div class ="form-group">
+                                                    <label class =" col-sm-2 control-label">Process with problem</label>
+                                                    <div class ="col-sm-10">
+                                                          <select id="select_comboProblemProcess" class="selector form-control split-selector-long" ng-model="reworklist2"></select>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <div id="rework-table5"></div>
+                                        </div>
+                                    </div>
+
+                                   </div>
+
+<!--                                <div class="row">
+                                    <div class="col-md-1">
+                                        Route Name
+                                    </div>
+                                    <div class="col-md-3">
+                                        <input type="text" class="form-control " id="current-route" readonly>
+                                    </div>
+                                </div>-->
+
+
+<!--                                <div class="row">
+                                    <div class="col-md-1">
+                                        Process with problem
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select id="select_comboProblemProcess" class="selector form-control split-selector-long" ng-model="reworklist2"></select>
+                                    </div>
+                                </div>-->
+<!--                                <div class="col-md-6 " style="display:block;    width: 400px;" id="rework-table5">
+
+
+                                </div>-->
+
+
+                               <div class ="col-md-6" >
+                                    <div class ="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class ="panel-title">
+                                                Work Order Rework Route
+                                            </h3>
+                                        </div>
+
+                                        <div class="panel-body">
+                                            <form class ="form-horizontal">
+                                                <div class ="form-group">
+                                                    <label class =" col-sm-2 control-label">Route Name</label>
+                                                    <div class ="col-sm-10">
+                                                        <select id="select_workroute" class="selector form-control split-selector-long" ng-model="reworklist1" ng-change="comboAllRoutesName_SelectedIndexChanged()"></select>    
+                                                    </div>
+                                                </div>
+
+                                            </form>
+                                            <div id="rework-table6"></div>
+
+                                            <form class ="form-horizontal">
+                                                <div class ="form-group">
+                                                    <label class ="col-sm-6 control-label">Starting Work Centre & Op Seq</label>
+                                                    <div class ="col-sm-6">
+                                                        <select id="select_wcseq" class="selector form-control split-selector-long" ng-model="reworklist"></select>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <form class ="form-horizontal">
+                                                <div class ="form-group">
+                                                    <label class ="col-sm-2 control-label">Remark</label>
+                                                    <div class ="col-sm-10">
+                                                        <input type="text" class="form-control " id="rework-remark">
+                                                    </div>
+                                                </div>
+                                            </form>
+
+                                            <form class ="form-horizontal">
+                                                <button ng-click="save()" class="btn btn-default">Save</button>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                   </div>
+
+<!--                                <div class="col-md-6">
+                                    <div class="col-md-1">
+                                        Route Name
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select id="select_workroute" class="selector form-control split-selector-long" ng-model="reworklist1" ng-change="comboAllRoutesName_SelectedIndexChanged()"></select>
+                                    </div>
+                                </div>-->
+
+<!--                                <div class="col-md-6 fix-height2 k-grid k-widget k-reorderable" style="display:block;touch-action: pan-y;    width: 500px;" id="rework-table6" data-roke="grid">
+
+
+                                </div>-->
+
+<!--                                <div class="col-md-6">
+                                    <div class="col-md-2">
+                                        Starting Work Centre & Op Seq
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select id="select_wcseq" class="selector form-control split-selector-long" ng-model="reworklist"></select>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="col-md-1">
+                                            Remark
+                                        </div>
+                                        <div class="col-md-5">
+                                            <input type="text" class="form-control " id="rework-remark">
+                                        </div>
+                                        <div class="col-md-1">
+                                            <button ng-click="save()" class="btn btn-default">Save</button>
+                                        </div>
+                                    </div>
+                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>

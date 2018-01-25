@@ -1,0 +1,262 @@
+﻿
+
+<div id="test" class="row">
+
+
+
+
+
+
+
+
+    <div id="main-contents" class="col-md-10">
+
+        <!--<div id="main-contents" style="position:fixed;width:80%;right:0;">-->
+        <div class="row row-margin <!--panel widget-mini--> ">
+
+
+            <div class="col-md-3 " style="height:200px;">
+
+                <div class="panel widget-mini" style="width:100%; display: inline-block; height: 100%;border-style: solid;
+				    border-color: #bfbfbf;border-width: 1px; ">
+                    <div class="row row-margin" style="border-bottom: 1px solid #ddd;">By Work Center and/or Machine ID</div>
+                    <div class="row row-margin">
+                        <div class="col-sm-6">
+                            Work Centre
+                        </div>
+
+                        <div class="col-sm-1" style="padding-left: 0px;">
+                            <select id="select_WorkCenter" class="selector"></select>
+                        </div>
+                    </div>
+
+                    <div class="row row-margin">
+                        <div class="col-sm-6">
+                            Machine ID
+                        </div>
+
+                        <div class="col-sm-1" style="padding-left: 0px;">
+                            <div class="btn-group" role="group" aria-label="">
+                                <select id="select_McID" class="selector"></select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row row-margin">
+                        <div class="col-sm-6">
+                            Customer Name
+                        </div>
+                        <div class="col-sm-1" style="padding-left: 0px;">
+                            <div class="btn-group" role="group" aria-label="">
+                                <select id="select_CustomerList" class="selector"></select>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row row-margin">
+                        <div class="col-sm-6">
+                            FG Dimension
+                        </div>
+                        <div class="col-sm-1" style="padding-left: 0px;">
+                            <div class="btn-group" role="group" aria-label="">
+                                <select id="select_FGDimension" class="selector"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2" style="height:200px;">
+                <div class="panel widget-mini" style="width:90%;display: inline-block;height: 100%;padding-left: 3%;padding-top: 5%; border-style: solid;
+				    border-color: #bfbfbf;border-width: 1px;border-width: 1px;">
+                    <div style="border-bottom: 1px solid #ddd;">By State:</div>
+                    <div>
+                        <input type="radio" name="State" value="Queuing"> Queuing
+                    </div>
+
+                    <div>
+                        <input type="radio" name="State" value="Processing"> Processing
+                    </div>
+                    <div>
+                        <input type="radio" name="State" value="Completed"> Completed
+                    </div>
+                    <div>
+                        <input type="radio" name="State" value="Not Completed"> Not Completed
+                    </div>
+                    <div>
+                        <input type="radio" name="State" value="ALL" checked="checked"> ALL
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3" style="height:200px;">
+                <div class="panel widget-mini" style="width:100%; display: inline-block; height: 100%; border-style: solid;
+				    border-color: #bfbfbf;border-width: 1px;">
+                    <div class="row row-margin">
+                        <div class="col-sm-6">
+                            Work Order
+                        </div>
+
+                        <div class="col-sm-1" style="padding-left: 0px;">
+                            <select id="select_WOID" class="selector"></select>
+
+                        </div>
+                    </div>
+
+                    <div class="row row-margin">
+                        <div class="col-sm-6">
+                            Part ID
+                        </div>
+
+                        <div class="col-sm-1" style="padding-left: 0px;">
+                            <select id="select_PartID" class="selector"></select>
+
+                        </div>
+                    </div>
+
+                    <div class="row row-margin">
+                        <div class="col-sm-6">
+                            Part No
+                        </div>
+
+                        <div class="col-sm-1" style="padding-left: 0px;">
+                            <select id="select_PartNO" class="selector"></select>
+
+                        </div>
+                    </div>
+
+
+                    <div class="row row-margin">
+                        <div class="col-sm-6">
+                            SO Line No.
+                        </div>
+
+                        <div class="col-sm-1" style="padding-left: 0px;">
+                            <select id="select_SONO" class="selector"></select>
+
+                        </div>
+                    </div>
+
+
+                    <div class="row row-margin">
+                        <div class="col-sm-6">
+                            SO Remark.
+                        </div>
+
+                        <div class="col-sm-1" style="padding-left: 0px;">
+                            <select id="select_Remark" class="selector"></select>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-md-4" style="height:200px;">
+                <div class="panel widget-mini" style="width:90%; display: inline-block; height: 100%; border-style: solid;
+				    border-color: #bfbfbf;border-width: 1px;">
+                    <div class="row row-margin" style="border-bottom: 1px solid #ddd;">
+                        By WO Release Date
+                    </div>
+                    <div class="row row-margin">
+                        <div class="col-sm-4">
+                            Start Date
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="date" id="startDate">
+                        </div>
+                    </div>
+
+                    <div class="row row-margin">
+                        <div class="col-sm-4">
+                            End Date
+                        </div>
+                        <div class="col-sm-1">
+                            <input type="date" id="endDate">
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 10%;display: inline-block;margin-left: 40%;">
+                        <button ng-click="Refresh()">Refresh</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div id="multiple" style="display:none;"></div>
+        <div style="margin-top:5%;">
+            <div class="row row-margin" style="background: #F0F3F3;">
+                <!--<button ng-click="saveFile()"><span class="k-icon k-i-excel"></span>Export Multiple Sheet By Work Centre</button>-->
+                <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Export Multiple Sheet By Work Centre</button>
+            </div>
+
+            <div class="row row-margin" style="background-color: #fff !important;">
+                <div id="table" style="background:#fff;"></div>
+            </div>
+
+            <div class="row"  style="width:95%;margin:0 auto;">
+                <div class="col-sm-2">
+                    <div class="yellow-background col-sm-1 small-border" style="height:100%;width:10%;">&nbsp;</div>
+                    <div class="col-sm-1"> Near Requested Delivery</div>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="pink-background col-sm-1 small-border" style="height:100%;width:10%;">&nbsp;</div>
+                    <div class="col-sm-1"> Overdue Requested Delivery</div>
+                </div>
+            </div>
+
+            <div id="wc-tab" class="row" style="width:95%;margin:0 auto;background:#fff;"></div>
+
+
+
+
+
+
+
+
+
+            <div id="threshold" style="display:none;"></div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <div id="warming" style="color:red;"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="usr">Save File AS:</label>
+                            <input type="text" class="form-control" id="file-name" required value="report">
+                        </div>
+                        <div class="modal-footer">
+                        
+                           <button ng-click="saveFileTest()" class="btn btn-default">Export Multiple Sheet By Work Centre</button>
+
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+
+
+    </div>
+
+</div>

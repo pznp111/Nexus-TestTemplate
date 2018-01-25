@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f35a5387b8594ff1a93b2cadd7aecc15" Name="Diagram1">
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.InvMa" Width="1.5" PointX="5.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.sysdiagram" Width="1.5" PointX="5.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.CapacityProfile" Width="1.5" PointX="3" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.DailyLoadingPlan" Width="1.5" PointX="19.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.OrderRelease" Width="1.5" PointX="0.75" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.OrderReleaseDetail" Width="1.5" PointX="3" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.Schedule" Width="1.5" PointX="19.75" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.ScheduleDetail" Width="1.5" PointX="22" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.ctr_mc" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.part_detail_semicon" Width="1.5" PointX="5.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.PPOrder" Width="1.5" PointX="14.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.PPOrderDetail" Width="1.5" PointX="17" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.PPOrderRoute" Width="1.5" PointX="17" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.Right" Width="1.5" PointX="7.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.RouteMa" Width="1.5" PointX="19.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.SalesOrderCancelDet" Width="1.5" PointX="19" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.SalesOrderCancelled" Width="1.5" PointX="16.75" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.shift_det" Width="1.5" PointX="21.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.user_det" Width="1.5" PointX="21.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.working_Rate_except" Width="1.5" PointX="21.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.WorkOrderAssembly" Width="1.5" PointX="21.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.WorkorderMac" Width="1.5" PointX="21.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.WorkOrderMaster" Width="1.5" PointX="23.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.WorkOrderMaterial" Width="1.5" PointX="23.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.Inventory" Width="1.5" PointX="14.75" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.InventoryUsage" Width="1.5" PointX="17" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.Customer" Width="1.5" PointX="12.75" PointY="55" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.DeliveryOrder" Width="1.5" PointX="9" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.DeliveryOrderDetail" Width="1.5" PointX="11.25" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.SalesOrder" Width="1.5" PointX="15" PointY="54.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.SalesOrderAdjustment" Width="1.5" PointX="19.5" PointY="39" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.SalesOrderDetail" Width="1.5" PointX="17.25" PointY="36.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.WorkOrder" Width="1.5" PointX="3" PointY="36.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.WorkOrderAdjustment" Width="1.5" PointX="21.75" PointY="39.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.WorkOrderCost" Width="1.5" PointX="24.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.WorkOrderDetail" Width="1.5" PointX="14.25" PointY="38.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.WorkOrderMaterial1" Width="1.5" PointX="14.25" PointY="33" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.Operation" Width="1.5" PointX="3.75" PointY="29" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.OperationParameter" Width="1.5" PointX="17.25" PointY="21.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.OperationRate" Width="1.5" PointX="23.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.OperationResource" Width="1.5" PointX="14.25" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.Parameter" Width="1.5" PointX="10" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.ProductRoute" Width="1.5" PointX="3" PointY="48.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.ProductRouteStatu" Width="1.5" PointX="5.25" PointY="49.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.Route" Width="1.5" PointX="0.75" PointY="38.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.RouteOperation" Width="1.5" PointX="6" PointY="39" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.BillOfMaterial" Width="1.5" PointX="11.25" PointY="47.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.CustomerItem" Width="1.5" PointX="14.25" PointY="45" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.Item" Width="1.5" PointX="9" PointY="33.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.ItemLocation" Width="1.5" PointX="17.25" PointY="32.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.Location" Width="1.5" PointX="15" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.Picture" Width="1.5" PointX="6.75" PointY="34.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.UserProductLine" Width="1.5" PointX="20.25" PointY="44.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.Calendar" Width="1.5" PointX="7.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.CalendarDetail" Width="1.5" PointX="10" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.Equipment" Width="1.5" PointX="10" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.EquipmentParameter" Width="1.5" PointX="12.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.Button" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.Menu" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.Role" Width="1.5" PointX="15" PointY="68.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.RoleTask" Width="1.5" PointX="20.25" PointY="34.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.Task" Width="1.5" PointX="3" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.User" Width="1.5" PointX="9" PointY="49.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.UserRole" Width="1.5" PointX="17.25" PointY="51.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.CodeDetail" Width="1.5" PointX="3" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.CodeType" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.CodeUsage" Width="1.5" PointX="3" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.Option" Width="1.5" PointX="15" PointY="63.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.UserPreference" Width="1.5" PointX="17.25" PointY="47.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.tmpRoute" Width="1.5" PointX="24.75" PointY="7.75" IsExpanded="true" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__CapacityProfile_OrderRelease" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__OrderReleaseDetail_OrderRelease" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_ScheduleDetail_Schedule" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_PPOrderDetail_PPOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_PPOrderRoute_PPOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_SalesOrderCancelDet_SalesOrderCancelled" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_InvUsage_InvMas" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__SalesOrde__Custo__671F4F74" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_CustomerItem_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_DeliveryOrderDetail_DeliveryOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_DeliveryOrderDetail_SalesOrderDetail" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_DeliveryOrderDetail_WorkOrder" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__SalesOrde__Sales__6DCC4D03" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__SalesOrde__Sales__719CDDE7" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_WorkOrderAdjustment_SalesOrderAdjustment" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__WorkOrder__Sales__0880433F" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_SalesOrderDetail_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__WorkOrder__WorkO__09746778" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__WorkOrder__WorkO__251C81ED" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_WorkOrder_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_WorkOrder_Route" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_WorkOrderDetail_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__WorkOrder__Mater__2610A626" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__Operation__Locat__56B3DD81" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_OperationParamter_Operation" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_OperationResource_Operation" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_RoutingOperation_Operation" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_OperationParamter_Parameter" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_OperationResource_Equipment" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_EquipmentParameter_Parameter" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_ProductRoute_Route" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_ProductRouteStatus_ProductRoute" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_Item_Route" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_RouteOperation_Route" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_RouteOperation_Route1" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__BillOfMat__Compo__395884C4" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__BillOfMat__Produ__3864608B" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_CustomerItem_Item" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__Item__ParentItem__0C85DE4D" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__Item__PictureID__2645B050" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__ItemLocat__ItemI__1EA48E88" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__ItemLocat__Produ__1F98B2C1" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__Location__Parent__2739D489" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__UserProdu__Produ__245D67DE" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_User_PictureID" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_User_SignatureID" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__UserProdu__UserI__25518C17" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__CalendarDetail_Calendar" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_CalendarDetail_Calendar" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_Equipment_Calendar" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_EquipmentParameter_Equipment" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__Task__ButtonID__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__Menu__ParentTask__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__Menu__TaskId__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__RoleTask__RoleId__778AC167" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__UserRole__RoleId__70DDC3D8" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__RoleTask__TaskId__787EE5A0" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__UserPrefe__UserI__5224328E" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__UserRole__UserId__71D1E811" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_CodeDetail_CodeType" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK_CodeUsage_CodeType" ManuallyRouted="false" />
+        <AssociationConnector Association="SIMAPS_MOMModel.FK__UserPrefe__Optio__51300E55" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.ctr_mc1" Width="1.5" PointX="13.75" PointY="24.75" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.Customer1" Width="1.5" PointX="26.75" PointY="10.75" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.OperatorAssg" Width="1.5" PointX="26.75" PointY="14.75" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.part_detail_semicon1" Width="1.5" PointX="26.75" PointY="17.75" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.PPOrder1" Width="1.5" PointX="19.75" PointY="26.75" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.PPOrderDetail1" Width="1.5" PointX="26.75" PointY="20.75" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.PPOrderRoute1" Width="1.5" PointX="26.75" PointY="24.75" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.product_leadtime" Width="1.5" PointX="27.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.product_working_rate" Width="1.5" PointX="0.75" PointY="27.75" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.RouteDet" Width="1.5" PointX="27.75" PointY="4.75" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.RouteDetAll" Width="1.5" PointX="27.75" PointY="7.75" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.RouteMas1" Width="1.5" PointX="28.75" PointY="10.75" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.shift_det1" Width="1.5" PointX="28.75" PointY="13.75" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.TM_Rights" Width="1.5" PointX="28.75" PointY="16.75" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.unit_det" Width="1.5" PointX="28.75" PointY="19.75" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.user_det1" Width="1.5" PointX="28.75" PointY="22.75" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.View_TS_WOAdjustment" Width="1.5" PointX="28.75" PointY="25.75" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.View_TS_WorkOrder" Width="1.5" PointX="29.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.working_rate_except1" Width="1.5" PointX="29.75" PointY="4.75" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.WorkOrderAssembly1" Width="1.5" PointX="26.75" PointY="29.75" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.WorkOrderInfo" Width="1.5" PointX="28.75" PointY="29.75" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.WorkOrderMac1" Width="1.5" PointX="30.75" PointY="8.75" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.WorkOrderMaster1" Width="1.5" PointX="30.75" PointY="12.75" />
+        <EntityTypeShape EntityType="SIMAPS_MOMModel.WorkOrderMaterial2" Width="1.5" PointX="30.75" PointY="18.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

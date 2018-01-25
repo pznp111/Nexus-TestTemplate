@@ -1,0 +1,81 @@
+﻿<script type="text/x-kendo-template" id="masterPopupTemplate">
+    <div class="k-edit-form-container">
+        <div ng-repeat="curr in tabsCtrl.currentGridColumn" ng-show="curr.field!='ID' && $index!=tabsCtrl.currentGridColumn.length">
+            <div class="k-edit-label">
+                <label for="{{curr.field}}">{{curr.title}}</label>
+            </div>
+
+            <div ng-if="curr.controlType=='DateTimePicker'" class="animate-if">
+                <div class="k-edit-field row">
+                    <input id="{{curr.controlId}}" kendo-date-time-picker k-format="'dd-MM-yyyy HH:mm tt'" name="{{curr.field}}" data-bind="value:{{curr.field}}" required>
+                    <span class="k-invalid-msg" data-for="{{curr.field}}"></span>
+                </div>
+            </div>
+
+            <div ng-if="curr.controlType=='DatePicker'" class="animate-if">
+                <div class="k-edit-field row">
+                    <input id="{{curr.controlId}}" kendo-date-picker k-format="'dd-MM-yyyy'" name="{{curr.field}}" data-bind="value:{{curr.field}}" maxlength="{{curr.maxLength}}" required>
+                    <span class="k-invalid-msg" data-for="{{curr.field}}"></span>
+                </div>
+            </div>
+
+            <div ng-if="curr.controlType=='DropdownList'" class="animate-if">
+                <div class="k-edit-field row">
+                    <input id="{{curr.controlId}}" class="k-input k-textbox" name="{{curr.field}}" data-bind="value:{{curr.field}}" required />
+                    <span class="k-invalid-msg" data-for="{{curr.field}}"></span>
+                </div>
+            </div>
+
+            <div ng-if="curr.controlType=='TextBox'" class="animate-if">
+                <div class="k-edit-field row">
+                    <input id="{{curr.controlId}}" class="k-input k-textbox" name="{{curr.field}}" data-bind="value:{{curr.field}}" maxlength="{{curr.maxLength}}" required/>
+                    <span class="k-invalid-msg" data-for="{{curr.field}}"></span>
+                </div>
+            </div>
+
+            <!--<div class="k-edit-field row">
+                <input id="{{curr.field}}" class="k-input k-textbox" name="{{curr.field}}" data-bind="value:{{curr.field}}" required />
+                <span class="k-invalid-msg" data-for="{{curr.field}}"></span>
+            </div>-->
+        </div>
+    </div>
+</script>
+
+<script>
+    $(function() {
+        //alert("hi arrive");
+        //alert(JSON.stringify({tabsCtrl.columnList));
+    });
+</script>
+
+<div class="row" style="margin-top: 10px; margin-bottom: 25px;">
+    <div class="col-md-12">
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-md-2"><b>Search By: </b></div>
+            <div class="col-md-4">
+                <select name="applications" class="k-dropdown-wrap k-state-default" ng-model="tabsCtrl.selectedColumn" style="height:33px;width:145px;">
+                    <option ng-repeat="column in tabsCtrl.columnList" value="{{column.name}}">{{column.name}}</option>
+                </select>
+            </div>
+            <div class="col-md-6"></div>
+        </div>
+        <div class="row" style="margin-top: 10px;">
+            <div class="col-md-2"><b>Search Word: </b></div>
+            <div class="col-md-4">
+                <input type="text" class="k-input k-textbox" ng-model="tabsCtrl.searchWord" />
+            </div>
+            <div class="col-md-6"></div>
+        </div>
+        <div class="row" style="margin-top: 30px;">
+            <div class="col-md-2">
+                <input type="button" class="k-button btn btn-info" value="Search" ng-click="tabsCtrl.btnSearch()" />
+            </div>
+            <div class="col-md-2">
+                <input type="button" class="k-button btn btn-danger" value="Reset" ng-click="tabsCtrl.btnReset()"/>
+            </div>
+            <div class="col-md-6"></div>
+        </div>
+    </div>
+</div>
+
+<kendo-grid id="kendoTabGrid-{{tabsCtrl.currentGridId}}" options="tabsCtrl.tabgrid" />

@@ -1,0 +1,27 @@
+﻿@font-face {
+    font-family: "customfont";
+    src: url("../../fonts/HeadlandOne-Regular.ttf") format("opentype");
+}
+
+body {
+    font-family: "customfont" !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: "customfont";
+}
+
+button, select, html, textarea, input {
+    font-family: "customfont";
+}
