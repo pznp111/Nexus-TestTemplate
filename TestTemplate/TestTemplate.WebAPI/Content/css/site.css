@@ -184,4 +184,5 @@ input.k-state-disabled:hover {
     margin-bottom:5px !important;
     width: 95%;
     margin: 0 auto;
+    display: flex;
 }

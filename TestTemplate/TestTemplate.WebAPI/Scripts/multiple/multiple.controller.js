@@ -38,7 +38,8 @@
         }, []);
 
 
-
+        $("#toolbar_rework").hide();
+        $("#toolbar_wodetail").hide();
 
         $scope.selectorItemDetail
 

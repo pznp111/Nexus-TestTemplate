@@ -28,10 +28,35 @@
             }
             return memo;
         }, []);
-        $('canvas').remove();
 
-        $('#startDate').val(new Date("2014-02-09").toDateInputValue());
-        $('#endDate').val(new Date().toDateInputValue());
+        $('canvas').remove();
+        $("#toolbar_rework").hide();
+        $("#toolbar_wodetail").hide();
+        $("#main-container-page").css('margin-top', 0)
+
+        //$('#startDate').val(new Date("2014-02-09").toDateInputValue());
+        //$('#endDate').val(new Date().toDateInputValue());
+
+
+        var d = new Date();
+        d.setMonth(d.getMonth() - 1);
+        $(function () {
+            $('#startDate').datetimepicker(
+                {
+                    defaultDate: d,
+                    disabledDates: [
+                        moment(d),
+                        d,
+                        d
+                    ]
+                });
+
+
+            $('#endDate').datetimepicker({
+                defaultDate: moment(),
+                sideBySide: true
+            });
+        });
 
         load();
 
@@ -62,12 +87,14 @@
         //'Remark    :
         //'*******************************************************************
         $scope.Refresh = function () {
-            var start = $('#startDate').val();
-            var end = $('#endDate').val();
+            var start = $('#startDate').find("input").val();
+            var end = $('#endDate').find("input").val();
 
             var select_Username = $('#select_username option:selected').text();
 
-            $http.post(config.baseUrlApi + 'HMLVTS/GenerateOperatorReport', {
+            // if(select_Username.indexOf(",") == -1){
+            if(true){
+                $http.post(config.baseUrlApi + 'HMLVTS/GenerateOperatorReport', {
                 'StartDate': start,
                 'EndDate': end,
                 'OperatorName':select_Username
@@ -75,12 +102,102 @@
 
             .then(function (response) {
                 console.log("GenerateOperatorReport", response);
+                response.data.result = splitMulipleUserData(response.data.result);
                 makeTable(response.data.result);
             });
+            }
+            //else {
+            //    var promiseArray = [];
+            //    var operators = select_Username.split(",");
+            //    for (var i = 0; i < operators.length;i++){
+            //        promiseArray.push(
+            //                            $http.post(config.baseUrlApi + 'HMLVTS/GenerateOperatorReport', {
+            //                                'StartDate': start,
+            //                                'EndDate': end,
+            //                                'OperatorName': operators[i]
+            //                            })
+            //            );
+            //    }
+
+            //    $q.all(promiseArray).then(function (response) {
+            //        console.log("GenerateOperatorReport", response);
+            //    });
+
+
+
+            //}
+
+
 
         }
 
+        function splitMulipleUserData(data) {
+            var tempdata = data.slice(0);;
 
+
+
+
+            var fix = [];
+            for (var i = 0; i < data.length; i++) {
+                var operatorName = String(data[i]['operatorName']).trim();
+                fix.push({
+                    "index": i,
+                    "operatorName": operatorName
+                }
+                    );
+                console.log("operatorName1",operatorName);
+               
+                if (operatorName.indexOf(",") != -1) {
+
+
+                    var operators = operatorName.split(",");
+                    console.log("operators", operators);
+
+                    if (operators.length != 0) {
+                        for (var j = 0; j < operators.length; j++) {
+                          //  tempdata.push(data[i]);
+                            //   console.log("pushed",tempdata);
+                            var rowData = data[i];
+                            rowData['operatorName'] = operators[j];
+                            console.log("rowdata", rowData);
+                            console.log("tempdata.length", tempdata.length);
+                            var length = tempdata.length;
+                            tempdata[length] = rowData;
+                            tempdata[length]['operatorName'] = operators[j];
+
+                            fix.push({
+                                "index": length,
+                                "operatorName": operators[j]
+                            })
+                          //  tempdata[tempdata.length]['operatorName'] = operators[j];
+                            //var rowData = data[i]
+                            //console.log("each operator", operators[j]);
+                            //rowData['operatorName'] = operators[j];
+                            //console.log("rowData",rowData);
+                            //tempdata.push(rowData);
+                            //console.log("tempdata processing",tempdata);
+                        }
+                    }
+                }
+            }
+
+            console.log("fix",fix);
+            console.log("tempdata", tempdata);
+
+            var returnArray = [];
+            for (var i = 0; i < fix.length;i++){
+                var length = fix[i]['index'];
+                var operator = fix[i]['operatorName'];
+                console.log("fix",length+" "+operator);
+                tempdata[length]['operatorName'] = operator;
+                console.log("fix te", tempdata[length]);
+                returnArray.push(tempdata[length]);
+
+            }
+            console.log("tempdata1", tempdata);
+            console.log("returnArray",returnArray);
+            return tempdata;
+        }
 
         //'*******************************************************************
         //'Title     :  makeTable
@@ -90,10 +207,12 @@
         //'Remark    :
         //'*******************************************************************
         function makeTable(data) {
+            console.log('data',data);
             for (var i = 0; i < data.length;i++){
                 data[i]["index"] = (i + 1);
             }
-
+           // data = splitMulipleUserData(data);
+            console.log('data after',data);
             
 
 
@@ -117,22 +236,23 @@
                 //    }
                 //},
                 dataSource: {
-                    data,
-                    pageSize: 20
+                    data
+                    //,
+                    //pageSize: 20
                 },
                 dataType: "json",
-                height: 550,
-                pageable: {
-                    refresh: true,
-                    pageSizes: true,
-                    buttonCount: 5
-                },
+                height: 350,
+                //pageable: {
+                //    refresh: true,
+                //    pageSizes: true,
+                //    buttonCount: 5
+                //},
                 dragAndDrop: true,
-                pageable: true,
+               // pageable: true,
 
                 //pageSize: 10,
                 sortable: true,
-                pageable: true,
+               // pageable: true,
                 //groupable: true,
                 filterable: true,
                 columnMenu: true,

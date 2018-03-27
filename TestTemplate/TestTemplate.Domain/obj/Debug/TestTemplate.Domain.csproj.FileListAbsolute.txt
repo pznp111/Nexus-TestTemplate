@@ -51,3 +51,20 @@ C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTempl
 C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain\bin\Debug\Security.Cryptography.xml
 C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain\obj\Debug\TestTemplate.Domain.dll
 C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain\obj\Debug\TestTemplate.Domain.pdb
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain\bin\Debug\TestTemplate.Domain.dll.config
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain\bin\Debug\TestTemplate.Domain.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain\bin\Debug\TestTemplate.Domain.pdb
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain\bin\Debug\EntityFramework.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain\bin\Debug\Newtonsoft.Json.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain\bin\Debug\Nexus.Infrastructure.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain\bin\Debug\Security.Cryptography.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain\bin\Debug\EntityFramework.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain\bin\Debug\Newtonsoft.Json.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain\bin\Debug\Security.Cryptography.pdb
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain\bin\Debug\Security.Cryptography.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain\obj\Debug\TestTemplate.Domain.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain\obj\Debug\TestTemplate.Domain.pdb

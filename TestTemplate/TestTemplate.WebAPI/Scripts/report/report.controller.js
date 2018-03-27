@@ -29,6 +29,12 @@
             return memo;
         }, []);
 
+
+        $('canvas').remove();
+        $("#toolbar_rework").hide();
+        $("#toolbar_wodetail").hide();
+        $("#main-container-page").css('margin-top', 0)
+
         $scope.confirm = function confirm() {
            // alert("reach save");
             $http.get(config.baseUrlApi + 'HMLVTS/GenerateMcID')
@@ -39,7 +45,7 @@
         }
 
         $scope.reloadRoute = function () {
-            location.reload();
+          //  location.reload();
         }
 
         //console.log("test sp", specialChar("content_DELIVERY._1"));
@@ -207,7 +213,7 @@
                     /////////////////////////////////////////
 
                     var eachData = response[0].data.result;
-                   // console.log("7_12 eachData", eachData)
+                    console.log("7_12 eachData", eachData)
 
 
                     var ol1;
@@ -270,12 +276,26 @@
                                     var dateParts = dateString.split("/");
                                     var expectedDate = new Date(dateParts[2], dateParts[1] - 1, dateParts[0]);
 
+                                    var today = new Date();
                                     var compareDate = new Date();
+                                    
                                     compareDate.setDate(compareDate.getDate() + parseInt($scope.threshold));
-                                    if (expectedDate < compareDate) {
+                                    console.log("comparedata test", compareDate);
+                                    console.log("expectedDate test", expectedDate);
+
+                                    if (today < compareDate) {
+                                        //red
+                                        $("#" + tempId).addClass("red-background");
+                                        document.getElementById(tempId).setAttribute("color", "#ff3300");
+                                    } else if (today > compareDate && today < expectedDate) {
+                                        //gold
                                         $("#" + tempId).addClass("gold-background");
                                         document.getElementById(tempId).setAttribute("color", "#ff9966");
                                     }
+                                    //if (expectedDate < compareDate) {
+                                    //    $("#" + tempId).addClass("gold-background");
+                                    //    document.getElementById(tempId).setAttribute("color", "#ff9966");
+                                    //}
                                 } else {
                                     $("#" + tempId).addClass("gold-background");
                                     document.getElementById(tempId).setAttribute("color", "#ff9966");
@@ -843,7 +863,8 @@
                 var workcenter = data[i].workCenter;
                 var mctype = data[i].mcType;
 
-               // console.log("waaa",$("#GanttChartTable").children().length);
+                // console.log("waaa",$("#GanttChartTable").children().length);
+                var templength = $("#GanttChartTable").children().length;
                 for (var i = 1; i < $("#GanttChartTable").children().length;i++){//for each row
                     var eleDiv = $("#GanttChartTable").children().children();
                     console.log("save ci", eleDiv[i]);
@@ -856,8 +877,10 @@
                     var rowId = $(eleDiv[i]).attr("id");
 
                     
-                    console.log("rowID",rowId);
-                    for (var j = 0; j < $(eleDiv[i]).children().length; j++) {
+                    console.log("rowID", rowId);
+                    var isALLSuccess = true;
+                    var j = 0;
+                    for ( j = 0; j < $(eleDiv[i]).children().length; j++) {
                         console.log("waaa1", $("#" + rowId).children());
                             //var tooltipID = "tooltip_" + workcenter.trim().replace(/\s/g, '') + "_" + mcid.trim().replace(/\s/g, '') + "_" + (j+1);
                         var id = $($(eleDiv[i]).children()[j]).attr("id");
@@ -870,6 +893,12 @@
                         var jsonInfo = JSON.parse(jsonContent);
                         var procopseq = jsonInfo.procOpSeq;
                         var woid = jsonInfo.woid;
+                        if(mcid == null){
+                            mcid == " ";
+                        }
+                        if(mcid == ""){
+                            mcid == " ";
+                        }
                         console.log("save info is", "mctype: "+mctype + "| workcenter: " + workcenter + "| mcid: " + mcid+"| position: "+position +"| procopseq: "+ procopseq+"| woid: "+woid);                                               
                         $http.post(config.baseUrlApi + 'HMLVTS/ConfirmGCReorder',
                             {
@@ -880,8 +909,15 @@
                                 "ProcOpSeq":procopseq
                         }
                     ).then(function (response) {
-                        console.log("saving response",response.data);
-
+                        console.log("saving response0", response.data.success);
+                        console.log("saving response1", response);
+                        if (response.data == undefined) {
+                            isALLSuccess = false;
+                        } else {
+                            if (!response.data.success) {
+                                isALLSuccess = false;
+                            }
+                        }
                     });
                     }
                  }
@@ -890,7 +926,13 @@
                 }
                
             }
-            $('#saveCompleted').modal('show');
+
+            console.log("j value is " + j + " lenngth:" + templength);
+
+            if (isALLSuccess) {
+                $('#saveCompleted').modal('show');
+            }
+           
         }
 
 

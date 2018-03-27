@@ -17,5 +17,9 @@
             }
             return memo;
         }, []);
+
+        $('canvas').remove();
+        $("#toolbar_wodetail").hide();
+        $("#main-container-page").css('margin-top', 0)
     }
 })();

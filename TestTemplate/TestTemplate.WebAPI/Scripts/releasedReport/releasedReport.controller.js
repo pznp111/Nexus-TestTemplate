@@ -30,6 +30,12 @@
             return memo;
         }, []);
 
+
+        $('canvas').remove();
+        $("#toolbar_rework").hide();
+        $("#toolbar_wodetail").hide();
+        $("#main-container-page").css('margin-top', 0)
+
         var promiseArray1 = [];
         promiseArray1.push(
                $http.get(config.baseUrlApi + 'HMLVTS/GenerateThreshold')
@@ -136,40 +142,41 @@
                     fileName: "Kendo UI Grid Export.xlsx",
                     filterable: true,
                 },
-                //excelExport: function (e) {
-                //    var sheet = e.workbook.sheets[0];
-                //    for (var rowIndex = 1; rowIndex < sheet.rows.length; rowIndex++) {
-                //        var row = sheet.rows[rowIndex];
-                //        var color = $scope.highlight[rowIndex - 1]
-                //        //  console.log("kendo color1",rowIndex+ " " + color);
-                //        for (var cellIndex = 0; cellIndex < row.cells.length; cellIndex++) {
-                //            row.cells[cellIndex].background = color;
-                //        }
-                //    }
-                //},
+                excelExport: function (e) {
+                    var sheet = e.workbook.sheets[0];
+                    for (var rowIndex = 1; rowIndex < sheet.rows.length; rowIndex++) {
+                        var row = sheet.rows[rowIndex];
+                        var color = $scope.highlight[rowIndex - 1]
+                        //  console.log("kendo color1",rowIndex+ " " + color);
+                        for (var cellIndex = 0; cellIndex < row.cells.length; cellIndex++) {
+                            row.cells[cellIndex].background = color;
+                        }
+                    }
+                },
                 dataSource: {
-                    data,
-                    pageSize: 20
+                    data
+                    //,
+                    //pageSize: 20
                 },
                 dataType: "json",
-                height: 550,
-                pageable: {
-                    refresh: true,
-                    pageSizes: true,
-                    buttonCount: 5
-                },
+                height: 350,
+                //pageable: {
+                //    refresh: true,
+                //    pageSizes: true,
+                //    buttonCount: 5
+                //},
                 dragAndDrop: true,
-                pageable: true,
+               // pageable: true,
 
                 //pageSize: 10,
                 // sortable: true,
                 resizable: true,
-                pageable: true,
+               // pageable: true,
                 //groupable: true,
                 filterable: true,
                 columnMenu: true,
                 reorderable: true,
-                resizable: true,
+               // resizable: true,
                 draggable: true,
                 droppable: true,
 
@@ -214,61 +221,117 @@
 
 
         function highlight() {
-            $scope.highlight = [];
             var grid = $('#table').data('kendoGrid');
             // console.log("HighlighCompleted grid", grid);
-            //console.log("HighlighCompleted grid1", grid.dataItem());
+            // console.log("HighlighCompleted grid1",grid.dataItem());
             var items = grid.dataSource.view();
 
-            console.log("highlight", grid);
-            console.log("highlight", items);
-            // console.log("highlight item1", items1);
+            $scope.highlight = [];
             for (var i = 0; i < items.length; i++) {
-                console.log("test items", items[i]['requestedDeliveryDate']);
-                var time1 = items[i]['requestedDeliveryDate'];
-                var time = time1.substring(0, time1.indexOf("T"));
-                // console.log("time is",time);
-
+                var time = items[i]['requestedDeliveryDate'];
+                console.log("highlight requestedDeliveryDate", time);
+                time = time.substring(0, time.indexOf(" "));
+                //var today = new 
                 var dateTime = time.split("-");
                 //console.log("time1", dateTime);
                 var expectedDate = new Date(dateTime[0], dateTime[1] - 1, dateTime[2]);
-                // console.log("time2", expectedDate);
-
+                console.log("highlight requestedDeliveryDate expectedDate", expectedDate);
                 var today = new Date();
-                var compareDate = new Date(today.getYear(), today.getMonth(), today.getDate() - $scope.threshold);
-                //console.log("compare date", compareDate);
-                if (expectedDate < compareDate && expectedDate > today) {
-                   // $(tbody.children().children()[i]).parent().addClass("yellow-background");
-                    $scope.highlight.push("#ffff00");
-                   // currentColor = "#ffff00";
-                } else if (expectedDate < today) {
-                   // $(tbody.children().children()[i]).parent().addClass("pink-background");
+                today.setHours(0, 0, 0, 0);
+                var compareDate = expectedDate;
+                compareDate.setDate(compareDate.getDate() - $scope.threshold);
+                console.log("highlight compareDate", compareDate);
+                console.log("highlight today", today);
+
+                if (today > expectedDate) {
+                    //red
                     $scope.highlight.push("#FFCCFF");
-                   // currentColor = "#FFCCFF";
+                } else {
+                    if (today >= compareDate) {
+                        //yellow
+                        $scope.highlight.push("#ffff00");
+                    } else {
+                        //white
+                        $scope.highlight.push("#ffffff");
+                    }
                 }
 
             }
 
-            console.log("$scope.highlight", $scope.highlight);
+            console.log("highlight scope", $scope.highlight);
+            var trs = $("#kendo_body_container > tbody").children();
+            console.log("highlight trs", trs);
 
-            var tbody =  $($("#table").find("tbody"));
-            for(var i =0; i < tbody.length;i++){
-              var tr =  $(tbody[i]).find("tr");
-              console.log("tr", tr);
+            // var tbody = document.getElementsByTagName("tbody")[0];
+            var tbody = $('tbody')[1];
+            console.log("highlight tbody", $(tbody).find('> tbody > tr'));
 
-              for (var j = 0; j < tr.length;j++){
-                  $(tr[j]).css("background-color", $scope.highlight[j]);
-              }
+            var rows = $(tbody).children();
+            console.log("highlight rows", rows);
+            if (rows.length != 0) {
+
+                for (var i = 0; i < rows.length; i++) {
+                    var color = $scope.highlight[i];
+                    $(rows[i]).css("background-color", color);
+
+
+                }
             }
-        //    if (items.length!=0) {
-        //        // if (items[0].prevObject.length != 0) {
-                
-        //        var trs = $($(items[0]).prevObject[0]).find("tr");
-        //        for (var i = 0; i < trs.length; i++) {
-        //            // $(trs[i]).css("background-color", "yellow");
+        //    $scope.highlight = [];
+        //    var grid = $('#table').data('kendoGrid');
+        //    // console.log("HighlighCompleted grid", grid);
+        //    //console.log("HighlighCompleted grid1", grid.dataItem());
+        //    var items = grid.dataSource.view();
+
+        //    console.log("highlight", grid);
+        //    console.log("highlight", items);
+        //    // console.log("highlight item1", items1);
+        //    for (var i = 0; i < items.length; i++) {
+        //        console.log("test items", items[i]['requestedDeliveryDate']);
+        //        var time1 = items[i]['requestedDeliveryDate'];
+        //        var time = time1.substring(0, time1.indexOf("T"));
+        //        // console.log("time is",time);
+
+        //        var dateTime = time.split("-");
+        //        //console.log("time1", dateTime);
+        //        var expectedDate = new Date(dateTime[0], dateTime[1] - 1, dateTime[2]);
+        //        // console.log("time2", expectedDate);
+
+        //        var today = new Date();
+        //        var compareDate = new Date(today.getYear(), today.getMonth(), today.getDate() - $scope.threshold);
+        //        //console.log("compare date", compareDate);
+        //        if (expectedDate < compareDate && expectedDate > today) {
+        //           // $(tbody.children().children()[i]).parent().addClass("yellow-background");
+        //            $scope.highlight.push("#ffff00");
+        //           // currentColor = "#ffff00";
+        //        } else if (expectedDate < today) {
+        //           // $(tbody.children().children()[i]).parent().addClass("pink-background");
+        //            $scope.highlight.push("#FFCCFF");
+        //           // currentColor = "#FFCCFF";
         //        }
-        //  //  }
-        //}
+
+        //    }
+
+        //    console.log("$scope.highlight", $scope.highlight);
+
+        //    var tbody =  $($("#table").find("tbody"));
+        //    for(var i =0; i < tbody.length;i++){
+        //      var tr =  $(tbody[i]).find("tr");
+        //      console.log("tr", tr);
+
+        //      for (var j = 0; j < tr.length;j++){
+        //          $(tr[j]).css("background-color", $scope.highlight[j]);
+        //      }
+        //    }
+        ////    if (items.length!=0) {
+        ////        // if (items[0].prevObject.length != 0) {
+                
+        ////        var trs = $($(items[0]).prevObject[0]).find("tr");
+        ////        for (var i = 0; i < trs.length; i++) {
+        ////            // $(trs[i]).css("background-color", "yellow");
+        ////        }
+        ////  //  }
+        ////}
         }
 
         function createSelect(rawData, itemName) {

@@ -244,14 +244,23 @@
     <Content Include="Scripts\backup\backup.controller.js" />
     <Content Include="Scripts\backup\backup.html" />
     <Content Include="Scripts\backup\backup.module.js" />
+    <Content Include="Scripts\dashboardDemo\dashboardDemo.module.js" />
+    <Content Include="Scripts\dashboardDemo\dashboardDemo.controller.js" />
+    <Content Include="Scripts\dashboardDemo\dashboardDemo.html" />
     <Content Include="Scripts\lockReport\lockReport.controller.js" />
     <Content Include="Scripts\lockReport\lockReport.html" />
     <Content Include="Scripts\lockReport\lockReport.module.js" />
+    <Content Include="Scripts\mctDashboard\mctDashboard.controller.js" />
+    <Content Include="Scripts\mctDashboard\mctDashboard.html" />
+    <Content Include="Scripts\mctDashboard\mctDashboard.module.js" />
     <Content Include="Scripts\myCompany\myCompany.splitReport.controller.js" />
     <Content Include="Scripts\myCompany\myCompany.splitReport.html" />
     <Content Include="Scripts\operatorReport\operatorReport.controller.js" />
     <Content Include="Scripts\operatorReport\operatorReport.html" />
     <Content Include="Scripts\operatorReport\operatorReport.module.js" />
+    <Content Include="Scripts\qctracking\qctracking.controller.js" />
+    <Content Include="Scripts\qctracking\qctracking.html" />
+    <Content Include="Scripts\qctracking\qctracking.module.js" />
     <Content Include="Scripts\releasedReport\releasedReport.controller.js" />
     <Content Include="Scripts\releasedReport\releasedReport.html" />
     <Content Include="Scripts\releasedReport\releasedReport.module.js" />
@@ -1200,6 +1209,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\PublishProfiles\Dashboard.pubxml" />
+    <Content Include="Scripts\wodetail\upload.php" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

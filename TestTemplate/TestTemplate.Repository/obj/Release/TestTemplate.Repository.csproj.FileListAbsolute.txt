@@ -18,3 +18,23 @@ C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTempl
 C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Repository\obj\Release\TestTemplate.Repository.csprojResolveAssemblyReference.cache
 C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Repository\obj\Release\TestTemplate.Repository.dll
 C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Repository\obj\Release\TestTemplate.Repository.pdb
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Repository\bin\Release\TestTemplate.Repository.dll.config
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Repository\bin\Release\TestTemplate.Repository.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Repository\bin\Release\TestTemplate.Repository.pdb
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Repository\bin\Release\EntityFramework.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Repository\bin\Release\EntityFramework.SqlServer.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Repository\bin\Release\Microsoft.AspNet.Identity.Core.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Repository\bin\Release\Newtonsoft.Json.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Repository\bin\Release\Nexus.Infrastructure.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Repository\bin\Release\Security.Cryptography.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Repository\bin\Release\TestTemplate.Domain.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Repository\bin\Release\TestTemplate.Domain.pdb
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Repository\bin\Release\EntityFramework.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Repository\bin\Release\EntityFramework.SqlServer.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Repository\bin\Release\Microsoft.AspNet.Identity.Core.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Repository\bin\Release\Newtonsoft.Json.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Repository\bin\Release\Security.Cryptography.pdb
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Repository\bin\Release\Security.Cryptography.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Repository\obj\Release\TestTemplate.Repository.csprojResolveAssemblyReference.cache
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Repository\obj\Release\TestTemplate.Repository.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Repository\obj\Release\TestTemplate.Repository.pdb

@@ -31,7 +31,71 @@
             return memo;
         }, []);
 
-        load();
+
+        $('canvas').remove();
+        $("#toolbar_rework").hide();
+        $("#toolbar_wodetail").hide();
+        $("#main-container-page").css('margin-top', 0);
+
+
+
+
+        $("#qctracking-table3-operatorName").val(authService.currentUser.userName);
+        var promiseArrayOperatorName = [];
+        promiseArrayOperatorName.push(
+                       $http.post(config.baseUrlApi + 'HMLVTS/getOperatorName', {
+                           'OperatorID': authService.currentUser.userName
+                       })
+                   );
+
+        $q.all(promiseArrayOperatorName).then(function (response) {
+            console.log("operatorName", response);
+            if (response.length != 0 && response[0].data.success && response[0].data.result.length != 0 && response[0].data.result[0]["firstName"] != undefined) {
+
+                $("#qctracking-table3-loginName").val(response[0].data.result[0]["firstName"]);
+                $scope.OperatorName = response[0].data.result[0]["firstName"];
+            } else {
+                $("#alertBoxContent").text("Unable to find the user!");
+                $('#alertBox').modal('show');
+
+            }
+        });
+
+        $("#qctracking-table3-operatorName").val(authService.currentUser.userName);
+        $("#qctracking-table3-loginName").val($scope.OperatorName);
+
+
+
+        if (authService.parameter != "") {
+            $scope.selectedWOID = authService.parameter;
+            $("#select_qctracking-woid-input").val($scope.selectedWOID);
+            load();
+            GenerateWOSummary();
+            console.log("$scope.selectData", $scope.selectData);
+
+            var promiseArray1 = [];
+            promiseArray1.push(
+            $http.post(config.baseUrlApi + 'HMLVTS/GenerateQCWOList')
+         );
+
+            $q.all(promiseArray1).then(function (response) {
+                console.log("GenerateQCWOList", response);
+                if (response.length != 0) {
+                    if (response[0].data.success) {
+
+                        $scope.selectData = response[0].data.result;
+                        case0();
+                        authService.parameter == "";
+                    }
+
+                }
+
+            });
+
+        } else {
+            load();
+        }
+
 
 
         function load() {
@@ -183,7 +247,10 @@
 
 
             if ($scope.ProcOpSeq == undefined || $scope.ProcOpSeq == '') {
-                alert("Please enter a valid work order number. ");
+                $("#alertBoxContent").text("Please enter a valid work order number. ");
+                $('#alertBox').modal('show');
+
+                //alert("Please enter a valid work order number. ");
                 location.reload();
             }
 
@@ -249,7 +316,9 @@
                     //}
                 } else {
                     //prompt for wrong WOID line
-                    alert("Please enter a valid work order number");
+                    $("#alertBoxContent").text("Please enter a valid work order number");
+                    $('#alertBox').modal('show');
+                    //alert("Please enter a valid work order number");
                     location.reload(); // if keepp refreshData location reload, this line can remove
                     RefreshData();
                 }
@@ -350,7 +419,9 @@
                                     });
                                 }
                             } else {
-                                alert("No previous record found.");
+                                $("#alertBoxContent").text("No previous record found.");
+                                $('#alertBox').modal('show');
+                               // alert("No previous record found.");
                                 location.reload();
                             }
 
@@ -442,8 +513,10 @@
         function case30() { //line 1895
             CalculateQCDuration();
             var alertMSG = String(document.getElementById("table1-td4").innerHTML).trim();
-            if(alertMSG != ""){
-                alert(alertMSG);
+            if (alertMSG != "") {
+                $("#alertBoxContent").text(alertMSG);
+                $('#alertBox').modal('show');
+               // alert(alertMSG);
             }
 
             GenerateQueuingWOList($scope.McID);
@@ -659,51 +732,128 @@
             var select_WOID = String($('#select_qctracking-woid-input').val()).trim();
 
             if (select_WOID == "") {
-                alert("Please enter Work Order");
+                $("#alertBoxContent").text("Please enter Work Order");
+                $('#alertBox').modal('show');
+
+               // alert("Please enter Work Order");
             } else {
                 if (String(document.getElementById("WIP-td5_1").innerHTML).trim() == "") {
-                    alert("Please update received qty!");
+                    $("#alertBoxContent").text("Please update received qty!");
+                    $('#alertBox').modal('show');
+                   // alert("Please update received qty!");
                 } else {
-                    var operatorName = String($("#qctracking-table3-operatorName").val()).trim();
-                    var password = String($("#qctracking-table3-password").val()).trim();
-                    if (operatorName == "" || password == "") {
-                        console.log("btnCancel_Click1");
-                        alert("Please enter Operator Name or scan Operator ID");
-                    } else {
-                        var promiseArray1 = ValidateOperatorName(false);
-                        console.log("ValidateOperatorName", promiseArray1);
-                        $q.all(promiseArray1).then(function (response) {
-                            console.log("Token/GetToken", response);
-                            if (response.length != 0 && response[0].data != undefined && response[0].data.success != null && response[0].data.success) {
-                                console.log("btnCancel_Click2");
-                                ///*** if user check pass****//
-                                var answer = confirm("This work order will be discarded. Confirm to cancel ?");
-                                //todo to implement, trackingdefault ok in model so that default button can change
-                                //if (config.TrackingDefaultOK) {
-                                //        setupStartCase5();
-                                //} else {
-                                //    if (answer) {
-                                //        setupStartCase5();
-                                //    }
-                                //}
-
-                                if (answer) {
-                                    $scope.DiscardReason = prompt("Cancel WO Reason", "");
-                                    console.log("DiscardReason");
-
-                                    if ($("#inspection-row-2").css("display") == "none") {
-                                        btnCancelWO_ClickCase20();
-                                    } else {
-                                        btnCancelWO_ClickCase30();
-                                    }                                 
+                    //var operatorName = String($("#qctracking-table3-operatorName").val()).trim();
+                    //var password = String($("#qctracking-table3-password").val()).trim();
+                    if(config.BypassScanOperator){
+                        var answer = false;
+                        $.confirm({
+                            title: 'Confirm!',
+                            content: "This work order will be discarded. Confirm to cancel ?",
+                            buttons: {
+                                confirm: function () {
+                                    answer = true;
+                                },
+                                cancel: function () {
+                                    $.alert('Canceled!');
                                 }
-                            } else {
-                                console.log("btnCancel_Click3");
-                                $("#qctracking-table3-operatorName").val("");
-                                $("#qctracking-table3-password").val("");
                             }
                         });
+
+
+                        if (answer) {
+                            $scope.DiscardReason = prompt("Cancel WO Reason", "");
+                            console.log("DiscardReason");
+
+                            if ($("#inspection-row-2").css("display") == "none") {
+                                btnCancelWO_ClickCase20();
+                            } else {
+                                btnCancelWO_ClickCase30();
+                            }
+                        }
+                    //if(config.BypassScanOperator){
+                    //    var answer = false;
+                    //    $.confirm({
+                    //        title: 'Confirm!',
+                    //        content: "This work order will be discarded. Confirm to cancel ?",
+                    //        buttons: {
+                    //            confirm: function () {
+                    //                answer = true;
+                    //            },
+                    //            cancel: function () {
+                    //                $.alert('Canceled!');
+                    //            }
+                    //        }
+                    //    });
+
+
+                    //    if (answer) {
+                    //        $scope.DiscardReason = prompt("Cancel WO Reason", "");
+                    //        console.log("DiscardReason");
+
+                    //        if ($("#inspection-row-2").css("display") == "none") {
+                    //            btnCancelWO_ClickCase20();
+                    //        } else {
+                    //            btnCancelWO_ClickCase30();
+                    //        }
+                    //    }
+                    //} else {
+                    //    if (operatorName == "" || password == "") {
+                    //        console.log("btnCancel_Click1");
+                    //        $("#alertBoxContent").text("Please enter Operator Name or scan Operator ID");
+                    //        $('#alertBox').modal('show');
+                    //        // alert("Please enter Operator Name or scan Operator ID");
+                    //    } else {
+
+                    //        var promiseArray1 = ValidateOperatorName(false);
+                    //        console.log("ValidateOperatorName", promiseArray1);
+                    //        $q.all(promiseArray1).then(function (response) {
+                    //            console.log("Token/GetToken", response);
+                    //            if (response.length != 0 && response[0].data != undefined && response[0].data.success != null && response[0].data.success) {
+                    //                console.log("btnCancel_Click2");
+                    //                ///*** if user check pass****//
+                    //                var answer = false;
+                    //                $.confirm({
+                    //                    title: 'Confirm!',
+                    //                    content: "This work order will be discarded. Confirm to cancel ?",
+                    //                    buttons: {
+                    //                        confirm: function () {
+                    //                            answer = true;
+                    //                        },
+                    //                        cancel: function () {
+                    //                            $.alert('Canceled!');
+                    //                        }
+                    //                    }
+                    //                });
+                    //                // var answer = confirm("This work order will be discarded. Confirm to cancel ?");
+                    //                //todo to implement, trackingdefault ok in model so that default button can change
+                    //                //if (config.TrackingDefaultOK) {
+                    //                //        setupStartCase5();
+                    //                //} else {
+                    //                //    if (answer) {
+                    //                //        setupStartCase5();
+                    //                //    }
+                    //                //}
+
+                    //                if (answer) {
+                    //                    $scope.DiscardReason = prompt("Cancel WO Reason", "");
+                    //                    console.log("DiscardReason");
+
+                    //                    if ($("#inspection-row-2").css("display") == "none") {
+                    //                        btnCancelWO_ClickCase20();
+                    //                    } else {
+                    //                        btnCancelWO_ClickCase30();
+                    //                    }
+                    //                }
+                    //            } else {
+                    //                console.log("btnCancel_Click3");
+                    //                $("#qctracking-table3-operatorName").val("");
+                    //                $("#qctracking-table3-password").val("");
+                    //            }
+                    //        });
+
+                    //    }
                     }
+
                 }
             }
         }
@@ -793,8 +943,8 @@
                 $http.post(config.baseUrlApi + 'HMLVTS/btnCancelWO_ClickCase20_2_1', {
                     'WOStatus': $scope.WOExecutionStatus,//
                     'ProdEndDate': currentdate,
-                    'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),//
-                    'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),//
+                    'OperatorID': String(authService.currentUser.userName).trim(),//
+                    'OperatorName': String($scope.OperatorName).trim(),//
                     //'McID': $scope.McID,//
                     //'TotalSetupDuration': parseFloat(TotalSetupDuration),//
                     'ProdTotalDuration': ProdTotalDuration,//
@@ -941,20 +1091,32 @@
             var success3 = false;
 
             if (String(scrapQty).trim() == "") {
-                alert("Please enter scrap Qty");
+                $("#alertBoxContent").text("Please enter scrap Qty");
+                $('#alertBox').modal('show');
+                //alert("Please enter scrap Qty");
             } else {
                 scrapQty = parseInt(scrapQty);
                 if (scrapQty <= 0) {
-                    alert("Scrap Qty must be > 0");
+                    $("#alertBoxContent").text("Scrap Qty must be > 0");
+                    $('#alertBox').modal('show');
+                    //alert("Scrap Qty must be > 0");
                 } else {
                     if (scrapQty > $scope.ScrapOutstandingQty) {
-                        alert("Scrap Qty > Outstanding Qty!");
+                        $("#alertBoxContent").text("Scrap Qty > Outstanding Qty!");
+                        $('#alertBox').modal('show');
+                        //alert("Scrap Qty > Outstanding Qty!");
                     } else if (scrapRemark == "") {
-                        alert("Please enter the scrap remark.");
+                        $("#alertBoxContent").text("Please enter the scrap remark.");
+                        $('#alertBox').modal('show');
+                        //alert("Please enter the scrap remark.");
                     } else if (scrapRemark.length >= 100) {
-                        alert("Remark must be < 100 characters!");
+                        $("#alertBoxContent").text("Remark must be < 100 characters!");
+                        $('#alertBox').modal('show');
+                        //alert("Remark must be < 100 characters!");
                     } else if ($scope.WOGlobalWOOpnState != 7 && scrapQty == $scope.ScrapOutstandingQty) {
-                        alert("Please stop production or enter recieved date before complete the work order.");
+                        $("#alertBoxContent").text("Please stop production or enter recieved date before complete the work order.");
+                        $('#alertBox').modal('show');
+                       // alert("Please stop production or enter recieved date before complete the work order.");
                     } else {
                         var promiseArray1 = [];
                         var promiseArray2 = [];
@@ -971,11 +1133,11 @@
                                 'Type': scrapRemark,
                                 'ScrapType': radio,
                                 'ScrapDate': currentdate,
-                                'UserID': String($("#qctracking-table3-operatorName").val()).trim(),//
-                                'UserName': String($("#qctracking-table3-operatorName").val()).trim(),//
+                                'UserID': String(authService.currentUser.userName).trim(),//
+                                'UserName': String($scope.OperatorName).trim(),//
                                 'Status': "Pending",
-                                'ApprovedID': String($("#qctracking-table3-operatorName").val()).trim(),//
-                                'ApprovedName': String($("#qctracking-table3-operatorName").val()).trim(),//
+                                'ApprovedID': String(authService.currentUser.userName).trim(),//
+                                'ApprovedName': String($scope.OperatorName).trim()//
                             })
                         );
 
@@ -1015,7 +1177,9 @@
                                     }
 
                                     if (success1 && success2 && success3) {
-                                        alert("Scrap successfully added!");
+                                        $("#alertBoxContent").text("Scrap successfully added!");
+                                        $('#alertBox').modal('show');
+                                        //alert("Scrap successfully added!");
                                         //fetch WO summary
                                         GenerateWOSummary();
                                         //fetch WO summary - scrap + unaccountable qty
@@ -1068,7 +1232,9 @@
                                         //$('#ScrapModal').modal('toggle');
                                         //btnScrap_ClickCase0();
                                     } else {
-                                        alert("ERROR:SCRAP ERROR");
+                                        $("#alertBoxContent").text("ERROR:SCRAP ERROR");
+                                        $('#alertBox').modal('show');
+                                        //alert("ERROR:SCRAP ERROR");
                                     }
 
                                 });
@@ -1096,33 +1262,49 @@
             var select_WOID = String($('#select_qctracking-woid-input').val()).trim();
 
             if (select_WOID == "") {
-                alert("Please enter Work Order");
+                $("#alertBoxContent").text("Please enter Work Order");
+                $('#alertBox').modal('show');
+                //alert("Please enter Work Order");
             } else {
                 if (String(document.getElementById("WIP-td5_1").innerHTML).trim() == "") {
-                    alert("Please update received qty!");
+                    $("#alertBoxContent").text("Please update received qty!");
+                    $('#alertBox').modal('show');
+                    //alert("Please update received qty!");
                 } else {
-                    var operatorName = String($("#qctracking-table3-operatorName").val()).trim();
-                    var password = String($("#qctracking-table3-password").val()).trim();
-                    if (operatorName == "" || password == "") {
-                        console.log("btnScrap_Click1");
-                        alert("Please enter Operator Name or scan Operator ID");
-                    } else {
-                        var promiseArray1 = ValidateOperatorName(false);
-                        console.log("ValidateOperatorName", promiseArray1);
-                        $q.all(promiseArray1).then(function (response) {
-                            console.log("Token/GetToken", response);
-                            if (response.length != 0 && response[0].data != undefined && response[0].data.success != null && response[0].data.success) {
-                                console.log("btnScrap_Click2");
-                                //btnScrap_ClickCase30();
-                                document.getElementById("modalWOID2").innerHTML = $scope.selectedWOIDData['woid'];
-                                $('#ScrapModal').modal('show');
-                            } else {
-                                console.log("btnScrap_Click3");
-                                $("#qctracking-table3-operatorName").val("");
-                                $("#qctracking-table3-password").val("");
-                            }
-                        });
-                    }
+                    //var operatorName = String($("#qctracking-table3-operatorName").val()).trim();
+                    //var password = String($("#qctracking-table3-password").val()).trim();
+                    document.getElementById("modalWOID2").innerHTML = $scope.selectedWOIDData['woid'];
+                    $('#ScrapModal').modal('show');
+                    //if(config.BypassScanOperator){
+                    //    document.getElementById("modalWOID2").innerHTML = $scope.selectedWOIDData['woid'];
+                    //    $('#ScrapModal').modal('show');
+                    //} else {
+                    //    if (operatorName == "" || password == "") {
+                    //        console.log("btnScrap_Click1");
+                    //        $("#alertBoxContent").text("Please enter Operator Name or scan Operator ID");
+                    //        $('#alertBox').modal('show');
+                    //        //alert("Please enter Operator Name or scan Operator ID");
+                    //    } else {
+
+                    //        var promiseArray1 = ValidateOperatorName(false);
+                    //        console.log("ValidateOperatorName", promiseArray1);
+                    //        $q.all(promiseArray1).then(function (response) {
+                    //            console.log("Token/GetToken", response);
+                    //            if (response.length != 0 && response[0].data != undefined && response[0].data.success != null && response[0].data.success) {
+                    //                console.log("btnScrap_Click2");
+                    //                //btnScrap_ClickCase30();
+                    //                document.getElementById("modalWOID2").innerHTML = $scope.selectedWOIDData['woid'];
+                    //                $('#ScrapModal').modal('show');
+                    //            } else {
+                    //                console.log("btnScrap_Click3");
+                    //                $("#qctracking-table3-operatorName").val("");
+                    //                $("#qctracking-table3-password").val("");
+                    //            }
+                    //        });
+
+                    //    }
+                    //}
+
                 }
             }
 
@@ -1183,7 +1365,9 @@
 
             if ($scope.ScrapCompletedQty == $scope.ScrapActualRecQty - $scope.ScrapScrapQty) {
                 if ($scope.WOGlobalWOOpnState != 7) {
-                    alert("Please confirm received before complete the work order.");
+                    $("#alertBoxContent").text("Please confirm received before complete the work order.");
+                    $('#alertBox').modal('show');
+                    //alert("Please confirm received before complete the work order.");
                     btnScrap_ClickCase100();
                 } else {
                     $scope.WOExecutionStatus = "Completed";
@@ -1191,7 +1375,9 @@
                 }
             } else {
                 if ($scope.ScrapCompletedQty > $scope.ScrapActualRecQty - $scope.ScrapScrapQty) {
-                    alert("Please enter the correct completed qty. Max qty is " + $scope.ScrapActualRecQty - $scope.ScrapScrapQty);
+                    $("#alertBoxContent").text("Please enter the correct completed qty. Max qty is " + $scope.ScrapActualRecQty - $scope.ScrapScrapQty);
+                    $('#alertBox').modal('show');
+                    //alert("Please enter the correct completed qty. Max qty is " + $scope.ScrapActualRecQty - $scope.ScrapScrapQty);
                     btnScrap_ClickCase100();
                 } else {
                     btnScrap_ClickCase10();
@@ -1294,8 +1480,8 @@
                   'ProcOpSeq': $scope.ProcOpSeq,//
                   'ExStatus': 9,
                   'UpdatedDate': currentdate,
-                  'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),//
-                  'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),//
+                  'OperatorID': String(authService.currentUser.userName).trim(),//
+                  'OperatorName': String($scope.OperatorName).trim(),//
                   'reason': ''
               })
           );
@@ -1366,7 +1552,9 @@
                         }
                     }
                 } else {
-                    alert("No route sequence found. ");
+                    $("#alertBoxContent").text("No route sequence found. ");
+                    $('#alertBox').modal('show');
+                    //alert("No route sequence found. ");
                     $scope.WOStatus = "Completed";
                     var promiseArray = UpdateWorkOrderQty();
                     $q.all(promiseArray).then(function (response) {
@@ -1564,33 +1752,44 @@
         $scope.cmdQCStop_Click = function () {
             console.log("cmdQCStop_Click");
 
-            var operatorName = String($("#qctracking-table3-operatorName").val()).trim();
-            var password = String($("#qctracking-table3-password").val()).trim();
-            if (operatorName == "" || password == "") {
-                console.log("cmdQCStop_Click.1");
-                alert("Please enter Operator Name or scan Operator ID");
-            } else {
-                console.log("cmdQCStop_Click.2");
-                // console.log("test validate", ValidateOperatorName(false));
+            //var operatorName = String($("#qctracking-table3-operatorName").val()).trim();
+            //var password = String($("#qctracking-table3-password").val()).trim();
+            cmdQCStop_ClickCase5();
+            //if (config.BypassScanOperator) {
+            //    cmdQCStop_ClickCase5();
+
+            //} else {
+            //    if (operatorName == "" || password == "") {
+            //        console.log("cmdQCStop_Click.1");
+            //        $("#alertBoxContent").text("Please enter Operator Name or scan Operator ID");
+            //        $('#alertBox').modal('show');
+            //        //alert("Please enter Operator Name or scan Operator ID");
+            //    } else {
+            //        console.log("cmdQCStop_Click.2");
+            //        // console.log("test validate", ValidateOperatorName(false));
+
+            //        var promiseArray1 = ValidateOperatorName(false);
+            //        console.log("ValidateOperatorName", promiseArray1);
+            //        $q.all(promiseArray1).then(function (response) {
+            //            console.log("Token/GetToken", response);
+            //            //todo: check whether the current login id and firstname is the same as the return result
+            //            //global function line 277 loops
+            //            if (response.length != 0 && response[0].data != undefined && response[0].data.success != null && response[0].data.success) {
+            //                console.log("cmdQCStop_Click.3");
+            //                cmdQCStop_ClickCase5();
+            //            } else {
+            //                console.log("cmdQCStop_Click.4");
+            //                $("#qctracking-table3-operatorName").val("");
+            //                $("#qctracking-table3-password").val("");
+            //            }
+            //        });
 
 
-                var promiseArray1 = ValidateOperatorName(false);
-                console.log("ValidateOperatorName", promiseArray1);
-                $q.all(promiseArray1).then(function (response) {
-                    console.log("Token/GetToken", response);
-                    //todo: check whether the current login id and firstname is the same as the return result
-                    //global function line 277 loops
-                    if (response.length != 0 && response[0].data != undefined && response[0].data.success != null && response[0].data.success) {
-                        console.log("cmdQCStop_Click.3");
-                        cmdQCStop_ClickCase5();
-                    } else {
-                        console.log("cmdQCStop_Click.4");
-                        $("#qctracking-table3-operatorName").val("");
-                        $("#qctracking-table3-password").val("");
-                    }
-                });
+            //    }
+            //}
 
-            }
+
+
         }
 
             //'*******************************************************************
@@ -1605,8 +1804,22 @@
                 if (config.strSkipWOTrackingPrompt) {
                     cmdQCStop_ClickCase10();
                 } else {
+                    var answer = false;
+                    $.confirm({
+                        title: 'Confirm!',
+                        content: "Confirm to stop QC?",
+                        buttons: {
+                            confirm: function () {
+                                answer = true;
+                            },
+                            cancel: function () {
+                                $.alert('Canceled!');
+                            }
+                        }
+                    });
 
-                    var answer = confirm("Confirm to stop QC?");
+
+                    //var answer = confirm("Confirm to stop QC?");
                     //todo to implement, trackingdefault ok in model so that default button can change
                     //if (config.TrackingDefaultOK) {
                     //        setupStartCase5();
@@ -1669,14 +1882,16 @@
                ProdTotalDuration = convertDatetimeToSecond(ProdTotalDuration);
              
 
-                console.log("cmdQCStop_ClickCase10 time converted", ProdTotalDuration);
-                $scope.WOExecutionStatus = "ProcessingStop";
+               console.log("cmdQCStop_ClickCase10 time converted", ProdTotalDuration);
+
+               $scope.WOExecutionStatus = "ProcessingStop";
+               fnUpdateOperator("ProcessingStop", 3);
                 promiseArray2.push(
                 $http.post(config.baseUrlApi + 'HMLVTS/QCStopCase10_2', {
                     'WOStatus': $scope.WOExecutionStatus,//
                     'ProdEndDate': currentdate,
-                    'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),//
-                    'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),//
+                    'OperatorID': String(authService.currentUser.userName).trim(),//
+                    'OperatorName': String($scope.OperatorName).trim(),//
                     'McID': $scope.McID,//
                     'ProdTotalDuration': ProdTotalDuration,//
                     'Remark': String($('#select_qctrackingremark-input').val()).trim(),//
@@ -1704,8 +1919,8 @@
                         'ProcOpSeq': $scope.ProcOpSeq,//
                         'ExStatus': 8,
                         'UpdatedDate': currentdate,
-                        'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),//
-                        'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),//
+                        'OperatorID': String(authService.currentUser.userName).trim(),//
+                        'OperatorName': String($scope.OperatorName).trim(),//
                         'reason': ''
                     })
             );
@@ -1742,34 +1957,44 @@
         $scope.cmdQCResume_Click = function () {
             console.log("cmdQCResume_Click");
 
-            var operatorName = String($("#qctracking-table3-operatorName").val()).trim();
-            var password = String($("#qctracking-table3-password").val()).trim();
-            if (operatorName == "" || password == "") {
-                console.log("cmdQCResume_Click.1");
-                alert("Please enter Operator Name or scan Operator ID");
-            } else {
-                console.log("cmdQCResume_Click.2");
-                // console.log("test validate", ValidateOperatorName(false));
+            //var operatorName = String($("#qctracking-table3-operatorName").val()).trim();
+            //var password = String($("#qctracking-table3-password").val()).trim();
+            cmdQCResume_ClickCase5();
+            //if (config.BypassScanOperator) {
+            //    cmdQCResume_ClickCase5();
+            //} else {
+            //    if (operatorName == "" || password == "") {
+            //        console.log("cmdQCResume_Click.1");
+            //        $("#alertBoxContent").text("Please enter Operator Name or scan Operator ID");
+            //        $('#alertBox').modal('show');
+            //        //alert("Please enter Operator Name or scan Operator ID");
+            //    } else {
+            //        console.log("cmdQCResume_Click.2");
+            //        // console.log("test validate", ValidateOperatorName(false));
+
+            //        var promiseArray1 = ValidateOperatorName(false);
+            //        console.log("ValidateOperatorName", promiseArray1);
+            //        $q.all(promiseArray1).then(function (response) {
+            //            console.log("Token/GetToken", response);
+            //            //todo: check whether the current login id and firstname is the same as the return result
+            //            //global function line 277 loops
+            //            if (response.length != 0 && response[0].data != undefined && response[0].data.success != null && response[0].data.success) {
+            //                console.log("cmdQCResume_Click.3");
+            //                cmdQCResume_ClickCase5();
+            //            } else {
+            //                console.log("cmdQCResume_Click.4");
+            //                $("#qctracking-table3-operatorName").val("");
+            //                $("#qctracking-table3-password").val("");
+            //            }
+            //        });
 
 
-                var promiseArray1 = ValidateOperatorName(false);
-                console.log("ValidateOperatorName", promiseArray1);
-                $q.all(promiseArray1).then(function (response) {
-                    console.log("Token/GetToken", response);
-                    //todo: check whether the current login id and firstname is the same as the return result
-                    //global function line 277 loops
-                    if (response.length != 0 && response[0].data != undefined && response[0].data.success != null && response[0].data.success) {
-                        console.log("cmdQCResume_Click.3");
-                        cmdQCResume_ClickCase5();
-                    } else {
-                        console.log("cmdQCResume_Click.4");
-                        $("#qctracking-table3-operatorName").val("");
-                        $("#qctracking-table3-password").val("");
-                    }
-                });
+
+            //    }
+
+            //}
 
 
-            }
 
 
             //var promiseArray1 = fnValidateUserNameMCAssign();
@@ -1807,7 +2032,20 @@
             if (config.strSkipWOTrackingPrompt) {
                 cmdQCResume_ClickCase10();
             } else {
-                var answer = confirm("Confirm to resume QC?");
+                var answer = false;
+                $.confirm({
+                    title: 'Confirm!',
+                    content: "Confirm to resume QC?",
+                    buttons: {
+                        confirm: function () {
+                            answer = true;
+                        },
+                        cancel: function () {
+                            $.alert('Canceled!');
+                        }
+                    }
+                });
+               // var answer = confirm("Confirm to resume QC?");
                 //todo to implement, trackingdefault ok in model so that default button can change
                 //if (config.TrackingDefaultOK) {
                 //    productionPauseCase20();
@@ -1869,8 +2107,8 @@
                     'McID': $scope.McID,
                     'McType': $scope.McType,
                     'reason': 'QCContinue',
-                    'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),
-                    'OperatorName': String($("#qctracking-table3-operatorName").val()).trim()
+                    'OperatorID': String(authService.currentUser.userName).trim(),//
+                    'OperatorName': String($scope.OperatorName).trim(),//
                 })
             );
 
@@ -1879,7 +2117,7 @@
                     console.log("cmdQCResume_ClickCase10 productionResumeCase10_2", response);
 
 
-                    fnUpdateOperator(3);
+                    fnUpdateOperator("ProcessingStart",3);
 
                     promiseArray4.push(
                             $http.post(config.baseUrlApi + 'HMLVTS/productionResumeCase10_4', {
@@ -1887,8 +2125,8 @@
                             'ProcOpSeq': $scope.ProcOpSeq,//
                             'ExStatus': 7,
                             'UpdatedDate': currentdate,
-                            'OperatorID': String($("#qtracking-table3-operatorName").val()).trim(),//
-                            'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),//
+                            'OperatorID': String(authService.currentUser.userName).trim(),//
+                            'OperatorName': String($scope.OperatorName).trim(),//
                             'reason': ''
                         })
                     );
@@ -1910,33 +2148,42 @@
         //'*******************************************************************
         $scope.cmdQCPause_Click = function () {
             console.log("cmdQCPause_Click");
-            var operatorName = String($("#qctracking-table3-operatorName").val()).trim();
-            var password = String($("#qctracking-table3-password")).trim();
-            if (operatorName == "" || password == "") {
-                console.log("cmdQCPause_Click case0.1");
-                alert("Please enter Operator Name or scan Operator ID");
-            } else {
-                console.log("cmdQCPause_Click case0.2");
-                // console.log("test validate", ValidateOperatorName(false));
+            //var operatorName = String($("#qctracking-table3-operatorName").val()).trim();
+            //var password = String($("#qctracking-table3-password")).trim();
+            cmdQCPause_ClickCase5();
+            //if (config.BypassScanOperator) {
+            //    cmdQCPause_ClickCase5();
+            //} else {
+            //    if (operatorName == "" || password == "") {
+            //        console.log("cmdQCPause_Click case0.1");
+            //        $("#alertBoxContent").text("Please enter Operator Name or scan Operator ID");
+            //        $('#alertBox').modal('show');
+            //        //alert("Please enter Operator Name or scan Operator ID");
+            //    } else {
+            //        console.log("cmdQCPause_Click case0.2");
+            //        // console.log("test validate", ValidateOperatorName(false));
+
+            //        var promiseArray1 = ValidateOperatorName(false);
+            //        console.log("ValidateOperatorName", promiseArray1);
+            //        $q.all(promiseArray1).then(function (response) {
+            //            console.log("Token/GetToken", response);
+            //            //todo: check whether the current login id and firstname is the same as the return result
+            //            //global function line 277 loops
+            //            if (response.length != 0 && response[0].data != undefined && response[0].data.success != null && response[0].data.success) {
+            //                console.log("cmdQCPause_Click case0.3");
+            //                cmdQCPause_ClickCase5();
+            //            } else {
+            //                console.log("cmdQCPause_Click case0.4");
+            //                $("#qctracking-table3-operatorName").val("");
+            //                $("#qctracking-table3-password").val("");
+            //            }
+            //        });
 
 
-                var promiseArray1 = ValidateOperatorName(false);
-                console.log("ValidateOperatorName", promiseArray1);
-                $q.all(promiseArray1).then(function (response) {
-                    console.log("Token/GetToken", response);
-                    //todo: check whether the current login id and firstname is the same as the return result
-                    //global function line 277 loops
-                    if (response.length != 0 && response[0].data != undefined && response[0].data.success != null && response[0].data.success) {
-                        console.log("cmdQCPause_Click case0.3");
-                        cmdQCPause_ClickCase5();
-                    } else {
-                        console.log("cmdQCPause_Click case0.4");
-                        $("#qctracking-table3-operatorName").val("");
-                        $("#qctracking-table3-password").val("");
-                    }
-                });
+            //    }
 
-            }
+            //}
+
         }
 
         //'*******************************************************************
@@ -1950,7 +2197,9 @@
             console.log("cmdQCPause_ClickCase5");
             var reason = String($("#select_qctracking-pausereason-input").val()).trim();
             if (String(reason).trim() == "") {
-                alert("Please select a reason");
+                $("#alertBoxContent").text("Please select a reason");
+                $('#alertBox').modal('show');
+                //alert("Please select a reason");
             } else {
                 cmdQCPause_ClickCase10();
             }
@@ -1968,7 +2217,21 @@
             if (config.strSkipWOTrackingPrompt) {
                 setupPauseCase20();
             } else {
-                var answer = confirm("Confirm to pause QC?");
+                var answer = false;
+                $.confirm({
+                    title: 'Confirm!',
+                    content: "Confirm to pause QC?",
+                    buttons: {
+                        confirm: function () {
+                            answer = true;
+                        },
+                        cancel: function () {
+                            $.alert('Canceled!');
+                        }
+                    }
+                });
+
+                //var answer = confirm("Confirm to pause QC?");
                 //todo to implement, trackingdefault ok in model so that default button can change
                 //if (config.TrackingDefaultOK) {
                 //    productionPauseCase20();
@@ -2018,7 +2281,7 @@
 
             $q.all(promiseArray1).then(function (response) {
                 console.log("cmdQCPause_ClickCase20 QCPauseCase20_1", response);
-
+                fnUpdateOperator("ProcessingPause", 3);
                 //var reason = "SetupPause - " + String($('#select_wotracking-pausereason option:selected').text()).trim()
                 var reason = "QCPause - " + String($("#select_qctracking-pausereason-input").val()).trim();
                 promiseArray2.push(
@@ -2035,8 +2298,8 @@
                        'McID': $scope.McID,
                        'McType': $scope.McType,
                        'reason': reason,
-                       'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),
-                       'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),
+                       'OperatorID': String(authService.currentUser.userName).trim(),//
+                       'OperatorName': String($scope.OperatorName).trim(),//
                        'ShiftID': '0'
                    })
                );
@@ -2052,8 +2315,8 @@
                              'ProcOpSeq': $scope.ProcOpSeq,
                              'ExStatus': 6,
                              'UpdatedDate': currentdate,
-                             'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),
-                             'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),
+                             'OperatorID': String(authService.currentUser.userName).trim(),//
+                             'OperatorName': String($scope.OperatorName).trim(),//
                              'reason': reason
 
 
@@ -2089,7 +2352,9 @@
             $("#qctracking-currentReceived").val(ReceivedQty);
 
             if (select_WOID == "") {
-                alert("Please enter Work Order");
+                $("#alertBoxContent").text("Please enter Work Order");
+                $('#alertBox').modal('show');
+                //alert("Please enter Work Order");
             } else {
                 cmdUpdate_ClickCase1();
             }
@@ -2106,7 +2371,9 @@
         function cmdUpdate_ClickCase1() {
             console.log("cmdUpdate_ClickCase1");
             if ($("#inspection-row-2").css("display") == "block") {
-                alert("Please start operation first.");
+                $("#alertBoxContent").text("Please start operation first.");
+                $('#alertBox').modal('show');
+               // alert("Please start operation first.");
             } else {
                 cmdUpdate_ClickCase2();
             }
@@ -2121,32 +2388,41 @@
         //'*******************************************************************
         function cmdUpdate_ClickCase2() {
             console.log("cmdUpdate_ClickCase2");
-            var operatorName = String($("#qctracking-table3-operatorName").val()).trim();
-            var password = String($("#qctracking-table3-password").val()).trim();
-            if (operatorName == "" || password == "") {
-                console.log("cmdQCStart_ClickCase15.1");
-                alert("Please enter Operator Name or scan Operator ID");
-            } else {
-                console.log("cmdUpdate_ClickCase2.2");
-                // console.log("test validate", ValidateOperatorName(false));
+            //var operatorName = String($("#qctracking-table3-operatorName").val()).trim();
+            //var password = String($("#qctracking-table3-password").val()).trim();
+            cmdUpdate_ClickCase5();
+            //if (config.BypassScanOperator) {
+            //    cmdUpdate_ClickCase5();
+            //} else {
+            //    if (operatorName == "" || password == "") {
+            //        console.log("cmdQCStart_ClickCase15.1");
+            //        $("#alertBoxContent").text("Please enter Operator Name or scan Operator ID");
+            //        $('#alertBox').modal('show');
+            //        //alert("Please enter Operator Name or scan Operator ID");
+            //    } else {
+            //        console.log("cmdUpdate_ClickCase2.2");
+            //        // console.log("test validate", ValidateOperatorName(false));
 
+            //        var promiseArray1 = ValidateOperatorName(false);
+            //        console.log("ValidateOperatorName", promiseArray1);
+            //        $q.all(promiseArray1).then(function (response) {
+            //            console.log("Token/GetToken", response);
+            //            //todo: check whether the current login id and firstname is the same as the return result
+            //            //global function line 277 loops
+            //            if (response.length != 0 && response[0].data != undefined && response[0].data.success != null && response[0].data.success) {
+            //                console.log("cmdUpdate_ClickCase2.3");
+            //                cmdUpdate_ClickCase5();
+            //            } else {
+            //                console.log("cmdUpdate_ClickCase2.4");
+            //                $("#qctracking-table3-operatorName").val("");
+            //                $("#qctracking-table3-password").val("");
+            //            }
+            //        });
 
-                var promiseArray1 = ValidateOperatorName(false);
-                console.log("ValidateOperatorName", promiseArray1);
-                $q.all(promiseArray1).then(function (response) {
-                    console.log("Token/GetToken", response);
-                    //todo: check whether the current login id and firstname is the same as the return result
-                    //global function line 277 loops
-                    if (response.length != 0 && response[0].data != undefined && response[0].data.success != null && response[0].data.success) {
-                        console.log("cmdUpdate_ClickCase2.3");
-                        cmdUpdate_ClickCase5();
-                    } else {
-                        console.log("cmdUpdate_ClickCase2.4");
-                        $("#qctracking-table3-operatorName").val("");
-                        $("#qctracking-table3-password").val("");
-                    }
-                });
-            }
+            //    }
+
+            //}
+
         }
 
         //'*******************************************************************
@@ -2278,8 +2554,9 @@
                 console.log("cmdUpdate_ClickCase8.1");
                 if ($scope.WOGlobalWOOpnState != 7) {
                     console.log("cmdUpdateReceived_ClickCase8.2");
-                   
-                        alert("Please stop QC before complete the work order.");
+                    $("#alertBoxContent").text("Please stop QC before complete the work order.");
+                    $('#alertBox').modal('show');
+                        //alert("Please stop QC before complete the work order.");
                     // cmdUpdate_ClickCase100();
                 } else {
                     console.log("cmdUpdate_ClickCase8.3");
@@ -2294,7 +2571,9 @@
                 console.log("cmdUpdate_ClickCase8.4");
                 console.log("cmdUpdate_ClickCase8.4 ActualRecQty", $scope.ActualRecQty);
                 console.log("cmdUpdate_ClickCase8.4 ScrapQty", $scope.ScrapQty);
-                alert("Please enter the correct completed qty. Max qty is " + $scope.ActualRecQty - $scope.ScrapQty);
+                $("#alertBoxContent").text("Please enter the correct completed qty. Max qty is " + $scope.ActualRecQty - $scope.ScrapQty);
+                $('#alertBox').modal('show');
+                //alert("Please enter the correct completed qty. Max qty is " + $scope.ActualRecQty - $scope.ScrapQty);
                 cmdUpdate_ClickCase100();
             } else { // havent complete
                 console.log("cmdUpdate_ClickCase8.5");
@@ -2373,6 +2652,7 @@
 
             $q.all(promiseArray1).then(function (response) {
                 console.log("cmdUpdate_ClickCase10 cmdUpdate_ClickCase10_1_1", response);
+                fnUpdateOperator("", 2);
                 cmdUpdate_ClickCase15();
             });
 
@@ -2408,7 +2688,9 @@
                             cmdUpdate_ClickCase100();
                         }
                     } else {
-                        alert("No route sequence found. ");
+                        $("#alertBoxContent").text("No route sequence found. ");
+                        $('#alertBox').modal('show');
+                        //alert("No route sequence found. ");
                     }
                     cmdUpdateReceived_ClickCase100();
                 });
@@ -2453,8 +2735,8 @@
                   'ProcOpSeq': $scope.ProcOpSeq,//
                   'ExStatus': 9,
                   'UpdatedDate': currentdate,
-                  'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),//
-                  'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),//
+                  'OperatorID': String(authService.currentUser.userName).trim(),//
+                  'OperatorName': String($scope.OperatorName).trim(),//
                   'reason': ''
               })
           );
@@ -2532,7 +2814,9 @@
 
 
                 } else {
-                    alert("No route sequence found. ");
+                    $("#alertBoxContent").text("No route sequence found. ");
+                    $('#alertBox').modal('show');
+                    //alert("No route sequence found. ");
                     $scope.WOStatus = "Completed";
 
                     var promiseArray = UpdateWorkOrderQty();
@@ -2604,7 +2888,9 @@
 
 
                 } else {
-                    alert("No route sequence found. ");
+                    $("#alertBoxContent").text("No route sequence found. ");
+                    $('#alertBox').modal('show');
+                    //alert("No route sequence found. ");
                     $scope.WOStatus = "Completed";
 
                     var promiseArray = UpdateWorkOrderQty();
@@ -2646,6 +2932,7 @@
                 console.log("cmdUpdateReceived_ClickCase80_1", response);
                 $q.all(promiseArray2).then(function (response) {
                     console.log("cmdUpdateReceived_ClickCase80_2", response);
+                    fnAddFGInventory();
                     cmdUpdate_ClickCase90();
                 });
             });
@@ -2795,7 +3082,21 @@
             if (config.paraSkipWOTrackingPrompt) {
                 SaveCompleteOKCase5();
             } else {
-                var answer = confirm("Confirm to save received qty?");
+                var answer = false;
+                $.confirm({
+                    title: 'Confirm!',
+                    content: "Confirm to save received qty?",
+                    buttons: {
+                        confirm: function () {
+                            answer = true;
+                        },
+                        cancel: function () {
+                            $.alert('Canceled!');
+                        }
+                    }
+                });
+
+                //var answer = confirm("Confirm to save received qty?");
                 if (answer) {
                     var newReceived = parseInt(String($("#saveCompleteModal-new").val()).trim());
                     SaveCompleteOKCase5(newReceived);
@@ -2818,7 +3119,9 @@
             if (String(newReceived).trim() != "" && !isNaN(newReceived)) {
                 SaveCompleteOKCase10(newReceived);
             } else {
-                alert("Please enter the correct completed qty.");
+                $("#alertBoxContent").text("Please enter the correct completed qty.");
+                $('#alertBox').modal('show');
+                //alert("Please enter the correct completed qty.");
             }
         }
 
@@ -2844,7 +3147,9 @@
                 $('#saveCompleteModal').modal('toggle');
                 cmdUpdate_ClickCase8();
             } else {
-                alert("Please enter the correct received qty. Max qty is " + $scope.OutstandingQty);
+                $("#alertBoxContent").text("Please enter the correct received qty. Max qty is " + $scope.OutstandingQty);
+                $('#alertBox').modal('show');
+                //alert("Please enter the correct received qty. Max qty is " + $scope.OutstandingQty);
             }
         }
 
@@ -2860,20 +3165,37 @@
             var select_WOID = String($('#select_qctracking-woid-input').val()).trim();  
 
             if (select_WOID == "") {
-                alert("Please enter Work Order");
+                $("#alertBoxContent").text("Please enter Work Order");
+                $('#alertBox').modal('show');
+                //alert("Please enter Work Order");
             } else {
                 console.log("setupStartCase1", String($("#WIP-td5_1").text()).trim());
                 if (String($("#WIP-td5_1").text()).trim() != "") {
                     if (config.strSkipWOTrackingPrompt) {
                         cmdQCStart_ClickCase5();
                     } else {
-                        var answer = confirm("Confirm to start QC?");
+                        var answer = false;
+                        $.confirm({
+                            title: 'Confirm!',
+                            content: "Confirm to start QC?",
+                            buttons: {
+                                confirm: function () {
+                                    answer = true;
+                                },
+                                cancel: function () {
+                                    $.alert('Canceled!');
+                                }
+                            }
+                        });
+                        //var answer = confirm("Confirm to start QC?");
                         if (answer) {
                             cmdQCStart_ClickCase5();
                         }
                     }
                 } else {
-                    alert("Please update received qty!");
+                    $("#alertBoxContent").text("Please update received qty!");
+                    $('#alertBox').modal('show');
+                    //alert("Please update received qty!");
                 }
             }
         }
@@ -2937,7 +3259,9 @@
                 console.log("setupStartCase12 subassembly", $scope.subAssembly);
                 for (var i = 0; i < $scope.subAssembly.length; i++) {
                     if (String($scope.subAssembly[i]['woStatus']).tirm().toLowerCase() != "completed") {
-                        alert("Unable to proceed due to dependent Work Order is not completed.");
+                        $("#alertBoxContent").text("Unable to proceed due to dependent Work Order is not completed.");
+                        $('#alertBox').modal('show');
+                        //alert("Unable to proceed due to dependent Work Order is not completed.");
                         cmdQCStart_ClickCase50();
                     }
                 }
@@ -2957,34 +3281,44 @@
         //'*******************************************************************
         function cmdQCStart_ClickCase15() {
             console.log("cmdQCStart_ClickCase15");
-            var operatorName = String($("#qctracking-table3-operatorName").val()).trim();
-            var password = String($("#qctracking-table3-password").val()).trim();
-            if (operatorName == "" || password == "") {
-                console.log("cmdQCStart_ClickCase15.1");
-                alert("Please enter Operator Name or scan Operator ID");
-            } else {
-                console.log("cmdQCStart_ClickCase15.2");
-                // console.log("test validate", ValidateOperatorName(false));
+            //var operatorName = String($("#qctracking-table3-operatorName").val()).trim();
+            //var password = String($("#qctracking-table3-password").val()).trim();
+
+            cmdQCStart_ClickCase20();
+            //if (config.BypassScanOperator) {
+            //    cmdQCStart_ClickCase20();
+            //} else {
+            //    if (operatorName == "" || password == "") {
+            //        console.log("cmdQCStart_ClickCase15.1");
+            //        $("#alertBoxContent").text("Please enter Operator Name or scan Operator ID");
+            //        $('#alertBox').modal('show');
+            //        //alert("Please enter Operator Name or scan Operator ID");
+            //    } else {
+            //        console.log("cmdQCStart_ClickCase15.2");
+            //        // console.log("test validate", ValidateOperatorName(false));
+
+            //        var promiseArray1 = ValidateOperatorName(false);
+            //        console.log("ValidateOperatorName", promiseArray1);
+            //        $q.all(promiseArray1).then(function (response) {
+            //            console.log("Token/GetToken", response);
+            //            //todo: check whether the current login id and firstname is the same as the return result
+            //            //global function line 277 loops
+            //            if (response.length != 0 && response[0].data != undefined && response[0].data.success != null && response[0].data.success) {
+            //                console.log("cmdQCStart_ClickCase15.3");
+            //                cmdQCStart_ClickCase20();
+            //            } else {
+            //                console.log("cmdQCStart_ClickCase15.4");
+            //                $("#qctracking-table3-operatorName").val("");
+            //                $("#qctracking-table3-password").val("");
+            //            }
+            //        });
 
 
-                var promiseArray1 = ValidateOperatorName(false);
-                console.log("ValidateOperatorName", promiseArray1);
-                $q.all(promiseArray1).then(function (response) {
-                    console.log("Token/GetToken", response);
-                    //todo: check whether the current login id and firstname is the same as the return result
-                    //global function line 277 loops
-                    if (response.length != 0 && response[0].data != undefined && response[0].data.success != null && response[0].data.success) {
-                        console.log("cmdQCStart_ClickCase15.3");
-                        cmdQCStart_ClickCase20();
-                    } else {
-                        console.log("cmdQCStart_ClickCase15.4");
-                        $("#qctracking-table3-operatorName").val("");
-                        $("#qctracking-table3-password").val("");
-                    }
-                });
 
+            //    }
 
-            }
+            //}
+
         }
 
 
@@ -2998,7 +3332,9 @@
         function cmdQCStart_ClickCase20() {
             console.log("cmdQCStart_ClickCase20");
             if ($scope.equipmentList.length == 0) {
-                alert("Please select a QC equipment");
+                $("#alertBoxContent").text("Please select a QC equipment");
+                $('#alertBox').modal('show');
+                //alert("Please select a QC equipment");
             } else {
                 cmdQCStart_ClickCase40();
             }
@@ -3034,8 +3370,8 @@
                 'McID': $scope.McID,
                 'McType': $scope.McType,
                 'reason': "QCStart",
-                'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),
-                'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),
+                'OperatorID': String(authService.currentUser.userName).trim(),//
+                'OperatorName': String($scope.OperatorName).trim(),//
                 'ShiftID': 0
             })
          );
@@ -3051,8 +3387,8 @@
                $http.post(config.baseUrlApi + 'HMLVTS/setupStartCase40_2_1', {
                    'WOStatus': $scope.WOExecutionStatus,//
                    'SetupStartDate': currentdate,
-                   'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),//
-                   'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),//
+                   'OperatorID': String(authService.currentUser.userName).trim(),//
+                   'OperatorName': String($scope.OperatorName).trim(),//
                    'ShiftID': 0,//
                    'McID': $scope.McID,//
                    'ProdTotalDuration': ProdTotalDuration,//
@@ -3096,8 +3432,8 @@
                'ProcOpSeq': $scope.ProcOpSeq,//
                'ExStatus': 1,
                'UpdatedDate': currentdate,
-               'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),//
-               'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),//
+               'OperatorID': String(authService.currentUser.userName).trim(),//
+               'OperatorName': String($scope.OperatorName).trim(),//
                'reason': ''
            })
         );
@@ -3111,6 +3447,7 @@
                         console.log("cmdQCStart_ClickCase40_3/4", response);
                         $q.all(promiseArray4).then(function (response) {
                             console.log("cmdQCStart_ClickCase40_5", response);
+                            fnUpdateOperator("ProcessingStart",3);
                             $q.all(promiseArray5).then(function (response) {
                                 console.log("cmdQCStart_ClickCase40_6", response);
                                 reload();
@@ -3155,27 +3492,37 @@
             $("#qctracking-newReceived").val(ReceivedQty);
             $("#qctracking-currentReceived").val(ReceivedQty);
 
-            var operatorName = String($("#qctracking-table3-operatorName").val()).trim();
-            var password = String($("#qctracking-table3-password").val()).trim();
-            if (operatorName == "" || password == "") {
-                console.log("cmdUpdateReceived_ClickCase1.5");
-                alert("Please enter Operator Name or scan Operator ID");
-            } else {
-                console.log("cmdUpdateReceived_ClickCase1.6");
-                var promiseArray1 = ValidateOperatorName(false);
-                console.log("ValidateOperatorName", promiseArray1);
-                $q.all(promiseArray1).then(function (response) {
-                    console.log("Token/GetToken", response);
-                    if (response.length != 0 && response[0].data != undefined && response[0].data.success != null && response[0].data.success) {
-                        console.log("cmdUpdateReceived_ClickCase1.7");
-                        cmdUpdateReceived_ClickCase5();
-                    } else {
-                        console.log("cmdUpdateReceived_ClickCase1.8");
-                        $("#qctracking-table3-operatorName").val("");
-                        $("#qctracking-table3-password").val("");
-                    }
-                });
-            }
+            //var operatorName = String($("#qctracking-table3-operatorName").val()).trim();
+            //var password = String($("#qctracking-table3-password").val()).trim();
+            cmdUpdateReceived_ClickCase5();
+            //if (config.BypassScanOperator) {
+            //    cmdUpdateReceived_ClickCase5();
+            //} else {
+            //    if (operatorName == "" || password == "") {
+            //        console.log("cmdUpdateReceived_ClickCase1.5");
+            //        $("#alertBoxContent").text("Please enter Operator Name or scan Operator ID");
+            //        $('#alertBox').modal('show');
+            //        //alert("Please enter Operator Name or scan Operator ID");
+            //    } else {
+            //        console.log("cmdUpdateReceived_ClickCase1.6");
+
+            //        var promiseArray1 = ValidateOperatorName(false);
+            //        console.log("ValidateOperatorName", promiseArray1);
+            //        $q.all(promiseArray1).then(function (response) {
+            //            console.log("Token/GetToken", response);
+            //            if (response.length != 0 && response[0].data != undefined && response[0].data.success != null && response[0].data.success) {
+            //                console.log("cmdUpdateReceived_ClickCase1.7");
+            //                cmdUpdateReceived_ClickCase5();
+            //            } else {
+            //                console.log("cmdUpdateReceived_ClickCase1.8");
+            //                $("#qctracking-table3-operatorName").val("");
+            //                $("#qctracking-table3-password").val("");
+            //            }
+            //        });
+
+            //    }
+            //}
+
         }
 
         //'*******************************************************************
@@ -3196,7 +3543,9 @@
                     }
                 }
                 if (isEquipmentAlreadyAdded) {
-                    alert("Equipment already added. ");
+                    $("#alertBoxContent").text("Equipment already added. ");
+                    $('#alertBox').modal('show');
+                    //alert("Equipment already added. ");
                 } else {
                     var promiseArray1 = [];
                     promiseArray1.push(
@@ -3219,7 +3568,9 @@
                     });
                 }
             } else {
-                alert("Please select a QC Equipment. ");
+                $("#alertBoxContent").text("Please select a QC Equipment. ");
+                $('#alertBox').modal('show');
+                //alert("Please select a QC Equipment. ");
             }
         }
 
@@ -3227,7 +3578,9 @@
 
 
             if (String($("#select_qctracking-woid-input").val()).trim() == "") {
-                alert("Please enter Work Order");
+                $("#alertBoxContent").text("Please enter Work Order");
+                $('#alertBox').modal('show');
+                //alert("Please enter Work Order");
             } else {
                 var grid = $('#equipment-table').data('kendoGrid');
                 var items = grid.dataSource.view();
@@ -3271,7 +3624,9 @@
                         //                    + "and McID = @McID "
                     }
                 } else {
-                    alert("Please select  a Equipment to delete. ");
+                    $("#alertBoxContent").text("Please select  a Equipment to delete. ");
+                    $('#alertBox').modal('show');
+                    //alert("Please select  a Equipment to delete. ");
                 }
             }
 
@@ -3387,7 +3742,7 @@
 
            CalculateTimeSpan("QC");
            GlobalCalculateTimeSpan("QC");
-           GenerateQueuingWOList($scope.McID);
+           GenerateQueuingWOList();
         }
 
 
@@ -3581,14 +3936,14 @@
         //'Output    : 
         //'Remark    : //gh 2014Dec03
         //'*******************************************************************
-        function GenerateQueuingWOList(McID) {
-            console.log("GenerateQueuingWOList", McID);
+        function GenerateQueuingWOList() {
+            //console.log("GenerateQueuingWOList", McID);
             var promiseArray1 = [];
             console.log("config", config);
             if (config.IncludePreviousSeqNonCompleted) {
                 promiseArray1.push(
-                    $http.post(config.baseUrlApi + 'HMLVTS/GenerateQueuingWOList1', {
-                        'McID': String(McID).trim()
+                    $http.post(config.baseUrlApi + 'HMLVTS/GenerateQueuingWOList3', {
+                        'WorkCenter': String($scope.WorkCenter).trim()
 
                     })
                 );
@@ -3608,8 +3963,8 @@
 
             } else {
                 promiseArray1.push(
-                $http.post(config.baseUrlApi + 'HMLVTS/GenerateQueuingWOList2', {
-                    'McID': String(McID).trim()
+                $http.post(config.baseUrlApi + 'HMLVTS/GenerateQueuingWOList4', {
+                    'WorkCenter': String($scope.WorkCenter).trim()
 
                 })
             );
@@ -4631,7 +4986,22 @@
                 //} else {
 
                 //}
-                var answer = confirm("Confirm to save received qty?");
+                var answer = false;
+                $.confirm({
+                    title: 'Confirm!',
+                    content: "Confirm to save received qty?",
+                    buttons: {
+                        confirm: function () {
+                            answer = true;
+                        },
+                        cancel: function () {
+                            $.alert('Canceled!');
+                        }
+                    }
+                });
+
+
+                //var answer = confirm("Confirm to save received qty?");
                 if (answer) {
                     var newReceived = parseInt(String($("#qctracking-newReceived").val()).trim());
                     UpdateReceivedOKCase10(newReceived);
@@ -4733,14 +5103,18 @@
 
                 } else {
                     console.log("UpdateReceivedOKCase10.3");
-                    alert("Please enter the correct received qty. Max qty is " + $scope.PreviousRecQty);
+                    $("#alertBoxContent").text("Please enter the correct received qty. Max qty is " + $scope.PreviousRecQty);
+                    $('#alertBox').modal('show');
+                    //alert("Please enter the correct received qty. Max qty is " + $scope.PreviousRecQty);
                 }
 
             } else {// new receive
                 console.log("UpdateReceivedOKCase10.4");
                 if ($scope.OutstandingQty < newReceived) {
                     console.log("UpdateReceivedOKCase10.5");
-                    alert("Please enter the correct received qty. Max qty is " + $scope.OutstandingQty);
+                    $("#alertBoxContent").text("Please enter the correct received qty. Max qty is " + $scope.OutstandingQty);
+                    $('#alertBox').modal('show');
+                    //alert("Please enter the correct received qty. Max qty is " + $scope.OutstandingQty);
                 } else {
                     console.log("UpdateReceivedOKCase10.6");
                     console.log("UpdateReceivedOKCase10.6 newReceived", newReceived);
@@ -4850,7 +5224,9 @@
                 cmdUpdateReceived_ClickCase10();
             } else if ($scope.CompletedQty > $scope.ActualRecQty - $scope.ScrapScrapQty) { //do more than completed
                 console.log("cmdUpdateReceived_ClickCase8.2");
-                alert("Please enter the correct completed qty. Max qty is " + $scope.ActualRecQty);
+                $("#alertBoxContent").text("Please enter the correct completed qty. Max qty is " + $scope.ActualRecQty);
+                $('#alertBox').modal('show');
+                //alert("Please enter the correct completed qty. Max qty is " + $scope.ActualRecQty);
                 cmdUpdateReceived_ClickCase100();
             } else {
                 console.log("cmdUpdateReceived_ClickCase8.3");
@@ -4900,14 +5276,15 @@
                     'ProcOpSeq': $scope.ProcOpSeq,//
                     'ExStatus': 0,
                     'UpdatedDate': currentdate,
-                    'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),//
-                    'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),//
+                    'OperatorID': String(authService.currentUser.userName).trim(),//
+                    'OperatorName': String($scope.OperatorName).trim(),//
                     'reason': ''
                 })
             );
 
              $q.all(promiseArray1).then(function (response) {
                  console.log("cmdUpdateReceived_ClickCase10_1_1", response);
+                 fnUpdateOperator("",1);
                  $q.all(promiseArray2).then(function (response) {
                      console.log("cmdUpdateReceived_ClickCase10_2", response);
                      cmdUpdateReceived_ClickCase15();
@@ -4955,8 +5332,8 @@
                   'ProcOpSeq': $scope.ProcOpSeq,//
                   'ExStatus': 9,
                   'UpdatedDate': currentdate,
-                  'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),//
-                  'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),//
+                  'OperatorID': String(authService.currentUser.userName).trim(),//
+                  'OperatorName': String($scope.OperatorName).trim(),//
                   'reason': ''
               })
           );
@@ -5027,7 +5404,9 @@
 
 
                 } else {
-                    alert("No route sequence found. ");
+                    $("#alertBoxContent").text("No route sequence found. ");
+                    $('#alertBox').modal('show');
+                    //alert("No route sequence found. ");
                     $scope.WOStatus = "Completed";
 
                     var promiseArray = UpdateWorkOrderQty();
@@ -5099,7 +5478,9 @@
 
 
                 } else {
-                    alert("No route sequence found. ");
+                    $("#alertBoxContent").text("No route sequence found. ");
+                    $('#alertBox').modal('show');
+                    //alert("No route sequence found. ");
                     $scope.WOStatus = "Completed";
 
                     var promiseArray = UpdateWorkOrderQty();
@@ -5302,6 +5683,62 @@
 
         }
 
+
+        //'*******************************************************************
+        //'Title     :    fnAddFGInventory
+        //'Function  :    add FG inventory
+        //'Input     :
+        //'Output    :
+        //'Remark    :  
+        //'*******************************************************************
+        function fnAddFGInventory() {
+            var promiseArray1 = [];
+            var promiseArray2 = [];
+            var strPartNo = "";
+            var strCustomer = "";
+            promiseArray1.push(
+                $http.post(config.baseUrlApi + 'HMLVTS/fnAddFGInventory1', {
+                    'WOID': $scope.selectedWOIDData['woid']
+                })
+        );
+
+
+
+
+            $q.all(promiseArray1).then(function (response1) {
+                console.log("fnAddFGInventory1", response1);
+
+                if (response1.length != 0 && response1[0].data.success && response1[0].data.result.length != 0) {
+                    strPartNo = response1[0].data.result[0]['partID'];
+                    strCustomer = response1[0].data.result[0]['customer'];
+                    var currentdate = getCurrentDatetime();
+                    promiseArray2.push(
+                    $http.post(config.baseUrlApi + 'HMLVTS/fnAddFGInventory2', {
+                        'Location': "HMLV",
+                        'DateIn': currentdate,
+                        'InvType': "FG",
+                        'PartNo': strPartNo,
+                        'WOID': $scope.selectedWOIDData['woid'],
+                        'SeqNo': $scope.selectedWOIDData['procOpSeq'],
+                        'CenterID': $scope.selectedWOIDData['workCenter'],
+                        'Customer': strCustomer,
+                        'Qty': $scope.CompletedQty,
+                        'BalQty': $scope.CompletedQty,
+                        'Status': "Pending",
+
+                    })
+                    );
+
+                    $q.all(promiseArray2).then(function (response2) {
+                        console.log("fnAddFGInventory2", response2);
+
+                    });
+
+
+                }
+            });
+        }
+
         //'*******************************************************************
         //'Title     :  GeneratePauseReason
         //'Function  :  generate Pause reason fro operation pause 
@@ -5334,12 +5771,12 @@
         //'Remark    :
         //'*******************************************************************
         function fnValidateUserNameMCAssign() {//to check might not be useful, this is to check the mac address
-            var OperatorName = $("#qctracking-table3-operatorName").val();
+            //var OperatorName = String($scope.OperatorName).trim();
 
             var promiseArray1 = [];
             promiseArray1.push(
             $http.post(config.baseUrlApi + 'HMLVTS/fnValidateUserNameMCAssign', {
-                'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),
+                'OperatorName': String($scope.OperatorName).trim(),
                 'McID': $scope.McID
             })
             );
@@ -5379,7 +5816,7 @@
         }
 
 
-        function fnUpdateOperator(UpdateType) {
+        function fnUpdateOperator(status,UpdateType) {
             var promiseArray1 = [];
             var promiseArray2 = [];
             var promiseArray3 = [];
@@ -5388,7 +5825,7 @@
             $http.post(config.baseUrlApi + 'HMLVTS/fnUpdateOperator1', {
                 'WOID': $scope.selectedWOIDData['woid'],
                 'ProcOpSeq': $scope.ProcOpSeq,
-                'OperatorID': String($("#qctracking-table3-operatorName").val()).trim()
+                'OperatorID': String(authService.currentUser.userName).trim()
             })
             );
 
@@ -5401,7 +5838,7 @@
                             $http.post(config.baseUrlApi + 'HMLVTS/fnUpdateOperator2', {
                                 'WOID': $scope.selectedWOIDData['woid'],
                                 'ProcOpSeq': $scope.ProcOpSeq,
-                                'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),
+                                'OperatorID': String(authService.currentUser.userName).trim(),
                                 'ReceivedDate': currentdate
                             })
                         );
@@ -5410,7 +5847,7 @@
                             $http.post(config.baseUrlApi + 'HMLVTS/fnUpdateOperator3', {
                                 'WOID': $scope.selectedWOIDData['woid'],
                                 'ProcOpSeq': $scope.ProcOpSeq,
-                                'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),
+                                'OperatorID': String(authService.currentUser.userName).trim(),
                                 'CompletedDate': currentdate
                             })
                         );
@@ -5419,8 +5856,8 @@
                             $http.post(config.baseUrlApi + 'HMLVTS/fnUpdateOperator4', {
                                 'WOID': $scope.selectedWOIDData['woid'],
                                 'ProcOpSeq': $scope.ProcOpSeq,
-                                'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),
-                                'OperatorStatus': $scope.WOExecutionStatus
+                                'OperatorID': String(authService.currentUser.userName).trim(),
+                                'OperatorStatus': status
                             })
                         );
                     }
@@ -5439,8 +5876,8 @@
                                 'ProcOpSeq': $scope.ProcOpSeq,
                                 'McID': $scope.McID,
                                 'McType': $scope.McType,
-                                'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),
-                                'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),
+                                'OperatorID': String(authService.currentUser.userName).trim(),//
+                                'OperatorName': String($scope.OperatorName).trim(),//
                                 'ReceivedQty': $scope.ReceivedQty,
                                 'ReceivedDate': currentdate
                             })
@@ -5454,8 +5891,8 @@
                                 'ProcOpSeq': $scope.ProcOpSeq,
                                 'McID': $scope.McID,
                                 'McType': $scope.McType,
-                                'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),
-                                'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),
+                                'OperatorID': String(authService.currentUser.userName).trim(),//
+                                'OperatorName': String($scope.OperatorName).trim(),//
                                 'CompletedQty': $scope.CompletedQty,
                                 'CompletedDate': currentdate
                             })
@@ -5468,9 +5905,9 @@
                                 'ProcOpSeq': $scope.ProcOpSeq,
                                 'McID': $scope.McID,
                                 'McType': $scope.McType,
-                                'OperatorID': String($("#qctracking-table3-operatorName").val()).trim(),
-                                'OperatorName': String($("#qctracking-table3-operatorName").val()).trim(),
-                                'OperatorStatus': $scope.WOExecutionStatus
+                                'OperatorID': String(authService.currentUser.userName).trim(),//
+                                'OperatorName': String($scope.OperatorName).trim(),//
+                                'OperatorStatus': status
                             })
                         );
                     }
@@ -5491,31 +5928,33 @@
         //'Function  :  Validate Operatorname
         //'Input     :  
         //'Output    :  
-        //'Remark    :
+        //'Remark    : not in use anymore
         //'*******************************************************************
         function ValidateOperatorName(CheckPassword) {
-            var OperatorFirstName = $("#qctracking-table3-operatorName").val();
-            var Password = $("#qctracking-table3-password").val();
-            console.log("ValidateOperatorName", OperatorFirstName);
-            console.log("Password", Password);
-            var promiseArray1 = [];
-            //var loginData = [];
-            //loginData["UserName"] = OperatorFirstName;
-            //loginData["password"] = Password;
-            //loginData["GrantType"] = "usertoken";
-            if (String(OperatorFirstName).trim() != "" && String(Password).trim() != "") {
+            //var OperatorFirstName = $("#qctracking-table3-operatorName").val();
+            //var Password = $("#qctracking-table3-password").val();
+            //console.log("ValidateOperatorName", OperatorFirstName);
+            //console.log("Password", Password);
+            //var promiseArray1 = [];
+            ////var loginData = [];
+            ////loginData["UserName"] = OperatorFirstName;
+            ////loginData["password"] = Password;
+            ////loginData["GrantType"] = "usertoken";
+            //if (String(OperatorFirstName).trim() != "" && String(Password).trim() != "") {
 
-                promiseArray1.push(
-                $http.post(config.baseUrlNexusApi + 'Token/GetToken', {
-                    "UserName": OperatorFirstName,
-                    "password": Password,
-                    "GrantType": "usertoken"
-                })
-             );
-            } else {
-                alert("Please key in username/password");
-            }
-            return promiseArray1;
+            //    promiseArray1.push(
+            //    $http.post(config.baseUrlNexusApi + 'Token/GetToken', {
+            //        "UserName": OperatorFirstName,
+            //        "password": Password,
+            //        "GrantType": "usertoken"
+            //    })
+            // );
+            //} else {
+            //    $("#alertBoxContent").text("Please key in username/password");
+            //    $('#alertBox').modal('show');
+            //    //alert("Please key in username/password");
+            //}
+            //return promiseArray1;
         }
 
         //'*******************************************************************

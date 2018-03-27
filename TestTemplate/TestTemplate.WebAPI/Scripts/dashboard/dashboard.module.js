@@ -13,10 +13,18 @@
                 url: '/',
                 templateUrl: 'Scripts/dashboard/dashboard.html',
                 controller: 'DashboardCtrl',
-                controllerAs: 'dashboard',
+                controllerAs: 'DashboardCtrl',
                 ncyBreadcrumb: {
                     label: 'Home'
                 }
+                ,
+                //*********
+                resolve: {
+                    tenant: function ($stateParams, repo) {
+                        return repo.tenant.getTenant();
+                    }
+                }
+                //********
             });
     }
 

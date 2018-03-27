@@ -13,6 +13,7 @@
         var rowBoxNo = 12;
         var nextSplitWONo;
 
+        $scope.step = "";
         $scope.tenant = tenant;
 
         $scope.layout = {};
@@ -28,8 +29,13 @@
             }
             return memo;
         }, []);
+        
 
+        console.log("auth",authService.currentUser.userName);
         $('canvas').remove();
+        $("#toolbar_rework").hide();
+        $("#toolbar_wodetail").hide();
+        $("#main-container-page").css('margin-top', 0)
 
         $http.get(config.baseUrlApi + 'HMLVTS/GenerateWOSplitList')
            .then(function (response) {
@@ -89,7 +95,7 @@
         //'Output    :  
         //'Remark    :
         //'*******************************************************************
-        function addWOExePart1(data, subwo, temppartid, tempactrecqty, tempactrecdate, tempcomqty, tempcomdate, tempoutsqty, tempoutsdate, newProcOpSeq, wostatus, remark, tempparwo) {
+        function addWOExePart1(data, subwo, temppartid, tempactrecdate, tempcomqty, tempcomdate, tempoutsqty, tempoutsdate, newProcOpSeq, wostatus, remark, tempparwo,row) {
 
             var promiseArray = [];
 
@@ -104,7 +110,7 @@
             console.log("addWOExePart1 data", data);
             console.log("addWOExePart1 input subwo", subwo);
             console.log("addWOExePart1 input temppartid", temppartid);
-            console.log("addWOExePart1 input tempactrecqty", tempactrecqty);
+           // console.log("addWOExePart1 input tempactrecqty", tempactrecqty);
             console.log("addWOExePart1 input tempactrecdate", tempactrecdate);
             console.log("addWOExePart1 input tempcomqty", tempcomqty);
             console.log("addWOExePart1 input tempcomdate", tempcomdate);
@@ -115,6 +121,8 @@
             console.log("addWOExePart1 input wostatus", wostatus);
             console.log("addWOExePart1 input tempparwo", tempparwo);
 
+
+            remark = String(document.getElementById("table1-td3").innerHTML).trim();
             for (var i = 0; i < data.length; i++) {
                 console.log("addWOExePart1 data",data[i]);
                 temprouteid = data[i]["routeID"];
@@ -124,12 +132,12 @@
                 tempmctype = data[i]["mcType"];
                 tempworkcenter = data[i]["workCenter"];
 
-                temprouteid = String(temprouteid).trim();
-                tempopseq =  String(tempopseq).trim();
-                tempprocopseq =  String(tempprocopseq).trim();
-                tempmcid =  String(tempmcid).trim();
-                tempmctype =  String(tempmctype).trim();
-                tempworkcenter =  String(tempworkcenter).trim();
+                //temprouteid = String(temprouteid).trim();
+                //tempopseq =  String(tempopseq).trim();
+                //tempprocopseq =  String(tempprocopseq).trim();
+                //tempmcid =  String(tempmcid).trim();
+                //tempmctype =  String(tempmctype).trim();
+                //tempworkcenter =  String(tempworkcenter).trim();
 
                 if (parseInt(tempprocopseq) > 1) {
                     intQtyUpated = 0;
@@ -137,25 +145,26 @@
                     intQtyUpated = 1;
                 }
 
+                var actualReceiveQty = String(document.getElementById("table4_tr" + row + "_2").innerHTML).trim();
                 promiseArray.push($http.post(config.baseUrlApi + 'HMLVTS/addWOExe3', {
                     "WOID": subwo.trim(),
-                    "PartID": temppartid,
-                    "ActualRecQty": tempactrecqty,
-                    "ActualRecDate": tempactrecdate,
-                    "CompletedQty": tempcomqty,
-                    "CompletedDate": tempcomdate,
-                    "OutstandingQty": tempoutsqty,
-                    "OutstandingDate": tempoutsdate,
-                    "McID": tempmcid,
-                    "McType": tempmctype,
-                    "RouteID": temprouteid,
-                    "WorkCenter": tempworkcenter,
-                    "OpSeq": tempopseq,
-                    "ProcOpSeq": newProcOpSeq,
-                    "WOStatus": wostatus,
-                    "Remark": remark,
-                    "ParentWOID": tempparwo,
-                    "QtyUpdated": intQtyUpated
+                    "PartID": String(temppartid).trim(),
+                    "ActualRecQty": actualReceiveQty,
+                    "ActualRecDate": String(tempactrecdate).trim(),
+                    "CompletedQty": String(tempcomqty).trim(),
+                    "CompletedDate": String(tempcomdate).trim(),
+                    "OutstandingQty": String(tempoutsqty).trim(),
+                    "OutstandingDate": String(tempoutsdate).trim(),
+                    "McID": String(tempmcid).trim(),
+                    "McType": String(tempmctype).trim(),
+                    "RouteID": String(temprouteid).trim(),
+                    "WorkCenter": String(tempworkcenter).trim(),
+                    "OpSeq": String(tempopseq).trim(),
+                    "ProcOpSeq": String(tempprocopseq).trim(),
+                    "WOStatus": String(wostatus).trim(),
+                    "Type": remark,
+                    "ParentWOID": String(tempparwo).trim(),
+                    "QtyUpdated": String(intQtyUpated).trim(),
 
                 })
                     );
@@ -163,7 +172,10 @@
             }
 
             $q.all(promiseArray).then(function (response) {
-                console.log("addWOExePart1 promiseArray response", response);
+                console.log("addWOExePart1 addWOExe3", response);
+                delWORoute();
+                delWOExe();
+                updateWOExecution();
             });
 
         }
@@ -212,7 +224,7 @@
         //'Output    :  
         //'Remark    :
         //'*******************************************************************
-        function addWOExe(subwo, step, remark, relprodqty, actrecqty, comqty, outqty, wostatus) {
+        function addWOExe(subwo, step, remark, relprodqty, comqty, outqty, wostatus,row) {
             var temppartid = "";
             var tempreqdate = "";
             var tempcommitdate = "";
@@ -263,15 +275,15 @@
                 tempreqdate = result["requestedDeliveryDate"];
                 tempcommitdate = result["committedDeliveryDate"];
                 temprelprodqty = relprodqty; // change
-                temprelproddate = new Date();; //get current datetime
+                temprelproddate = getCurrentDatetime(); //get current datetime
                 tempactprodqty = result["actualProdQty"];
-                tempactproddate = new Date();
-                tempactrecqty = relprodqty;
-                tempactrecdate = new Date();; //get current datetime
+                tempactproddate = getCurrentDatetime();
+              //  tempactrecqty = actrecqty;
+                tempactrecdate = getCurrentDatetime(); //get current datetime
                 tempcomqty = comqty; // change
-                tempcomdate = new Date();; //get current datetime
+                tempcomdate = getCurrentDatetime(); //get current datetime
                 tempoutsqty = outqty; //change
-                tempoutsdate = new Date();; //get current datetime
+                tempoutsdate = getCurrentDatetime(); //get current datetime
                 tempwostatus = wostatus; // set wostatus
                 temptooldesc = result["toolDescription"];
                 tempplannremark = result["plannerRemark"];
@@ -282,24 +294,35 @@
 
                 console.log("addWOExe result1", response.data.result);
 
-                if (step == "Current"){
-                    $http.post(config.baseUrlApi + 'HMLVTS/addWOExe1', {
-                        "WOID": tempwo,
-                        "procOpSeq": tempProcOpSeq
-                    })
-                    .then(function (response) {
-                        addWOExePart1(response.data.result, subwo, temppartid, tempactrecqty, tempactrecdate, tempcomqty, tempcomdate, tempoutsqty, tempoutsdate, newProcOpSeq, wostatus, remark, tempparwo);
-                    });
+                if (step == "Current") {
+                    console.log("addWOExe.1");
+                //    Select RouteID,OpSeq,ProcOpSeq,McID,McType,WorkCenter from TS_WorkOrderRoute where WOID=
+                //@tempwo and ProcOpSeq >=@tempProcOpSeq order by ProcOpSeq
+                    //$http.post(config.baseUrlApi + 'HMLVTS/addWOExe1', {
+                    //    "WOID": tempwo,
+                    //    "procOpSeq": tempProcOpSeq
+                    //})
+                    //.then(function (response) {
+                    //    console.log("addWOExe1",response);
+                    //});
+
+                    addWOExePart1($scope.RouteDetailCurrent, subwo, temppartid, tempactrecdate, tempcomqty, tempcomdate, tempoutsqty, tempoutsdate, newProcOpSeq, wostatus, remark, tempparwo,row);
+
 
                 } else if (step == "Next") {
+                    console.log("addWOExe.2");
+                //    Select RouteID,OpSeq,ProcOpSeq,McID,McType,WorkCenter from TS_WorkOrderRoute where WOID=
+                //@tempwo and ProcOpSeq >@tempProcOpSeq order by ProcOpSeq
+                    //$http.post(config.baseUrlApi + 'HMLVTS/addWOExe2', {
+                    //    "WOID": tempwo,
+                    //    "procOpSeq": tempProcOpSeq
+                    //})
+                    //.then(function (response) {
+                    //    console.log("addWOExe2", response);
+                        
+                    //});
 
-                    $http.post(config.baseUrlApi + 'HMLVTS/addWOExe2', {
-                        "WOID": tempwo,
-                        "procOpSeq": tempProcOpSeq
-                    })
-                    .then(function (response) {
-                        addWOExePart1(response.data.result, subwo, temppartid, tempactrecqty, tempactrecdate, tempcomqty, tempcomdate, tempoutsqty, tempoutsdate, newProcOpSeq, wostatus, remark, tempparwo);
-                    });
+                    addWOExePart1($scope.RouteDetailNext, subwo, temppartid, tempactrecdate, tempcomqty, tempcomdate, tempoutsqty, tempoutsdate, newProcOpSeq, wostatus, remark, tempparwo,row);
                 }
 
 
@@ -319,7 +342,7 @@
         //'Output    :  
         //'Remark    :
         //'*******************************************************************
-        function addWORoute(subwo, step, remark) {
+        function addWORoute(subwo, step, remark, relprodqty, actrecqty, comqty, outqty, wostatus,row) {
             var tempwo="";
             var command = "";
             var command1 = "";
@@ -338,20 +361,160 @@
             var command3 = "";
 
 
-            tempwo = $("#split-wo").val();
-            tempProcOpSeq = $("#procopseq-info").val();
+
 
 
             
-            if(step == "Current" || (step == "Next")){
-                $http.post(config.baseUrlApi + 'HMLVTS/addWORouteCurrent', {
+            
+            if (step == "Current") {
+                //"Select RouteID,OpSeq,ProcOpSeq,McID,McType,WorkCenter, Remark,RouteName "
+                //+ "from TS_WorkOrderRoute where WOID='"
+                //+ tempwo + "' and ProcOpSeq >=" + txtProcOpSeq.Text + " order by ProcOpSeq";
+                //$http.post(config.baseUrlApi + 'HMLVTS/addWORouteCurrent', {
+                //    "WOID": tempwo,
+                //    "ProcOpSeq": tempProcOpSeq
+                //})
+                //.then(function (response) {
+
+                    
+                   // 
+                var result = $scope.RouteDetailCurrent;
+                    console.log("addWORouteCurrent $scope.RouteDetail", $scope.RouteDetailCurrent);
+                    var promiseArray = [];
+                    var promiseArray1 = [];
+                    var promiseArray2 = [];
+
+
+                    for (var i = 0; i < result.length; i++) {
+
+
+                        console.log((result[i]["routeID"]));
+                    temprouteid = String(result[i]["routeID"]).trim();
+                    tempopseq = String(result[i]["opSeq"]).trim();
+                    tempprocopseq = String(result[i]["procOpSeq"]).trim();
+                    tempmcid = String(result[i]["mcID"]).trim();
+                    tempmctype = String(result[i]["mcType"]).trim();
+                    tempworkcenter = String(result[i]["workCenter"]).trim();
+
+                    if (result[i]["remark"] != undefined && result[i]["remark"] != null && String(result[i]["remark"]).trim() != "null") {
+                        tempremark = String(result[i]["remark"]).trim();
+                    } else {
+                        tempremark = "";
+                    }
+                    
+                    temproutename = String(result[i]["routeName"]).trim();
+
+                    console.log("addWORoute tempmctype subuwo", tempmctype + " " + subwo);
+                    if (tempremark == "null") {
+                        tempremark = "";
+                    }
+                    if (tempmctype != "QC") {
+                        //INSERT INTO TS_WorkOrderRoute (WOID,WorkCenter,RouteID, OpSeq,ProcOpSeq,McID,McType,Remark,RouteName) 
+                        //VALUES (@subwo, @tempworkcenter ,@temprouteid , 
+                        //@tempopseq,@newProcOpSeq ,
+                        //@tempmcid ,@tempmctype,@tempremark ,@temproutename);
+
+                        promiseArray.push(
+                        $http.post(config.baseUrlApi + 'HMLVTS/addWORouteQC', {
+                            "WOID": subwo,
+                            "WorkCenter": tempworkcenter,
+                            "RouteID": temprouteid,
+                            "OpSeq": tempopseq,
+                            "ProcOpSeq": String(newProcOpSeq).trim(),
+                            "McID": tempmcid,
+                            "McType": tempmctype,
+                            "Type": "",
+                            "RouteName": temproutename.replace("'", "''")
+                        })
+                        );
+
+
+                        
+
+                    } else {
+                        //INSERT INTO TS_WorkOrderRoute (WOID,WorkCenter,RouteID, OpSeq,ProcOpSeq,McID,McType,Remark,RouteName) 
+                        //VALUES (@subwo, @tempworkcenter ,@temprouteid , 
+                        //@tempopseq,@newProcOpSeq ,
+                        //@tempmcid ,@tempmctype,@tempremark ,@temproutename);
+                        promiseArray1.push(
+                        $http.post(config.baseUrlApi + 'HMLVTS/addWORouteQC', {
+                            "WOID": subwo,
+                            "WorkCenter": tempworkcenter,
+                            "RouteID": temprouteid,
+                            "OpSeq": tempopseq,
+                            "ProcOpSeq": String(newProcOpSeq).trim(),
+                            "McID": "",
+                            "McType": tempmctype,
+                            "Type": "",
+                            "RouteName": temproutename.replace("'", "''")
+                        })
+                        );
+
+                        // INSERT INTO TS_QC_Equipment (WOID,WorkCenter,RouteID, OpSeq,ProcOpSeq,McID) 
+                        // VALUES (@subwo ,@tempworkcenter ,@temprouteid,
+                        //@tempopseq,@newProcOpSeq,
+                        // @tempmcid)
+                         promiseArray2.push(
+                            $http.post(config.baseUrlApi + 'HMLVTS/addWORouteQC2', {
+                                "WOID": subwo,
+                                "WorkCenter": tempworkcenter,
+                                "RouteID": temprouteid,
+                                "OpSeq": tempopseq,
+                                "ProcOpSeq": tempprocopseq,
+                                "McID": tempmcid,
+                            })
+                            );
+
+                   
+
+                    }
+
+                    newProcOpSeq = newProcOpSeq + 1;
+                    }
+                    //console.log("addWORoute promiseArray", promiseArray);
+                    //console.log("addWORoute promiseArray1", promiseArray1);
+                    //console.log("addWORoute promiseArray2", promiseArray1);
+
+                    $q.all(promiseArray).then(function (response) {                        
+                        console.log("addWORouteCurrent promiseArray response", response);
+
+                        $q.all(promiseArray1).then(function (response) {
+                            console.log("addWORouteCurrent promiseArray1 response", response);
+
+
+                            $q.all(promiseArray2).then(function (response) {
+                                console.log("addWORouteCurrent promiseArray2 response", response);
+
+                                addWOExe(subwo, step, remark, relprodqty, comqty, outqty, wostatus,row);
+
+                            });
+
+                        });
+
+
+                    });
+
+                    
+
+
+
+
+                 
+              //  });
+            }
+
+            if (step == "Next") {
+                //"Select RouteID,OpSeq,ProcOpSeq,McID,McType,WorkCenter, Remark,RouteName "
+                //+ "from TS_WorkOrderRoute where WOID='"
+                //+ tempwo + "' and ProcOpSeq >" + txtProcOpSeq.Text + " order by ProcOpSeq";
+                $http.post(config.baseUrlApi + 'HMLVTS/addWORouteNext', {
                     "WOID": tempwo,
                     "ProcOpSeq": tempProcOpSeq
                 })
                 .then(function (response) {
 
-                    
-                    console.log("addWORouteCurrent", response.data.result);
+
+                    console.log("addWORouteNext", response.data.result);
                     var result = response.data.result;
 
                     var promiseArray = [];
@@ -363,88 +526,109 @@
 
 
                         console.log((result[i]["routeID"]));
-                    temprouteid = result[i]["routeID"];
-                    tempopseq = result[i]["opSeq"];
-                    tempprocopseq = result[i]["procOpSeq"];
-                    tempmcid = result[i]["mcID"];
-                    tempmctype =result[i]["mcType"];
-                    tempworkcenter = result[i]["workCenter"];
-                    tempremark = result[i]["remark"];
-                    temproutename = result[i]["routeName"];
+                        temprouteid = result[i]["routeID"];
+                        tempopseq = result[i]["opSeq"];
+                        tempprocopseq = result[i]["procOpSeq"];
+                        tempmcid = result[i]["mcID"];
+                        tempmctype = result[i]["mcType"];
+                        tempworkcenter = result[i]["workCenter"];
+                        tempremark = result[i]["remark"];
+                        temproutename = result[i]["routeName"];
 
-                    console.log("addWORoute tempmctype subuwo", tempmctype + " " + subwo);
+                        console.log("addWORoute tempmctype subuwo", tempmctype + " " + subwo);
 
-                    if (tempmctype != "QC") {
-
-                        promiseArray.push(
-                        $http.post(config.baseUrlApi + 'HMLVTS/addWORouteQC', {
-                            "WOID": subwo,
-                            "WorkCenter": tempworkcenter,
-                            "RouteID": temprouteid,
-                            "OpSeq": tempopseq,
-                            "ProcOpSeq": newProcOpSeq,
-                            "McID": tempmcid,
-                            "McType": tempmctype,
-                            "Remark": tempremark,
-                            "RouteName": temproutename.replace("'", "''")
-                        })
-                        );
-
-                         promiseArray2.push(
-                            $http.post(config.baseUrlApi + 'HMLVTS/addWORouteQC2', {
+                        if (tempmctype != "QC") {
+                            //INSERT INTO TS_WorkOrderRoute (WOID,WorkCenter,RouteID, OpSeq,ProcOpSeq,McID,McType,Remark,RouteName) 
+                            //VALUES (@subwo, @tempworkcenter ,@temprouteid , 
+                            //@tempopseq,@newProcOpSeq ,
+                            //@tempmcid ,@tempmctype,@tempremark ,@temproutename);
+                            promiseArray.push(
+                            $http.post(config.baseUrlApi + 'HMLVTS/addWORouteQC', {
                                 "WOID": subwo,
                                 "WorkCenter": tempworkcenter,
                                 "RouteID": temprouteid,
                                 "OpSeq": tempopseq,
                                 "ProcOpSeq": newProcOpSeq,
                                 "McID": tempmcid,
+                                "McType": tempmctype,
+                                "Type": tempremark,
+                                "RouteName": temproutename.replace("'", "''")
                             })
                             );
-                        
 
-                    } else {
 
-                        promiseArray1.push(
-                        $http.post(config.baseUrlApi + 'HMLVTS/addWORouteQC', {
-                            "WOID": subwo,
-                            "WorkCenter": tempworkcenter,
-                            "RouteID": temprouteid,
-                            "OpSeq": tempopseq,
-                            "ProcOpSeq": newProcOpSeq,
-                            "McID": "",
-                            "McType": tempmctype,
-                            "Remark": tempremark,
-                            "RouteName": temproutename.replace("'", "''")
-                        })
-                        );
 
-                   
+                        } else {
+                            //INSERT INTO TS_WorkOrderRoute (WOID,WorkCenter,RouteID, OpSeq,ProcOpSeq,McID,McType,Remark,RouteName) 
+                            //VALUES (@subwo, @tempworkcenter ,@temprouteid , 
+                            //@tempopseq,@newProcOpSeq ,
+                            //@tempmcid ,@tempmctype,@tempremark ,@temproutename);
+                            promiseArray1.push(
+                            $http.post(config.baseUrlApi + 'HMLVTS/addWORouteQC', {
+                                "WOID": subwo,
+                                "WorkCenter": tempworkcenter,
+                                "RouteID": temprouteid,
+                                "OpSeq": tempopseq,
+                                "ProcOpSeq": newProcOpSeq,
+                                "McID": "",
+                                "McType": tempmctype,
+                                "Type": tempremark,
+                                "RouteName": temproutename.replace("'", "''")
+                            })
+                            );
+
+                            // INSERT INTO TS_QC_Equipment (WOID,WorkCenter,RouteID, OpSeq,ProcOpSeq,McID) 
+                            // VALUES (@subwo ,@tempworkcenter ,@temprouteid,
+                            //@tempopseq,@newProcOpSeq,
+                            // @tempmcid)
+                            promiseArray2.push(
+                               $http.post(config.baseUrlApi + 'HMLVTS/addWORouteQC2', {
+                                   "WOID": subwo,
+                                   "WorkCenter": tempworkcenter,
+                                   "RouteID": temprouteid,
+                                   "OpSeq": tempopseq,
+                                   "ProcOpSeq": newProcOpSeq,
+                                   "McID": tempmcid,
+                               })
+                               );
+
+
+
+                        }
+
 
                     }
+                    //console.log("addWORoute promiseArray", promiseArray);
+                    //console.log("addWORoute promiseArray1", promiseArray1);
+                    //console.log("addWORoute promiseArray2", promiseArray1);
+
+                    $q.all(promiseArray).then(function (response) {
+                        console.log("addWORouteNext promiseArray response", response);
+
+                        $q.all(promiseArray1).then(function (response) {
+                            console.log("addWORouteNext promiseArray1 response", response);
 
 
-                    }
-                    console.log("addWORoute promiseArray", promiseArray);
-                    console.log("addWORoute promiseArray1", promiseArray1);
-                    console.log("addWORoute promiseArray2", promiseArray1);
+                            $q.all(promiseArray2).then(function (response) {
+                                console.log("addWORouteNext promiseArray2 response", response);
 
-                    $q.all(promiseArray).then(function (response) {                        
-                        console.log("addWORoute promiseArray response", response);
+                                addWOExe(subwo, step, remark, relprodqty, comqty, outqty, wostatus);
+
+                            });
+
+                        });
+
+
                     });
 
-                    
-                    $q.all(promiseArray1).then(function (response) {                        
-                        console.log("addWORoute promiseArray1 response", response);
-                    });
 
-                    $q.all(promiseArray2).then(function (response) {
-                        console.log("addWORoute promiseArray2 response", response);
-                    });
 
-                 
+
+
+
+
                 });
             }
-
 
         }
 
@@ -538,10 +722,9 @@
         //'Function  :  
         //'Input     :  
         //'Output    :  
-        //'Remark    :
+        //'Remark    : subwo, step, remark, relprodqty, actrecqty, comqty, outqty, wostatus
         //'*******************************************************************
-        function addWO(subwo, wostatus, relprodqty, actrecqty,
-            comqty, outqty, strremark) {
+        function addWO(subwo, wostatus, relprodqty, actrecqty,comqty, outqty, strremark, step,remark,row) {
 
             console.log("addWo 1", subwo + " " + wostatus + " " + relprodqty + " " + actrecqty + " " +comqty + " " + outqty + " " + strremark);
                 var tempwo = "";
@@ -566,9 +749,9 @@
                 var tempppid = "";
                 var tempsaleid = "";
                 var tempapprovedid = "";
-                var tempapprovedname = "";
+                var tempapprovedname = authService.currentUser.userName;
                 var tempoperatorid = "";
-                var tempoperatorname = "";
+                var tempoperatorname = authService.currentUser.userName;
                 var tempreleaseddate = "";
                 var command = "";
                 var tempordertype = null;
@@ -590,18 +773,24 @@
                     tempreqdate = response.data.result[0]["requestedDeliveryDate"];
                     tempcommitdate = response.data.result[0]["committedDeliveryDate"];
                     temprelprodqty = response.data.result[0]["releasedProdQty"];
-                    temprelproddate = new Date(); //get current datetime
+                    temprelproddate = getCurrentDatetime(); //get current datetime
                     tempactprodqty = relprodqty;
-                    tempactproddate = new Date();
+                    tempactproddate = getCurrentDatetime();
                     tempactrecqty = relprodqty; //actrecqty; // change
-                    tempactrecdate = new Date(); //get current datetime
+                    tempactrecdate = getCurrentDatetime(); //get current datetime
                     tempcomqty = comqty; // change
-                    tempcomdate = new Date(); //get current datetime
+                    tempcomdate = getCurrentDatetime(); //get current datetime
                     tempoutsqty = outqty; //change
-                    tempoutsdate = new Date(); //get current datetime
+                    tempoutsdate = getCurrentDatetime(); //get current datetime
                     tempwostatus = wostatus; // set wostatus
                     temptooldesc = response.data.result[0]["toolDescription"];
-                    tempplannremark = response.data.result[0]["plannerRemark"];
+
+                    if(response.data.result[0]["plannerRemark"] != undefined  && response.data.result[0]["plannerRemark"] != null){
+                        tempplannremark = response.data.result[0]["plannerRemark"];
+                    } else {
+                        tempplannremark = "";
+                    }
+                    
                     tempparwo = tempwo;
                     tempremark = strremark;
                     tempppid = response.data.result[0]["ppid"];
@@ -633,36 +822,38 @@
                     console.log("addWO tempordertype", tempordertype);
 
                     $http.post(config.baseUrlApi + 'HMLVTS/addWO', {
-                        "WOID": subwo,
-                        "PartID":temppartid.replace("'", "''"),
-                        "RequestedDeliveryDate":tempreqdate,
-                        "CommittedDeliveryDate":tempcommitdate,
-                        "ReleasedProdQty":temprelprodqty,
-                        "ReleasedProdDate":temprelproddate,
-                        "ActualProdQty":tempactprodqty,
-                        "ActualProdDate":tempactproddate,
-                        "ActualRecQty":tempactrecqty,
-                        "ActualRecDate":tempactrecdate,
-                        "CompletedQty":tempcomqty,
-                        "CompletedDate":tempcomdate,
-                        "OutstandingQty":tempoutsqty,
-                        "OutstandingDate":tempoutsdate,
-                        "WOStatus":tempwostatus,
-                        "ToolDescription":temptooldesc,
-                        "PlannerRemark":tempplannremark,
-                        "ParentWOID":tempparwo,
-                        "Remark":tempremark,
-                        "PPID":tempppid,
-                        "SalesOrderID":tempsaleid,
-                        "OperatorID":tempoperatorid,
-                        "OperatorName":tempoperatorname,
-                        "ApprovedID":tempapprovedid,
-                        "ApprovedName":tempapprovedname,
-                        "ReleasedDate":tempreleaseddate,
-                        "OrderType":tempordertype.trim()
+                        "WOID": String(subwo).trim(),
+                        "PartID":String(temppartid.replace("'", "''")).trim(),
+                        "RequestedDeliveryDate":String(tempreqdate).trim(),
+                        "CommittedDeliveryDate":String(tempcommitdate).trim(),
+                        "ReleasedProdQty":String(temprelprodqty).trim(),
+                        "ReleasedProdDate":String(temprelproddate).trim(),
+                        "ActualProdQty":String(tempactprodqty).trim(),
+                        "ActualProdDate":String(tempactproddate).trim(),
+                        "ActualRecQty":String(tempactrecqty).trim(),
+                        "ActualRecDate":String(tempactrecdate).trim(),
+                        "CompletedQty":String(tempcomqty).trim(),
+                        "CompletedDate":String(tempcomdate).trim(),
+                        "OutstandingQty":String(tempoutsqty).trim(),
+                        "OutstandingDate":String(tempoutsdate).trim(),
+                        "WOStatus":String(tempwostatus).trim(),
+                        "ToolDescription":String(temptooldesc).trim(),
+                        "PlannerRemark":String(tempplannremark).trim(),
+                        "ParentWOID":String(tempparwo).trim(),
+                        "Remark":String(tempremark).trim(),
+                        "PPID":String(tempppid).trim(),
+                        "SalesOrderID":String(tempsaleid).trim(),
+                        "OperatorID": String(authService.currentUser.userName).trim(),
+                        "OperatorName": String(authService.currentUser.userName).trim(),
+                        "ApprovedID": String(authService.currentUser.userName).trim(),
+                        "ApprovedName": String(authService.currentUser.userName).trim(),
+                        "ReleasedDate":String(tempreleaseddate).trim(),
+                        "OrderType": String(tempordertype.trim()).trim(),
                     })
                     .then(function (response) {
                         console.log("addWO response", response);
+
+                        addWORoute(subwo, "Current", tempremark, comqty, actrecqty, comqty, outqty, "Pending",row);
                     });
 
                 });
@@ -702,6 +893,14 @@
             } else if ($("#split-balallowable").val() == "0" && count >= 2 && checkremakelenght()) {//todo:checkremakelenght
                 tempbalqty = $("#split-allowable").val();
                 console.log("2here2");
+
+              //  var tempwo = $("#split-wo").val();
+               // var tempProcOpSeq = $("#procopseq-info").val();
+
+
+
+
+
                 for (var i = 1; i < nextSplitWONo; i++) {
                     console.log("here3",i);
                     var nthTr = $("#table4_tr"+i);
@@ -720,36 +919,53 @@
                     console.log("#table4_tr" + i + "_4");
                     tempoutqty = document.getElementById("table4_tr" + i + "_4").innerHTML;
                     console.log("#table4_tr" + i + "_5");
-                    tempremark = document.getElementById("table4_tr" + i + "_5").innerHTML;
+                    if(String(document.getElementById("table4_tr" + i + "_5").innerHTML).trim() != "null"){
+                        tempremark = document.getElementById("table4_tr" + i + "_5").innerHTML;
+                    } else {
+                        tempremark = "";
+                    }
+                    
 
                     balrecqty = parseInt(tempbalqty) - parseInt(tempqty);
                     tempbalqty = balrecqty;
 
 
                     //addWO(tempsubWO, "Pending", tempqty, tempbalqty, tempcomqty, tempoutqty, tempremark);
+
+                    if (String(tempremark).trim() == "null") {
+                        tempremark = "";
+                    }
+
                     if ((parseInt(tempcomqty) == 0) && (parseInt(tempoutqty) > 0)) {
                         console.log("loop1");
-                        addWO(tempsubWO, "Pending", tempqty, tempbalqty, tempcomqty, tempoutqty, tempremark);
-                        addWORoute(tempsubWO, "Current", tempremark);
-                        addWOExe(tempsubWO, "Current", tempremark, tempqty, tempbalqty, tempcomqty, tempoutqty, "Pending");
+                        addWO(tempsubWO, "Pending", tempqty, tempbalqty, tempcomqty, tempoutqty, tempremark, "Current", tempremark,i);
+
+
+                       
+                        
+                        
 
                     } else if ((parseInt(tempcomqty) < parseInt(tempqty)) && (parseInt(tempoutqty) > 0)) {
                         console.log("loop2");
-                        addWO(tempsubWO, "Pending", tempqty, tempbalqty, tempcomqty, tempoutqty, tempremark);
-                        addWORoute(tempsubWO, "Current", tempremark);
-                        addWOExe(tempsubWO, "Current", tempremark, tempqty, tempbalqty, tempcomqty, tempoutqty, "Pending");
+                        addWO(tempsubWO, "Pending", tempqty, tempbalqty, tempcomqty, tempoutqty, tempremark,"Current", tempremark,i);
+                       // addWORoute(tempsubWO, "Current", tempremark, tempqty, tempbalqty, tempcomqty, tempoutqty, "Pending");
+
+                    
+
+                       // addWORoute(tempsubWO, "Current", tempremark, tempqty, tempbalqty, tempcomqty, tempoutqty, "Pending");
+                       // addWOExe(tempsubWO, "Current", tempremark, tempqty, tempbalqty, tempcomqty, tempoutqty, "Pending");
                     } else if ((parseInt(tempcomqty) == parseInt(tempqty)) && (parseInt(tempoutqty) == 0)) {
                         console.log("loop3");
-                        addWO(tempsubWO, "Pending", tempqty, tempbalqty, tempcomqty, tempoutqty, tempremark);
-                        addWORoute(tempsubWO, "Next", tempremark);
-                        addWOExe(tempsubWO, "Next", tempremark, tempqty, tempbalqty, tempcomqty, tempoutqty, "Pending");
+                        addWO(tempsubWO, "Pending", tempqty, tempbalqty, tempcomqty, tempoutqty, tempremark,"Current", tempremark,i);
+                      //  addWORoute(tempsubWO, "Current", tempremark, tempqty, tempbalqty, tempcomqty, tempoutqty, "Pending");
+
+                       // addWORoute(tempsubWO, "Next", tempremark, tempqty, tempbalqty, tempcomqty, tempoutqty, "Pending");
+                       // addWOExe(tempsubWO, "Next", tempremark, tempqty, tempbalqty, tempcomqty, tempoutqty, "Pending");
                     }
 
                     addSplitWO(tempsubWO, $("#split-wo").val(), $scope.routeID, strCurProcOpSeq, "Split");
                 }
-                delWORoute();
-                delWOExe();
-                updateWOExecution();
+                
                 alert("Split records successfully added!");
             }
 
@@ -783,29 +999,30 @@
             var tr = document.createElement("tr");
             tr.setAttribute("id", "table4_tr" + nextSplitWONo);
             tr.setAttribute("class", "reproduce-kendo-row1")
+            
 
             var th1 = document.createElement("th");
             th1.setAttribute("id", "table4_tr" + nextSplitWONo + "_1");
-            th1.setAttribute("class", "reproduce-kendo-row1")
+            th1.setAttribute("class", "reproduce-kendo-row1 table-control-padding-font-1")
             var span1 = document.createTextNode(SplitWONo);
             th1.appendChild(span1);//correct
 
             var th2 = document.createElement("th");
             th2.setAttribute("id", "table4_tr" + nextSplitWONo + "_2");
-            th2.setAttribute("class", "reproduce-kendo-row1")
+            th2.setAttribute("class", "reproduce-kendo-row1 table-control-padding-font-1")
             var span2 = document.createTextNode(splitqty);
             th2.appendChild(span2);
 
             // console.log("IssueCompletedQty", IssueCompletedQty);
             var th3 = document.createElement("th");
             th3.setAttribute("id", "table4_tr" + nextSplitWONo + "_3");
-            th3.setAttribute("class", "reproduce-kendo-row1")
+            th3.setAttribute("class", "reproduce-kendo-row1 table-control-padding-font-1")
             var span3 = document.createTextNode(balcomplete);
             th3.appendChild(span3);
 
             var th4 = document.createElement("th");
             th4.setAttribute("id", "table4_tr" + nextSplitWONo + "_4");
-            th4.setAttribute("class", "reproduce-kendo-row1")
+            th4.setAttribute("class", "reproduce-kendo-row1 table-control-padding-font-1")
             var span4 = document.createTextNode(parseInt(splitqty) - parseInt(balcomplete));
             th4.appendChild(span4);
 
@@ -953,30 +1170,30 @@
                 console.log("debug", "SplitWONo:" + SplitWONo + " SplitQty:" + SplitQty + " IssueCompletedQty:" + IssueCompletedQty);
                 var tr = document.createElement("tr");
                 tr.setAttribute("id", "table4_tr" + nextSplitWONo);
-                tr.setAttribute("class","reproduce-kendo-row1")
+                tr.setAttribute("class", "reproduce-kendo-row1 table-control-padding-font-1")
 
                 var th1 = document.createElement("th");
                 th1.setAttribute("id", "table4_tr" + nextSplitWONo + "_1");
-                th1.setAttribute("class", "reproduce-kendo-row1")
+                th1.setAttribute("class", "reproduce-kendo-row1 table-control-padding-font-1")
                 var span1 = document.createTextNode(SplitWONo);
                 th1.appendChild(span1);//correct
 
                 var th2 = document.createElement("th");
                 th2.setAttribute("id", "table4_tr" + nextSplitWONo + "_2");
-                th2.setAttribute("class", "reproduce-kendo-row1")
+                th2.setAttribute("class", "reproduce-kendo-row1 table-control-padding-font-1")
                 var span2 = document.createTextNode(SplitQty);
                 th2.appendChild(span2);
 
                 console.log("IssueCompletedQty", IssueCompletedQty);
                 var th3 = document.createElement("th");
                 th3.setAttribute("id", "table4_tr" + nextSplitWONo + "_3");
-                th3.setAttribute("class", "reproduce-kendo-row1")
+                th3.setAttribute("class", "reproduce-kendo-row1 table-control-padding-font-1")
                 var span3 = document.createTextNode(IssueCompletedQty);
                 th3.appendChild(span3);
 
                 var th4 = document.createElement("th");
                 th4.setAttribute("id", "table4_tr" + nextSplitWONo + "_4");
-                th4.setAttribute("class", "reproduce-kendo-row1")
+                th4.setAttribute("class", "reproduce-kendo-row1 table-control-padding-font-1")
                 var span4 = document.createTextNode(parseInt(SplitQty) - parseInt(IssueCompletedQty));
                 th4.appendChild(span4);
 
@@ -1101,6 +1318,29 @@
 
             // var container = document.getElementClassName("k-grid-content");
             // container.setAttribute("style", "height:264px;");
+            var tempwo = $("#split-wo").val();
+            var tempProcOpSeq = $("#procopseq-info").val();
+
+            $http.post(config.baseUrlApi + 'HMLVTS/addWORouteCurrent', {
+                "WOID": tempwo,
+                "ProcOpSeq": tempProcOpSeq
+            })
+            .then(function (response) {
+                console.log("addWORouteCurrent", response);
+                $scope.RouteDetailCurrent = response.data.result;
+
+            });
+
+
+            $http.post(config.baseUrlApi + 'HMLVTS/addWORouteNext', {
+                "WOID": tempwo,
+                "ProcOpSeq": tempProcOpSeq
+            })
+            .then(function (response) {
+                console.log("addWORouteNext", response);
+                $scope.RouteDetailNext = response.data.result;
+
+            });
 
 
 
@@ -1252,7 +1492,7 @@
                     },
                     dataType: "json",
                     selectable: "true",
-                    height: 550,
+                    height: 350,
                     pageable: {
                         refresh: true,
                         pageSizes: true,
@@ -1328,8 +1568,12 @@
                     var span = document.createTextNode(response.data.result[0]["partID"]);
                     div1.appendChild(span);
 
-                    var span1 = document.createTextNode(response.data.result[0]["plannerRemark"]);
-                    div3.appendChild(span1);
+                    if (response.data.result[0]["plannerRemark"] != undefined && response.data.result[0]["plannerRemark"] != null) {
+                        var span1 = document.createTextNode(response.data.result[0]["plannerRemark"]);
+                        div3.appendChild(span1);
+                    }
+
+
                 
                     if (response.data.result[0]["toolDescription"] != "" || response.data.result[0]["toolDescription"] != null) {
                         var span2 = document.createTextNode(response.data.result[0]["toolDescription"]);
@@ -1345,7 +1589,7 @@
             })
                 .then(function (response) {
                     console.log("GenerateWODetail2", response.data.result);
-                    if (response.data.result[0]["remark"] != "" || response.data.result[0]["remark"] != null) {
+                    if (response.data.result[0]["remark"] != undefined && response.data.result[0]["remark"] != null) {
                         var span4 = document.createTextNode(response.data.result[0]["remark"]);
                         div4.appendChild(span4);
                     }
@@ -1372,6 +1616,20 @@
                 }
             }
             return "NULL";
+        }
+
+        //*****************************************time functions***********************************************************//
+        function getCurrentDatetime() {
+            var timeStamp = new Date();
+            timeStamp = (
+                (timeStamp.getFullYear()) + "-" +
+                ("00" + (timeStamp.getMonth() + 1)).slice(-2) + "-" +
+                ("00" + timeStamp.getDate()).slice(-2) + "T" +
+                ("00" + timeStamp.getHours()).slice(-2) + ":" +
+                ("00" + timeStamp.getMinutes()).slice(-2) + ":" +
+                ("00" + timeStamp.getSeconds()).slice(-2)
+                );
+            return timeStamp;
         }
 
 

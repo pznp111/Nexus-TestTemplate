@@ -17,14 +17,15 @@
                 url: '/review',
                 templateUrl: 'Scripts/review/review.html',
                 controller: 'ReviewCtrl',
-                controllerAs: 'reviewCtrl',
+                controllerAs: 'reviewCtrl'
+                //,
 
                 //*********
-                resolve: {
-                    tenant: function ($stateParams, repo) {
-                        return repo.tenant.getTenant();
-                    }
-                }
+                //resolve: {
+                //    tenant: function ($stateParams, repo) {
+                //        return repo.tenant.getTenant();
+                //    }
+                //}
                 //********
             });
 

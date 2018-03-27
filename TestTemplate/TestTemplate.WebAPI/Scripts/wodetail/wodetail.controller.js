@@ -6,12 +6,24 @@
     WodetailCtrl.$inject = ['$q', '$scope', '$http', 'config', 'tenant', 'authService', '$stateParams', 'kendoGridService', '$window'];
 
     function WodetailCtrl($q, $scope, $http, config, tenant, authService, $stateParams, kendoGridService, $window) {
+
+
+    //WodetailCtrl.$inject = ['$q', '$scope', '$http', 'config', 'tenant', 'authService', '$stateParams', 'kendoGridService', '$window', ];
+
+    //function WodetailCtrl($q, $scope, $http, config, tenant, authService, $stateParams, kendoGridService, $window) {
         //initialise global variable
         //var xml = [];
         //var rowNumber = 0;
         //var dataLength = 0;
         //var rowBoxNo = 12;
         //var nextSplitWONo;
+        //console.log($upload);
+
+
+        //***
+      //  $scope.Clicked = false;
+
+
         $scope.selectedwoid = "";
         $scope.table1Data = [];
         $scope.table1Data.push([]);
@@ -32,7 +44,13 @@
             return memo;
         }, []);
 
+        $("#toolbar_rework").hide();
+        $("#toolbar_wodetail").show();
+        $("#main-container-page").css('margin-top', 30);
         populateWOlist();
+
+
+
 
 
         //$("#wodetail-table1").dblclick(function () {
@@ -49,7 +67,17 @@
         //    // $stateParams.test = "1";
         //    $window.location.href = '#/routeDetaill';
         //});
-
+        
+        //'*******************************************************************
+        //'Title     :  toggleBody
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    : 
+        //********************************************************************
+        $scope.toggleSummaryBody = function (id) {
+            $('#wodetail-summarybody').toggle();
+        }
         //'*******************************************************************
         //'Title     :  table1Clicked
         //'Function  :  
@@ -70,10 +98,16 @@
                 var selectedItem = grid.dataItem(grid.select());
                 console.log("selected row", selectedItem);
 
+                // $scope.Clicked = true;
 
+                $("#historyContent1").show();
+                $("#historyContent2").show();
+                $("#historyContent3").hide();
+                $("#historyContent4").show();
                 var selectedwoid = selectedItem['woid'];
                 $scope.selectedwoid = selectedwoid;
                 populateOperatorID(selectedwoid);
+                initExecution(selectedwoid);
                 // var selectedproopseq = selectedItem['procOpSeq'];
 
                 var promiseArray = [];
@@ -136,6 +170,36 @@
                         maketable5(response[0].data.result);
                     }
                 }
+            });
+        }
+
+        //'*******************************************************************
+        //'Title     :  GenerateAttachmentList
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    : 
+        //********************************************************************
+        function GenerateAttachmentList(selectedwoid) {
+            var promiseArray1 = [];
+
+            promiseArray1.push(
+            $http.post(config.baseUrlApi + 'HMLVTS/GenerateAttachmentList', {
+                'WOID': selectedwoid,
+             
+            })
+                );
+
+
+            $q.all(promiseArray1).then(function (response) {
+                console.log("GenerateAttachmentList", response);
+                if (response.length !=0 && response[0].data.success) {
+                    makeAttachmentTable(response[0].data.result)
+                } else {
+                    makeAttachmentTable([])
+                }
+
+
             });
         }
 
@@ -223,10 +287,14 @@
         //'Remark    : action triggered by changing selector
         //********************************************************************
         function woSelectedFromWOStatus(woid) {
+            $scope.selectedwoid = [];
             $scope.table1Data = [];
             $scope.table1Data.push([]);
             document.getElementById('wodetail-table1').innerHTML = "";
-           // var woid = String($('#select_woid option:selected').text()).trim();
+            // var woid = String($('#select_woid option:selected').text()).trim();
+
+
+          //  GenerateAttachmentList(woid);
 
             $http.post(config.baseUrlApi + 'HMLVTS/ChkChild', {
                 'WOID': woid
@@ -302,49 +370,10 @@
                                 maketable1($scope.table1Data);
                             });
 
-                            //$http.post(config.baseUrlApi + 'HMLVTS/populateWOinfoTable3', {
-                            //    'WOID': woid
-                            //})
-                            //.then(function (response) {
-                            //    console.log("populateWOinfoTable3", response);
-                            //    if (response.data.success && response.data.result.length != 0) {
-                            //      var temp2 =  copyArrayForTable1(response.data.result[0],true,temp);
-                            //    }
-                            //    console.log("after copy2", temp2);
-                            //   // $scope.table1Data[i] = temp2;
-                            //   // console.log("after copy2 total", $scope.table1Data);
-                            //   // maketable1($scope.table1Data);
-                            //});
 
                         }
                     });
 
-                    //$http.post(config.baseUrlApi + 'HMLVTS/populateWOinfoTable2', {
-                    //    'WOID': woid
-                    //})
-                    //.then(function (response) {
-                    //    console.log("populateWOinfoTable2", response);
-                    //    if (response.data.success && response.data.result.length != 0) {
-                    //        // true
-                    //        copyArrayForTable1(response.data.result[0]);
-                    //        console.log("after copy", $scope.table1Data);
-
-                    //        $http.post(config.baseUrlApi + 'HMLVTS/populateWOinfoTable3', {
-                    //            'WOID': woid
-                    //        })
-                    //        .then(function (response) {
-                    //            console.log("populateWOinfoTable3",response);
-                    //            if (response.data.success && response.data.result.length != 0) {
-                    //                copyArrayForTable1(response.data.result[0]);
-                    //            }
-                    //            console.log("after copy", $scope.table1Data);
-                    //            maketable1($scope.table1Data);
-                    //        });
-
-                    //    } else {
-                    //        //false
-                    //    }
-                    //});
                 } else {
                     //false
                     $http.post(config.baseUrlApi + 'HMLVTS/populateWOinfoTable1', {
@@ -355,7 +384,7 @@
                         if (response.data.success && response.data.result.length != 0) {
                             // true
                             copyArrayForTable1(response.data.result[0], false, []);
-                            console.log("after copy", $scope.table1Data);
+                            console.log("after copy 55", $scope.table1Data);
 
                             $http.post(config.baseUrlApi + 'HMLVTS/populateWOinfoTable3', {
                                 'WOID': woid
@@ -379,11 +408,27 @@
 
 
         $scope.woSelected = function () {
+
+            $("#historyContent1").hide();
+            $("#historyContent2").hide();
+            $("#historyContent3").show();
+            $("#historyContent4").hide();
+
+            document.getElementById("wodetail-table3").innerHTML = "";
+
+
+            $scope.selectedwoid = [];
             $scope.table1Data = [];
             $scope.table1Data.push([]);
-            document.getElementById('wodetail-table1').innerHTML = "";
-            var woid = String($('#select_woid option:selected').text()).trim();
 
+          //  $scope.Clicked = false;
+            document.getElementById("history-table").innerHTML = "";
+            document.getElementById("wodetail-table1").innerHTML = "";
+            var woid = String($('#select_woid option:selected').text()).trim();
+            
+
+            console.log("selected woid",woid);
+            GenerateAttachmentList(woid);
             $http.post(config.baseUrlApi + 'HMLVTS/ChkChild', {
                 'WOID':woid
             })
@@ -475,32 +520,7 @@
                         }
                     });
 
-                    //$http.post(config.baseUrlApi + 'HMLVTS/populateWOinfoTable2', {
-                    //    'WOID': woid
-                    //})
-                    //.then(function (response) {
-                    //    console.log("populateWOinfoTable2", response);
-                    //    if (response.data.success && response.data.result.length != 0) {
-                    //        // true
-                    //        copyArrayForTable1(response.data.result[0]);
-                    //        console.log("after copy", $scope.table1Data);
 
-                    //        $http.post(config.baseUrlApi + 'HMLVTS/populateWOinfoTable3', {
-                    //            'WOID': woid
-                    //        })
-                    //        .then(function (response) {
-                    //            console.log("populateWOinfoTable3",response);
-                    //            if (response.data.success && response.data.result.length != 0) {
-                    //                copyArrayForTable1(response.data.result[0]);
-                    //            }
-                    //            console.log("after copy", $scope.table1Data);
-                    //            maketable1($scope.table1Data);
-                    //        });
-
-                    //    } else {
-                    //        //false
-                    //    }
-                    //});
                 } else {
                     //false
                     $http.post(config.baseUrlApi + 'HMLVTS/populateWOinfoTable1', {
@@ -511,7 +531,7 @@
                         if (response.data.success && response.data.result.length != 0) {
                             // true
                             copyArrayForTable1(response.data.result[0],false,[]);
-                            console.log("after copy", $scope.table1Data);
+                            console.log("after copy 32", $scope.table1Data);
 
                             $http.post(config.baseUrlApi + 'HMLVTS/populateWOinfoTable3', {
                                 'WOID': woid
@@ -521,7 +541,7 @@
                                 if (response.data.success && response.data.result.length != 0) {
                                     copyArrayForTable1(response.data.result[0],false,[]);
                                 }
-                                console.log("after copy", $scope.table1Data);
+                                console.log("after copy 33", $scope.table1Data);
                                 maketable1($scope.table1Data);
                             });
                         } else {
@@ -533,6 +553,54 @@
             });
         }
 
+
+        function initExecution(woid) {
+
+
+            var DurationSum = 0;
+            $scope.selectedwoid = woid;
+            $("#execution-history-woid").val($scope.selectedwoid);
+            var promiseArray = [];
+            //var promiseArray1 = [];
+
+            promiseArray.push(
+                            $http.post(config.baseUrlApi + 'HMLVTS/frmExecutionHistory1', {
+                                'WOID': $scope.selectedwoid
+                            })
+                );
+            $q.all(promiseArray).then(function (response) {
+                console.log("frmExecutionHistory1", response);
+
+                $scope.history1 = response[0].data.result;
+
+                for (var i = 0; i < $scope.history1.length; i++) {
+                    // var DurationSum = 0;
+                    if ($scope.history1[i]['totalDuration'] != "") {
+                        DurationSum = DurationSum + (($scope.history1[i]['totalDuration']) * 60);
+                        var time = (new Date).clearTime()
+                            .addSeconds((($scope.history1[i]['totalDuration']) * 60))
+                            .toString('HH:mm:ss');
+
+                        console.log("time", time);
+
+                        $scope.history1[i]['totalDuration1'] = time;
+                    } else {
+                        $scope.history1[i]['totalDuration1'] = "";
+                    }
+
+
+                }
+
+                var time = (new Date).clearTime()
+                            .addSeconds(DurationSum)
+                            .toString('HH:mm:ss');
+
+                $("#execution-history-totaltime").val(time);
+                console.log("history", $scope.history1);
+                makeExecutionHistoryTable($scope.history1);
+            });
+        
+        }
 
         //'*******************************************************************
         //'Title     :  ExecutionHistory
@@ -546,9 +614,8 @@
             var DurationSum = 0;
             if ($scope.selectedwoid == "" || $scope.selectedwoid == undefined || $scope.selectedwoid == null) {
                 alert("Please select an WORK ORDER");
-                $('#myModal').modal('toggle');
+                $('#executionhistoryModal').modal('toggle');
             } else {
-
                 $("#execution-history-woid").val($scope.selectedwoid);
                 var promiseArray = [];
                 //var promiseArray1 = [];
@@ -558,7 +625,6 @@
                                     'WOID': $scope.selectedwoid
                                 })
                     );
-
                 $q.all(promiseArray).then(function (response) {
                     console.log("frmExecutionHistory1", response);
 
@@ -568,12 +634,6 @@
                        // var DurationSum = 0;
                         if($scope.history1[i]['totalDuration'] !=""){
                             DurationSum = DurationSum + (($scope.history1[i]['totalDuration']) * 60);
-                            //SumDuration = SumDuration * 60;
-                            //var time = (new Date).clearTime()
-                            //    .addSeconds(SumDuration)
-                            //    .toString('HH:mm:ss');
-
-
                             var time = (new Date).clearTime()
                                 .addSeconds((($scope.history1[i]['totalDuration']) * 60))
                                 .toString('HH:mm:ss');
@@ -593,23 +653,8 @@
                                 .toString('HH:mm:ss');
 
                     $("#execution-history-totaltime").val(time);
-
                     console.log("history", $scope.history1);
                     makeExecutionHistoryTable($scope.history1);
-
-
-                    //promiseArray1.push(
-                    //    $http.post(config.baseUrlApi + 'HMLVTS/frmExecutionHistory2', {
-                    //    'WOID': $scope.selectedwoid
-                    //    })
-                    //);
-
-                    //$q.all(promiseArray1).then(function (response) {
-                    //    console.log("frmExecutionHistory2", response);
-                    //});
-
-
-
                 });
 
 
@@ -685,8 +730,9 @@
                         $q.all(promiseArray1).then(function (response) {
                             console.log("populateProcessRouteDetails2", response);
                             if (response.length != 0) {
-                                if (response[0].data.success && response[0].data.result.length != 0) {
-                                    for (var j = 0; j < response.length;j++){
+                                for (var j = 0; j < response.length; j++) {
+                                if (response[j].data.success && response[j].data.result.length != 0) {
+                                   
                                         var strMCType = response[j].data.result[0]['mcType'];
                                         if (strMCType.toLowerCase().indexOf('subcon') != -1) {
                                             //todo:line587
@@ -843,6 +889,12 @@
                         document.getElementById('table2-td1_4').innerHTML = response[0].data.result[0]['completedQty'];
                         document.getElementById('table2-td1_5').innerHTML = response[0].data.result[0]['outstandingQty'];
                         document.getElementById('table2-td1_6').innerHTML = response[0].data.result[0]['accumulatedScrapQty'];
+
+                        document.getElementById('newtable2-td1_2').innerHTML = response[0].data.result[0]['releasedProdQty'];
+                        document.getElementById('newtable2-td1_3').innerHTML = response[0].data.result[0]['actualProdQty'];
+                        document.getElementById('newtable2-td1_4').innerHTML = response[0].data.result[0]['completedQty'];
+                        document.getElementById('newtable2-td1_5').innerHTML = response[0].data.result[0]['outstandingQty'];
+                        document.getElementById('newtable2-td1_6').innerHTML = response[0].data.result[0]['accumulatedScrapQty'];
                     }
                 }
             });
@@ -887,13 +939,16 @@
             });
 
             if (authService.parameter != "") {
-                $("#select_woid").val(authService.parameter);
+                $("#select_woid").val(authService.parameter).change();
                 woSelectedFromWOStatus(authService.parameter)
+                GenerateAttachmentList(authService.parameter);
                 //authService.parameter =
                 //$('#select_woid option:selected').text(authService.parameter);
-            }
+               // initExecution(authService.parameter);
+            } 
 
             authService.parameter = "";
+            document.getElementById("wodetail-table1").innerHTML = "";
         }
 
 
@@ -1100,7 +1155,17 @@
             var temp = data.slice(0);
 
             convertTime(["column7", "column8"], data)
-            console.log("table3 data after",data);
+            console.log("table3 data after", data);
+
+            for (var i = 0; i < data.length;i++){
+                if (data[i]['totalSetupDuration'] != undefined  && data[i]['totalSetupDuration'] != null && String(data[i]['totalSetupDuration']).trim() != "") {
+                    data[i]['totalSetupDurationTime'] = secondsToHms(data[i]['totalSetupDuration']);
+                }
+
+                if (data[i]['prodTotalDuration'] != undefined && data[i]['prodTotalDuration'] != null && String(data[i]['prodTotalDuration']).trim() != "") {
+                    data[i]['prodTotalDurationTime'] = secondsToHms(data[i]['prodTotalDuration']);
+                }
+            }
             $("#wodetail-table3").kendoGrid(
                 {
                     toolbar: ["excel"],
@@ -1115,23 +1180,23 @@
                     selectable: "true",
                     columns: [
                         {
-                            field: "mcID", title: "Work Centre", width: 150
+                            field: "workCenter", title: "Work Centre", width: 150
                         },
                         {
                             field: "name", title: "RouteName", width: 150
 
                         },
                         {
-                            field: "opSeq", title: "Op Seq", width: 150
+                            field: "opSeq", title: "Op Seq", width: 50
                         },
                          {
-                             field: "procOpSeq", title: "ProcOpSeq", width: 150
+                             field: "procOpSeq", title: "ProcOpSeq", width: 50
                          },
                          {
                              field: "mcID", title: "Machine ID", width: 150
                          },
                          {
-                             field: "mcType", title: "Machine Type", width: 150
+                             field: "mcType", title: "Machine Type", width: 100
                          },
                          {
                              field: "column7", title: "Start Time", width: 150
@@ -1140,22 +1205,22 @@
                              field: "column8", title: "End Time", width: 150
                          },
                          {
-                             field: "SetupStartDate", title: "Setup Duration(HH:MM:SS)", width: 150
+                             field: "totalSetupDurationTime", title: "Setup Duration(HH:MM:SS)", width: 150
                          },
                          {
-                             field: "prodEndDate", title: "Production Duration(HH:MM:SS)", width: 150
+                             field: "prodTotalDurationTime", title: "Production Duration(HH:MM:SS)", width: 150
                          },
                          {
                              field: "plannedDuration", title: "Planned Duration(HH:MM:SS)", width: 150
                          },
                          {
-                             field: "scrapQty", title: "Scrap Qty", width: 150
+                             field: "scrapQty", title: "Scrap Qty", width: 100
                          },
                          {
                              field: "operatorName", title: "Operator Name", width: 150
                          },
                          {
-                             field: "shiftID", title: "Shift ID", width: 150
+                             field: "shiftID", title: "Shift ID", width: 50
                          },
                          {
                              field: "remark", title: "Remarks", width: 150
@@ -1236,6 +1301,70 @@
         }
 
 
+
+        //'*******************************************************************
+        //'Title     :  maketable4
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    : to make QC Attachment
+        //********************************************************************
+        function makeAttachmentTable(data) {
+            // console.log("kendo data correct", data.slice(0));
+            //console.log("test maketable4", data);
+            var temp = data.slice(0);
+            document.getElementById("QCAttachmentTable").innerHTML = "";
+
+            for (var i = 0; i < data.length; i++) {
+                data[i]["index"] = (i + 1);
+            }
+
+
+            $("#QCAttachmentTable").kendoGrid(
+                {
+                    toolbar: ["excel"],
+                    excel: {
+                        fileName: "Kendo UI Grid Export.xlsx",
+                        filterable: true,
+                    },
+                    dataSource: {
+                        data
+                    },
+                    selectable: "true",
+                    columns: [
+                        {
+                            field: "index", title: "Index", width: 50
+                        },
+                        {
+                            field: "directory", title: "Directory", width: 150
+                        },
+                        {
+                            field: "filename", title: "Filename", width: 150
+                        },
+                        {
+                            field: "FileStatus", title: "FileStatus", width: 100
+                        },
+                        {
+                            field: "checkDate", title: "checkDate", width: 150
+                        },
+                        {
+                            field: "attachedDate", title: "attachedDate", width: 150
+                        },
+                        {
+                            field: "operatorName", title: "Operator Name", width: 150
+                        },
+                        {
+                            field: "approvedName", title: "Approved Name", width: 150
+                        }
+
+                    ]
+                })
+
+
+
+        }
+
+
         //'*******************************************************************
         //'Title     :  makeExecutionHistoryTable
         //'Function  :  
@@ -1248,7 +1377,7 @@
 
             //convertTime(["column7", "column8"], data)
             // console.log("table3 data after", data);
-
+            document.getElementById("history-table").innerHTML = "";
 
             for (var i = 0; i < data.length; i++) {
                 data[i]["index"] = (i + 1);
@@ -1300,5 +1429,67 @@
 
         }
 
+        $('input[type=file]').change(function () {
+            console.dir(this.files[0])
+        })
+
+
+        //************** time helper function**************************//
+        function secondsToHms(d) {
+            d = Number(d);
+            var h = Math.floor(d / 3600);
+            var m = Math.floor(d % 3600 / 60);
+            var s = Math.floor(d % 3600 % 60);
+
+            //var hDisplay = h > 0 ? h + (h == 1 ? " hour, " : " hours, ") : "";
+            //var mDisplay = m > 0 ? m + (m == 1 ? " minute, " : " minutes, ") : "";
+            //var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+            // return hDisplay + ":" + mDisplay + ":" + sDisplay;
+
+            return h + ":" + m + ":" + s;
+        }
+
+        //'*******************************************************************
+        //'Title     :  uploadFile
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    : function to upload file
+        //********************************************************************
+        $scope.uploadFile = function () {
+            var file = $scope.myFile;
+
+            console.log('file is ');
+            console.dir("uploadFile",file);
+
+            var uploadUrl = "/fileUpload";
+            uploadFileToUrl(file, uploadUrl);
+        };
+
+
+        function uploadFileToUrl(file, uploadUrl) {
+            var fd = new FormData();
+            fd.append('file', file);
+
+
+
+
+            $http.post(uploadUrl, fd, {
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined}
+            })
+            
+            .success(function (response) {
+                console.log("upload success",response);
+            })
+            
+            .error(function (response) {
+                console.log("upload error", response);
+            });
+        }
     }
 })();
+
+
+
+

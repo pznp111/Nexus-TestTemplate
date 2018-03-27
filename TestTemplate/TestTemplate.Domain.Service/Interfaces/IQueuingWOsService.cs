@@ -19,8 +19,42 @@ namespace TestTemplate.Domain.Service.Interfaces
         QueryResponse GenerateMcID();
         QueryResponse GenerateWOSplitList();
         QueryResponse GenerateWOListRelease();
+        QueryResponse GenerateScrapRemark();
 
 
+        
+        QueryResponse cmdUpdate_ClickCase15(MessagingService request);
+        QueryResponse cmdOnHold_ClickCase20_1(MessagingService request);
+        QueryResponse cmdOnHold_ClickCase20_2(MessagingService request);
+        QueryResponse cmdOnHold_ClickCase20_3(MessagingService request);
+        QueryResponse GenerateMcIDByWorkCenter(MessagingService request);
+        QueryResponse productionPauseCase20_1(MessagingService request);
+        QueryResponse productionPauseCase20_1_1(MessagingService request);
+        QueryResponse setupPauseCase20_1(MessagingService request);
+        QueryResponse cmdQCResume_ClickCase10(MessagingService request);
+
+        
+        QueryResponse QCPauseCase20_1(MessagingService request);
+        
+
+        QueryResponse productionPauseCase20_2(MessagingService request);
+        QueryResponse productionPauseCase20_3(MessagingService request);
+        QueryResponse cmdConfirm_ClickCase40_1(MessagingService request);
+        QueryResponse setupStopCase30_1(MessagingService request);
+        
+        QueryResponse setupStartCase40_1(MessagingService request);
+        QueryResponse setupStartCase40_2(MessagingService request);
+        QueryResponse setupStartCase40_2_1(MessagingService request);
+        QueryResponse setupStartCase40_3(MessagingService request);
+        QueryResponse setupStartCase40_4(MessagingService request);
+        QueryResponse setupStartCase40_5(MessagingService request);
+        QueryResponse setupStartCase40_6(MessagingService request);
+        QueryResponse cmdConfirm_ClickCase30_1(MessagingService request);
+        QueryResponse setupStopCase40_1(MessagingService request);
+        
+
+        QueryResponse GetGetSalesID(MessagingService request);
+        
         QueryResponse GenerateWOList1();
         QueryResponse GenerateWOList2();
         QueryResponse Generate_ReworkRemarkList();
@@ -45,36 +79,68 @@ namespace TestTemplate.Domain.Service.Interfaces
         QueryResponse GenerateFunctionLock();
 
 
-        QueryResponse fnGetUserAccessRight(MessagingService request);
-        QueryResponse setupStartCase40_1(MessagingService request);
-        QueryResponse setupStartCase40_2(MessagingService request);
-        QueryResponse setupStartCase40_3(MessagingService request);
-        QueryResponse setupStartCase40_4(MessagingService request);
-        QueryResponse setupStartCase40_5(MessagingService request);
-        QueryResponse setupStartCase40_6(MessagingService request);
 
-        QueryResponse ValidateOperatorName(MessagingService request);
+        
+        QueryResponse RemoveQCAttachment1(MessagingService request);
+        QueryResponse AddQCAttachment1(MessagingService request);
+
+        QueryResponse frmExecutionHistory1(MessagingService request);
+        QueryResponse frmExecutionHistory2(MessagingService request);
         QueryResponse setupStartCase10(MessagingService request);
-        QueryResponse fnMultipleWOEnableConfig(MessagingService request);
-        QueryResponse populateOperatorID(MessagingService request);
+        QueryResponse setupStartCase10_1(MessagingService request);
+        QueryResponse setupStartCase10_2(MessagingService request);
+        QueryResponse productionResumeCase10_1(MessagingService request);
+        QueryResponse productionResumeCase10_1_1(MessagingService request);
+        QueryResponse setupResumeCase10_1(MessagingService request);
+        
+        QueryResponse productionResumeCase10_2(MessagingService request);
+        QueryResponse productionResumeCase10_3(MessagingService request);
+        QueryResponse productionResumeCase10_4(MessagingService request);
+        QueryResponse productionStopCase10_1(MessagingService request);
+        QueryResponse productionStopCase10_2(MessagingService request);
+        QueryResponse QCStopCase10_2(MessagingService request);
+        
+        QueryResponse productionStopCase10_3(MessagingService request);
+        QueryResponse fnValidateUserNameMCAssign(MessagingService request);
+        QueryResponse fnCheckPriorityConfig(MessagingService request);
+        QueryResponse GenerateSubAssemblyWOList(MessagingService request);
         QueryResponse GenerateQueuingWOList1(MessagingService request);
         QueryResponse GenerateQueuingWOList2(MessagingService request);
+        QueryResponse GenerateQueuingWOList3(MessagingService request);
+        QueryResponse GenerateQueuingWOList4(MessagingService request);
         QueryResponse CalculateTimeSpan1(MessagingService request);
         QueryResponse CalculateTimeSpan2(MessagingService request);
         QueryResponse CalculateTimeSpan3(MessagingService request);
+        QueryResponse CalculateTimeSpan3_1(MessagingService request);
+        QueryResponse CalculateTimeSpan4(MessagingService request);
+        QueryResponse CalculateTimeSpan5(MessagingService request);
+        QueryResponse CalculateTimeSpan6(MessagingService request);
+        QueryResponse CalculateTimeSpan7(MessagingService request);
+        QueryResponse CalculateTimeSpan7_1(MessagingService request);
+        QueryResponse CheckSubconWOOpnStatus(MessagingService request);
+        QueryResponse CalculateSubconTimeSpan(MessagingService request);
+        
+
+
         QueryResponse fnTrackSetupConfig(MessagingService request);
         QueryResponse CheckWOOpnStatus1(MessagingService request);
         QueryResponse CheckWOOpnStatus2(MessagingService request);
+        QueryResponse CheckQCWOOpnStatus1(MessagingService request);
+        QueryResponse CheckQCWOOpnStatus2(MessagingService request);
+        QueryResponse CheckWOOpnStatus2_1(MessagingService request);
         QueryResponse CheckWOOpnStatus3(MessagingService request);
+        QueryResponse CheckWOOpnStatus3_1(MessagingService request);
         QueryResponse UpdateQtyFromPreviousProcOpSeq1(MessagingService request);
         QueryResponse UpdateQtyFromPreviousProcOpSeq2(MessagingService request);
 
         QueryResponse comboWO_Selected_wotraking(MessagingService request);
+        QueryResponse comboWO_Selected_wotraking1(MessagingService request);
         QueryResponse fnUpdateRoute(MessagingService request);
         QueryResponse getWOdetail(MessagingService request);
         QueryResponse FunctionUnLockWO(MessagingService request);
         QueryResponse FunctionUnLockFunction(MessagingService request);
 
+        QueryResponse fnGetUserAccessRight(MessagingService request);
         QueryResponse releasedReportSearch(MessagingService request);
         QueryResponse BackupHMLVTSByYear(MessagingService request);
         QueryResponse populateWOinfoTable1(MessagingService request);
@@ -98,9 +164,12 @@ namespace TestTemplate.Domain.Service.Interfaces
         QueryResponse Generate_RouteDetail1(MessagingService request);
         QueryResponse Generate_RouteDetail2(MessagingService request);
         QueryResponse Generate_RouteDetail3(MessagingService request);
+        QueryResponse CalculateDuration1(MessagingService request);
+        QueryResponse CalculateDuration2(MessagingService request);
+        QueryResponse CalculateQCDuration(MessagingService request);      
+        QueryResponse CalculateDuration3(MessagingService request);
 
-        QueryResponse frmExecutionHistory1(MessagingService request);
-        QueryResponse frmExecutionHistory2(MessagingService request);
+
         //scrap
         QueryResponse GenerateWOList3(MessagingService request);
         QueryResponse GenerateWOList4(MessagingService request);
@@ -126,8 +195,37 @@ namespace TestTemplate.Domain.Service.Interfaces
         QueryResponse splitReport1(MessagingService request);
         QueryResponse splitReport2(MessagingService request);
         QueryResponse splitReport3(MessagingService request);
-        
 
+
+
+
+        QueryResponse cmdUpdateReceived_ClickCase7(MessagingService request);
+        QueryResponse cmdUpdateReceived_ClickCase10_1(MessagingService request);
+        QueryResponse cmdScrap_ClickCase10_1(MessagingService request);        
+        QueryResponse cmdUpdateReceived_ClickCase10_1_1(MessagingService request);
+        QueryResponse cmdUpdateReceived_ClickCase10_2(MessagingService request);
+        QueryResponse cmdUpdateReceived_ClickCase30(MessagingService request);
+
+        QueryResponse cmdUpdateReceived_ClickCase80_1(MessagingService request);
+        QueryResponse cmdUpdateReceived_ClickCase80_2(MessagingService request);
+        QueryResponse cmdUpdateReceived_ClickCase95_1(MessagingService request);
+        QueryResponse cmdUpdateReceived_ClickCase95_2(MessagingService request);
+        QueryResponse cmdUpdateReceived_ClickCase95_3(MessagingService request);
+        QueryResponse UpdateWorkOrderQty(MessagingService request);
+        QueryResponse CheckAnyChildNotCompleted1(MessagingService request);
+        QueryResponse CheckAnyChildNotCompleted2(MessagingService request);
+        QueryResponse CheckAnyChildNotCompleted3(MessagingService request);
+        QueryResponse CheckAnyChildNotCompleted4(MessagingService request);
+        QueryResponse CheckAnyChildNotCompleted5(MessagingService request);
+        QueryResponse CheckAnyChildNotCompleted6(MessagingService request);
+        QueryResponse CheckAnyChildNotCompleted7(MessagingService request);
+        QueryResponse CheckAnyChildNotCompleted8(MessagingService request);
+        QueryResponse CheckAnyChildNotCompleted9(MessagingService request);
+        QueryResponse CheckAnyChildNotCompleted10(MessagingService request);
+        QueryResponse CheckAnyChildNotCompleted11(MessagingService request);
+        QueryResponse CheckAnyChildNotCompleted12(MessagingService request);
+        QueryResponse CheckAnyChildNotCompleted13(MessagingService request);
+        
 
 
         QueryResponse ConfirmGCReorder(MessagingService request);
@@ -171,6 +269,7 @@ namespace TestTemplate.Domain.Service.Interfaces
         QueryResponse addWORouteQC(MessagingService request);
         QueryResponse addWORouteQC2(MessagingService request);
         QueryResponse addWORouteCurrent(MessagingService request);
+        QueryResponse addWORouteNext(MessagingService request);  
         QueryResponse addWOExe1(MessagingService request);
         QueryResponse addWOExe2(MessagingService request);
         QueryResponse addWOExe3(MessagingService request);
@@ -272,10 +371,89 @@ namespace TestTemplate.Domain.Service.Interfaces
 
         QueryResponse spGenerateDynamicWOStatusList();
         QueryResponse spGenerateDynamicWOStatusListStatement(MessagingService request);
+
+        QueryResponse spGenerateDynamic12(MessagingService request);
+        QueryResponse spGenerateDynamic13(MessagingService request);
+        QueryResponse spGenerateDynamic14(MessagingService request);
+        QueryResponse spGenerateDynamic2(MessagingService request);
+        QueryResponse spGenerateDynamic3(MessagingService request);
+        QueryResponse spGenerateDynamic4(MessagingService request);
+        QueryResponse spGenerateDynamic5(MessagingService request);
+        QueryResponse spGenerateDynamic6(MessagingService request);
+        QueryResponse spGenerateDynamic7(MessagingService request);
+        QueryResponse spGenerateDynamic8(MessagingService request);
+        QueryResponse spGenerateDynamic9(MessagingService request);
+        QueryResponse spGenerateDynamic10(MessagingService request);
+        QueryResponse spGenerateDynamic11(MessagingService request);
+        QueryResponse spGenerateDynamic1(MessagingService request);
+
+
         QueryResponse spGenerateDynamicWOStatusListStatement1(MessagingService request);
         QueryResponse spGenerateDynamicWOStatusListStatement2();
         QueryResponse spGenerateDynamicWOStatusListStatement3();
 
+        QueryResponse getCurrentWorkOrderByMcID(MessagingService request);
+        QueryResponse ScrapbutConfirm_Click1(MessagingService request);
+        QueryResponse ScrapbutConfirm_Click2(MessagingService request);
+        QueryResponse ScrapbutConfirm_Click3(MessagingService request);
+
+        QueryResponse btnCancelWO_ClickCase20_1(MessagingService request);
+        QueryResponse btnCancelWO_ClickCase20_2(MessagingService request);
+        QueryResponse btnCancelWO_ClickCase20_2_1(MessagingService request);
+        QueryResponse btnCancelWO_ClickCase30_1(MessagingService request);
+        QueryResponse btnCancelWO_ClickCase30_1_1(MessagingService request);
+        QueryResponse btnCancelWO_ClickCase40_1(MessagingService request);
+        QueryResponse btnCancelWO_ClickCase40_2(MessagingService request);
+        QueryResponse btnCancelWO_ClickCase40_3(MessagingService request);
+        QueryResponse butConfirm_Click1(MessagingService request);
+        QueryResponse butConfirm_Click2(MessagingService request);
+        QueryResponse butConfirm_Click3(MessagingService request);
+        QueryResponse Generate_WOSplitDetail(MessagingService request);
+        QueryResponse CheckAnyChildNotCompletedOwn1(MessagingService request);
+        QueryResponse CheckAnyChildNotCompletedOwn2(MessagingService request);
+        QueryResponse GenerateOperatorList(MessagingService request);
+        QueryResponse cmdConfirm_ClickCase10(MessagingService request);
+        QueryResponse GetCurrentShiftID(MessagingService request);
+        QueryResponse GenerateQCEquipmentList(MessagingService request);
+        QueryResponse GenerateSeletedQCEquipmentList(MessagingService request);
+        QueryResponse cmdAdd_Click(MessagingService request);
+        QueryResponse cmdDelete_Click(MessagingService request);
+
+        QueryResponse fnUpdateOperator1(MessagingService request);
+        QueryResponse fnUpdateOperator2(MessagingService request);
+        QueryResponse fnUpdateOperator3(MessagingService request);
+        QueryResponse fnUpdateOperator4(MessagingService request);
+        QueryResponse fnUpdateOperator5(MessagingService request);
+        QueryResponse fnUpdateOperator6(MessagingService request);
+        QueryResponse fnUpdateOperator7(MessagingService request);
+        QueryResponse CheckWOReady1(MessagingService request);
+        QueryResponse CheckWOReady2(MessagingService request);
+        QueryResponse CheckWOReady3(MessagingService request);
+        QueryResponse populateOperatorID(MessagingService request);
+        QueryResponse fnUpdateWOExecution(MessagingService request);
+        QueryResponse fnUpdateWOExecution1(MessagingService request);
+        QueryResponse fnUpdateWOExecution2(MessagingService request);
+        QueryResponse fnUpdateWOExecution3(MessagingService request);
+        QueryResponse getOperatorName(MessagingService request);
+        QueryResponse fnAddFGInventory1(MessagingService request);
+        QueryResponse fnAddFGInventory2(MessagingService request);
+
+
+
+
+
+
+        QueryResponse GenerateQCWOList();
+
+
+
+
+
+
         String hashPassWord(String password);
+
+
+
+       
     }
 }

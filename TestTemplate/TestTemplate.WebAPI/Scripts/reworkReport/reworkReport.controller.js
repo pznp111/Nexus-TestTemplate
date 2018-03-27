@@ -51,6 +51,9 @@
             });
         });
 
+        $("#toolbar_rework").hide();
+        $("#toolbar_wodetail").hide();
+        $("#main-container-page").css('margin-top', 0)
         onload();
 
         function onload() {
@@ -280,23 +283,24 @@
                 //    }
                 //},
                 dataSource: {
-                    data,
-                    pageSize: 20
+                    data
+                    //,
+                    //pageSize: 20
                 },
                 dataType: "json",
-                height: 550,
-                pageable: {
-                    refresh: true,
-                    pageSizes: true,
-                    buttonCount: 5
-                },
+                height: 350,
+                //pageable: {
+                //    refresh: true,
+                //    pageSizes: true,
+                //    buttonCount: 5
+                //},
                 dragAndDrop: true,
-                pageable: true,
+               // pageable: true,
 
                 //pageSize: 10,
-                // sortable: true,
+                //fd sortable: true,
                 resizable: true,
-                pageable: true,
+                //pageable: true,
                 //groupable: true,
                 filterable: true,
                 columnMenu: true,
@@ -311,7 +315,7 @@
 
                  },
                  {
-                     field: "woid", title: "Work Order", width: 150
+                     field: "woid", title: "Work Order", width: 120
 
                  },
 
@@ -329,10 +333,10 @@
                      field: "routeName", title: "Route Name", width: 150
                  },
                   {
-                      field: "procOpSeq", title: "Proc Op Seq", width: 150
+                      field: "procOpSeq", title: "Proc Op Seq", width: 80
                   },
                   {
-                      field: "opSeq", title: "Op Seq", width: 150
+                      field: "opSeq", title: "Op Seq", width: 80
                   },
                  {
                      field: "reworkStartWC", title: "Rework Start Work Centre", width: 200

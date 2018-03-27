@@ -32,7 +32,8 @@
         $('#endDate').val(new Date("2017-05-31").toDateInputValue());
         // $('#endDate').val(new Date().toDateInputValue());
 
-
+        $("#toolbar_rework").hide();
+        $("#toolbar_wodetail").hide();
 
 
         //'*******************************************************************
@@ -46,11 +47,11 @@
             var startDate = $('#startDate').val();
             var endDate = $('#endDate').val();
             var promiseArray = [];
-
+            console.log("date",startDate + " " + endDate);
             promiseArray.push(
             $http.post(config.baseUrlApi + 'HMLVTS/BackupHMLVTSByYear', {
                 "StartDate": startDate,
-                "EndDate": endDate
+                "Type": endDate
             })
                 );
 

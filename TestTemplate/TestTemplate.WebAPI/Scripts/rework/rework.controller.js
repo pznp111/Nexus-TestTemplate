@@ -33,6 +33,11 @@
         }, []);
         $('canvas').remove();
 
+
+        $("#toolbar_rework").show();
+        $("#toolbar_wodetail").hide();
+        $("#main-container-page").css('margin-top', 0)
+
         console.log("authService",authService);
         GenerateWOListRework();
 
@@ -138,7 +143,7 @@
 
 
         function createSelectOnTable6(row) {
-            //console.log("itemName", itemName);
+            console.log("createSelectOnTable6 row", row);
            // console.log("rawdata", rawData);
             //var myDiv = document.getElementById("select_" + itemName);
             //myDiv.innerHTML = "";
@@ -212,12 +217,12 @@
 
             // to collect data from table6, table6 contains a lot of selector values that might be different from table5, store result in finalData
             var tbody = $('tbody');
-           // console.log("makeTable6DropDown", tbody[4]);
+            console.log("makeTable6DropDown tbody", tbody);
 
             //  console.log("makeTable6DropDown", $(tbody[4]).children() );
             var finalData = [];
             var row = 0;
-            for (var i = 0; i < $(tbody[4]).children().children().length; i++) {
+            for (var i = 0; i < $(tbody[5]).children().children().length; i++) {
                // var row = Math.round(i / 6);
                 var rowData = [];
 
@@ -226,25 +231,25 @@
                     finalData.push([]);
                     console.log(row );
                     console.log(finalData);
-                    var div = $($(tbody[4]).children().children()[i]);
+                    var div = $($(tbody[5]).children().children()[i]);
                     var content = String(div.html()).trim();
                     finalData[row]["procOpSeq"] = content;
                    // alert("1");
                 }
 
                 if (i % 6 == 1) {
-                    var div = $($(tbody[4]).children().children()[i]);
+                    var div = $($(tbody[5]).children().children()[i]);
                     var content = String(div.html()).trim();
                     finalData[row]["workCentre"] = content;
                     //alert("2");
                 }
                 if (i % 6 == 2) {
-                    var div = $($(tbody[4]).children().children()[i]);
+                    var div = $($(tbody[5]).children().children()[i]);
                     var content = String(div.html()).trim();
                     finalData[row]["opSeq"] = content;
                 }
                 if (i % 6 == 3) {
-                    var div = $($(tbody[4]).children().children()[i]);
+                    var div = $($(tbody[5]).children().children()[i]);
 
                     if(div.children().length !=0){ // if got select
                         var selector_id = $(div.children()[0]).attr("id");
@@ -261,16 +266,18 @@
                     
                 }
                 if (i % 6 == 4) {
-                    var div = $($(tbody[4]).children().children()[i]);
+                    var div = $($(tbody[5]).children().children()[i]);
                     var content = String(div.html()).trim();
                     finalData[row ]["mctype"] = content;
                 }
 
                 if (i % 6 == 5) {
-                    var div = $($(tbody[4]).children().children()[i]);
+                    var div = $($(tbody[5]).children().children()[i]);
 
                     var cb = $(div.children()[0]);
 
+                    console.log("save check div", div);
+                    console.log("save check cb", cb);
                     if( cb.is(":checked")){
                         finalData[row ]["checked"] = true;
                     } else{
@@ -307,7 +314,14 @@
             
             if (isSaveValid) {
 
-                console.log("save",$scope.selectedWO+" "+ $scope.strExecProcOpSeq);
+                console.log("save", $scope.selectedWO + " " + $scope.strExecProcOpSeq);
+                    //                command = "Select distinct WOID, PartID, ActualRecQty, "
+                    //+ "CONVERT(VARCHAR(19), ActualRecDate, 120) AS ActualRecDate, CompletedQty, "
+                    //+ "CONVERT(VARCHAR(19), CompletedDate,  120) AS CompletedDate, OutstandingQty, "
+                    //+ "CONVERT(VARCHAR(19), OutstandingDate, 120) AS OutstandingDate "
+                    //+ "from TS_WorkOrderExecution "
+                    //+ "where WOID = '" + selectedWO + "' "
+                    //+ "AND ProcOpSeq = '" + strExecProcOpSeq + "'";//saveRework1
                 promiseArray.push(
                      $http.post(config.baseUrlApi + 'HMLVTS/saveRework1', {
                          "WOID": String($scope.selectedWO).trim(),
@@ -335,14 +349,20 @@
 
             }
 
-           // todo: enable them
+            //// Delete TS_Execution
             if ($scope.CurProcOpSeq == "" || $scope.CurProcOpSeq == 0) {
+                //"Delete from TS_WorkOrderExecution "
+                //        + "Where WOID = '" + selectedWO + "'"
+                console.log("save.1");
                 promiseArray2.push(
                      $http.post(config.baseUrlApi + 'HMLVTS/saveRework2', {
                          "WOID": String($scope.selectedWO).trim()
                      })
                     );
             } else {
+                //"Delete from TS_WorkOrderExecution "
+                //        + "Where WOID = '" + selectedWO + "' And ProcOpSeq > " + int.Parse(CurProcOpSeq);
+                console.log("save.2");
                 promiseArray2.push(
                      $http.post(config.baseUrlApi + 'HMLVTS/saveRework3', {
                          "WOID": String($scope.selectedWO).trim(),
@@ -352,12 +372,18 @@
             }
 
             if ($scope.CurProcOpSeq == "" || $scope.CurProcOpSeq == 0) {
+            //    "Delete from TS_WorkOrderRoute "
+                //            + "Where WOID = '" + selectedWO + "'";
+                console.log("save.3");
                 promiseArray7.push(
                      $http.post(config.baseUrlApi + 'HMLVTS/saveRework4', {
                          "WOID": String($scope.selectedWO).trim()
                      })
                     );
             } else {
+                //"Delete from TS_WorkOrderRoute "
+                //        + "Where WOID = '" + selectedWO + "' And ProcOpSeq > " + int.Parse(CurProcOpSeq);
+                console.log("save.4");
                 promiseArray7.push(
                      $http.post(config.baseUrlApi + 'HMLVTS/saveRework5', {
                          "WOID": String($scope.selectedWO).trim(),
@@ -367,7 +393,9 @@
             }
 
 
-           //  todo: enable
+            //  todo: enable
+            console.log("save promiseArray2", promiseArray2);
+            console.log("save promiseArray7", promiseArray7);
             $q.all(promiseArray2).then(function (response) {
                 console.log("save promiseArray2 result",response);
             });
@@ -405,8 +433,9 @@
 
             k = strReRouteStart.indexOf(",");
             ReRouteStart = strReRouteStart.substring(((strReRouteStart.indexOf(",")) + 1), strReRouteStart.length);
+            console.log("save ReRouteStart", ReRouteStart);
           //  alert(strReRoute);
-            console.log($scope.workCenterArray);
+            console.log("save workCennterArray",$scope.workCenterArray);
             var boolSelectValue = false;
 
             for (var i = 0; i < finalData.length; i++) {
@@ -457,6 +486,14 @@
                                  })
                                 );
 
+                            //"Select WOID, RouteID,SeqNo, CentreID, MacCode, "
+                            //                + "MacType, Remark,MacGroup,AttributeGroup "
+                            //                + "From WorkorderMac "
+                            //                + "where WOID = " + "'" + selectedWO + "' "
+                            //                + " and RouteID = " + "'" + comboAllRoutesID.Text.Trim() + "' "
+                            //                + " and SeqNo = " + m
+                            //                + " and CentreID =  " + "'" + WorkCenterID + "' ";
+
                             McID = "";
                         }
 
@@ -475,7 +512,8 @@
                         });
 
 
-                        if (($scope.CurProcOpSeq == "") || ($scope.CurProcOpSeq == "0")) {
+                        console.log("save CurProcOpSeq", $scope.CurProcOpSeq);
+                        if (($scope.CurProcOpSeq == "") || ($scope.CurProcOpSeq == "0") || $scope.CurProcOpSeq == 0) {
                             
                             var comboAllRoutesName = String($('#select_workroute option:selected').text()).replace("'", "''").trim();
                             if (comboAllRoutesName == "") {
@@ -485,6 +523,7 @@
                             var comboAllRoutesID = findInDirectory(comboAllRoutesName);
                             if (MacGroupValue == "") {
                                 //saveReworkMac1
+                                console.log("save.5");
                                 promiseArray8.push(
                                 $http.post(config.baseUrlApi + 'HMLVTS/saveReworkMac1', {
                                     "WOID": String($scope.selectedWO).trim(),
@@ -498,8 +537,19 @@
                                     "AttributeGroup": AttributeGroup
                                 })
                                );
+
+                                        //"Insert into TS_WorkOrderRoute "
+                                        //+ "( WOID, WorkCenter, RouteID, ProcOpSeq, OpSeq, McID, McType, PrioritizedNo, RouteName, "
+                                        //+ " MacGroup, AttributeGroup ) "
+                                        //+ "VALUES ('" + selectedWO + "','" + WorkCenterID + "', "
+                                        //+ "'" + comboAllRoutesID.Text + "'," + m
+                                        //+ "," + int.Parse(ReRouteSpreadOpSeq) + ",'" + McID + "','" + McType + "', "
+                                        //+ "'9999', " //gh 2014Apr10
+                                        //+ "'" + comboAllRoutesName.Text.Replace(@"'", @"''") + "', " //gh 2016May10
+                                        //+ "'" + DBNull.Value + "', '" + AttributeGroup + "')";
                             } else {
                                 //saveReworkMac2
+                                console.log("save.6");
                                 promiseArray8.push(
                                 $http.post(config.baseUrlApi + 'HMLVTS/saveReworkMac2', {
                                     "WOID": String($scope.selectedWO).trim(),
@@ -514,9 +564,19 @@
                                     "AttributeGroup": AttributeGroup
                                 })
                                );
+                                //"Insert into TS_WorkOrderRoute "
+                                //        + "( WOID, WorkCenter, RouteID, ProcOpSeq, OpSeq, McID, McType, PrioritizedNo, RouteName, "
+                                //        + " MacGroup, AttributeGroup ) "
+                                //        + "VALUES ('" + selectedWO + "','" + WorkCenterID + "', "
+                                //        + "'" + comboAllRoutesID.Text + "'," + m
+                                //        + "," + int.Parse(ReRouteSpreadOpSeq) + ",'" + McID + "','" + McType + "', "
+                                //        + "'9999', "//gh 2014Apr10
+                                //        + "'" + comboAllRoutesName.Text.Replace(@"'", @"''") + "', " //gh 2016May10
+                                //        + "'" + int.Parse(MacGroupValue) + "', '" + AttributeGroup + "')";
                             }
                         } else {
                             if (MacGroupValue == "") {
+                                console.log("save.7");
                                 //saveReworkMac1
                                 promiseArray8.push(
                                 $http.post(config.baseUrlApi + 'HMLVTS/saveReworkMac1', {
@@ -533,6 +593,7 @@
                                );
                             } else {
                                 //saveReworkMac4
+                                console.log("save.8");
                                 promiseArray8.push(
                                 $http.post(config.baseUrlApi + 'HMLVTS/saveReworkMac2', {
                                     "WOID": String($scope.selectedWO).trim(),
@@ -591,7 +652,7 @@
                             tableCompletedQty + " " + tableCompletedDate + " " + tableOutstandingQty + " " + tableOutstandingDate + " " + McID + " " + McType + " " + comboAllRoutesID
                             + " " + WorkCenterID + " " + m + " " + ReRouteSpreadOpSeq
                             );
-                        if (($scope.CurProcOpSeq == "") || ($scope.CurProcOpSeq == "0")) {
+                        if (($scope.CurProcOpSeq == "") || ($scope.CurProcOpSeq == "0") || $scope.CurProcOpSeq == 0) {
                             //line 1093
                             promiseArray4.push(
                                  $http.post(config.baseUrlApi + 'HMLVTS/saveRework7', {
@@ -981,25 +1042,25 @@
         function makeTable6DropDown() {
             console.log("makeTable6DropDown maidlist", $scope.maIDList);
             var tbody = $('tbody');
-            console.log("makeTable6DropDown", tbody[4]);
+            console.log("makeTable6DropDown", tbody[5]);
 
-            console.log("makeTable6DropDown", $(tbody[4]).children());
+            console.log("makeTable6DropDown", $(tbody[5]).children());
             document.getElementById("select_wcseq").innerHTML = "";
             var workCenterArray = [];
             var single = "";
-            for (var i = 0; i < $(tbody[4]).children().children().length; i++) {
+            for (var i = 0; i < $(tbody[5]).children().children().length; i++) {
 
                 var row = Math.round(i / 6);
                 
                 
                 if(i % 6 == 1){
-                    var div = $($(tbody[4]).children().children()[i]);
+                    var div = $($(tbody[5]).children().children()[i]);
                     var content = String(div.html()).trim();
                     console.log("makeTable6DropDown div1", "!" + content + "!");
                     single = single + content;
                 }
                 if (i % 6 == 2) {
-                    var div = $($(tbody[4]).children().children()[i]);
+                    var div = $($(tbody[5]).children().children()[i]);
                     var content = String(div.html()).trim();
                     console.log("makeTable6DropDown div1", "!" + content + "!");
                    
@@ -1013,11 +1074,13 @@
 
                 if (i % 6 == 3) {
                    // $("#select_workroute").val($scope.currentRoute);
-                    var div = $($(tbody[4]).children().children()[i]);
+                    var div = $($(tbody[5]).children().children()[i]);
                     console.log("makeTable6DropDown row",row);
                     console.log("makeTable6DropDown div lah","!"+ String(div.html()).trim()+"!");
                     if ($scope.maIDList[row - 1].length > 1 && String(div.html()).trim() != "") {
                         var selector = createSelectOnTable6(row);
+                        console.log("makeTable6DropDown selector row", row);
+                        console.log("makeTable6DropDown selector",selector);
                         $(selector).val(String(div.html()).trim());
                         div.empty();
                         div.append(selector);
@@ -1025,7 +1088,7 @@
 
                 }
                 if (i % 6 == 5) {
-                    var div = $($(tbody[4]).children().children()[i]);
+                    var div = $($(tbody[5]).children().children()[i]);
                     var checkbox = document.createElement("input");
                     checkbox.setAttribute("type", "checkbox");
                     checkbox.setAttribute("name","check_"+row);
@@ -1195,6 +1258,15 @@
 
             }
 
+
+            //debug
+            if (tableIndex == "5") {
+                console.log("makeTable5_6 data 5",data);
+            }
+            if (tableIndex == "6") {
+                console.log("makeTable5_6 data 6",data);
+            }
+
             
             var comboRouteID;
 
@@ -1205,7 +1277,7 @@
                
                 for (var j = 0; j < data.length; j++) {
 
-                    if (j == 0 && $scope.CurProcOpSeq == "0") {
+                    if (j == 0 && ($scope.CurProcOpSeq == "0"|| $scope.CurProcOpSeq == 0) ) {
                         var CurRouteID = data[j]["routeID"];
                         alert(CurRouteID + " 1");
                         //$("#current-route").val(CurRouteID);
@@ -1263,7 +1335,7 @@
                 dataSource: data,
                 dataType: "json",
                 selectable: "true",
-                height: 550,
+                height: 350,
 
                 //pageSize: 10,
                 sortable: true,
@@ -1325,6 +1397,7 @@
         //'Remark    :
         //'*******************************************************************
         function remaketable6(data) {
+            console.log("table6 data",data);
          //   var promiseArray1 = [];
 
             for (var i = 0; i < data.length;i++){
@@ -1341,7 +1414,7 @@
                 dataSource: data,
                 dataType: "json",
                 selectable: "true",
-                height: 550,
+                height: 350,
 
                 //pageSize: 10,
                 sortable: true,
@@ -1407,7 +1480,7 @@
                 },
                 dataType: "json",
                 selectable: "true",
-                height: 550,
+                height: 350,
                 pageable: {
                     refresh: true,
                     pageSizes: true,
@@ -1530,20 +1603,34 @@
 
 
                 if (response[0].data.result.length != 0) {
-                  //  var data1 = strGetOperatorName(response[0].data.result, selectedWO);
+                    //  var data1 = strGetOperatorName(response[0].data.result, selectedWO);
                     //  makeTable5(data1);
                     
                     makeTable5_6(response[0].data.result, selectedWO, "5");
 
                     //console.log("hahaha",$scope.Directory);
-                   // alert("before making table 6" + $scope.isTable6Valid);
+                    // alert("before making table 6" + $scope.isTable6Valid);
                     var data = response[0].data.result;
                     var tempdata = [];
+                    if (data.length != 0) {
+                        var opseq = data[0]['opSeq'];
                     for (var i = 0; i < data.length; i++) {
-                        if (data[i]["procOpSeq"] == data[i]["opSeq"]) {
+                        if(i == 0){
                             tempdata.push(data[i]);
+                        } else { 
+
+                            if(data[i]['opSeq'] != opseq){
+                                tempdata.push(data[i]);
+                            }
+                            
                         }
+                        opseq = data[i]['opSeq'];
+                        
+                        //if (data[i]["procOpSeq"] == data[i]["opSeq"]) {
+                        //    tempdata.push(data[i]);
+                        //}
                     }
+                }
                     data = tempdata;
                     makeTable5_6(data, selectedWO, "6");
                     // ProductTable6();
@@ -1784,7 +1871,7 @@
                     }
                 }
 
-                if (CurProcOpSeq == 0 || CurProcOpSeq == "0") {
+                if (CurProcOpSeq == 0 || CurProcOpSeq == "0" || CurProcOpSeq == 0) {
                     $scope.comboProblemProcess = false;
                     $("#select_comboProblemProcess").attr("disabled", "disabled");
                 } else {
@@ -1852,17 +1939,24 @@
                     //$scope.table1 = $.merge($scope.table1, response[0].data.result[0]);
                     //combineJson(response[0].data.result);
                     //$scope.table1.concat(response[0].data.result[0]);
-                    var span1 = document.createTextNode(response[0].data.result[0]["partID"]);
-                    var div1 = document.getElementById("table1-td1");
-                    div1.appendChild(span1);
+                    if (response[0].data.result[0]["partID"] != undefined && response[0].data.result[0]["partID"] != null) {
+                        var span1 = document.createTextNode(response[0].data.result[0]["partID"]);
+                        var div1 = document.getElementById("table1-td1");
+                        div1.appendChild(span1);
+                    }
 
-                    var span2 = document.createTextNode(response[0].data.result[0]["toolDescription"]);
-                    var div2 = document.getElementById("table1-td2");
-                    div2.appendChild(span2);
+                    if (response[0].data.result[0]["toolDescription"] != undefined && response[0].data.result[0]["toolDescription"] != null) {
+                        var span2 = document.createTextNode(response[0].data.result[0]["toolDescription"]);
+                        var div2 = document.getElementById("table1-td2");
+                        div2.appendChild(span2);
+                    }
 
-                    var span3 = document.createTextNode(response[0].data.result[0]["plannerRemark"]);
-                    var div3 = document.getElementById("table1-td3");
-                    div3.appendChild(span3);
+                    if (response[0].data.result[0]["plannerRemark"] != undefined && response[0].data.result[0]["plannerRemark"] != null) {
+                        var span3 = document.createTextNode(response[0].data.result[0]["plannerRemark"]);
+                        var div3 = document.getElementById("table1-td3");
+                        div3.appendChild(span3);
+                    }
+
                 }
                 
 
@@ -1872,10 +1966,13 @@
                         //$scope.table1 = $.merge($scope.table1, response[0].data.result[0]);
                         // $scope.table1.concat(response[0].data.result[0]);
                         //combineJson(response[0].data.result);
-                        var span4 = document.createTextNode(response[0].data.result[0]["remark"]);
-                        var div4 = document.getElementById("table1-td4");
-                        div4.setAttribute("style", "color:red;");
-                        div4.appendChild(span4);
+                        if (response[0].data.result[0]["remark"] != undefined && response[0].data.result[0]["remark"] != null) {
+                            var span4 = document.createTextNode(response[0].data.result[0]["remark"]);
+                            var div4 = document.getElementById("table1-td4");
+                            div4.setAttribute("style", "color:red;");
+                            div4.appendChild(span4);
+                        }
+
                     }
 
 
@@ -1896,17 +1993,24 @@
                                 //$scope.table1.concat(response[0].data.result[0]);
                                 //$scope.table1 = $.merge($scope.table1, response[0].data.result[0]);
                                 // combineJson(response[0].data.result);
-                                var span6 = document.createTextNode(response[0].data.result[0]["poNumber"]);
-                                var div6 = document.getElementById("table1-td6");
-                                div6.appendChild(span6);
+                                if (response[0].data.result[0]["poNumber"] != undefined && response[0].data.result[0]["poNumber"] != null) {
+                                    var span6 = document.createTextNode(response[0].data.result[0]["poNumber"]);
+                                    var div6 = document.getElementById("table1-td6");
+                                    div6.appendChild(span6);
+                                }
 
-                                var span7 = document.createTextNode(response[0].data.result[0]["lineNumber"]);
-                                var div7 = document.getElementById("table1-td7");
-                                div7.appendChild(span7);
+                                if (response[0].data.result[0]["lineNumber"] != undefined && response[0].data.result[0]["lineNumber"] != null) {
+                                    var span7 = document.createTextNode(response[0].data.result[0]["lineNumber"]);
+                                    var div7 = document.getElementById("table1-td7");
+                                    div7.appendChild(span7);
+                                }
 
-                                var span8 = document.createTextNode(response[0].data.result[0]["soRemark"]);
-                                var div8 = document.getElementById("table1-td8");
-                                div8.appendChild(span8);
+
+                                if (response[0].data.result[0]["soRemark"] != undefined && response[0].data.result[0]["soRemark"] != null) {
+                                    var span8 = document.createTextNode(response[0].data.result[0]["soRemark"]);
+                                    var div8 = document.getElementById("table1-td8");
+                                    div8.appendChild(span8);
+                                }
                             }
                             //console.log("GlobalGenerateWODetail table", $scope.table1);
                         });

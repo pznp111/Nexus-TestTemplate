@@ -24,14 +24,14 @@
         'erp.customer',
         'erp.myCompany',
         'erp.review',
-       // 'erp.configuration',
+        'erp.configuration',
         'erp.report',
         //'erp.multiple',
         'erp.priority',
         'erp.split',
         'erp.rework',
         'erp.dispatch',
-       // 'erp.trackingReport',
+        'erp.trackingReport',
         'erp.hashPassword',
         'erp.customisedOperatorReport',
         'erp.threejs',
@@ -42,11 +42,15 @@
         //'erp.releasedReport',
         'erp.reworkReport',
         'erp.scrapReport',
-       // 'erp.backup',
+        'erp.backup',
         'erp.wostatus',
         'erp.releasedReport',
         'erp.lockReport',
-        'erp.wotracking'
+        'erp.wotracking',
+        'erp.qctracking',
+        'erp.dashboardDemo'
+        //,
+        //'erp.mctDashboard'
 
     ]);
 })();

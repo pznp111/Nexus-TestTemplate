@@ -7,7 +7,7 @@
 
     angular.module('nexusNg.auth', [])
         .constant('nexusConfig', {
-            baseUrlNexusApi: 'http://st-linxl-nb:99/api/',
+            baseUrlNexusApi: 'http://localhost:99/api/',
             loginNgUrl: 'login',
             homepageNgUrl: 'home',
             openUrl: [

@@ -19,20 +19,20 @@
         <div class="row row-margin">
 
 
-            <div class="col-md-6 " >
+            <div class="col-md-3 " >
 
-                <div class="panel panel-default">
+                <div class="panel panel-default full-height">
                             <div class="panel-heading">
                                 <h3 class="panel-title" style="color:#2e2e2e;">By Work Center and/or Machine ID</h3>
                             </div>
                 <div class ="panel-body">
-                    <form class ="form-horizontal">
-                      <div class ="form-group">
-                                        <label class="col-sm-2 control-label">
+                    <form class ="form-horizontal ng-pristine ng-valid">
+                      <div class ="form-group form-group-margin">
+                                        <label class="col-sm-4 control-label control-label-font">
                                              Work Order
                                         </label>
-                                    <div class ="col-sm-10">                                                                        
-                                        <select id="select_split_WOID" class="form-control input-lg"></select>
+                                    <div class ="col-sm-8">                                                                        
+                                        <select id="select_split_WOID" class=" form-control input-small form-control-height"></select>
                                     </div>
                         </div>
 
@@ -50,17 +50,17 @@
 
                 </div>
             </div>
-            <div class="col-md-6" >
+            <div class="col-md-3" >
 
-                <div class="panel panel-default">
+                <div class="panel panel-default full-height">
                        <div class="panel-heading">
                                 <h3 class="panel-title" style="color:#2e2e2e;">By Scrap Type:</h3>
                         </div>
                         <div class ="panel-body">
-                             <form class ="form-horizontal">
+                             <form class ="form-horizontal ng-pristine ng-valid">
 
-                               <div class ="form-group">
-                                    <label class="col-sm-3 control-label">
+                               <div class ="form-group form-group-margin">
+                                    <label class="col-sm-6 control-label control-label-font">
                                         ALL
                                     </label>
                                     <div class ="col-sm-6">                                
@@ -68,8 +68,8 @@
                                     </div>
                                 </div>
 
-                                <div class ="form-group">
-                                    <label class="col-sm-3 control-label">
+                                <div class ="form-group form-group-margin">
+                                    <label class="col-sm-6 control-label control-label-font">
                                         Processing
                                     </label>
                                     <div class ="col-sm-6">                                
@@ -77,8 +77,8 @@
                                     </div>
                                 </div>
 
-                                <div class ="form-group">
-                                    <label class="col-sm-3 control-label">
+                                <div class ="form-group form-group-margin">
+                                    <label class="col-sm-6 control-label control-label-font">
                                         Completed
                                     </label>
                                     <div class ="col-sm-6">                                
@@ -93,20 +93,16 @@
 
 
             </div>
-            </div>
-        <div class="row row-margin">
+            <div class="col-md-3" >
 
-           
-            <div class="col-md-6" >
-
-                 <div class="panel panel-default">
+                 <div class="panel panel-default full-height">
                        <div class="panel-heading">
                                 <h3 class="panel-title" style="color:#2e2e2e;">By WO Released Date</h3>
                         </div>
                         <div class ="panel-body">
-                             <form class ="form-horizontal">
-                                    <div class ="form-group">
-                                        <label class="col-sm-2 control-label">
+                             <form class ="form-horizontal ng-pristine ng-valid">
+                                    <div class ="form-group form-group-margin">
+                                        <label class="col-sm-2 control-label control-label-font">
                                              Start Date
                                         </label>
 <!--                                    <div class ="col-sm-10">                                                                        
@@ -114,15 +110,15 @@
                                     </div>-->
 
                                        <div class='input-group date col-sm-10' id='startDate'>
-                                            <input type='text' class="form-control" />
+                                            <input type='text' class=" form-control input-small form-control-height" />
                                                 <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-calendar"></span>
                                                 </span>
                                        </div>
                                     </div>
 
-                                    <div class ="form-group">
-                                        <label class="col-sm-2 control-label">
+                                    <div class ="form-group form-group-margin">
+                                        <label class="col-sm-2 control-label control-label-font">
                                              End Date
                                         </label>
 <!--                                    <div class ="col-sm-10">                                                                        
@@ -130,7 +126,7 @@
                                     </div>-->
 
                                      <div class='input-group date col-sm-10' id='endDate'>
-                                            <input type='text' class="form-control" />
+                                            <input type='text' class=" form-control input-small form-control-height" />
                                                 <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-calendar"></span>
                                                 </span>
@@ -147,23 +143,22 @@
 
 
             </div>
+            </div>
 
 
-        </div>
 
-
-        <div style="margin-top:5%;">
+        <div >
 <!--            <div class="row row-margin" style="background: #F0F3F3;">
               
                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Export Multiple Sheet By Work Centre</button>
             </div>-->
 
             <div class="row row-margin" style="background-color: #fff !important;">
-                <div id="table1" style="background:#fff;" ng-click="tryToggleTable2()"></div>
+                <div id="table1" style="background:#fff;width:100%;" ng-click="tryToggleTable2()"></div>
             </div>
 
                         <div class="row row-margin" style="background-color: #fff !important;">
-                <div id="table2" style="background:#fff;"></div>
+                <div id="table2" style="background:#fff;width:100%;"></div>
             </div>
 
 <!--            <div class="row"  style="width:95%;margin:0 auto;">
@@ -200,9 +195,9 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <div id="warming" style="color:red;"></div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group form-group-margin">
                             <label for="usr">Save File AS:</label>
-                            <input type="text" class="form-control" id="file-name" required value="report">
+                            <input type="text" class=" form-control input-small form-control-height" id="file-name" required value="report">
                         </div>
                         <div class="modal-footer">
                         

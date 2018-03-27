@@ -2,9 +2,9 @@
     'use strict';
     angular.module('erp.layout').controller('LoginCtrl', LoginCtrl);
 
-    LoginCtrl.$inject = ['$scope','authService', '$state'];
+    LoginCtrl.$inject = ['$scope', 'authService', '$state'];
 
-    function LoginCtrl($scope,authService, $state) {
+    function LoginCtrl($scope, authService, $state) {
         var vm = this;
         vm.login = login;
 
@@ -14,8 +14,10 @@
         $scope.userNameKey = function (keyEvent) {
             if (keyEvent.which === 13) {
                 console.log("key", keyEvent);
-               // console.log("value", $("#test-scanner").val());
+                // console.log("value", $("#test-scanner").val());
                 document.getElementById("password").focus();
+                document.getElementById("password").select();
+                keyEvent.preventDefault();
             }
 
             // alert("alert");
@@ -32,14 +34,14 @@
                 console.log("test2");
                 currentUser.isAuth = true;
                 if (currentUser.isAuth) {
-               
+
                     $state.go('home', {}, { location: 'replace', reload: true });
                 }
-                
+
             }, function (result) {
                 console.log("test3");
                 console.log("login", result);
-              //  console.log("config", config);
+                //  console.log("config", config);
                 /*
                  * Will return error in the following format:
                  *   {

@@ -208,58 +208,113 @@ C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTempl
 C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.csprojResolveAssemblyReference.cache
 C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.dll
 C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.pdb
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.WebAPI.dll.config
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.WebAPI.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.WebAPI.pdb
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Antlr3.Runtime.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.SqlServer.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.AspNet.Identity.Core.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.Owin.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.Web.Infrastructure.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Newtonsoft.Json.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Nexus.Infrastructure.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Nexus.Net.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Owin.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Security.Cryptography.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Net.Http.Formatting.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Cors.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Helpers.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.Cors.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.WebHost.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Mvc.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Optimization.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Razor.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Deployment.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Razor.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.Service.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Repository.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\WebGrease.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.Service.pdb
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.pdb
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Repository.pdb
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.xml
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.SqlServer.xml
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.AspNet.Identity.Core.xml
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.Owin.xml
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Newtonsoft.Json.xml
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Security.Cryptography.pdb
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Security.Cryptography.xml
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.Cors.xml
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Net.Http.Formatting.xml
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Helpers.xml
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.xml
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.WebHost.xml
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Mvc.xml
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Optimization.xml
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Razor.xml
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.xml
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Deployment.xml
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Razor.xml
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Antlr3.Runtime.pdb
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.csprojResolveAssemblyReference.cache
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.dll
-C:\Nexus Web Dashboard\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.pdb
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.WebAPI.dll.config
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.WebAPI.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.WebAPI.pdb
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Antlr3.Runtime.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.SqlServer.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.Owin.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.Web.Infrastructure.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Newtonsoft.Json.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Nexus.Infrastructure.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Nexus.Net.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Owin.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Security.Cryptography.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Net.Http.Formatting.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Cors.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Helpers.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.Cors.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.WebHost.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Mvc.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Optimization.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Razor.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Deployment.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Razor.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.Service.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Repository.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\WebGrease.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.Service.pdb
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.pdb
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Repository.pdb
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.SqlServer.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.Owin.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Newtonsoft.Json.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Security.Cryptography.pdb
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Security.Cryptography.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.Cors.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Net.Http.Formatting.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Helpers.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.WebHost.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Mvc.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Optimization.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Razor.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Deployment.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Razor.xml
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Antlr3.Runtime.pdb
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.csprojResolveAssemblyReference.cache
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.dll
+C:\Nexus Web Dashboard\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.pdb
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.WebAPI.dll.config
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.WebAPI.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.WebAPI.pdb
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Antlr3.Runtime.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.SqlServer.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.Owin.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.Web.Infrastructure.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Newtonsoft.Json.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Nexus.Infrastructure.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Nexus.Net.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Owin.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Security.Cryptography.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Net.Http.Formatting.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Cors.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Helpers.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.Cors.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.WebHost.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Mvc.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Optimization.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Razor.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Deployment.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Razor.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.Service.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Repository.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\WebGrease.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.Service.pdb
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Domain.pdb
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\TestTemplate.Repository.pdb
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\EntityFramework.SqlServer.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Microsoft.Owin.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Newtonsoft.Json.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Security.Cryptography.pdb
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Security.Cryptography.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.Cors.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Net.Http.Formatting.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Helpers.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Http.WebHost.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Mvc.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Optimization.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.Razor.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Deployment.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\System.Web.WebPages.Razor.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\bin\Antlr3.Runtime.pdb
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.csprojResolveAssemblyReference.cache
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.WebAPI\obj\Debug\TestTemplate.WebAPI.pdb

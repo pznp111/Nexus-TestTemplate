@@ -1,0 +1,312 @@
+﻿<div>
+    <div class="pageheader">
+        <div class="row">
+            <div class="col-sm-6">
+                <h2 style="text-transform: uppercase">PRODUCTION DASHBOARD</h2>
+            </div>
+
+            <div class="pull-right" style="margin-right: 2em;">
+                <div class="btn-group" data-toggle="button" style="margin-top: -10px">
+                    <button type="button" id="plant" style="height: 40px;" ng-click="processData('Daily')" ng-class="groupButtonClick == '1'? 'btn btn-primary type btn-info' : 'btn btn-trans type btn-info'">Daily</button>
+                    <button type="button" id="wo" style="height: 40px;" ng-click="processData('Weekly')" ng-class="groupButtonClick == '2'? 'btn btn-primary type btn-info' : 'btn btn-trans type btn-info'">Weekly</button>
+                    <button type="button" id="production" style="height: 40px;" ng-click="processData('Monthly')" ng-class="groupButtonClick == '3'? 'btn btn-primary type btn-info' : 'btn btn-trans type btn-info'">Monthly</button>
+                </div>
+
+
+
+            </div>
+
+
+            <!--  <div class="col-sm-6" style="text-align-last: end">
+                <div class="btn-group" data-toggle="button" style="margin-top: -10px">
+                    <button type="button" id="plant" style="height: 40px;" ng-click="processData('Daily')" ng-class="toggleMachineProcess == 'Plant'? 'btn btn-primary type btn-info' : 'btn btn-trans type btn-info'">Daily</button>
+                    <button type="button" id="wo" style="height: 40px;" ng-click="processData('Weekly')" ng-class="toggleMachineProcess == 'WO'? 'btn btn-primary type btn-info' : 'btn btn-trans type btn-info'">Weekly</button>
+                    <button type="button" id="production" style="height: 40px;" ng-click="processData('Monthly')" ng-class="toggleMachineProcess == 'Production'? 'btn btn-primary type btn-info' : 'btn btn-trans type btn-info'">Monthly</button>
+                </div>
+            </div>-->
+        </div>
+    </div>
+
+
+    <div class="col-md-9 col-lg-9 nopadding" style="background-color: white">
+        <div class="col-md-12 nopadding" style="height: 41vh">
+            <div class="col-md-12 nopadding" id="chart" style="height: 40vh"></div>
+            <p id="chartXAxis" style="text-align: right; font-size: 14px; font-family: Arial,Helvetica,sans-serif; margin-right: 15px">Time</p>
+        </div>
+        <div class="col-md-12 nopadding" style="height: 42vh">
+            <div class="col-md-4 nopadding" style="height: 42vh" id="chartLeft"></div>
+            <div class="col-md-4 nopadding" style="height: 42vh" id="chartMiddle"></div>
+            <div class="col-md-4 nopadding" style="height: 42vh" id="chartRight"></div>
+        </div>
+    </div>
+    <div id="machineLayout" class="col-md-3 col-lg-3 nopadding" style="height: 84vh;background-color:white">
+
+        <h3 id="machineName" class="text-box div-text-font" style="color: #350505;text-align:center;margin-top:10px">Low Performance Machines</h3>
+
+        <div data-id='102' id="machine{{$index}}" ng-repeat="machine in machines" class="col-md-12 col-lg-12 machine-bg">
+            <div class="col-md-12 col-lg-12" style="margin-top: 10px;margin-bottom:5px">
+                <h3 id="machineName" class="text-box div-text-font" style="color: #350505;">{{machine.MCID}}</h3>
+                <!--                <h4 id="partID" class="text-box" style="color: #999999; text-align: left; margin-left: 3px">{{machine.partDesc}}</h4>-->
+            </div>
+            <!--   <div c
+            lass="col-md-5 col-lg-5 nopadding">
+                <div class="status-running">
+
+                    Running
+                </div>
+            </div>-->
+
+
+          
+
+
+            <div class="col-md-12 col-lg-12 nopadding">
+                <div class="col-md-8 col-lg-8 nopadding">
+                    <div class="donut-wrapper center">
+                        <div id="{{machine.Id}}" class="donut-chart"></div>
+                        <div class="inner-content" style="display: flex; justify-content: center; align-items: center;">
+                            <div class="two columns" style="margin-top: 20px;">
+                                <p class="text-box" style="font-size: 0.8em; color: #999999">WO Completed</p>
+                                <p id="woid" class="text-box" style="font-size: 1.2em; color: #350505"><b>{{machine.WO_Completed}}</b></p>
+                                <!--  <i id="vvip" class="fa fa-flag" style="color: gold"></i>-->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4 col-lg-4 nopadding">
+                    <div class="col-md-12 div-count" id="completed" style="background-color: #9d9696">
+                        <div>Completed</div>
+                        <div style="margin-top: 5px">{{machine.CompletedQty}}</div>
+                    </div>
+                    <div class="col-md-12 div-count" id="processing" style="background-color: #9d9696">
+                        <div>Targeted</div>
+                        <div style="margin-top: 5px">{{machine.ActualRecQty}}</div>
+
+                    </div>
+                    <div class="col-md-12 div-count" id="rejected" style="background-color: #9d9696">
+                        <div>Rejected</div>
+                        <div style="margin-top: 5px">{{machine.ScrapQty}}</div>
+
+                    </div>
+                </div>
+
+            </div>
+        
+
+
+
+
+
+        <!--        <div class="col-md-12 col-lg-12 nopadding">
+                    <div class="col-md-4 nopadding">
+                        <p class="tag" style="background-color: #0cb783"><b>Completed</b></p>
+                    </div>
+                    <div class="col-md-4 nopadding">
+                        <p class="tag" style="background-color: #4095cb"><b>Processing</b></p>
+                    </div>
+                    <div class="col-md-4 nopadding">
+                        <p class="tag" style="background-color: #e74c3c"><b>Rejected</b></p>
+                    </div>
+                </div>-->
+
+
+
+
+    </div>
+</div>
+
+<div class="modal fade" id="gridWOStatusBasicModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h1 class="modal-title" id="myModalLabel">WO Info</h1>
+            </div>
+            <div class="panel-body">
+                <div id="gridWOStatus"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.913/styles/kendo.common-material.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.913/styles/kendo.material.min.css" />
+<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2017.3.913/styles/kendo.material.mobile.min.css" />
+
+<script src="https://kendo.cdn.telerik.com/2017.3.913/js/jquery.min.js"></script>
+<script src="https://kendo.cdn.telerik.com/2017.3.913/js/kendo.all.min.js"></script>
+
+<style>
+    .tag {
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        width: 80%;
+        margin: 2px;
+        padding: 10px 3px 10px 3px;
+        overflow: hidden;
+        border: none;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        font: normal normal bold 11px/1 "Times New Roman", Times, serif;
+        color: rgba(255,255,255,1);
+        text-align: center;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3);
+        box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3);
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+    }
+
+    .center {
+        margin: 0 auto;
+        width: 100px;
+    }
+
+    .div-text-font {
+        font: normal normal bold 16px/1 "Times New Roman", Times, serif;
+    }
+
+    .div-count {
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        width: 80%;
+        margin: 2px;
+        padding: 10px 7px 5px 5px;
+        overflow: hidden;
+        border: none;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        font: normal normal bold 14px/1 "Times New Roman", Times, serif;
+        color: rgba(255,255,255,1);
+        text-align: center;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        -webkit-box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3);
+        box-shadow: 1px 1px 1px 0 rgba(0,0,0,0.3);
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+    }
+
+    .div-text {
+        position: absolute;
+        left: 0px;
+        top: 20px;
+        width: 100px;
+        height: 45px;
+        border-radius: 10px;
+        border: 1px solid black;
+        background: grey;
+    }
+
+    .div-icon {
+        z-index: 2;
+        position: absolute;
+        left: 110px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50px;
+        border: 1px solid black;
+        background: grey;
+    }
+
+    .machine-bg {
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        width: 95%;
+        height:23vh;
+        margin: 10px 2px 7px 5px;
+        padding: 2px 2px 7px 2px;
+        border: none;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        font: normal 16px/1 "Times New Roman", Times, serif;
+        color: black;
+        text-align: center;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        background: white;
+        -webkit-box-shadow: 0 0 2px 2px rgba(0,0,0,0.5);
+        box-shadow: 0 0 2px 2px rgba(0,0,0,0.5);
+    }
+
+    .status-running {
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        width: 70px;
+        padding: 12px;
+        margin-right: 3px;
+        overflow: hidden;
+        border: none;
+        -webkit-border-radius: 20px;
+        border-radius: 20px;
+        font: normal normal bold 14px/0 "Times New Roman", Times, serif;
+        color: rgba(255,255,255,1);
+        text-align: center;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        background: rgba(3,79,5,1);
+        -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.95);
+        box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.95);
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+    }
+
+    .status-idle {
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        width: 70px;
+        padding: 12px;
+        margin-right: 3px;
+        overflow: hidden;
+        border: none;
+        -webkit-border-radius: 20px;
+        border-radius: 20px;
+        font: normal normal bold 14px/0 "Times New Roman", Times, serif;
+        color: rgba(255,255,255,1);
+        text-align: center;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        background: rgba(197,204,12,1);
+        -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.95);
+        box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.95);
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+    }
+
+    .nopadding {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    .donut-wrapper {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        background-color: "#00ffffff";
+    }
+
+    /* The width and height of the chart must be equal to the width and height of the .donut-wrapper in order to be horizontally and vertically centered  */
+    .donut-chart {
+        width: 150px;
+        height: 150px;
+    }
+
+    .inner-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100px;
+        height: 100px;
+        margin-top: -50px;
+        margin-left: -50px;
+        font-size: 16px;
+        vertical-align: middle;
+        text-align: center;
+        color: #a2ccef;
+    }
+</style>

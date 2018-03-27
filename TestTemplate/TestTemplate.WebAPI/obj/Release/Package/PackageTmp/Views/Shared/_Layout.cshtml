@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Nexus Application Template</title>
+    <title>Shop Floor Tracking System</title>
     <base href="@Url.Content("~/")" />
     @Styles.Render("~/Content/thirdparty")
 </head>
@@ -18,19 +18,20 @@
       <![endif]-->
     <!-- Add your site or application content here -->
     <div ng-controller="NavbarCtrl" ng-show="currentUser.isAuth">
-        <div ng-include="'Scripts/layout/main-navbar.html'" class="custom-side-navbar">
+        <div ng-include="'Scripts/layout/main-navbar.html'" class="custom-side-navbar theme-default sidebar-mini" id="top-layout">
         </div>
 
     </div>
 
-    <div class="container " id="main-container-page">
-        <div style="margin-bottom: 70px">
+    <div class="container " id="main-container-page" style="width:95%;margin-left:50px;">
             <ui-view>
                 @RenderBody()
             </ui-view>
+
+
         </div>
     </div>
-    <footer class="footer">
+    @*<footer class="footer">
         <div class="row">
             <div class="col-xs-4"></div>
             <div class="col-xs-4" style="text-align: center">
@@ -39,7 +40,7 @@
             <div class="col-xs-1"></div>
             <div class="col-xs-3 pull-right hidden-xs custom-copyright"><span>Copyright &#9400; 2017, <b>SIMTech</b>, <b>POMLab</b></span></div>
         </div>
-    </footer>  
+    </footer>*@  
     @Scripts.Render("~/bundles/thirdparty")
     @Scripts.Render("~/bundles/application")
 </body>

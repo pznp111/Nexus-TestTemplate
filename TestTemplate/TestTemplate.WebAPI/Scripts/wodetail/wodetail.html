@@ -1,17 +1,52 @@
-﻿        <div class="row">
+﻿<!-- Modal -->
+<div id="summaryModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Work Order Summary</h4>
+      </div>
+      <div class="modal-body" id="wodetail-table2_1">
+                                                         <table class="table table-striped remove-margin-bottom">
+                                                    <tr >
+                                                        <th class ="table-control-padding-font"></th>
+                                                        <th class ="table-control-padding-font">Release Prod Qty</th>
+                                                        <th class ="table-control-padding-font">Actual Prod Qty</th>
+                                                        <th class ="table-control-padding-font">Completed Qty</th>
+                                                        <th class ="table-control-padding-font">Outstanding Qty</th>
+                                                        <th class ="table-control-padding-font">Accumulated Scrap Qty</th>
+ 
+                                                    </tr>
+                                                     <tr class ="table-control-padding">
+                                                       <td id="newtable2-td1_1" class="table-control-padding-font-1">1</td>
+                                                       <td id="newtable2-td1_2" class="table-control-padding-font-1"></td>
+                                                         <td id="newtable2-td1_3" class="table-control-padding-font-1"></td>
+                                                         <td id="newtable2-td1_4" class="table-control-padding-font-1"></td>
+                                                         <td id="newtable2-td1_5" class="table-control-padding-font-1"></td>
+                                                         <td id="newtable2-td1_6" class="table-control-padding-font-1"></td>
+                                                     </tr>
+                                                </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>  
+
+
+
+
+      <div class="row row-custom-margin">
             <div class="col-md-12">
                 <div class="panel panel-default">
 
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Work Order Detail</h3>
-                        <div class="actions pull-right">
-                            <i class="fa fa-expand"></i>
-                            <i class="fa fa-chevron-down"></i>
-                            <i class="fa fa-times"></i>
-                        </div>
-                    </div>
 
-                    <div class="panel-body">
+
+                    <div class="panel-body panel-body-small">
 <!--                        <div class="form-group">
                             <label></label>
                             <select id="select_splitlist" class="selector form-control split-selector" ng-change="splitSelected()" ng-model="splitlist"></select>
@@ -20,31 +55,22 @@
 
 
 
-                        <div class="row split-table-margin">
-
-                            <div class="form-group">
-                               <!-- <label>Work Order</label>-->
 
                                 <div class="form-group">
-                                    <label class ="col-sm-4 control-label">Work Order</label>
+                                    <label class ="col-sm-4 control-label control-label-font">Work Order</label>
                                     <div class="col-sm-8">
-                                    <select class="form-control " id="select_woid" ng-change="woSelected()" ng-model="wolist"> </select>
+                                    <select class="form-control form-control-height" id="select_woid" ng-change="woSelected()" ng-model="wolist"> </select>
                                         </div>
                                 </div>
-                            </div>
 
-<!--                            <div class="form-group">
-                                <label> ProcOpSeq</label>
-                                <input type="text" class="form-control " id="procopseq-info" readonly>
-                            </div>-->
 
-                        </div>
+                     
                     </div>
                 </div>
             </div>
         </div>
 
-<div class="row">
+<div class="row row-custom-margin">
                                     <div class ="col-md-12" >
                                     <div class ="panel panel-default">
                                         <div class="panel-heading">
@@ -53,7 +79,7 @@
                                             </h3>
                                         </div>
 
-                                        <div class="panel-body">
+                                        <div class="panel-body panel-body-small">
                                             <div id="wodetail-table1" ng-click="table1Clicked()"></div>
                                             
                                         </div>
@@ -63,34 +89,41 @@
                                 </div>
 </div>
 
-<div class="row">
+<div class="row row-custom-margin" style="display:none;">
                                     <div class ="col-md-12" >
                                     <div class ="panel panel-default">
                                         <div class="panel-heading">
                                             <h3 class ="panel-title">
                                                 Work Order Summary
                                             </h3>
+
+                          <div class="actions pull-right">
+                            <i class="fa fa-expand" ng-click="toggleSummaryBody()"></i>
+<!--                            <i class="fa fa-chevron-down"></i>
+                            <i class="fa fa-times"></i>-->
+                        </div>
+
                                         </div>
 
-                                        <div class="panel-body">
+                                        <div class="panel-body panel-body-small" id="wodetail-summarybody">
                                             <div id="wodetail-table2">
-                                                 <table class="table table-striped">
-                                                    <tr>
-                                                        <th></th>
-                                                        <th>Release Prod Qty</th>
-                                                        <th>Actual Prod Qty</th>
-                                                        <th>Completed Qty</th>
-                                                        <th>Outstanding Qty</th>
-                                                        <th>Accumulated Scrap Qty</th>
+                                                 <table class="table table-striped remove-margin-bottom">
+                                                    <tr >
+                                                        <th class ="table-control-padding-font"></th>
+                                                        <th class ="table-control-padding-font">Release Prod Qty</th>
+                                                        <th class ="table-control-padding-font">Actual Prod Qty</th>
+                                                        <th class ="table-control-padding-font">Completed Qty</th>
+                                                        <th class ="table-control-padding-font">Outstanding Qty</th>
+                                                        <th class ="table-control-padding-font">Accumulated Scrap Qty</th>
  
                                                     </tr>
-                                                     <tr>
-                                                       <td id="table2-td1_1">1</td>
-                                                       <td id="table2-td1_2"></td>
-                                                         <td id="table2-td1_3"></td>
-                                                         <td id="table2-td1_4"></td>
-                                                         <td id="table2-td1_5"></td>
-                                                         <td id="table2-td1_6"></td>
+                                                     <tr class ="table-control-padding">
+                                                       <td id="table2-td1_1" class="table-control-padding-font-1">1</td>
+                                                       <td id="table2-td1_2" class="table-control-padding-font-1"></td>
+                                                         <td id="table2-td1_3" class="table-control-padding-font-1"></td>
+                                                         <td id="table2-td1_4" class="table-control-padding-font-1"></td>
+                                                         <td id="table2-td1_5" class="table-control-padding-font-1"></td>
+                                                         <td id="table2-td1_6" class="table-control-padding-font-1"></td>
                                                      </tr>
                                                 </table>
                                             </div>
@@ -102,7 +135,7 @@
                                 </div>
 </div>
 
-<div class="row">
+<div class="row row-custom-margin">
                                     <div class ="col-md-12" >
                                     <div class ="panel panel-default">
                                         <div class="panel-heading">
@@ -111,7 +144,7 @@
                                             </h3>
                                         </div>
 
-                                        <div class="panel-body">
+                                        <div class="panel-body panel-body-small">
                                             <div id="wodetail-table3" ng-click="table3Clicked()"></div>
 
                                         </div>
@@ -121,8 +154,13 @@
                                 </div>
 </div>
 
-<div class="row">
-                                    <div class ="col-md-8" >
+<div class="row row-custom-margin">
+
+    <div class="row">
+                                    <div class ="col-md-6" >
+
+                                        <div class="row " style="margin-left: 0px;">
+                                            <div class="col-sm-12">
                                     <div class ="panel panel-default">
                                         <div class="panel-heading">
                                             <h3 class ="panel-title">
@@ -132,21 +170,21 @@
 
                                         <div class="panel-body">
                                             <div id="wodetail-table4">
-                                                 <table class="table table-striped">
+                                                 <table class="table table-striped remove-margin-bottom">
                                                     <tr>
-                                                        <th></th>
-                                                        <th>Received Qty</th>
-                                                        <th>Completed Qty</th>
-                                                        <th>Outstanding Qty</th>
-                                                        <th>Scrap & Unaccountable Qty</th>
+                                                        <th class ="table-control-padding-font"></th>
+                                                        <th class ="table-control-padding-font">Received Qty</th>
+                                                        <th class ="table-control-padding-font">Completed Qty</th>
+                                                        <th class ="table-control-padding-font">Outstanding Qty</th>
+                                                        <th class ="table-control-padding-font">Scrap & Unaccountable Qty</th>
  
                                                     </tr>
                                                      <tr>
-                                                       <td id="table4-td1_1">Pieces</td>
-                                                       <td id="table4-td1_2"></td>
-                                                         <td id="table4-td1_3"></td>
-                                                         <td id="table4-td1_4"></td>
-                                                         <td id="table4-td1_5"></td>
+                                                       <th class="table-control-padding-font-1" id= "table4-td1_1">Pieces</th>
+                                                       <th class="table-control-padding-font-1" id="table4-td1_2"></th>
+                                                         <th class="table-control-padding-font-1" id="table4-td1_3"></th>
+                                                         <th class="table-control-padding-font-1" id="table4-td1_4"></th>
+                                                         <th class="table-control-padding-font-1" id="table4-td1_5"></th>
                                                      </tr>
                                                 </table>
 
@@ -156,9 +194,36 @@
                                         </div>
 
                                      </div>
+                                                </div>
                                         </div>
-                                         <div class ="col-md-4" >
-                                             <div class="row">
+                                        <div class="row ">
+                                                        <div class="row row-custom-margin" style="margin-top:15px; margin-left: 5px;">
+        <div class="col-sm-6">
+            <div class="yellow-background col-sm-1 small-border" style="height:100%;width:10%;">&nbsp;</div>
+            <div class="col-sm-4" style="font-size:0.6em">Processing or completed</div>
+        </div>
+
+        <div class="col-sm-6">
+            <div class="col-sm-1 small-border" style="height:100%;width:10%;background:#fff;">&nbsp;</div>
+            <div class="col-sm-4" style="font-size:0.6em">To be started</div>
+        </div>
+
+<!--        <div class="col-sm-3">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-click ="ExecutionHistory()">Execution History</button>
+        </div>
+
+        <div class="col-sm-3">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#fileUploadModal" >QC Attachment</button>
+        </div>-->
+
+
+    </div>
+                                        </div>
+                                        </div>
+
+        
+                                         <div class ="col-md-3" >
+                                             
 
                                         <div class ="panel panel-default">
                                         <div class="panel-heading">
@@ -176,11 +241,11 @@
 
                                      </div>
 
-                                                 </div>
+                                         </div>       
 
 
 
-                                   <div class="row">
+                                   <div class ="col-md-3" >
 
                                         <div class ="panel panel-default">
                                         <div class="panel-heading">
@@ -199,37 +264,31 @@
                                      </div>
 
                                                  </div>
+
+        </div>
+
+
+
+
+
                                              </div>
 
             
 </div>
 
-    <div class="row" style="margin-top:15px; margin-left: 5px;">
-        <div class="col-sm-2">
-            <div class="yellow-background col-sm-1 small-border" style="height:100%;width:10%;">&nbsp;</div>
-            <div class="col-sm-1">Processing or completed</div>
-        </div>
-
-        <div class="col-sm-2">
-            <div class="col-sm-1 small-border" style="height:100%;width:10%;">&nbsp;</div>
-            <div class="col-sm-1">To be started</div>
-        </div>
-
-        <div class="col-sm-2">
-            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" ng-click ="ExecutionHistory()">Execution History</button>
-        </div>
-
-    </div>
 
 
-<div id="myModal" class="modal fade" role="dialog">
+
+<div id="executionhistoryModal" class="modal fade" role="dialog">
   <div class="modal-dialog modal-lg cust-model-width">
 
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
+            <div id="historyContent1" style="display:none;">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">File Attachment Detail</h4>
+        <h4 class="modal-title">WO Execution History</h4>
+                </div>
       </div>
       <div class="modal-body" id="file-table">
 
@@ -237,42 +296,24 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
 
-                    <div class="panel-heading">
-                        <div class="actions pull-right">
-
-                        </div>
-                    </div>
-
                     <div class="panel-body">
 
 
-                        <div class="row split-table-margin">
-
-                            <div class="form-group row">
-                                        <label class="col-sm-3 control-label">Work Order</label>
+                        <div id="historyContent2" style="display:none;">
+                            <div class="form-group row row-custom-margin">
+                                        <label class="col-sm-3 control-label control-label-font">Work Order</label>
                                         <div class="col-sm-6">
                                             <input type="text" class="form-control" id="execution-history-woid" disabled>
                                         </div>
 
                                     </div>
 
-                                                        <div class="form-group row">
-                                        <label class="col-sm-3 control-label">Sum of Total Time(HH:MM:SS)</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" class="form-control" id="execution-history-totaltime" disabled>
-                                        </div>
-
-                                    </div>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
 
 
 
-                      <div class="col-md-12">
+
+
+                                              <div class="col-md-12">
                 <div class="panel panel-default">
 
                     <div class="panel-heading">
@@ -281,22 +322,23 @@
                         </div>
                     </div>
 
-                    <div class="panel-body" id="history-table">
-
-
-<!--                        <div class="row split-table-margin">
-
-                            <div class="form-group">
-                                        <label class="col-sm-3 control-label">Work Order</label>
-                                        <div class="col-sm-6">
-                                            <input type="text" class="form-control" disabled>
-                                        </div>
-                                    </div>
-
-                        </div>-->
+                    <div class="panel-body panel-body-small" id="history-table">
                     </div>
                 </div>
             </div>
+
+                            </div>
+                        <div id="historyContent3" style="text-align: center;">
+                            Please select a Work Order.
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
 
 
 
@@ -317,9 +359,53 @@
 
       </div>
       <div class="modal-footer">
+
+                                                                  <div class="form-group row row-custom-margin" id="historyContent4" style="display:none;">
+                                        <label class="col-sm-3 control-label control-label-font">Sum of Total Time(HH:MM:SS)</label>
+                                        <div class="col-sm-6">
+                                            <input type="text" class="form-control" id="execution-history-totaltime" disabled>
+                                        </div>
+
+                                    </div>
+
+
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
 
   </div>
 </div>
+
+
+<div id="fileUploadModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+ <input type = "file" file-model = "myFile"/>
+<!--         <button ng-click = "uploadFile()">upload me</button>
+          <div class="button" ngf-select ng-model="file">Upload using model $watch</div>-->
+      </div>
+
+        <div id ="QCAttachmentTable">
+
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+    
+
+

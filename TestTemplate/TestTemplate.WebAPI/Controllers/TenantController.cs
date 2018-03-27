@@ -50,12 +50,20 @@ namespace TestTemplate.WebAPI.Controllers
         }
 
 
+        //[HttpGet]
+        //[Route("ReadTenant")]
+        //public async Task<Tenant> ReadTenant()
+        //{
+        //    var tenantId = User.Identity.GetTenantId();
+        //    return await NexusService.Tenant.ReadTenant(tenantId);
+        //}
+
         [HttpGet]
         [Route("ReadTenant")]
-        public async Task<Tenant> ReadTenant()
+        public String ReadTenant()
         {
-            var tenantId = User.Identity.GetTenantId();
-            return await NexusService.Tenant.ReadTenant(tenantId);
+            
+            return "";
         }
 
 

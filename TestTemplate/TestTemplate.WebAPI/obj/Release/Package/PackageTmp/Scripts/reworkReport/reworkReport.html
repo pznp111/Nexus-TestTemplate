@@ -19,29 +19,29 @@
         <div class="row row-margin">
 
 
-            <div class="col-md-6 " >
+            <div class="col-md-3 " >
 
-                <div class="panel panel-default">
+                <div class="panel panel-default full-height">
                             <div class="panel-heading">
                                 <h3 class="panel-title" style="color:#2e2e2e;">By Work Center and/or Machine ID</h3>
                             </div>
                 <div class ="panel-body">
                     <form class ="form-horizontal">
-                      <div class ="form-group">
-                                        <label class="col-sm-2 control-label">
+                      <div class ="form-group  form-group-margin">  
+                                        <label class="col-sm-4 control-label control-label-font">
                                              Work Order
                                         </label>
-                                    <div class ="col-sm-10">                                                                        
-                                        <select id="select_rework_WOID" class="form-control input-lg"></select>
+                                    <div class ="col-sm-8">                                                                        
+                                        <select id="select_rework_WOID" class=" form-control input-small form-control-height"></select>
                                     </div>
                         </div>
 
-                        <div class ="form-group" >
-                            <label class="col-sm-2 control-label">
+                        <div class ="form-group  form-group-margin" >
+                            <label class="col-sm-4 control-label control-label-font">
                                 Work Centre
                             </label>
-                            <div class ="col-sm-10">
-                            <select id="select_rework_WorkCenter" class=" form-control input-lg " ></select>
+                            <div class ="col-sm-8">
+                            <select id="select_rework_WorkCenter" class=" form-control input-small form-control-height" ></select>
       
                             </div>
                         </div>                    
@@ -50,17 +50,17 @@
 
                 </div>
             </div>
-            <div class="col-md-6" >
+            <div class="col-md-3" >
 
-                <div class="panel panel-default">
+                <div class="panel panel-default full-height">
                        <div class="panel-heading">
                                 <h3 class="panel-title" style="color:#2e2e2e;">By Scrap Type:</h3>
                         </div>
-                        <div class ="panel-body">
-                             <form class ="form-horizontal">
+                        <div class ="panel-body radio-body">
+                             <form class ="form-horizontal ng-pristine ng-valid">
 
-                               <div class ="form-group">
-                                    <label class="col-sm-3 control-label">
+                               <div class ="form-group form-group-margin">
+                                    <label class="col-sm-6 control-label control-label-font">
                                         ALL
                                     </label>
                                     <div class ="col-sm-6">                                
@@ -68,8 +68,8 @@
                                     </div>
                                 </div>
 
-                                <div class ="form-group">
-                                    <label class="col-sm-3 control-label">
+                                <div class ="form-group form-group-margin">
+                                    <label class="col-sm-6 control-label control-label-font">
                                         Processing
                                     </label>
                                     <div class ="col-sm-6">                                
@@ -77,8 +77,8 @@
                                     </div>
                                 </div>
 
-                                <div class ="form-group">
-                                    <label class="col-sm-3 control-label">
+                                <div class ="form-group form-group-margin">
+                                    <label class="col-sm-6 control-label control-label-font">
                                         Completed
                                     </label>
                                     <div class ="col-sm-6">                                
@@ -93,20 +93,17 @@
 
 
             </div>
-            </div>
-        <div class="row row-margin">
 
-           
-            <div class="col-md-6" >
+                        <div class="col-md-3" >
 
-                 <div class="panel panel-default">
+                 <div class="panel panel-default full-height">
                        <div class="panel-heading">
                                 <h3 class="panel-title" style="color:#2e2e2e;">By WO Dispatch Date</h3>
                         </div>
                         <div class ="panel-body">
-                             <form class ="form-horizontal">
-                                    <div class ="form-group">
-                                        <label class="col-sm-2 control-label">
+                             <form class ="form-horizontal ng-pristine ng-valid">
+                                    <div class ="form-group ">
+                                        <label class="col-sm-2 control-label control-label-font">
                                              Start Date
                                         </label>
 <!--                                    <div class ="col-sm-10">                                                                        
@@ -114,7 +111,7 @@
                                     </div>-->
 
                                        <div class='input-group date col-sm-10' id='startDate'>
-                                            <input type='text' class="form-control" />
+                                            <input type='text' class="form-control form-control-height" />
                                                 <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-calendar"></span>
                                                 </span>
@@ -122,7 +119,7 @@
                                     </div>
 
                                     <div class ="form-group">
-                                        <label class="col-sm-2 control-label">
+                                        <label class="col-sm-2 control-label control-label-font">
                                              End Date
                                         </label>
 <!--                                    <div class ="col-sm-10">                                                                        
@@ -130,7 +127,7 @@
                                     </div>-->
 
                                      <div class='input-group date col-sm-10' id='endDate'>
-                                            <input type='text' class="form-control" />
+                                            <input type='text' class="form-control form-control-height" />
                                                 <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-calendar"></span>
                                                 </span>
@@ -147,35 +144,34 @@
 
 
             </div>
+            </div>
 
-
-        </div>
 
         <!--<div id="multiple" >-->
-        <div id="multiple" style="display:none;">
+<!--        <div id="multiple" style="display:none;">
             multiple is here
-        </div>
-        <div style="margin-top:5%;">
+        </div>-->
+        <div>
 <!--            <div class="row row-margin" style="background: #F0F3F3;">
               
                 <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Export Multiple Sheet By Work Centre</button>
             </div>-->
 
             <div class="row row-margin" style="background-color: #fff !important;">
-                <div id="table" style="background:#fff;"></div>
+                <div id="table" style="background:#fff;width:100%;"></div>
             </div>
 
-            <div class="row"  style="width:95%;margin:0 auto;">
-                <div class="col-sm-2">
+<!--            <div class="row"  style="width:95%;margin:0 auto;">
+                <div class="col-sm-4">
                     <div class="yellow-background col-sm-1 small-border" style="height:100%;width:10%;">&nbsp;</div>
-                    <div class="col-sm-1"> Near Requested Delivery</div>
+                    <div class="col-sm-4" style="font-size:0.6em"> Near Requested Delivery</div>
                 </div>
 
-                <div class="col-sm-2">
+                <div class="col-sm-4">
                     <div class="pink-background col-sm-1 small-border" style="height:100%;width:10%;">&nbsp;</div>
-                    <div class="col-sm-1"> Overdue Requested Delivery</div>
+                    <div class="col-sm-4" style="font-size:0.6em"> Overdue Requested Delivery</div>
                 </div>
-            </div>
+            </div>-->
 
             <div id="wc-tab" class="row" style="width:95%;margin:0 auto;background:#fff;"></div>
 
@@ -199,7 +195,7 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <div id="warming" style="color:red;"></div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group  form-group-margin">
                             <label for="usr">Save File AS:</label>
                             <input type="text" class="form-control" id="file-name" required value="report">
                         </div>

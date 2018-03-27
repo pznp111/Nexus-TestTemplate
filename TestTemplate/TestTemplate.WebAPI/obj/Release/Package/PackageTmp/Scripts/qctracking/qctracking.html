@@ -1,0 +1,828 @@
+﻿<div id="alertBox" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+
+      <div class="modal-body">
+          <div id="alertBoxContent" style="font-size: 1.2em;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;"></div> 
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+     
+ <div id="ScrapModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">WO Tracking - Scrap</h4>
+      </div>
+      <div class="modal-body">
+<div class="panel panel-default">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Work Order Scrap for</h3>
+                        <div id ="modalWOID2"></div>
+                        <div class="actions pull-right">
+
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div class="row">
+                            <div class="col-md-4">
+                        <div class="form-group">
+                                        <label for="inputEmail2" class="col-sm-4 control-label">Scrap Qty</label>
+                                        <div class="col-sm-6">
+                                            <input type="number" class="form-control" id="ScrapModal-qty"  min ="1">
+                                        </div>
+                                    </div>
+                        </div>
+                        <div class="col-md-4">
+                            <form class ="form-horizontal">
+                                <div class ="form-group form-group-margin">
+                                    <label class="col-sm-3 control-label control-label-font">
+                                        Actual Scrap
+                                    </label>
+                                    <div class ="col-sm-3">                                
+                                        <input type="radio" name="State1" value="Actual Scrap" checked="checked" >
+                                    </div>
+                                </div>
+
+                                <div class ="form-group form-group-margin">
+                                    <label class="col-sm-3 control-label control-label-font">
+                                        Unaccountable Scrap
+                                    </label>
+                                    <div class ="col-sm-3">                                
+                                        <input type="radio" name="State1" value="Unaccountable Scrap">
+                                    </div>
+                                </div>
+                                </form>
+                        </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class ="col-sm-4 control-label">Remark</label>
+                                    <div class="col-sm-8">
+                                    <select class="form-control " id="select_qctracking-scrap-remark" ng-model="qctrackinglist"> </select>
+                                        </div>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+      </div>
+      <div class="modal-footer">
+           <button type="button" class="btn btn-default" ng-click ="ScrapConfirm()">Confirm</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<div id="saveCompleteModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Save Complete for </h4>
+          <div id="saveCompleteModalWOID"></div>
+      </div>
+      <div class="modal-body">
+<div class="panel panel-default">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Work Order Detail for</h3>
+                        <div id ="modalWOID1"></div>
+                        <div class="actions pull-right">
+
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div class="row">
+                        <div class="form-group">
+                                        <label for="inputEmail2" class="col-sm-4 control-label">Current Rececived Qty</label>
+                                        <div class="col-sm-6">
+                                            <input type="email" class="form-control" id="saveCompleteModal-current" disabled>
+                                        </div>
+                                    </div>
+                        </div>
+                        <div class="row">
+                        <div class="form-group">
+                                        <label for="inputEmail2" class="col-sm-4 control-label">New Received Qty</label>
+                                        <div class="col-sm-6">
+                                            <input type="number" class="form-control" id="saveCompleteModal-new">
+                                        </div>
+                                    </div>
+                        </div>
+                    </div>
+                </div>
+      </div>
+      <div class="modal-footer">
+           <button type="button" class="btn btn-default" ng-click ="SaveCompleteOK()">OK</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+ <!-- Modal -->
+<div id="updateReceiveModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Update Received Qty</h4>
+      </div>
+      <div class="modal-body">
+        
+
+                <div class="panel panel-default">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Work Order Detail for</h3>
+                        <div id ="modalWOIDUpdateReceive"></div>
+                        <div class="actions pull-right">
+<!--                            <i class="fa fa-expand"></i>
+                            <i class="fa fa-chevron-down"></i>
+                            <i class="fa fa-times"></i>-->
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div class="row">
+                        <div class="form-group">
+                                        <label  class="col-sm-4 control-label control-label-font">Current Rececived Qty2</label>
+                                        <div class="col-sm-6">
+                                            <input  class=" form-control input-small form-control-height" id="qctracking-currentReceived" disabled>
+                                        </div>
+                                    </div>
+                        </div>
+                        <div class="row">
+                        <div class="form-group">
+                                        <label  class="col-sm-4 control-label control-label-font">New Received Qty</label>
+                                        <div class="col-sm-6">
+                                            <input type="number" class="form-control input-small form-control-height" id="qctracking-newReceived">
+                                        </div>
+                                    </div>
+                        </div>
+                    </div>
+                </div>
+   
+
+
+      </div>
+      <div class="modal-footer">
+           <button type="button" class="btn btn-default" ng-click ="UpdateReceivedOK()">OK</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+
+
+
+<div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default full-height">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Work Order Detail</h3>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div class="row split-table-margin">
+
+
+                                <div class="form-group form-group-margin">
+                                    <label class ="col-sm-4 control-label control-label-font">Work Order</label>
+                                    <div class="col-sm-4">
+                                       
+                                        <input type="text" class="form-control input-small form-control-height" id="select_qctracking-woid-input" name="theinput" ng-keypress="selectInput($event)" autofocus/>
+                                        </div>
+                                         <div class="col-sm-4">
+                                        <select class=" form-control input-small form-control-height" id="select_qctracking-woid" ng-change="woSelected()" ng-model="qctrackinglist" style="width:50%;"> </select>
+                                        </div>
+                                </div>
+ 
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+                        <div class="row split-table-margin">
+
+                            <div class="col-sm-4">
+                                <label>Work Order Information</label>
+                            </div>
+
+                        </div>   
+
+                        <div class="row">
+
+                        <div class ="col-md-3" id="subAssembly" style="display:none;">
+                                    <div class ="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class ="panel-title">
+                                                
+                                            </h3>
+                                        </div>
+
+                                        <div class="panel-body">
+                                            <div id="qctracking-tableSubAssembly"></div>
+
+                                        </div>
+
+                                     </div>
+
+                                </div>
+
+                                <div class ="col-md-4" id="rework-table1">
+                                    <div class ="panel panel-default full-height">
+                                        <div class="panel-heading">
+                                            <h3 class ="panel-title">
+                                                Work Order Detail
+                                            </h3>
+                                        </div>
+
+                                        <div class="k-grid k-widget k-reorderable k-grid-content k-auto-scrollable">
+                                            <table class ="k-selectable">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Part No</td>
+                                                        <td id="table1-td1"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Part Family</td>
+                                                        <td id="table1-td2"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Planner Remarks</td>
+                                                        <td id="table1-td3"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Production Remarks</td>
+                                                        <td id="table1-td4"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Part Description</td>
+                                                        <td id="table1-td5"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>SO Line Number</td>
+                                                        <td id="table1-td6"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Part Family</td>
+                                                        <td id="table1-td7"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>SO Remark</td>
+                                                        <td id="table1-td8"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class ="col-md-4" >
+                                    <div class ="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class ="panel-title">
+                                                
+                                            </h3>
+                                        </div>
+
+                                        <div class="panel-body">
+                                            <div id="qctracking-table1"></div>
+
+                                        </div>
+
+                                     </div>
+
+                                </div>
+
+
+                            </div>
+
+<div class="row">
+                <div class="col-md-3">
+                <div class="panel panel-default full-height">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Work Centre & Proritized Work Order List</h3>
+                        <div class="actions pull-right">
+<!--                            <i class="fa fa-expand"></i>
+                            <i class="fa fa-chevron-down"></i>
+                            <i class="fa fa-times"></i>-->
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+
+
+                        <div class="form-group form-group-margin">
+                                        <label  class="col-sm-4 control-label control-label-font">Work Centre</label>
+                                        <div class="col-sm-8">
+                                            <input type="email" class=" form-control input-small form-control-height" id="qctracking-table2-work" disabled>
+                                        </div>
+                                    </div>
+
+                       <div class="form-group form-group-margin">
+                                        <label  class="col-sm-4 control-label control-label-font">Op Seq</label>
+                                        <div class="col-sm-8">
+                                            <input  class="form-control input-small form-control-height" id="qctracking-table2-opseq" disabled>
+                                        </div>
+                                    </div>
+
+
+                        <div class="form-group form-group-margin">
+                                        <label class="col-sm-4 control-label control-label-font">Duration(HH:MM:SS)</label>
+                            <div class="col-sm-8">
+                                        <input  class="form-control input-small form-control-height" id="qctracking-table2-duration" disabled>
+                                </div>
+                                    </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+                    <div class="col-md-6">
+                <div class="panel panel-default full-height">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title"></h3>
+                        <div class="actions pull-right">
+<!--                            <i class="fa fa-expand"></i>
+                            <i class="fa fa-chevron-down"></i>
+                            <i class="fa fa-times"></i>-->
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+
+
+                      <div id ="qctracking-table2"></div>
+
+                    </div>
+                </div>
+            </div>
+</div>
+
+
+<div class="row">
+                <div class="col-md-6">
+                <div class="panel panel-default full-height">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Work Order Execution</h3>
+                        <div class="actions pull-right">
+<!--                            <i class="fa fa-expand"></i>
+                            <i class="fa fa-chevron-down"></i>
+                            <i class="fa fa-times"></i>-->
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div class="row">
+                        <div class="form-group form-group-margin">
+                                        <label  class="col-sm-4 control-label control-label-font">Operator Name</label>
+                                        <div class="col-sm-8">
+                                            <input class=" form-control input-small form-control-height" id="qctracking-table3-operatorName">
+                                        </div>
+                                    </div>
+                        </div>
+
+                        <div class="row">
+                        <div class="form-group form-group-margin">
+                                        <label class="col-sm-4 control-label control-label-font">Password</label>
+                                        <div class="col-sm-8">
+                                            <input  type="password" class=" form-control input-small form-control-height" id="qctracking-table3-password">
+                                        </div>
+                                    </div>
+                        </div>
+
+                         <div class="row">
+                        <div class="form-group form-group-margin">
+                                        <label  class="col-sm-4 control-label control-label-font">Login Name</label>
+                                        <div class="col-sm-8">
+                                            <input  class=" form-control input-small form-control-height" id="qctracking-table3-loginName">
+                                        </div>
+                                    </div>
+                            </div>
+
+                                                 <div class="row">
+                        <div class="form-group form-group-margin">
+                                        <label  class="col-sm-4 control-label control-label-font">QC Inspection</label>
+                                        <div class="col-sm-8" id ="inspection-row">
+                                            <div class="row" >
+    <div class="col-sm-3" id ="inspection-row-2">
+        <button id="setup-start" ng-click="cmdQCStart_Click()" class="btn btn-primary">Start</button>
+    </div>
+        <div class="col-sm-3" id ="inspection-row-3">
+        <button id="setup-pause" ng-click ="cmdQCPause_Click()" class="btn btn-primary">Pause</button>
+    </div>
+
+            <div class="col-sm-3" id ="inspection-row-4">
+        <button id="setup-resume" ng-click ="cmdQCResume_Click()" class="btn btn-primary">Resume</button>
+    </div>
+
+            <div class="col-sm-3" id ="inspection-row-5">
+        <button id="setup-stop" ng-click="cmdQCStop_Click()" class="btn btn-primary">Stop</button>
+    </div>
+
+
+                                        </div>
+                                    </div>
+                            </div>
+
+                        <div class="row" style="margin-left:0px;" id="qctracking-pausereason">
+                                                        <div class="form-group">
+
+                                <div class="row" style="margin-left:0px;" >
+                                    <div class="col-sm-2">
+                                         <label class=" control-label control-label-font">Pause Reason</label>
+                                    </div>
+                                                                        <div class="col-sm-4">
+                                       
+                                        <input type="text" class="form-control input-small form-control-height" id="select_qctracking-pausereason-input" name="theinput"/>
+                                                                            </div>
+                                        <div class="col-sm-4">
+
+                                            <select id="select_qctracking-pausereason" class="form-control input-small form-control-height ng-pristine ng-valid ng-empty ng-touched" ng-change="pausereasonselected()" ng-model="pausereasonlist" style=""><option value="? undefined:undefined ?"></option><option value="2017050002">2017050002</option><option value="2017050003">2017050003</option><option value="2017050004">2017050004</option><option value="2017060001">2017060001</option><option value="2017060003">2017060003</option><option value="2017060004">2017060004</option><option value="2017060016">2017060016</option><option value="2017060018">2017060018</option><option value="2017060018.01">2017060018.01</option><option value="2017060020">2017060020</option><option value="2017060021">2017060021</option><option value="2017060022">2017060022</option><option value="2017060023">2017060023</option><option value="2017060024">2017060024</option><option value="2017060033">2017060033</option><option value="2017060034">2017060034</option><option value="2017060037">2017060037</option><option value="2017060038">2017060038</option><option value="2017060039">2017060039</option><option value="2017060040">2017060040</option><option value="2017060041">2017060041</option><option value="2017060042">2017060042</option><option value="2017060049">2017060049</option><option value="2017060050">2017060050</option><option value="2017060051">2017060051</option><option value="2017060052">2017060052</option><option value="2017060053">2017060053</option><option value="2017060061">2017060061</option><option value="2017060062">2017060062</option><option value="2017060064">2017060064</option><option value="2017060065">2017060065</option><option value="2017060066">2017060066</option><option value="2017060067">2017060067</option><option value="2017060068">2017060068</option><option value="2017060069">2017060069</option><option value="2017060070">2017060070</option><option value="2017060070.01.01">2017060070.01.01</option><option value="2017060070.03">2017060070.03</option><option value="2017060071">2017060071</option><option value="2017060072">2017060072</option><option value="2017060073">2017060073</option><option value="2017060073.01">2017060073.01</option><option value="2017060073.02">2017060073.02</option><option value="2017060074">2017060074</option><option value="2017060075">2017060075</option><option value="2017060076">2017060076</option><option value="2017060077">2017060077</option><option value="2017060078">2017060078</option><option value="2017060081">2017060081</option><option value="2017060089">2017060089</option><option value="2017060089.01">2017060089.01</option><option value="2017060091">2017060091</option><option value="2017060091.01">2017060091.01</option><option value="2017060095">2017060095</option><option value="2017060095.01">2017060095.01</option><option value="2017060096">2017060096</option><option value="2017060096.01">2017060096.01</option><option value="2017060099">2017060099</option><option value="2017060100">2017060100</option><option value="2017060100.01">2017060100.01</option><option value="2017060100.01.01">2017060100.01.01</option><option value="2017060100.01.01.01">2017060100.01.01.01</option><option value="2017060100.01.01.02">2017060100.01.01.02</option><option value="2017060100.01.01.03">2017060100.01.01.03</option><option value="2017060100.01.02">2017060100.01.02</option><option value="2017060100.01.03">2017060100.01.03</option><option value="2017060100.01.04">2017060100.01.04</option><option value="2017060100.01.05">2017060100.01.05</option><option value="2017060100.01.06">2017060100.01.06</option><option value="2017060100.01.07">2017060100.01.07</option><option value="2017060100.01.08">2017060100.01.08</option><option value="2017060100.01.09">2017060100.01.09</option><option value="2017060100.01.10">2017060100.01.10</option><option value="2017060100.01.11">2017060100.01.11</option><option value="2017060100.01.12">2017060100.01.12</option><option value="2017060100.01.13">2017060100.01.13</option><option value="2017060100.01.14">2017060100.01.14</option><option value="2017060100.01.15">2017060100.01.15</option><option value="2017060100.01.16">2017060100.01.16</option><option value="2017060100.01.17">2017060100.01.17</option><option value="2017060100.01.18">2017060100.01.18</option><option value="2017060100.01.19">2017060100.01.19</option><option value="2017060100.01.20">2017060100.01.20</option><option value="2017060100.01.21">2017060100.01.21</option><option value="2017060100.01.22">2017060100.01.22</option><option value="2017060100.01.23">2017060100.01.23</option><option value="2017060100.01.24">2017060100.01.24</option><option value="2017060100.01.25">2017060100.01.25</option><option value="2017060100.01.26">2017060100.01.26</option><option value="2017060100.01.27">2017060100.01.27</option><option value="2017060100.01.28">2017060100.01.28</option><option value="2017060100.01.29">2017060100.01.29</option><option value="2017060100.01.30">2017060100.01.30</option><option value="2017060100.01.31">2017060100.01.31</option><option value="2017060100.01.31.01">2017060100.01.31.01</option><option value="2017060100.01.32">2017060100.01.32</option><option value="2017060100.01.33">2017060100.01.33</option><option value="2017060100.01.34">2017060100.01.34</option><option value="2017060100.01.34.01">2017060100.01.34.01</option><option value="2017060100.01.34.02">2017060100.01.34.02</option><option value="2017060100.01.34.03">2017060100.01.34.03</option><option value="2017060100.01.35">2017060100.01.35</option><option value="2017060100.01.35.01">2017060100.01.35.01</option><option value="2017060100.01.35.02">2017060100.01.35.02</option><option value="2017060100.01.35.03">2017060100.01.35.03</option><option value="2017060100.01.36">2017060100.01.36</option><option value="2017060101">2017060101</option><option value="2017060102">2017060102</option><option value="2017060102.01">2017060102.01</option><option value="2017060103">2017060103</option><option value="2017060103.01">2017060103.01</option><option value="2017060104">2017060104</option><option value="2017060104.01">2017060104.01</option><option value="2017060105">2017060105</option><option value="2017060105.01">2017060105.01</option><option value="2017060106">2017060106</option><option value="2017060107">2017060107</option><option value="2017060108">2017060108</option><option value="2017060108.01">2017060108.01</option><option value="2017060109">2017060109</option><option value="2017060109.01">2017060109.01</option><option value="2017060110">2017060110</option><option value="2017060110.01">2017060110.01</option><option value="2017060111">2017060111</option><option value="2017060112">2017060112</option><option value="2017060113">2017060113</option><option value="2017060114">2017060114</option><option value="2017060115">2017060115</option><option value="2017060116">2017060116</option><option value="2017060117">2017060117</option></select>
+                                            </div>
+                                </div>
+                                                   </div>
+                        </div>
+
+<div class="row" style ="margin-left:0px;">
+                        <div class="form-group form-group-margin">
+                                        <label class="col-sm-4 control-label control-label-font">Total Duration</label>
+                                        <div class="col-sm-8">
+                                            <input class=" form-control input-small form-control-height" id="qctracking-table3-qctotalduration">
+                                        </div>
+                                    </div>
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+    </div>
+
+
+                   <div class="col-md-6" id="equipment-selection" > 
+                <div class="panel panel-default full-height">
+                                        <div class="panel-heading">
+                        <h3 class="panel-title">Equipment Selection/h3>
+                        <div class="actions pull-right">
+<!--                            <i class="fa fa-expand"></i>
+                            <i class="fa fa-chevron-down"></i>
+                            <i class="fa fa-times"></i>-->
+                        </div>
+                    </div>
+
+
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-sm-4" style="margin-left:5%;">
+                                <div class="row">
+                                <div class="form-group">
+
+                                <div class="row" style="margin-left:0px;">
+                                    <div class="col-sm-2">
+                                         <label class=" control-label control-label-font">Equipment</label>
+                                    </div>
+
+                                        <div class="col-sm-10">
+
+                                            <select id="select_qctracking-equipment" class="form-control input-small form-control-height ng-pristine ng-valid ng-empty ng-touched ng-untouched" ng-change="pausereasonselected()" ng-model="pausereasonlist" style=""><option value="? undefined:undefined ?"></option><option value="2017050002">2017050002</option><option value="2017050003">2017050003</option><option value="2017050004">2017050004</option><option value="2017060001">2017060001</option><option value="2017060003">2017060003</option><option value="2017060004">2017060004</option><option value="2017060016">2017060016</option><option value="2017060018">2017060018</option><option value="2017060018.01">2017060018.01</option><option value="2017060020">2017060020</option><option value="2017060021">2017060021</option><option value="2017060022">2017060022</option><option value="2017060023">2017060023</option><option value="2017060024">2017060024</option><option value="2017060033">2017060033</option><option value="2017060034">2017060034</option><option value="2017060037">2017060037</option><option value="2017060038">2017060038</option><option value="2017060039">2017060039</option><option value="2017060040">2017060040</option><option value="2017060041">2017060041</option><option value="2017060042">2017060042</option><option value="2017060049">2017060049</option><option value="2017060050">2017060050</option><option value="2017060051">2017060051</option><option value="2017060052">2017060052</option><option value="2017060053">2017060053</option><option value="2017060061">2017060061</option><option value="2017060062">2017060062</option><option value="2017060064">2017060064</option><option value="2017060065">2017060065</option><option value="2017060066">2017060066</option><option value="2017060067">2017060067</option><option value="2017060068">2017060068</option><option value="2017060069">2017060069</option><option value="2017060070">2017060070</option><option value="2017060070.01.01">2017060070.01.01</option><option value="2017060070.03">2017060070.03</option><option value="2017060071">2017060071</option><option value="2017060072">2017060072</option><option value="2017060073">2017060073</option><option value="2017060073.01">2017060073.01</option><option value="2017060073.02">2017060073.02</option><option value="2017060074">2017060074</option><option value="2017060075">2017060075</option><option value="2017060076">2017060076</option><option value="2017060077">2017060077</option><option value="2017060078">2017060078</option><option value="2017060081">2017060081</option><option value="2017060089">2017060089</option><option value="2017060089.01">2017060089.01</option><option value="2017060091">2017060091</option><option value="2017060091.01">2017060091.01</option><option value="2017060095">2017060095</option><option value="2017060095.01">2017060095.01</option><option value="2017060096">2017060096</option><option value="2017060096.01">2017060096.01</option><option value="2017060099">2017060099</option><option value="2017060100">2017060100</option><option value="2017060100.01">2017060100.01</option><option value="2017060100.01.01">2017060100.01.01</option><option value="2017060100.01.01.01">2017060100.01.01.01</option><option value="2017060100.01.01.02">2017060100.01.01.02</option><option value="2017060100.01.01.03">2017060100.01.01.03</option><option value="2017060100.01.02">2017060100.01.02</option><option value="2017060100.01.03">2017060100.01.03</option><option value="2017060100.01.04">2017060100.01.04</option><option value="2017060100.01.05">2017060100.01.05</option><option value="2017060100.01.06">2017060100.01.06</option><option value="2017060100.01.07">2017060100.01.07</option><option value="2017060100.01.08">2017060100.01.08</option><option value="2017060100.01.09">2017060100.01.09</option><option value="2017060100.01.10">2017060100.01.10</option><option value="2017060100.01.11">2017060100.01.11</option><option value="2017060100.01.12">2017060100.01.12</option><option value="2017060100.01.13">2017060100.01.13</option><option value="2017060100.01.14">2017060100.01.14</option><option value="2017060100.01.15">2017060100.01.15</option><option value="2017060100.01.16">2017060100.01.16</option><option value="2017060100.01.17">2017060100.01.17</option><option value="2017060100.01.18">2017060100.01.18</option><option value="2017060100.01.19">2017060100.01.19</option><option value="2017060100.01.20">2017060100.01.20</option><option value="2017060100.01.21">2017060100.01.21</option><option value="2017060100.01.22">2017060100.01.22</option><option value="2017060100.01.23">2017060100.01.23</option><option value="2017060100.01.24">2017060100.01.24</option><option value="2017060100.01.25">2017060100.01.25</option><option value="2017060100.01.26">2017060100.01.26</option><option value="2017060100.01.27">2017060100.01.27</option><option value="2017060100.01.28">2017060100.01.28</option><option value="2017060100.01.29">2017060100.01.29</option><option value="2017060100.01.30">2017060100.01.30</option><option value="2017060100.01.31">2017060100.01.31</option><option value="2017060100.01.31.01">2017060100.01.31.01</option><option value="2017060100.01.32">2017060100.01.32</option><option value="2017060100.01.33">2017060100.01.33</option><option value="2017060100.01.34">2017060100.01.34</option><option value="2017060100.01.34.01">2017060100.01.34.01</option><option value="2017060100.01.34.02">2017060100.01.34.02</option><option value="2017060100.01.34.03">2017060100.01.34.03</option><option value="2017060100.01.35">2017060100.01.35</option><option value="2017060100.01.35.01">2017060100.01.35.01</option><option value="2017060100.01.35.02">2017060100.01.35.02</option><option value="2017060100.01.35.03">2017060100.01.35.03</option><option value="2017060100.01.36">2017060100.01.36</option><option value="2017060101">2017060101</option><option value="2017060102">2017060102</option><option value="2017060102.01">2017060102.01</option><option value="2017060103">2017060103</option><option value="2017060103.01">2017060103.01</option><option value="2017060104">2017060104</option><option value="2017060104.01">2017060104.01</option><option value="2017060105">2017060105</option><option value="2017060105.01">2017060105.01</option><option value="2017060106">2017060106</option><option value="2017060107">2017060107</option><option value="2017060108">2017060108</option><option value="2017060108.01">2017060108.01</option><option value="2017060109">2017060109</option><option value="2017060109.01">2017060109.01</option><option value="2017060110">2017060110</option><option value="2017060110.01">2017060110.01</option><option value="2017060111">2017060111</option><option value="2017060112">2017060112</option><option value="2017060113">2017060113</option><option value="2017060114">2017060114</option><option value="2017060115">2017060115</option><option value="2017060116">2017060116</option><option value="2017060117">2017060117</option></select>
+                                            </div>
+                                </div>
+                                                   </div>
+                                    </div>
+
+                                <div class="col-sm-6">
+                                    <div class="col-sm-6" id="add-equipment">
+        <button id="addequipmentbtn" ng-click="cmdAdd_Click()" class="btn btn-primary">Add</button>
+    </div>
+                                    <div class="col-sm-6" id="delete-equipment">
+        <button id="deleteequipmentbtn" ng-click="cmdDelete_Click()" class="btn btn-primary">Delete</button>
+    </div>
+                                    </div>
+
+
+                            </div>
+
+                            <div class="col-sm-6" id="equipment-table" style="padding-left: 0px !important; padding-right:0px !important;">
+
+                            </div>
+                        </div>
+                        </div>
+
+                    </div>
+                       </div>
+    </div>
+
+ <div class="row">
+        <div class="col-md-4" id="wotracking-table-3">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">
+                                                WO Summary
+                                            </h3>
+                                        </div>
+
+                                        <div class="k-grid k-widget k-reorderable k-grid-content k-auto-scrollable">
+                                            
+                                                    
+                                                    <table class="k-selectable">
+                                                <tbody>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td id="WIP-td1_1">Pieces</td>
+                                                        <td id="WIP-td1_2">Date/Time</td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Released Production Qty</td>
+                                                        <td id="WIP-td2_1"></td>
+                                                        <td id="WIP-td2_2"></td>
+                                                    </tr>
+                                                    
+                                                    <tr id="WIP-tr-3" style="display:none;">
+                                                        <td>Scrap + Unaccountable Qty</td>
+                                                        <td id="WIP-td3_1"></td>
+                                                        <td id="WIP-td3_2"></td>
+                                                    </tr>
+
+                                                    <tr id="WIP-tr-4">
+                                                        <td>Actual Production Qty</td>
+                                                        <td id="WIP-td4_1"></td>
+                                                        <td id="WIP-td4_2"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Actual Received Qty</td>
+                                                        <td id="WIP-td5_1"></td>
+                                                        <td id="WIP-td5_2"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Completed Qty</td>
+                                                        <td id="WIP-td6_1"></td>
+                                                        <td id="WIP-td6_2"></td>
+                                                    </tr>
+
+                                                    <tr id="WIP-tr-7">
+                                                        <td>Accumulative Scrap</td>
+                                                        <td id="WIP-td7_1"></td>
+                                                        <td id="WIP-td7_2"></td>
+
+                                                    </tr >
+                                                   <tr id="WIP-tr-8">
+                                                        <td>Qty for Adjustment</td>
+                                                        <td id="WIP-td8_1"></td>
+                                                        <td id="WIP-td8_2"></td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td>Outstanding Qty</td>
+                                                        <td id="WIP-td9_1"></td>
+                                                        <td id="WIP-td9_2"></td>
+                                                    </tr>
+                                                   
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+     <div class="col-md-2">
+                                  <div class="panel panel-default">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title"></h3>
+                        <div class="actions pull-right">
+
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+                           <button type="submit" class="btn btn-primary" style ="display:none;" id="qc-tracking-splitdetail" ng-click="cmdSplitDetail_Click()">Split Detail</button>  
+                           <button type="submit" class="btn btn-primary" style ="display:none;" id="qc-tracking-updatereceive" ng-click ="cmdUpdateReceived_Click()">Update Receive</button>
+                           <button type="submit" class="btn btn-primary" style ="display:none;" id="qc-tracking-update" ng-click ="cmdUpdate_Click()">Save Completed</button> 
+                           <button type="submit" class="btn btn-primary"  id="qc-tracking-scrap" ng-click ="btnScrap_Click()">Scrap</button>
+                           <button type="submit" class="btn btn-primary"  id="qc-tracking-cancel" ng-click ="btnCancelWO_Click()">Cancel WO</button>    
+                        <button type="submit" class="btn btn-primary"  id="qc-tracking-operatorlist" ng-click ="btnOperatorList_Click()">Operator List</button>      
+         </div>
+          </div>
+        
+     </div>
+
+<div class="col-md-2">
+                         <div class="panel panel-default">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title"></h3>
+                        <div class="actions pull-right">
+
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+         <button type="submit" class="btn btn-primary" id ="wo-tracking-approve">Approved Operations</button>
+         <button type="submit" class="btn btn-primary" style ="display:none;" id="wo-tracking-onhold" ng-click="cmdOnHold_Click()">On Hold</button>
+         
+         </div>
+          </div>
+                             </div>
+
+<div class="col-md-3">
+                <div class="panel panel-default full-height">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Remark</h3>
+                        <div class="actions pull-right">
+
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+
+
+
+
+
+                        <div class="row">
+<!--                            <div class="form-group form-group-margin">
+                            <label class="col-sm-4 control-label control-label-font">Remark</label>
+                                </div>-->
+                                                        
+                                <div class="col-sm-12">
+                                    <div class="form-group form-group-margin">
+                            <select id="select_qctrackingremark" class="form-control input-small form-control-height ng-pristine ng-valid ng-empty ng-touched" ng-change ="woRemarkChanged()" ng-model="remarklist" style="">
+                                <textarea id="select_qctrackingremark-input" class="form-control input-small "  ng-model="remarklist" style="" rows="4">
+                                </div>
+                                                            </div>
+
+                        </div>
+
+<!--                                                <div class="row">
+                            <div class="form-group form-group-margin">
+                            <label class="col-sm-4 control-label control-label-font">Remark</label>
+                            <input id="select_wotrackingremark-input" class="form-control input-small form-control-height"  ng-model="remarklist" style="">
+                                </div>
+                        </div>-->
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div id="preprocessModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">WO Tracking - Pre-process Unaccountable</h4>
+      </div>
+      <div class="modal-body">
+        
+                <div class="panel panel-default">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Work Order Scrap</h3>
+                        <div id ="modalWOID-scrap"></div>
+                        <div class="actions pull-right">
+<!--                            <i class="fa fa-expand"></i>
+                            <i class="fa fa-chevron-down"></i>
+                            <i class="fa fa-times"></i>-->
+
+                            <button type="button" class="btn btn-default" ng-click ="preprocessConfirm()">Confirm</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div class="row">
+                        <div class="form-group">
+                                        <label for="inputEmail2" class="col-sm-3 control-label">Work Order</label>
+                                        <div class="col-sm-8">
+                                            <input type="email" class="form-control" id="preprocess-woid" disabled>
+                                        </div>
+                                    </div>
+                        </div>
+
+                        <div class="row">
+                        <div class="form-group">
+                                        <label for="inputEmail2" class="col-sm-3 control-label">Unaccountable Scrap Qty</label>
+                                        <div class="col-sm-8">
+                                            <input type="number" class="form-control" id="preprocess-scrapQty">
+                                        </div>
+                                    </div>
+                        </div>
+
+                        <div class="row">
+                        <div class="form-group">
+                            <label>Remark</label>
+                            <select id="select_preprocessremark" class="selector form-control split-selector ng-pristine ng-valid ng-empty ng-touched"  ng-model="preprocessremark" style="">
+                                           <button type="button" class="btn btn-default" ng-click ="preprocessConfirm()">Confirm</button>
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                        </div>
+
+                                                  <div class="row">
+<!--           <button type="button" class="btn btn-default" ng-click ="preprocessConfirm()">Confirm</button>
+           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>-->
+      </div>
+
+                    </div>
+
+                </div>
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+</div> 

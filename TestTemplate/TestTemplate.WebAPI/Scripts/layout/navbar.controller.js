@@ -43,21 +43,30 @@
 
         });
 
-        $scope.toggleDashboard = function () {
-            $("#dashboardul").toggle();
-        }
 
-        $scope.toggleleft = function() {
+        //$scope.toggleleft = function() {
             
-            $("#left-side-bar").toggle();
+        //    $("#left-side-bar").toggle();
 
-            var margin = $("#main-container-page").css("margin-left");
-            if(margin == "260px"){
-                $("#main-container-page").css("margin-left","80px")
-            } else if((margin == "80px")){
-                $("#main-container-page").css("margin-left","260px")
-            }
-           // alert(margin);
+        //    var margin = $("#main-container-page").css("margin-left");
+        //    if(margin == "260px"){
+        //        $("#main-container-page").css("margin-left","80px")
+        //    } else if((margin == "80px")){
+        //        $("#main-container-page").css("margin-left","260px")
+        //    }
+        //   // alert(margin);
+        //}
+
+        $scope.toggleleft = function () {
+            //alert("toggle");
+            $("#sidebar").toggle();
+
+            //var margin = $("#main-container-page").css("margin-left");
+            //if (margin == "260px") {
+            //    $("#main-container-page").css("margin-left", "80px")
+            //} else if ((margin == "80px")) {
+            //    $("#main-container-page").css("margin-left", "260px")
+            //}
         }
     }
 })();

@@ -1,64 +1,72 @@
 ﻿<div class="col-md-12">
-    <div class="row">
+
+    <!--<div class="row">
+        <div class="col-md-4" style="height:100px; width:200px;">
+            <img src="/Content/img/resource.jpg">
+        </div>
+    </div>-->
+    <div class="row" style="margin-left:15px;">
         Kit Selection
     </div>
 
     <div class="row">
-        
-        <!--<div class="col-md-4" style="height:200px;">
-            <img src="/Content/img/resource.jpg" >
-            </div>-->
-
-        <div class="col-md-3 " style="height:200px;">
-
-            <div class="panel widget-mini" style="width:100%; display: inline-block; height: 100%;border-style: solid;
-				    border-color: #bfbfbf;border-width: 1px; ">
-                <div class="row row-margin" style="border-bottom: 1px solid #ddd;">By Customer and Kit Type</div>
-
-
-                <div class="row row-margin">
-                    <div class="col-sm-6">
-                        Customer
-                    </div>
-
-                    <div class="col-sm-1" style="padding-left: 0px;">
-                        <div class="btn-group" role="group" aria-label="">
-                            <select id="select_customer" class="selector" ng-change="populateKitType()" ng-model="report"></select>
-                      </div>
-                    </div>
-
-                </div>
-
-                <div class="row row-margin">
-                    <div class="col-sm-6">
-                        Kit Type
-                    </div>
-                    <div class="col-sm-1" style="padding-left: 0px;">
-                        <div class="btn-group" role="group" aria-label="">
-                            <select id="select_kittype" class="selector" ng-change="comboMCList_SelectionChangeCommitted()" ng-model="report"></select>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row row-margin">
-                    <div class="col-sm-6">
-                        Customer Kit Type
-                    </div>
-
-                    <div class="col-sm-1" style="padding-left: 0px;">
-                        <select id="select_customerkittype" class="selector"></select>
-                    </div>
-                </div>
-
-
-            </div>
-        </div>
 
 
 
             <div class="col-md-4" style="height:200px;">
-                <div class="panel widget-mini" style="width:90%; display: inline-block; height: 100%; border-style: solid;
+
+                <div class="panel widget-mini" style="width:100%; display: inline-block; height: 100%;border-style: solid;
+				    border-color: #bfbfbf;border-width: 1px; ">
+                    <div class="row row-margin" style="border-bottom: 1px solid #ddd;">By Customer and Kit Type</div>
+
+
+                    <div class="row row-margin">
+                        <div class="col-sm-6">
+                            Customer
+                        </div>
+
+                        <div class="col-sm-1" style="padding-left: 0px;">
+                            <div class="btn-group" role="group" aria-label="">
+                                <select id="select_customer" class="selector" ng-change="populateKitType()" ng-model="report2"></select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row row-margin">
+                        <div class="col-sm-6">
+                            Kit Type
+                        </div>
+                        <div class="col-sm-1" style="padding-left: 0px;">
+                            <div class="btn-group" role="group" aria-label="">
+                                <select id="select_kittype" class="selector" ng-change="comboMCList_SelectionChangeCommitted()" ng-model="report1"></select>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row row-margin">
+                        <div class="col-sm-6">
+                            Customer Kit Type
+                        </div>
+
+                        <div class="col-md-6" style="padding-left: 0px;">
+                            <!-- <select id="select_customerkittype" class="selector"></select>-->
+                            <input type="text" class="form-control " id="input-customerkittype" readonly="">
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+
+
+
+            <div class="col-md-4" style="height:200px;">
+                <div class="panel widget-mini" style="width:100%; display: inline-block; height: 100%; border-style: solid;
 				    border-color: #bfbfbf;border-width: 1px;">
                     <div class="row row-margin" style="border-bottom: 1px solid #ddd;">
                         By WO Release Date
@@ -86,20 +94,80 @@
                     </div>
 
                     <!--<div style="margin-top: 10%;display: inline-block;margin-left: 40%;">
-                        <button ng-click="Refresh()">Refresh</button>
-                    </div>-->
+                    <button ng-click="Refresh()">Refresh</button>
+                </div>-->
                 </div>
 
+            </div>
+
+            <div class="col-md-4" style="height:200px;display:none;" id="detail-report">
+
+                <div class="panel widget-mini" style="width:100%; display: inline-block; height: 100%;border-style: solid;
+				    border-color: #bfbfbf;border-width: 1px; ">
+                    <div class="row row-margin" style="border-bottom: 1px solid #ddd;">Get Measurement Report</div>
+
+
+                    <div class="row row-margin">
+                        <div class="col-sm-6">
+                            Detail
+                        </div>
+
+                        <div class="col-sm-1" style="padding-left: 0px;">
+                            <div class="btn-group" role="group" aria-label="">
+                                <select id="select_detail" class="selector" ng-model="report"></select>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row row-margin">
+                        <button ng-click="getMeasurementReport()" class="btn btn-default">Generate Report</button>
+                    </div>
+
+
+
+                </div>
             </div>
 
 
         </div>
 
-    <div class="row" id="tracking-report-table">
-        .table
+    <div class="row" id="tracking-report-table" style="margin-left:0px;margin-top:15px;">
+       
     </div>
 
+    <!--<div class="row" id="tracking-report-table1" style="width:5000px">
+        .table1
+    </div>-->
 
 
+
+
+    <!-- Modal -->
+    <div class="modal fade " id="report-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog cust-width" role="document">
+            <div class="modal-content" id="report-modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">QA Tracking Measurement Report</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="row" style="height:100px; width:200px; margin-left:0px;">
+                    <img src="/Content/img/resource.jpg">
+                </div>
+                <div class="modal-body">
+
+                    <div class="row" id="tracking-report-table1"> <!--style="width:5000px"-->
+                       
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>

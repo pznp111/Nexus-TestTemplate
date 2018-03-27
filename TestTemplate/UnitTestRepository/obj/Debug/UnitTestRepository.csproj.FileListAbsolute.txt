@@ -4,3 +4,14 @@ C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTem
 C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\UnitTestRepository\obj\Debug\UnitTestRepository.csprojResolveAssemblyReference.cache
 C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\UnitTestRepository\obj\Debug\UnitTestRepository.dll
 C:\Users\linxl\Documents\Visual Studio 2015\Projects\Report\TestTemplate\TestTemplate\TestTemplate\UnitTestRepository\obj\Debug\UnitTestRepository.pdb
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\UnitTestRepository\bin\Debug\UnitTestRepository.dll.config
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\UnitTestRepository\bin\Debug\UnitTestRepository.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\UnitTestRepository\bin\Debug\UnitTestRepository.pdb
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\UnitTestRepository\bin\Debug\EntityFramework.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\UnitTestRepository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\UnitTestRepository\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\UnitTestRepository\bin\Debug\EntityFramework.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\UnitTestRepository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\UnitTestRepository\obj\Debug\UnitTestRepository.csprojResolveAssemblyReference.cache
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\UnitTestRepository\obj\Debug\UnitTestRepository.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\UnitTestRepository\obj\Debug\UnitTestRepository.pdb

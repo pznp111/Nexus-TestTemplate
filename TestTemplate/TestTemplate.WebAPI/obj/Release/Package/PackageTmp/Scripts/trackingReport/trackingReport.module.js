@@ -17,14 +17,14 @@
                 url: '/trackingReport',
                 templateUrl: 'Scripts/trackingReport/trackingReport.html',
                 controller: 'TrackingReportCtrl',
-                controllerAs: 'trackingReportCtrl',
+                controllerAs: 'trackingReportCtrl'
 
                 //*********
-                resolve: {
-                    tenant: function ($stateParams, repo) {
-                        return repo.tenant.getTenant();
-                    }
-                }
+                //resolve: {
+                //    tenant: function ($stateParams, repo) {
+                //        return repo.tenant.getTenant();
+                //    }
+                //}
                 //********
             });
 

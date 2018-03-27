@@ -38,6 +38,9 @@
             return memo;
         }, []);
         $('canvas').remove();
+        $("#toolbar_rework").hide();
+        $("#toolbar_wodetail").hide();
+
 
         initGlobal();
         console.log("global",$scope.global);

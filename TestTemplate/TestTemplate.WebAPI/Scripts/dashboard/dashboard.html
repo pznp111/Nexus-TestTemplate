@@ -1,3 +1,68 @@
-<div class="jumbotron">
-    <h1>Dashboard</h1>
-</div>
+
+                <ul class="fixed-div" style="height:40px;position: fixed;
+    top: 1em;
+    left: 1em;
+    z-index:100;
+    position:relative;">
+
+                    <li class="dropdown profile ">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" style="height: 40px;">
+                            <span class="meta">
+
+                                <span class="avatar">
+                                    <img src="Content/img/3duser-black.png" class="img-circle custom-user-logo" alt="System Admin" />
+
+                                    <!--<span class="text custom-white-text">{{currentUser.userName}}</span>-->
+                                    <span class="caret"></span>
+                                </span>
+
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu animated flipInX" role="menu">
+                            <li style="padding-left: 10px;">
+                                Welcome<b>, {{currentUser.userName}}</b>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <a ng-click="logOutsub()">
+                                    <span class="icon">
+                                        <i class="fa fa-sign-out"></i>
+                                    </span>Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+<div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default full-height">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Work Order</h3>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div class="row split-table-margin">
+
+
+                               <!-- <label>Work Order</label>-->
+
+                                <div class="form-group form-group-margin">
+                                    <label class="col-sm-4 control-label control-label-font">Work Order</label>
+                                    <div class="col-sm-4" id="select-woid-inputROW">
+                                       
+                                        <input type="text" class="form-control input-small form-control-height" id="select-woid-input" name="theinput" ng-keypress="selectInput($event)" autofocus="">
+                                        </div>
+<!--                                         <div class="col-sm-4" id="select-woidROW">
+                                        <select class="form-control input-small form-control-height ng-pristine ng-untouched ng-valid ng-empty" id="select-woid" ng-change="woSelected()" ng-model="wolist" style="width:50%;"><option value=""></option><option value="201712052">201712052</option><option value="201712052.01">201712052.01</option><option value="201712052.02">201712052.02</option><option value="201712054">201712054</option><option value="201712054.01">201712054.01</option><option value="201712054.02">201712054.02</option><option value="201712056">201712056</option><option value="201712056.01">201712056.01</option><option value="201712056.02">201712056.02</option><option value="201712057">201712057</option><option value="201712058">201712058</option><option value="201801006">201801006</option><option value="201801010">201801010</option></select>
+                                        </div>-->
+                                </div>
+ 
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

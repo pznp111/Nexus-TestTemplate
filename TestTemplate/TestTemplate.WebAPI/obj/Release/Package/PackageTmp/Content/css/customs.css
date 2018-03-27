@@ -23,10 +23,14 @@ body {
 }
 
 .k-grid-header, .k-grid-header .k-header {
-    background-color: #27b6af;
+    background-color: #1d212a;
     color: white;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    /*padding-top: 5px;
+    padding-bottom: 5px;*/
+        padding-top: 0px;
+    padding-bottom: 0px;
+    font-size:0.8em;
+    font-weight: bold !important;
 }
 
     .k-grid-header th.k-with-icon .k-link {
@@ -68,7 +72,7 @@ a.k-button.k-button-icontext.k-primary.k-grid-update {
 
 a.k-button {
     min-height: 31px;
-    padding-top: 6px;
+    padding-top: 0px !important;
 }
 
 .k-window-titlebar.k-header {
@@ -105,12 +109,12 @@ body {
 
     a.k-button {
         min-height: 35px;
-        padding-top: 5px;
+        /*padding-top: 5px;*/
     }
 }
 .container {
         max-width: 1250px;
-    padding-top: 107px;
+    padding-top: 30px;
     }
 @media (min-width: 1367px) {
     .container {
@@ -216,7 +220,7 @@ button.k-button {
 }
 
 .custom-user-logo {
-    width: 37px !important;
+    width: 27px !important;
 }
 
 .custom-tenant-padding-1 {
@@ -276,7 +280,8 @@ button.k-button {
 }
 
 .k-grid-toolbar, .k-grouping-header {
-    padding: .714em;
+    /*padding: .714em;*/
+    padding:0.4em;
     /*background: #fff !important;*/
     background: #fff ;
 }
@@ -377,6 +382,10 @@ div.tab button.active {
     border-top: 1px solid #ddd;
     font-family: "Open Sans", Helvetica, Arial, sans-serif;
     /*color: #565656;*/
+        font-size: 0.85em;
+        font-weight: bold;
+        height:10px;white-space:nowrap;
+
    
 }
 .custom-td{
@@ -586,7 +595,7 @@ ol.example li.placeholder:before {
 }
 
 .reproduce-kendo-row1{
-    height:68px;
+    /*height:68px;*/
     border-bottom: 1px solid #ddd;
     border-top: 1px solid #ddd;
     font-family: "Open Sans", Helvetica, Arial, sans-serif;
@@ -648,3 +657,173 @@ ol.example li.placeholder:before {
         border-style: none;
     }
 }
+
+
+
+
+
+
+
+
+
+
+.control-label-font{
+    font-size:0.6em !important;
+}
+
+.form-group-margin{
+    margin-bottom:5px;
+}
+
+.form-control-height{
+    height: 25px !important;
+    font-size: 0.7em;
+    font-weight: bold;
+}
+
+.panel-body-small{
+    padding:5px;
+}
+
+.k-grid .k-button{
+        min-height: 10px !important;
+    font-size: 0.6em !important;
+}
+.table-control-padding-font{
+    padding:1px !important;
+    font-size:0.65em;
+        background-color: #1d212a !important;
+            color: white;
+}
+
+.table-control-padding-font-1{
+    padding:1px !important;
+    font-size:0.85em;
+    font-weight: bold;
+}
+
+.remove-margin-bottom{
+margin-bottom:0px !important;
+
+}
+
+.row-custom-margin{
+        margin-top: -10px;
+}
+
+.modal-dialog{
+        right: auto !important;
+    left: auto !important;
+    width: 80% !important;
+}
+
+.radio-body{
+    width: 98%; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navbar-nav>li>a {
+    padding-top: 8px !important;
+}
+.navbar{
+    min-height:40px !important;
+}
+
+.full-height{
+    height:90%;
+}
+
+.k-floatwrap{
+    min-height: 2em !important;
+}
+
+.k-reset{
+    margin-top: -5px !important;
+}
+
+.form-control {
+    padding:2px 2px 2px 2px !important;
+}
+
+.breadcrumb {
+    padding:0px 10px;
+}
+
+.input-group-addon{
+    font-size:10px;
+    border:0px;
+}
+.panel-body {
+    padding: 5px;
+}
+.form-control-custom1 {
+    padding: 3px 16px 6px 25px !important;
+}
+.btn-primary {
+       
+    font-size: 0.7em;
+}
+.navbar-brand { position: relative; z-index: 2; }
+
+.navbar-nav.navbar-right .btn { position: relative; z-index: 2; padding: 4px 20px; margin: 10px auto; }
+
+.navbar .navbar-collapse { position: relative; }
+.navbar .navbar-collapse .navbar-right > li:last-child { padding-left: 22px; }
+
+.navbar .nav-collapse { position: absolute; z-index: 1; top: 0; left: 0; right: 0; bottom: 0; margin: 0; padding-right: 120px; padding-left: 80px; width: 100%; }
+.navbar.navbar-default .nav-collapse { background-color: #f8f8f8; }
+.navbar.navbar-inverse .nav-collapse { background-color: #222; }
+.navbar .nav-collapse .navbar-form { border-width: 0; box-shadow: none; }
+.nav-collapse>li { float: right; }
+
+.btn.btn-circle { border-radius: 50px; }
+.btn.btn-outline { background-color: transparent; }
+
+.fixed-div {
+    position: fixed;
+    top: 1em;
+    right: 1em;
+    display:none;
+}
+@media screen and (max-width: 767px) {
+    .navbar .navbar-collapse .navbar-right > li:last-child { padding-left: 15px; padding-right: 15px; } 
+    
+    .navbar .nav-collapse { margin: 7.5px auto; padding: 0; }
+    .navbar .nav-collapse .navbar-form { margin: 0; }
+    .nav-collapse>li { float: none; }
+    #left-side-bar{display:none;}
+    #login-container-row{width:300px;margin-left:0px;margin-top:0px !important;}
+    #login-section{margin-left:0px !important;}
+    #top-layout{display:none;}
+    #main-container-page{margin-left:0px !important;}
+    
+    #wotracking-row2{display:none;}
+    #wotracking-row3{display:none;}
+    #wotracking-row4{display:none;}
+    #setup-row-6{display:none;}
+    #production-row-6{display:none;}
+    /*#select_wotracking-pausereason-inputROW{width:95%}*/
+    /*#select_wotracking-pausereasonROW{width:12%;margin-top:-25px;float:right;} */
+    #select-woid-inputROW{width:85%}
+    #select-woidROW{width:30%;margin-top:-25px;float:right;}
+    #wotracking-operatorInfo{display:none;}
+    #select_wotracking-woid{width: 12% !important;margin-top: -25px;float: right;}
+    #select_wotracking-pausereason{width: 12%;margin-top: -25px;float: right;}
+    .btn-primary{padding: 20px 14px !important;font-size:1.2em;}
+    .control-label-font { font-size: 0.75em !important;}
+    .fixed-div {
+    position: fixed;
+    top: 1em;
+    right: 1em;
+     margin-top: -35px;
+    margin-left: -58px;
+    display:block;
+}
+
+}
+
+
+
+
+   

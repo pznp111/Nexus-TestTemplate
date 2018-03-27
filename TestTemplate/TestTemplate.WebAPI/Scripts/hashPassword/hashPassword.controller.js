@@ -27,7 +27,8 @@
             return memo;
         }, []);
         $('canvas').remove();
-
+        $("#toolbar_rework").hide();
+        $("#toolbar_wodetail").hide();
         $scope.tenant = tenant;
 
         

@@ -43,6 +43,8 @@
         function login(loginData) {
             loginData.GrantType = 'usertoken';
             return $http.post(config.baseUrlNexusApi + 'Token/GetToken', loginData).then(function (results) {
+                console.log("usertoken GetToken", results);
+
                 currentUser.isAuth = results.data.success;
                 currentUser.token = results.data.jsonWebToken;
                 currentUser.expiresOn = results.data.expiresOn;
@@ -50,6 +52,7 @@
                 $localStorage.currentUser = currentUser;
             }).then(function () {
                 return $http.get(appConfig.baseUrlApi + 'user/GetCurrentUserDetails').then(function (results) {
+                    console.log("usertoken GetCurrentUserDetails", results);
                     currentUser.userName = results.data.userName;
                     currentUser.userId = results.data.id;
                     currentUser.tenantId = results.data.tenantId;
@@ -68,7 +71,8 @@
                 loginData.RefreshToken = $localStorage.currentUser.refreshToken;
                 if ($localStorage.currentUser.expiresOn < currentTime + 20) {
                     return $http.post(config.baseUrlNexusApi + 'Token/GetToken', loginData)
-                        .then(function(results) {
+                        .then(function (results) {
+                            console.log("usertoken refreshToken", results);
                             $localStorage.currentUser.isAuth = results.data.success;
                             $localStorage.currentUser.token = results.data.jsonWebToken;
                             $localStorage.currentUser.expiresOn = results.data.expiresOn;

@@ -35,7 +35,10 @@
             return memo;
         }, []);
 
-        
+        $('canvas').remove();
+        $("#toolbar_rework").hide();
+        $("#toolbar_wodetail").hide();
+        $("#main-container-page").css('margin-top', 0)
 
         frmAutoDispatch_Load();
 
@@ -54,11 +57,13 @@
             if($('input[name="State1"]:checked').val() == "new-release"){
                 $scope.intOption = 0;
                // $("#dispatchALL").show();
-                document.getElementById("dispatchALL").setAttribute("style", "visibility:visible");
+               // document.getElementById("dispatchALL").setAttribute("style", "visibility:visible");
+                $("#dispatchALL").css('visibility', 'hidden');
             } else{
                 $scope.intOption = 1;
               //  $("#dispatchALL").hide();
-                document.getElementById("dispatchALL").setAttribute("style", "visibility:hidden");
+               // document.getElementById("dispatchALL").setAttribute("style", "visibility:hidden");
+                $("#dispatchALL").css('visibility', 'hidden');
             }
 
 
@@ -236,6 +241,7 @@
                         .then(function (response) {
                             console.log("fnGenerateRouteDetail51", "5");
                             $scope.table2Data = response.data.result; 
+
                             makeTable2(blDispatchState, selectedWO);
                         });
 
@@ -288,7 +294,7 @@
                 },
                 dataType: "json",
                 selectable: "true",
-                height: 550,
+                height: 350,
                 pageable: {
                     refresh: true,
                     pageSizes: true,
@@ -402,7 +408,7 @@
                 },
                 dataType: "json",
                 selectable: "true",
-                height: 550,
+                height: 350,
                 pageable: {
                     refresh: true,
                     pageSizes: true,
@@ -599,12 +605,18 @@
         //'*******************************************************************
         function fnUpdateRoute(index) {
             var promiseArray = [];
+            var promiseArray1 = [];
+            var promiseArray2 = [];
 
+            var promiseArray3 = [];
+            var promiseArray4 = [];
 
             var table2Data = $scope.currentData[index]['table2Data'];
+
             for(var i =0;i<table2Data.length;i++){
+                console.log("fnUpdateWOExecution table2Data",table2Data);
                 var woid = table2Data[i]['woid'];
-                var procopseq = table2Data[i]['procOpSeq'];
+              //  var procopseq = table2Data[i]['procOpSeq'];
                 var prioritizedNo = table2Data[i]['prioritizedNo'];
 
                 if (prioritizedNo == 0) {
@@ -612,23 +624,140 @@
                 } else {
                     prioritizedNo = "9999";
                 }
-                promiseArray.push(
-           $http.post(config.baseUrlApi + 'HMLVTS/fnUpdateRoute', {
-               "WOID": woid,
-               "ProcOpSeq": procopseq,
-               "PrioritizedNo": prioritizedNo
-           })
-               );
-            }
 
+                promiseArray.push(
+                    $http.post(config.baseUrlApi + 'HMLVTS/fnUpdateRoute', {
+                        "WOID": woid,
+                        "ProcOpSeq": String(table2Data[i]['procOpSeq']).trim(),
+                        "PrioritizedNo": prioritizedNo
+                        })
+                    );
+
+
+
+
+                //"UPDATE [TS_WorkOrderExecution] "
+                //    + "SET WOStatus = @WOStatus "
+                //    + "WHERE WOID =  @WOID "
+                //    + "AND WorkCenter =  @WorkCenter "
+                //    + "AND RouteID =  @RouteID "
+                //    + "AND ProcOpSeq =  @ProcOpSeq "
+                //    + "AND McID =  @McID "
+                //    + "and (WOStatus not like 'Completed%' "
+                //    + "and WOStatus not like 'Processing%' )";
+                var wostatus = "";
+                if (table2Data[i]['prioritizedNo'] == 0) {
+                    wostatus = "pending";
+                } else {
+                    wostatus = "queuing";
+                }
+                  promiseArray2.push(
+                            $http.post(config.baseUrlApi + 'HMLVTS/fnUpdateWOExecution1', {
+                                "WOID": woid,
+                                "WorkCenter":String(table2Data[i]['workCenter']).trim(),
+                                "RouteID":String(table2Data[i]['routeID']).trim(),
+                                "ProcOpSeq": String(table2Data[i]['procOpSeq']).trim(),
+                                "McID": String(table2Data[i]['mcID']).trim(),
+                                "WOStatus":wostatus
+                                })
+                            );
+                }
+                
 
 
 
 
             $q.all(promiseArray).then(function (response) {
-                console.log("fnUpdateRoute",response);
+                console.log("fnUpdateRoute", response);
+                $q.all(promiseArray2).then(function (response) {
+                    console.log("fnUpdateWOExecution1", response);
+
+                  //  if (response.length != 0) {
+
+
+                  //  } else {
+
+
+                        //if (table2Data[i]['prioritizedNo'] == 1) {
+
+
+                        //    var timeStamp = getCurrentDatetime();
+                        //    var mctype = String(table2Data[i]["mcType"]).trim();
+                        //    if (String(table2Data[i]["mcType"]) == "QC") {
+                        //        mctype = "";
+                        //    }
+
+                        //    //    "INSERT INTO [TS_WorkOrderExecution] "
+                        //    //+ "(WOID, PartID, ActualRecQty, ActualRecDate, "
+                        //    //+ "OutstandingQty, OutstandingDate, "
+                        //    //+ "CompletedQty, CompletedDate, "
+                        //    //+ "McID, MCType, RouteID, WorkCenter, "
+                        //    //+ "OpSeq, ProcOpSeq, WOStatus) "
+                        //    //+ "VALUES ( @WOID, @PartID, @ActualRecQty, @ActualRecDate, "
+                        //    //+ "@OutstandingQty, @OutstandingDate, "
+                        //    //+ "@CompletedQty, @CompletedDate, "
+                        //    //+ "@McID, @MCType, @RouteID, @WorkCenter, "
+                        //    //+ "@OpSeq, @ProcOpSeq, @WOStatus) ";
+
+                        //    promiseArray2.push($http.post(config.baseUrlApi + 'HMLVTS/fnInsertWOExecution', {
+                        //        "WOID": woid,
+                        //        "PartID": String(table2Data[i]["partID"]).trim(),
+                        //        "ActualRecQty": String(table2Data[i]['actualRecQty']).trim(),
+                        //        "ActualRecDate": timeStamp,
+                        //        "OutstandingQty": String(table2Data[i]['outstandingQty']).trim(),
+                        //        "OutstandingDate": timeStamp,
+                        //        "CompletedQty": 0,
+                        //        "CompletedDate": timeStamp,
+                        //        "McID": String(table2Data[i]["mcID"]).trim(),
+                        //        "MCType": mctype,
+                        //        "RouteID": String(table2Data[i]["routeID"]).trim(),
+                        //        "WorkCenter": String(table2Data[i]["workCenter"]).trim(),
+                        //        "OpSeq": String(table2Data[i]["opSeq"]).trim(),
+                        //        "ProcOpSeq": String(table2Data[i]["procOpSeq"]).trim(),
+                        //        "WOStatus": "Queuing"
+                        //    })
+                        //);
+                        //}
+
+
+                   // }
+
+                    $q.all(promiseArray2).then(function (response) {
+                        console.log("fnUpdateWOExecution1", response);
+
+                            promiseArray3.push(
+                            $http.post(config.baseUrlApi + 'HMLVTS/fnUpdateWOExecution2', {
+                                "WOID": woid
+                                })
+                            );
+
+                            $q.all(promiseArray3).then(function (response) {
+                                console.log("fnUpdateWOExecution2", response);
+                                if(response.length != 0 && response[0].data.success){
+                                     promiseArray4.push(
+                                        $http.post(config.baseUrlApi + 'HMLVTS/fnUpdateWOExecution3', {
+                                            "WOID": woid
+                                        })
+                                        );
+
+                                    
+                                     $q.all(promiseArray4).then(function (response) {
+                                         console.log("fnUpdateWOExecution3", response);
+
+
+                                         fnUpdateWOExecution
+
+                                     });
+                                }
+
+                            });
+                    });
+                });
             });
         }
+
+
+
 
         //'*******************************************************************
         //'Title     : fnEditWO
@@ -639,9 +768,6 @@
         //'*******************************************************************
         function fnEditWO()
         {
-
-
-
             console.log("$scope.table2Data", $scope.table2Data); //table2 data  if there is newstatus, use new status, otherwise need to dispatch/dont dispatch
             console.log("$scope.currentData", $scope.currentData); //table1 data
 
@@ -656,45 +782,6 @@
                 }
 
             }
-
-
-            //$http.get(config.baseUrlApi + 'HMLVTS/fnAddWO1')
-            //        .then(function (response) {
-            //            console.log("fnAddWO", response);
-
-            //            console.log("fnAddWO length", response.data.result.length);
-            //            //to check
-            //            if (response.data.result.length != 0) {
-            //                var promiseArray1 = [];
-            //                for (var i = 0; i < response.data.result.length; i++) {
-            //                    console.log("fnAddWO woid", response.data.result[i]["woid"]);
-
-            //                    promiseArray1.push(
-            //                        $http.post(config.baseUrlApi + 'HMLVTS/fnAddWO2', {
-            //                            "WOID": String(response.data.result[i]["woid"]).trim()
-            //                        })
-            //                        );
-            //                }
-
-
-                            
-
-            //                console.log("fnAddWO promise", promiseArray1);
-            //                $q.all(promiseArray1).then(function (response) {
-            //                    console.log("fnAddWO promiseArray1", response);
-            //                    for (var intI = 0; intI < response.length; intI++) {
-
-            //                        //update WO
-            //                        fnUpdateWO(intI);
-            //                        //update Route,QCEquipment and WOexecution
-            //                        //fnUpdateRoute(intI, dtRoute);;
-            //                        //update PPOrder
-            //                        //fnUpdatePPOrder(intI);
-            //                    }
-            //                });
-            //            }
-
-            //        });
         }
 
 
@@ -707,7 +794,6 @@
         //'*******************************************************************
         function fnAddWO() {
             alert("fnAddWO");
-
             // $scope.storeData
             console.log("$scope.table2Data", $scope.table2Data); //table2 data  if there is newstatus, use new status, otherwise need to dispatch/dont dispatch
             console.log("$scope.currentData", $scope.currentData); //table1 data
@@ -734,6 +820,20 @@
         //'*******************************************************************
         $scope.confirm = function () {
 
+            if ($('input[name="State1"]:checked').val() != "new-release") {
+                $('#checkboxALL').attr('checked', false); // Checks it
+            }
+
+
+            if ($('input[name="all"]:checked').val() == "all") {
+                for (var i = 0; i < $scope.storeData.length; i++) {
+                    $scope.storeData[i]['newstatus'] = "Queuing";
+                }
+                for (var i = 0; i < $scope.currentData.length; i++) {
+                    $scope.currentData[i]['newstatus'] = "Queuing";
+                    $scope.currentData[i]['dstate'] = true;
+                }
+            }
 
             //  collectData();
             console.log("$scope.table2Data after", $scope.table2Data);
@@ -749,6 +849,54 @@
                 fnEditWO();
 
 
+            }
+        }
+
+
+        //'*******************************************************************
+        //'Title     :  checkboxClick
+        //'Function  :  to highlight color for checkbox click
+        //'Input     :  
+        //'Output    :  
+        //'Remark    :
+        //'*******************************************************************
+        $scope.checkboxClick = function () {
+            if ($('input[name="all"]:checked').val() == "all") {
+                //var grid = $('#dispatch-table1').data('kendoGrid');
+                console.log("checkboxClick1", $("#dispatch-table1").find('tr'));
+
+
+                var eachTr = $("#dispatch-table1").find('tr');
+                if(eachTr.length > 1){ // if more than 1 row data, eachTr[0] is header
+                    for (var i = 1; i < eachTr.length; i++) {
+                        $(eachTr[i]).css('color', 'red'); //change background color of all rows
+
+                        var eachTd = $(eachTr[i]).find('td');
+                        console.log("checkboxClick1", eachTd);
+
+                          if(eachTd.length != 0){ // change first row to dispatch
+                            $(eachTd[0]).text("Dispatch");
+                        }
+                    }
+                }
+
+            } else {
+                console.log("checkboxClick1", $("#dispatch-table1").find('tr'));
+
+
+                var eachTr = $("#dispatch-table1").find('tr');
+                if (eachTr.length > 1) { // if more than 1 row data, eachTr[0] is header
+                    for (var i = 1; i < eachTr.length; i++) {
+                        $(eachTr[i]).css('color', 'black'); //change background color of all rows
+
+                        var eachTd = $(eachTr[i]).find('td');
+                        console.log("checkboxClick1", eachTd);
+
+                        if (eachTd.length != 0) { // change first row to dispatch
+                            $(eachTd[0]).text("Dont Dispatch");
+                        }
+                    }
+                }
             }
         }
 
@@ -808,7 +956,7 @@
 
                 var table2Data = $scope.currentData[index]['table2Data'];
                 console.log("fnInsertRoute table2Data",table2Data);
-                if ($scope.selectedDispatch) {
+                if ($scope.selectedDispatch || ($('input[name="all"]:checked').val() == "all")) {
 
                     for (var i = 0; i < table2Data.length; i++) {
                       //  var rowno = findByWOID($scope.table2Data[i]["woid"]);
@@ -871,9 +1019,37 @@
                                     }
 
                                 }
-
-                                if (String(table2Data[i]["newstatus"]).trim() != "") {            // fnInsertWOExecution
-                                  //  if (true) {            // fnInsertWOExecution
+                                if ($('input[name="all"]:checked').val() != "all") {
+                                    console.log("test insert execution.1");
+                                    if (String(table2Data[i]["newstatus"]).trim() != "") {            // fnInsertWOExecution
+                                        //  if (true) {            // fnInsertWOExecution
+                                        var timeStamp = new Date().toDateInputValue();
+                                        var mctype = String(table2Data[i]["mcType"]);
+                                        if (String(table2Data[i]["mcType"]) == "QC") {
+                                            mctype = "";
+                                        }
+                                        console.log("test insert execution.2");
+                                        promiseArray2.push($http.post(config.baseUrlApi + 'HMLVTS/fnInsertWOExecution', {
+                                            "WOID": $scope.currentData[index]["salesOrderID"],
+                                            "PartID": $scope.currentData[index]["partID"],
+                                            "ActualRecQty": $scope.currentData.length,
+                                            "ActualRecDate": timeStamp,
+                                            "OutstandingQty": $scope.currentData.length,
+                                            "OutstandingDate": timeStamp,
+                                            "CompletedQty": 0,
+                                            "CompletedDate": timeStamp,
+                                            "McID": table2Data[i]["mcID"].trim(),
+                                            "MCType": mctype.trim(),
+                                            "RouteID": table2Data[i]["routeID"],
+                                            "WorkCenter": table2Data[i]["workCenter"],
+                                            "OpSeq": String(table2Data[i]["opSeq"]),
+                                            "ProcOpSeq": String(table2Data[i]["procOpSeq"]),
+                                            "WOStatus": "Queuing"
+                                        })
+                                        );
+                                    }
+                                } else {
+                                    console.log("test insert execution.3");
                                     var timeStamp = new Date().toDateInputValue();
                                     var mctype = String(table2Data[i]["mcType"]);
                                     if (String(table2Data[i]["mcType"]) == "QC") {
@@ -906,7 +1082,7 @@
 
                     console.log("fnInsertRoute promisearray", promiseArray);
                     console.log("fnInsertRoute promisearray1", promiseArray1);
-                    console.log("fnInsertRoute promisearray2", promiseArray2);
+                    console.log("fnInsertRoute promisearray2 fnInsertWOExecution", promiseArray2);
                     $q.all(promiseArray).then(function (response) {
                         console.log("fnInsertRoute response", response);
                     });
@@ -1074,20 +1250,27 @@
         //'Remark    :
         //'*******************************************************************
         function fnUpdateWO(rowno) {
+            if ($scope.currentData[rowno]["dstate"] == true) {
+                var promiseArray = [];
+                    //promiseArray.push($http.post(config.baseUrlApi + 'HMLVTS/AddWorkOrderRouteDispatch1', {
+                    //    "WOID": $scope.currentData[rowno]["woid"]
+                    //    })
+                //);
 
-            var promiseArray = [];
-          //  for (var i = 0; i < $scope.currentData.length; i++ ){
-                if ($scope.currentData[rowno]["dstate"] == true) {
-                    $http.post(config.baseUrlApi + 'HMLVTS/AddWorkOrderRouteDispatch1', {
+                promiseArray.push($http.post(config.baseUrlApi + 'HMLVTS/fnUpdateWO', {
                         "WOID": $scope.currentData[rowno]["woid"]
-                             })
-                }
-         //   }
+                        })
+                    );
+
+                    $q.all(promiseArray).then(function (response) {
+                        console.log("AddWorkOrderRouteDispatch1", response);
+                    });
+                 }
+            
 
 
-            $q.all(promiseArray).then(function (response) {
-                console.log("fnUpdateWO", response);
-            });
+
+
 
            
         }
@@ -1407,6 +1590,15 @@
         //'Remark    :
         //'*******************************************************************
         $scope.refresh = function () {
+
+
+            if ($('input[name="State1"]:checked').val() == "new-release") {
+                $("#dispatchALL").css('visibility', 'visible');
+            } else {
+                $('#checkboxALL').attr('checked', false); // Checks it
+                $("#dispatchALL").css('visibility', 'hidden');
+            }
+
             GenerateDispatchWOList();
         }
 
@@ -1485,51 +1677,43 @@
             makeTable(data.result);
 
 
-            for (var i = 0; i < $scope.currentData.length; i++) {
-            //    var temp = createTable2Data($scope.currentData[i]["woid"], $scope.intOption);
+            //for (var i = 0; i < $scope.currentData.length; i++) {
+            //    $http.post(config.baseUrlApi + 'HMLVTS/fnGenerateRouteDetail3', {
+            //        "WOID":  $scope.currentData[i]["woid"],
+            //        "Index": i
+            //    })
+            //    .then(function (response) {
 
-
-
-                $http.post(config.baseUrlApi + 'HMLVTS/fnGenerateRouteDetail3', {
-                    "WOID":  $scope.currentData[i]["woid"],
-                    "Index": i
-
-                })
-                .then(function (response) {
-
-                    console.log("fnGenerateRouteDetail", "3");
-                    console.log("fnGenerateRouteDetail3", response);
+            //        console.log("fnGenerateRouteDetail", "3");
+            //        console.log("fnGenerateRouteDetail3", response);
                     
-                    if (response.data.result.length != 0) {
-                        var index = response.data.result[0]["column1"];
-                        $http.post(config.baseUrlApi + 'HMLVTS/fnGenerateRouteDetail4', {
-                            "WOID":  $scope.currentData[index]["woid"],
-                            "Index": index
-                        })
-                        .then(function (response) {
-                            console.log("new fnGenerateRouteDetail4", response);
-                            var index = response.data.result[0]["column1"];
-                            $scope.currentData[index]['table2Data'] = response.data.result;
-                        });
+            //        if (response.data.result.length != 0) {
+            //            var index = response.data.result[0]["column1"];
+            //            $http.post(config.baseUrlApi + 'HMLVTS/fnGenerateRouteDetail4', {
+            //                "WOID":  $scope.currentData[index]["woid"],
+            //                "Index": index
+            //            })
+            //            .then(function (response) {
+            //                console.log("new fnGenerateRouteDetail4", response);
+            //                var index = response.data.result[0]["column1"];
+            //                $scope.currentData[index]['table2Data'] = response.data.result;
+            //            });
 
-                    } else {
-                      //  console.log("new config", response.config.data);
-                        $http.post(config.baseUrlApi + 'HMLVTS/fnGenerateRouteDetail5', {
-                            "WOID": $scope.currentData[response.config.data.Index]["woid"],
-                            "Index": response.config.data.Index
-                        })
-                        .then(function (response) {
-                            console.log("new fnGenerateRouteDetail5", response);
-                            var index = response.config.data.Index;
-                            $scope.currentData[index]['table2Data'] = response.data.result;
-                        });
+            //        } else {
+            //          //  console.log("new config", response.config.data);
+            //            $http.post(config.baseUrlApi + 'HMLVTS/fnGenerateRouteDetail5', {
+            //                "WOID": $scope.currentData[response.config.data.Index]["woid"],
+            //                "Index": response.config.data.Index
+            //            })
+            //            .then(function (response) {
+            //                console.log("new fnGenerateRouteDetail5", response);
+            //                var index = response.config.data.Index;
+            //                $scope.currentData[index]['table2Data'] = response.data.result;
+            //            });
 
-                    }
-                });
-
-
-
-            }
+            //        }
+            //    });
+            //}
             console.log("new currentData2", $scope.currentData);
 
         });
@@ -1625,7 +1809,19 @@
         }
 
 
-
+        //*****************************************time functions***********************************************************//
+        function getCurrentDatetime() {
+            var timeStamp = new Date();
+            timeStamp = (
+                (timeStamp.getFullYear()) + "-" +
+                ("00" + (timeStamp.getMonth() + 1)).slice(-2) + "-" +
+                ("00" + timeStamp.getDate()).slice(-2) + "T" +
+                ("00" + timeStamp.getHours()).slice(-2) + ":" +
+                ("00" + timeStamp.getMinutes()).slice(-2) + ":" +
+                ("00" + timeStamp.getSeconds()).slice(-2)
+                );
+            return timeStamp;
+        }
 
 
 

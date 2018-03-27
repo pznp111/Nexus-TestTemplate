@@ -72,7 +72,7 @@
                 loginData.RefreshToken = $localStorage.currentUser.refreshToken;
                 if ($localStorage.currentUser.expiresOn < currentTime + 20) {
                     return $http.post(config.baseUrlNexusApi + 'Token/GetToken', loginData)
-                        .then(function(results) {
+                        .then(function (results) {
                             $localStorage.currentUser.isAuth = results.data.success;
                             $localStorage.currentUser.token = results.data.jsonWebToken;
                             $localStorage.currentUser.expiresOn = results.data.expiresOn;
@@ -130,8 +130,7 @@
             });
         }
 
-        function authUserInfoByIdAndToken(tokenInfo)
-        {
+        function authUserInfoByIdAndToken(tokenInfo) {
             return $http.post(config.baseUrlNexusApi + 'User/AuthUserByIdAndToken/', tokenInfo).then(function (results) {
                 return results;
             });

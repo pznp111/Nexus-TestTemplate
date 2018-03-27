@@ -29,7 +29,8 @@
             return memo;
         }, []);
 
-
+        $("#toolbar_rework").hide();
+        $("#toolbar_wodetail").hide();
 
         onload();
 
@@ -184,24 +185,23 @@
             $("#locked_table1").kendoGrid({
 
                 dataSource: {
-                    data,
-                    pageSize: 20
+                    data
                 },
                 dataType: "json",
-                height: 550,
-                pageable: {
-                    refresh: true,
-                    pageSizes: true,
-                    buttonCount: 5
-                },
+                height: 350,
+                //pageable: {
+                //    refresh: true,
+                //    pageSizes: true,
+                //    buttonCount: 5
+                //},
                 selectable: "true",
                 //dragAndDrop: true,
-                pageable: true,
+              
 
                 //pageSize: 10,
                 // sortable: true,
                 resizable: true,
-                pageable: true,
+
                 //groupable: true,
                 filterable: true,
                 columnMenu: true,
@@ -212,19 +212,19 @@
 
                 columns: [
                  {
-                     field: "index", title: "#", width: 50
+                     field: "index", title: "#", width: 30
 
                  },
                  {
-                     field: "woid", title: "Work Order", width: 200
+                     field: "woid", title: "Work Order", width: 100
 
                  },
                  {
-                     field: "loginName", title: "Login Name", width: 200
+                     field: "loginName", title: "Login Name", width: 100
 
                  },
                  {
-                    field: "dateTime", title: "DateTime", width: 200
+                    field: "dateTime", title: "DateTime", width: 100
                  }
                 ]
             })
@@ -240,48 +240,41 @@
             $("#locked_table2").kendoGrid({
 
                 dataSource: {
-                    data,
-                    pageSize: 20
+                    data
                 },
                 dataType: "json",
-                height: 550,
-                pageable: {
-                    refresh: true,
-                    pageSizes: true,
-                    buttonCount: 5
-                },
+                height: 350,
                 selectable: "true",
                 //dragAndDrop: true,
-                pageable: true,
+
 
                 //pageSize: 10,
                 // sortable: true,
                 resizable: true,
-                pageable: true,
+
                 //groupable: true,
                 filterable: true,
                 columnMenu: true,
                 // reorderable: true,
-                resizable: true,
                 draggable: true,
                 droppable: true,
 
                 columns: [
                  {
-                     field: "index", title: "#", width: 50
+                     field: "index", title: "#", width: 30
 
                  },
                  {
-                     field: "mutexFunction", title: "Function Name", width: 200
+                     field: "mutexFunction", title: "Function Name", width: 100
 
                  },
 
                  {
-                     field: "loginName", title: "Login Name", width: 200
+                     field: "loginName", title: "Login Name", width: 100
 
                  },
                 {
-                    field: "dateTime", title: "DateTime", width: 200
+                    field: "dateTime", title: "DateTime", width: 100
                 }
                 ]
             })

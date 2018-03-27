@@ -13,6 +13,7 @@
     angular.module('erp.core')
         .constant('toastr', toastr)
         .constant('config', {
+            baseUrlNexusApi: 'http://localhost:99/api/',
             baseUrlApi: 'http://localhost:49524/api/',
             BypassPriority: true,
             AllowMultipleWO: true,
@@ -37,7 +38,11 @@
             IncludePreviousSeqNonCompleted: false,
             DisplayPONumber: true,
             strSkipWOTrackingPrompt: false,
-            strValidateUserAssginToMC:false
+            strValidateUserAssginToMC: false,
+            paraSkipWOTrackingPrompt: false,
+            WOGlobalDefaultCompletedQty: false,
+            AllowMultipleOperator: true,
+            AssemblyCheckAtLastOnly:true  // false for not checking at last, checking at first
         });
 
 })();

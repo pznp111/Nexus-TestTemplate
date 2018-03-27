@@ -25,18 +25,24 @@
         };
 
         function getTenant() {
-            return $http.get(config.baseUrlApi + 'Tenant/ReadTenant').then(function (results) {
+
+            
+           // return $http.get(config.baseUrlApi + 'Tenant/ReadTenant').then(function (results) {
+            return $http.get('http://localhost:49524/api/HMLVTS/GenerateMcID').then(function (results) {
+                console.log('getTenant', results);
                 return results.data;
             });
         }
 
         function getApplications(id) {
             return $http.get(config.baseUrlApi + 'Application/ReadAllApplications').then(function (results) {
+                console.log('getApplications', results);
                 return results.data;
             });
         }
         function getSiteMapRoleMappings() {
             return $http.get(config.baseUrlApi + 'SiteMap/ReadAllSiteMaps').then(function (results) {
+                console.log('getSiteMapRoleMappings', results);
                 return results.data;
             });
         }
@@ -45,6 +51,7 @@
 
         function addTenantRole(tenantRole) {
             return $http.post(config.baseUrlApi + 'Tenant/AddRole', tenantRole).then(function (results) {
+                console.log('getSiteMapRoleMappings', addTenantRole);
                 return results.data;
             });
         }
@@ -64,6 +71,7 @@
 
         function readAllTenantRoles() {
             return $http.get(config.baseUrlApi + 'Role/ReadAllRoles').then(function (results) {
+                console.log('readAllTenantRoles', addTenantRole);
                 return results.data;
             });
         }

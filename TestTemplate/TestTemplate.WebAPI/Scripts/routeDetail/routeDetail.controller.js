@@ -31,7 +31,9 @@
 
         //console.log("customerService", authService.parameter);
         //alert(authService.parameter);
-
+        $("#toolbar_rework").hide();
+        $("#toolbar_wodetail").hide();
+        $("#main-container-page").css('margin-top', 0)
         onload();
         //Generate_RouteDetail1
 

@@ -22,10 +22,10 @@ namespace TestTemplate.Repository
         {
             //connection string in config file(eg. web.config) need to be encrypt or decrypt
             //here, use EncryptionHelper.Encrypt and EncryptionHelper.Decrypt before assign the string back to db
-            String decryptString = EncryptionHelper.Decrypt(db.connectionString);
-            db.connectionString = decryptString;
+            //String decryptString = EncryptionHelper.Decrypt(db.connectionString);
+           // db.connectionString = decryptString;
             this.db = db;
-            
+
         }
 
         public System.Data.DataTable Translate(Nexus.Infrastructure.Querying.Query query)

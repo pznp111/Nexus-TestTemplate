@@ -1612,7 +1612,8 @@ fieldset[disabled] .btn-warning.active {
 .panel > .panel-heading {
   font-weight: 400;
   text-transform: uppercase;
-  padding: 14px 10px;
+  /*padding: 14px 10px;*/
+  padding: 7px 5px;
 }
 .panel-heading > .panel-title {
   height: auto;

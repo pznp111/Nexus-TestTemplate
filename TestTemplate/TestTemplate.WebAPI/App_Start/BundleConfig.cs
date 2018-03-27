@@ -9,6 +9,11 @@ namespace TestTemplate.WebAPI
         public static void RegisterBundles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/thirdparty").Include(
+                                        //"~/Scripts/_thirdParty/angular-svg-round-progressbar/module.js",
+                        //"~/Scripts/_thirdParty/angular-svg-round-progressbar/roundProgress.js",
+                        //"~/Scripts/_thirdParty/angular-svg-round-progressbar/roundProgressConfig.js",
+                        //"~/Scripts/_thirdParty/angular-svg-round-progressbar/roundProgressService.js",
+                        //"~/Scripts/_thirdParty/angular-svg-round-progressbar/shim.js",
                         "~/Scripts/_thirdParty/jquery/dist/jquery.js",
                         "~/Scripts/_thirdParty/jquery/jquery-ui/jquery-ui.js",
                         "~/Scripts/_thirdParty/jquery/jquery-sortable.js",
@@ -38,10 +43,21 @@ namespace TestTemplate.WebAPI
                         "~/Scripts/_thirdParty/exportExcel/FileSaver.js",
                         "~/Scripts/_thirdParty/barcode/jquery-barcode.js",
                         "~/Scripts/_thirdParty/barcode/jquery-barcode.min.js",
-                         "~/Scripts/_thirdParty/tagator/fm.tagator.jquery.js",
-                         "~/Scripts/_thirdParty/jquery/src/moment.js",
-                         "~/Scripts/_thirdParty/jquery/src/datetimepicker.js",
-                          "~/Scripts/_thirdParty/jquery/src/date.js",
+                        "~/Scripts/_thirdParty/tagator/fm.tagator.jquery.js",
+                        "~/Scripts/_thirdParty/jquery/src/moment.js",
+                        "~/Scripts/_thirdParty/jquery/src/datetimepicker.js",
+                        "~/Scripts/_thirdParty/jquery/src/date.js",
+                        "~/Scripts/_thirdParty/jquery/jquery-confirm.js",
+                        "~/Scripts/_thirdParty/dropzone/dropzone.js",
+
+                        //"~/Scripts/_thirdParty/ng-file-upload-bower/ng-file-upload-shim.min.js",
+                        //"~/Scripts/_thirdParty/ng-file-upload-bower/ng-file-upload.min.js",
+                         //"~/Scripts/_thirdParty/ng-file-upload-bower/angular-file-upload.js",
+                         //"~/Scripts/_thirdParty/ng-file-upload-bower/es5-sham.min.js",
+                         //"~/Scripts/_thirdParty/ng-file-upload-bower/es5-sham.man.js",
+                         //"~/Scripts/_thirdParty/ng-file-upload-bower/console-sham.js",
+                        // ng-file-upload-bower
+
                         //3js scripts
                         "~/Scripts/_thirdParty/build/three.js",
                         "~/Scripts/_thirdParty/renderers/Projector.js",
@@ -51,7 +67,11 @@ namespace TestTemplate.WebAPI
                         "~/Scripts/_thirdParty/threejs/controls/OrbitControls.js",
                         "~/Scripts/_thirdParty/threejs/Detector.js",
                         "~/Scripts/_thirdParty/threejs/libs/dat.gui.min.js",
-                        "~/Scripts/_thirdParty/threejs/geometries/TeapotBufferGeometry.js"
+                        "~/Scripts/_thirdParty/threejs/geometries/TeapotBufferGeometry.js",
+                        "~/Scripts/_thirdParty/threejs/loaders/OBJLoader.js",
+                        "~/Scripts/_thirdParty/threejs/loaders/DDSLoader.js"
+
+
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/application").Include(
@@ -128,8 +148,8 @@ namespace TestTemplate.WebAPI
                         "~/Scripts/dispatch/dispatch.module.js",
                         "~/Scripts/dispatch/dispatch.controller.js",
 
-                        //"~/Scripts/trackingReport/trackingReport.module.js",
-                        //"~/Scripts/trackingReport/trackingReport.controller.js",
+                        "~/Scripts/trackingReport/trackingReport.module.js",
+                        "~/Scripts/trackingReport/trackingReport.controller.js",
 
                         "~/Scripts/hashPassword/hashPassword.module.js",
                         "~/Scripts/hashPassword/hashPassword.controller.js",
@@ -142,6 +162,7 @@ namespace TestTemplate.WebAPI
 
                         "~/Scripts/wodetail/wodetail.module.js",
                         "~/Scripts/wodetail/wodetail.controller.js",
+                        //"~/Scripts/wodetail/upload.php",
 
                         "~/Scripts/routeDetail/routeDetail.module.js",
                         "~/Scripts/routeDetail/routeDetail.controller.js",
@@ -175,7 +196,17 @@ namespace TestTemplate.WebAPI
                         "~/Scripts/lockReport/lockReport.controller.js",
 
                         "~/Scripts/wotracking/wotracking.module.js",
-                        "~/Scripts/wotracking/wotracking.controller.js"
+                        "~/Scripts/wotracking/wotracking.controller.js",
+
+                        "~/Scripts/qctracking/qctracking.module.js",
+                        "~/Scripts/qctracking/qctracking.controller.js",
+
+                        "~/Scripts/dashboardDemo/dashboardDemo.module.js",
+                        "~/Scripts/dashboardDemo/dashboardDemo.controller.js"
+
+                        //"~/Scripts/mctDashboard/mctDashboard.module.js",
+                        //"~/Scripts/mctDashboard/mctDashboard.controller.js"
+
 
 
                         ));
@@ -196,7 +227,14 @@ namespace TestTemplate.WebAPI
                         "~/Content/css/custom-font.css",
                         "~/Content/css/customs.css",
                         "~/Scripts/_thirdParty/jquery/jquery-ui/jquery-ui.css",
+                        "~/Scripts/_thirdParty/jquery/jquery-ui/jquery-confirm.less",
+                        "~/Scripts/_thirdParty/jquery/jquery-ui/jquery-confirm.css",
                         "~/Scripts/_thirdParty/tagator/fm.tagator.jquery.css"
+                        
+                        //,
+                        //"~/Content/img/box.obj"
+                        //,
+                        // "~/Content/css/style4.css"
                         ));
         }
     }

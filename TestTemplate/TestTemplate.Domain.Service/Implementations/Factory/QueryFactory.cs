@@ -20,6 +20,14 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
             return _query;
         }
 
+        public Query GenerateQCWOList()
+        {
+            _query = new Query(NamedQuery.GenerateQCWOList);
+            return _query;
+        }
+
+        
+
         public Query GenerateWOLock()
         {
             _query = new Query(NamedQuery.GenerateWOLock);
@@ -135,20 +143,140 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
             return _query;
         }
 
-
-        public Query fnGetUserAccessRight(MessagingService request)
+        
+        public Query GenerateMcIDByWorkCenter(MessagingService request)
         {
-            _query = new Query(NamedQuery.fnGetUserAccessRight);
-            Debug.WriteLine("strUserID","!"+ request.strUserID + "!");
-            Debug.WriteLine("strMenuName", "!" + request.strMenuName + "!");
-            _query.Add(new Criterion("@strUserID", request.strUserID));
-            _query.Add(new Criterion("@strMenuName", request.strMenuName));
-            
-            return _query;
 
+            _query = new Query(NamedQuery.GenerateMcIDByWorkCenter);
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter+"%"));
+            return _query;
         }
 
-            
+        public Query productionPauseCase20_1(MessagingService request)
+        {
+
+            _query = new Query(NamedQuery.productionPauseCase20_1);
+            _query.Add(new Criterion("@StopDateTime", request.StopDateTime));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@EndType", request.endType));
+
+
+            return _query;
+        }
+
+        public Query productionPauseCase20_1_1(MessagingService request)
+        {
+
+            _query = new Query(NamedQuery.productionPauseCase20_1_1);
+            _query.Add(new Criterion("@StopDateTime", request.StopDateTime));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@EndType", request.endType));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+
+
+            return _query;
+        }
+
+        public Query setupPauseCase20_1(MessagingService request)
+        {
+
+            _query = new Query(NamedQuery.setupPauseCase20_1);
+            _query.Add(new Criterion("@StopDateTime", request.StopDateTime));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@EndType", request.endType));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+
+
+            return _query;
+        }
+
+
+        public Query cmdQCResume_ClickCase10(MessagingService request)
+        {
+
+            _query = new Query(NamedQuery.cmdQCResume_ClickCase10);
+            _query.Add(new Criterion("@StopDateTime", request.StopDateTime));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@EndType", request.endType));
+            _query.Add(new Criterion("@McID", request.McID));
+
+
+
+            return _query;
+        }
+        
+
+        public Query QCPauseCase20_1(MessagingService request)
+        {
+
+            _query = new Query(NamedQuery.QCPauseCase20_1);
+            _query.Add(new Criterion("@StopDateTime", request.StopDateTime));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@EndType", request.endType));
+            _query.Add(new Criterion("@McID", request.McID));
+
+
+            return _query;
+        }
+
+        
+
+
+
+        public Query productionPauseCase20_2(MessagingService request)
+        {
+            _query = new Query(NamedQuery.productionPauseCase20_2);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@RouteID", Int32.Parse(request.RouteID)));
+            _query.Add(new Criterion("@OpSeq", Int32.Parse(request.OpSeq)));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@StartDateTime", request.StartDateTime));
+            _query.Add(new Criterion("@StartType", request.StartType));
+            _query.Add(new Criterion("@McID", request.McID));
+            _query.Add(new Criterion("@McType", request.McType));
+            _query.Add(new Criterion("@Reason", request.reason));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            _query.Add(new Criterion("@ShiftID", request.ShiftID));
+            return _query;
+        }
+
+        public Query productionPauseCase20_3(MessagingService request)
+        {
+
+            _query = new Query(NamedQuery.productionPauseCase20_3);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@ExStatus", Int32.Parse(request.ExStatus)));
+            _query.Add(new Criterion("@UpdatedDate", request.UpdatedDate));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            _query.Add(new Criterion("@Reason", request.reason));
+
+
+
+
+//            @WOID varchar(50),
+//@ProcOpSeq int,
+//@ExStatus int,
+//@UpdatedDate datetime,
+//@OperatorID char(16),
+//@OperatorName char(64),
+//@Reason varchar(max)
+            return _query;
+        }
+        
         public Query setupStartCase40_1(MessagingService request)
         {
             _query = new Query(NamedQuery.setupStartCase40_1);
@@ -161,13 +289,291 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
             _query.Add(new Criterion("@StartType", request.StartType));
             _query.Add(new Criterion("@McID", request.McID));
             _query.Add(new Criterion("@McType", request.McType));
-            _query.Add(new Criterion("@Reason", request.Reason));
+            _query.Add(new Criterion("@Reason", request.reason));
             _query.Add(new Criterion("@OperatorID", request.OperatorID));
             _query.Add(new Criterion("@OperatorName", request.OperatorName));
             _query.Add(new Criterion("@ShiftID", request.ShiftID));
 
 
 
+            return _query;
+        }
+
+        public Query productionResumeCase10_1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.productionResumeCase10_1);
+            _query.Add(new Criterion("@StopDateTime", request.StopDateTime));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@EndType", request.endType));
+            return _query;
+        }
+
+        public Query productionResumeCase10_1_1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.productionResumeCase10_1_1);
+            _query.Add(new Criterion("@StopDateTime", request.StopDateTime));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@EndType", request.endType));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            return _query;
+        }
+
+        public Query setupResumeCase10_1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.setupResumeCase10_1);
+            _query.Add(new Criterion("@StopDateTime", request.StopDateTime));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@EndType", request.endType));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            return _query;
+        }
+
+        
+
+        public Query productionResumeCase10_2(MessagingService request)
+        {
+            _query = new Query(NamedQuery.productionResumeCase10_2);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@RouteID", Int32.Parse(request.RouteID)));
+            _query.Add(new Criterion("@OpSeq", Int32.Parse(request.OpSeq)));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@StartDateTime", request.StartDateTime));
+            _query.Add(new Criterion("@StartType", request.StartType));
+            _query.Add(new Criterion("@McID", request.McID));
+            _query.Add(new Criterion("@McType", request.McType));
+            _query.Add(new Criterion("@Reason", request.reason));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            _query.Add(new Criterion("@ShiftID", request.ShiftID));
+
+            return _query;
+        }
+
+        public Query productionResumeCase10_3(MessagingService request)
+        {
+            _query = new Query(NamedQuery.productionResumeCase10_3);
+            _query.Add(new Criterion("@WOStatus", request.WOStatus));
+          //  _query.Add(new Criterion("@SetupStartDate", request.SetupStartDate));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            _query.Add(new Criterion("@ShiftID", request.ShiftID));
+            _query.Add(new Criterion("@McID", request.McID));
+            _query.Add(new Criterion("@TotalSetupDuration", decimal.Parse(request.TotalSetupDuration)));
+            _query.Add(new Criterion("@ProdTotalDuration", decimal.Parse(request.ProdTotalDuration)));
+            _query.Add(new Criterion("@Remark", request.Remark));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            return _query;
+        }
+        public Query setupStartCase10(MessagingService request)
+        {
+            _query = new Query(NamedQuery.setupStartCase10);
+            _query.Add(new Criterion("@WOID", request.WOID));
+
+            return _query;
+
+        }
+        public Query setupStartCase10_1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.setupStartCase10_1);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@OpSeq", Int32.Parse(request.OpSeq)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            return _query;
+
+        }
+        public Query setupStartCase10_2(MessagingService request)
+        {
+            _query = new Query(NamedQuery.setupStartCase10_2);
+            _query.Add(new Criterion("@WOStatus", request.WOStatus));
+              _query.Add(new Criterion("@ProdStartDate", request.ProdStartDate));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            //_query.Add(new Criterion("@ShiftID", request.ShiftID));
+            _query.Add(new Criterion("@McID", request.McID));
+            _query.Add(new Criterion("@TotalSetupDuration", decimal.Parse(request.TotalSetupDuration)));
+            _query.Add(new Criterion("@ProdTotalDuration", decimal.Parse(request.ProdTotalDuration)));
+            _query.Add(new Criterion("@Remark", request.Remark));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            return _query;
+        }
+
+        
+        public Query productionResumeCase10_4(MessagingService request)
+        {
+            _query = new Query(NamedQuery.productionResumeCase10_4);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@ExStatus", Int32.Parse(request.ExStatus)));
+            _query.Add(new Criterion("@UpdatedDate", request.UpdatedDate));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            _query.Add(new Criterion("@Reason", request.reason));
+            return _query;
+        }
+
+        
+         public Query frmExecutionHistory1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.frmExecutionHistory1);
+            _query.Add(new Criterion("@WOID", request.WOID));
+
+            return _query;
+        }
+
+        public Query frmExecutionHistory2(MessagingService request)
+        {
+            _query = new Query(NamedQuery.frmExecutionHistory2);
+
+            _query.Add(new Criterion("@WOID", request.WOID));
+
+            return _query;
+        }
+
+        public Query productionStopCase10_1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.productionStopCase10_1);
+            _query.Add(new Criterion("@StopDateTime", request.StopDateTime));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@EndType", request.endType));
+            return _query;
+        }
+
+        public Query productionStopCase10_2(MessagingService request)
+        {
+            _query = new Query(NamedQuery.productionStopCase10_2);
+            _query.Add(new Criterion("@WOStatus", request.WOStatus));
+            _query.Add(new Criterion("@ProdEndDate", request.ProdEndDate));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            //_query.Add(new Criterion("@ShiftID", request.ShiftID));
+            _query.Add(new Criterion("@McID", request.McID));
+            _query.Add(new Criterion("@TotalSetupDuration", decimal.Parse(request.TotalSetupDuration)));
+            _query.Add(new Criterion("@ProdTotalDuration", decimal.Parse(request.ProdTotalDuration)));
+            _query.Add(new Criterion("@Remark", request.Remark));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            return _query;
+        }
+
+        public Query QCStopCase10_2(MessagingService request)
+        {
+            _query = new Query(NamedQuery.QCStopCase10_2);
+            _query.Add(new Criterion("@WOStatus", request.WOStatus));
+            _query.Add(new Criterion("@ProdEndDate", request.ProdEndDate));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            _query.Add(new Criterion("@McID", request.McID));
+            _query.Add(new Criterion("@ProdTotalDuration", decimal.Parse(request.ProdTotalDuration)));
+            _query.Add(new Criterion("@Remark", request.Remark));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            return _query;
+        }
+
+        
+
+        public Query productionStopCase10_3(MessagingService request)
+        {
+            _query = new Query(NamedQuery.productionStopCase10_3);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@ExStatus", Int32.Parse(request.ExStatus)));
+            _query.Add(new Criterion("@UpdatedDate", request.UpdatedDate));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            _query.Add(new Criterion("@Reason", request.reason));
+            return _query;
+        }
+
+
+        
+        public Query setupStopCase40_1(MessagingService request)
+        {
+
+            _query = new Query(NamedQuery.setupStopCase40_1);
+            _query.Add(new Criterion("@WOStatus", request.WOStatus));
+            _query.Add(new Criterion("@SetupEndDate", request.SetupEndDate));
+            _query.Add(new Criterion("@ProdStartDate", request.ProdStartDate));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            _query.Add(new Criterion("@McID", request.McID));
+            _query.Add(new Criterion("@TotalSetupDuration", decimal.Parse(request.TotalSetupDuration)));
+            _query.Add(new Criterion("@ProdTotalDuration", decimal.Parse(request.ProdTotalDuration)));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            return _query;
+        }
+
+
+
+        public Query cmdConfirm_ClickCase40_1(MessagingService request)
+        {
+
+            Debug.WriteLine("remark", "|" + request.TrackingRemark + "|");
+            _query = new Query(NamedQuery.cmdConfirm_ClickCase40_1);
+            _query.Add(new Criterion("@WOStatus", request.WOStatus));
+            _query.Add(new Criterion("@ReceivedDate", request.ReceivedDate));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            _query.Add(new Criterion("@ShiftID", request.ShiftID));
+            _query.Add(new Criterion("@TotalSetupDuration", decimal.Parse(request.TotalSetupDuration)));
+            _query.Add(new Criterion("@ProdTotalDuration", decimal.Parse(request.ProdTotalDuration)));
+            _query.Add(new Criterion("@Type", request.Type));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            return _query;
+        }
+
+        public Query cmdConfirm_ClickCase30_1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.cmdConfirm_ClickCase30_1);
+            _query.Add(new Criterion("@WOStatus", request.WOStatus));
+            _query.Add(new Criterion("@SendOutDate", request.SendOutDate));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            _query.Add(new Criterion("@ShiftID", request.ShiftID));
+            _query.Add(new Criterion("@McID", request.McID));
+            _query.Add(new Criterion("@TotalSetupDuration", decimal.Parse(request.TotalSetupDuration)));
+            _query.Add(new Criterion("@ProdTotalDuration", decimal.Parse(request.ProdTotalDuration)));
+            _query.Add(new Criterion("@Remark", request.Remark));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            return _query;
+        }
+        
+        public Query setupStopCase30_1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.setupStopCase30_1);
+            _query.Add(new Criterion("@WOStatus", request.WOStatus));
+            _query.Add(new Criterion("@SetupEndDate", request.SetupEndDate));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            _query.Add(new Criterion("@ShiftID", request.ShiftID));
+            _query.Add(new Criterion("@McID", request.McID));
+            _query.Add(new Criterion("@TotalSetupDuration", decimal.Parse(request.TotalSetupDuration)));
+            _query.Add(new Criterion("@ProdTotalDuration", decimal.Parse(request.ProdTotalDuration)));
+            _query.Add(new Criterion("@Remark", request.Remark));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
             return _query;
         }
 
@@ -181,6 +587,23 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
             _query.Add(new Criterion("@ShiftID", request.ShiftID));
             _query.Add(new Criterion("@McID", request.McID));
             _query.Add(new Criterion("@TotalSetupDuration", decimal.Parse(request.TotalSetupDuration)));
+            _query.Add(new Criterion("@ProdTotalDuration", decimal.Parse(request.ProdTotalDuration)));
+            _query.Add(new Criterion("@Remark", request.Remark));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            return _query;
+        }
+
+        public Query setupStartCase40_2_1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.setupStartCase40_2_1);
+            _query.Add(new Criterion("@WOStatus", request.WOStatus));
+            _query.Add(new Criterion("@SetupStartDate", request.SetupStartDate));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            _query.Add(new Criterion("@ShiftID", request.ShiftID));
+            _query.Add(new Criterion("@McID", request.McID));
             _query.Add(new Criterion("@ProdTotalDuration", decimal.Parse(request.ProdTotalDuration)));
             _query.Add(new Criterion("@Remark", request.Remark));
             _query.Add(new Criterion("@WOID", request.WOID));
@@ -210,64 +633,42 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
         {
             _query = new Query(NamedQuery.setupStartCase40_5);
             _query.Add(new Criterion("@Status", request.Status));
-            _query.Add(new Criterion("@ID", Int32.Parse(request.ID)));
+            _query.Add(new Criterion("@ID", Int32.Parse(request.id)));
             return _query;
         }
 
         public Query setupStartCase40_6(MessagingService request)
         {
             _query = new Query(NamedQuery.setupStartCase40_6);
-            _query.Add(new Criterion("@WOID", request.OperatorFirstName));
-            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.OperatorFirstName)));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
             _query.Add(new Criterion("@ExStatus", Int32.Parse(request.ExStatus)));
             _query.Add(new Criterion("@UpdatedDate", request.UpdatedDate));
             _query.Add(new Criterion("@OperatorID", request.OperatorID));
             _query.Add(new Criterion("@OperatorName", request.OperatorName));
-            _query.Add(new Criterion("@Reason", request.Reason));
-            return _query;
-        }
-        public Query ValidateOperatorName(MessagingService request)
-        {
-            _query = new Query(NamedQuery.ValidateOperatorName);
-            _query.Add(new Criterion("@OperatorFirstName", request.OperatorFirstName));
+            _query.Add(new Criterion("@Reason", request.reason));
             return _query;
         }
 
-        public Query fnMultipleWOEnableConfig(MessagingService request)
+        public Query GetGetSalesID(MessagingService request)
         {
-            _query = new Query(NamedQuery.fnMultipleWOEnableConfig);
-            _query.Add(new Criterion("@WorkCenter", request.WOID));
+            _query = new Query(NamedQuery.GetGetSalesID);
+            _query.Add(new Criterion("@WOID", request.WOID));
             return _query;
         }
-
         
-        public Query setupStartCase10(MessagingService request)
-        {
-            _query = new Query(NamedQuery.setupStartCase10);
-            _query.Add(new Criterion("@woid", request.WOID ));
-            return _query;
-        }
 
-        public Query populateOperatorID(MessagingService request)
+        public Query fnGetUserAccessRight(MessagingService request)
         {
-            _query = new Query(NamedQuery.populateOperatorID);
-            _query.Add(new Criterion("@woid", request.WOID+"%"));
-            return _query;
-        }
-        public Query frmExecutionHistory1(MessagingService request)
-        {
-            _query = new Query(NamedQuery.frmExecutionHistory1);
-            _query.Add(new Criterion("@woid", request.WOID));
-            return _query;
-        }
+            _query = new Query(NamedQuery.fnGetUserAccessRight);
+            Debug.WriteLine("strUserID", "!" + request.strUserID + "!");
+            Debug.WriteLine("strMenuName", "!" + request.strMenuName + "!");
+            _query.Add(new Criterion("@strUserID", request.strUserID));
+            _query.Add(new Criterion("@strMenuName", request.strMenuName));
 
-        public Query frmExecutionHistory2(MessagingService request)
-        {
-            _query = new Query(NamedQuery.frmExecutionHistory2);
-            _query.Add(new Criterion("@woid", request.WOID));
             return _query;
-        }
 
+        }
 
         public Query fnTrackSetupConfig(MessagingService request)
         {
@@ -286,7 +687,24 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
         public Query GenerateQueuingWOList2(MessagingService request)
         {
             _query = new Query(NamedQuery.GenerateQueuingWOList2);
+            Debug.WriteLine("GenerateQueuingWOList2",request.McID);
             _query.Add(new Criterion("@McID", request.McID));
+            return _query;
+        }
+
+        public Query GenerateQueuingWOList3(MessagingService request)
+        {
+            _query = new Query(NamedQuery.GenerateQueuingWOList3);
+            Debug.WriteLine("GenerateQueuingWOList3", request.WorkCenter);
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            return _query;
+        }
+
+        public Query GenerateQueuingWOList4(MessagingService request)
+        {
+            _query = new Query(NamedQuery.GenerateQueuingWOList4);
+            Debug.WriteLine("GenerateQueuingWOList2", request.WorkCenter);
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
             return _query;
         }
 
@@ -294,7 +712,7 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
         public Query CalculateTimeSpan1(MessagingService request)
         {
             _query = new Query(NamedQuery.CalculateTimeSpan1);
-            _query.Add(new Criterion("@selectedWO", request.WOID));
+            _query.Add(new Criterion("@WOID", request.WOID));
             _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
             _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
             _query.Add(new Criterion("@startType1", request.startType1 + "%"));
@@ -305,7 +723,7 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
         public Query CalculateTimeSpan2(MessagingService request)
         {
             _query = new Query(NamedQuery.CalculateTimeSpan2);
-            _query.Add(new Criterion("@selectedWO", request.WOID));
+            _query.Add(new Criterion("@WOID", request.WOID));
             _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
             _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
             _query.Add(new Criterion("@startType1", request.startType1+"%"));
@@ -316,13 +734,95 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
         public Query CalculateTimeSpan3(MessagingService request)
         {
             _query = new Query(NamedQuery.CalculateTimeSpan3);
-            _query.Add(new Criterion("@selectedWO", request.WOID));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            return _query;
+        }
+
+        public Query CalculateTimeSpan3_1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CalculateTimeSpan3_1);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            return _query;
+        }
+
+        public Query CalculateTimeSpan4(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CalculateTimeSpan4);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+
+            return _query;
+        }
+
+        public Query CalculateTimeSpan5(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CalculateTimeSpan5);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+
+            return _query;
+        }
+
+        public Query CalculateTimeSpan6(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CalculateTimeSpan6);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+
+            return _query;
+        }
+
+        public Query CalculateTimeSpan7(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CalculateTimeSpan7);
+            _query.Add(new Criterion("@WOID", request.WOID));
             _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
             _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
             _query.Add(new Criterion("@TotalSetupDuration", decimal.Parse(request.TotalSetupDuration)));
             _query.Add(new Criterion("@ProdTotalDuration", decimal.Parse(request.ProdTotalDuration)));
             return _query;
         }
+
+        public Query CalculateTimeSpan7_1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CalculateTimeSpan7);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@ProdTotalDuration", decimal.Parse(request.ProdTotalDuration)));
+            return _query;
+        }
+
+        public Query CalculateSubconTimeSpan(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CalculateSubconTimeSpan);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@TotalSetupDuration", decimal.Parse(request.TotalSetupDuration)));
+            _query.Add(new Criterion("@ProdTotalDuration", decimal.Parse(request.ProdTotalDuration)));
+            return _query;
+        }
+
+        
+
+        public Query CheckSubconWOOpnStatus(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CheckSubconWOOpnStatus);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+
+            return _query;
+        }
+        
 
 
         public Query CheckWOOpnStatus1(MessagingService request)
@@ -343,6 +843,34 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
             return _query;
         }
 
+        public Query CheckQCWOOpnStatus1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CheckQCWOOpnStatus1);
+            _query.Add(new Criterion("@selectedWO", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            return _query;
+        }
+
+        public Query CheckQCWOOpnStatus2(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CheckQCWOOpnStatus2);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            return _query;
+        }
+
+        public Query CheckWOOpnStatus2_1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CheckWOOpnStatus2_1);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            return _query;
+        }
+
         public Query CheckWOOpnStatus3(MessagingService request)
         {
             _query = new Query(NamedQuery.CheckWOOpnStatus3);
@@ -351,6 +879,158 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
             _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
             return _query;
         }
+
+        public Query CheckWOOpnStatus3_1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CheckWOOpnStatus3_1);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            return _query;
+        }
+
+        public Query fnCheckPriorityConfig(MessagingService request)
+        {
+            _query = new Query(NamedQuery.fnCheckPrioriftyConfig);
+
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            return _query;
+        }
+
+        public Query CheckAnyChildNotCompleted1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CheckAnyChildNotCompleted1);
+
+            _query.Add(new Criterion("@WOID", request.WOID));
+            return _query;
+        }
+
+        public Query CheckAnyChildNotCompleted2(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CheckAnyChildNotCompleted2);
+
+            _query.Add(new Criterion("@WOID", request.WOID));
+            return _query;
+        }
+
+        public Query CheckAnyChildNotCompleted3(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CheckAnyChildNotCompleted3);
+
+            _query.Add(new Criterion("@SetupStartDate", request.SetupStartDate));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            return _query;
+        }
+
+        public Query CheckAnyChildNotCompleted4(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CheckAnyChildNotCompleted4);
+
+            _query.Add(new Criterion("@ProdEndDate", request.ProdEndDate));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            return _query;
+        }
+
+        public Query CheckAnyChildNotCompleted5(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CheckAnyChildNotCompleted5);
+            _query.Add(new Criterion("@SendOutDate", request.SendOutDate));
+            _query.Add(new Criterion("@ReceivedDate", request.ReceivedDate));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            return _query;
+        }
+
+        public Query CheckAnyChildNotCompleted6(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CheckAnyChildNotCompleted6);
+
+            _query.Add(new Criterion("@ReceivedDate", request.ReceivedDate));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            return _query;
+        }
+
+        public Query CheckAnyChildNotCompleted7(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CheckAnyChildNotCompleted7);
+
+            _query.Add(new Criterion("@SetupStartDate", request.SetupStartDate));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            return _query;
+        }
+
+        public Query CheckAnyChildNotCompleted8(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CheckAnyChildNotCompleted8);
+
+            _query.Add(new Criterion("@SetupEndDate", request.SetupEndDate));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            return _query;
+        }
+
+        public Query CheckAnyChildNotCompleted9(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CheckAnyChildNotCompleted9);
+
+            _query.Add(new Criterion("@ProdStartDate", request.ProdStartDate));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            return _query;
+        }
+
+        public Query CheckAnyChildNotCompleted10(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CheckAnyChildNotCompleted10);
+
+            _query.Add(new Criterion("@ProdEndDate", request.ProdEndDate));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            return _query;
+        }
+
+        public Query CheckAnyChildNotCompleted11(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CheckAnyChildNotCompleted11);
+
+            _query.Add(new Criterion("@WOStatus", request.WOStatus));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            return _query;
+        }
+
+        public Query CheckAnyChildNotCompleted12(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CheckAnyChildNotCompleted12);
+
+            _query.Add(new Criterion("@WOStatus", request.WOStatus));
+            _query.Add(new Criterion("@EndDate", request.EndDate));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            return _query;
+        }
+
+        public Query CheckAnyChildNotCompleted13(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CheckAnyChildNotCompleted13);
+
+            _query.Add(new Criterion("@WOID", request.WOID));
+            return _query;
+        }
+        public Query fnValidateUserNameMCAssign(MessagingService request)
+        {
+            _query = new Query(NamedQuery.fnValidateUserNameMCAssign);
+
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            _query.Add(new Criterion("@McID", request.McID));
+            return _query;
+        }
+        
+
 
         public Query UpdateQtyFromPreviousProcOpSeq1(MessagingService request)
         {
@@ -376,9 +1056,32 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
             return _query;
         }
 
+        public Query UpdateWorkOrderQty(MessagingService request)
+        {
+            _query = new Query(NamedQuery.UpdateWorkOrderQty);
+            _query.Add(new Criterion("@ActualRecQty", Int32.Parse(request.ActualRecQty)));
+            _query.Add(new Criterion("@ActualRecDate", request.ActualRecDate));
+            _query.Add(new Criterion("@OutstandingQty", Int32.Parse(request.OutstandingQty)));
+            _query.Add(new Criterion("@OutstandingDate", request.OutstandingDate));
+            _query.Add(new Criterion("@CompletedQty", Int32.Parse(request.CompletedQty)));
+            _query.Add(new Criterion("@CompletedDate", request.CompletedDate));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            return _query;
+        }
+
+        
+
         public Query comboWO_Selected_wotraking(MessagingService request)
         {
             _query = new Query(NamedQuery.comboWO_Selected_wotraking);
+            _query.Add(new Criterion("@selectedWO", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            return _query;
+        }
+
+        public Query comboWO_Selected_wotraking1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.comboWO_Selected_wotraking1);
             _query.Add(new Criterion("@selectedWO", request.WOID));
             _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
             return _query;
@@ -582,11 +1285,21 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
         public Query BackupHMLVTSByYear(MessagingService request)
         {
             _query = new Query(NamedQuery.BackupHMLVTSByYear);
-            Debug.WriteLine("BackupHMLVTSByYear" + request.StartDate + "||" + request.EndDate);
+            Debug.WriteLine("BackupHMLVTSByYear" + request.StartDate + "||" + request.Type);
             _query.Add(new Criterion("@start", request.StartDate));
-            _query.Add(new Criterion("@end", request.EndDate));
+            _query.Add(new Criterion("@end", request.Type));
             return _query;
         }
+
+        public Query getCurrentWorkOrderByMcID(MessagingService request)
+        {
+            _query = new Query(NamedQuery.getCurrentWorkOrderByMcID);
+            _query.Add(new Criterion("@McID", request.McID));
+            return _query;
+        }
+
+
+        
 
         public Query Generate_RouteDetail1(MessagingService request)
         {
@@ -615,6 +1328,34 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
             return _query;
         }
 
+
+        public Query AddQCAttachment1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.AddQCAttachment1);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@Directory", request.Directory));
+            _query.Add(new Criterion("@Filename", request.Filename));
+            _query.Add(new Criterion("@AttachedDate", request.AttachedDate));
+            _query.Add(new Criterion("@FileStatus", request.FileStatus));
+            _query.Add(new Criterion("@CheckDate", request.CheckDate));
+            _query.Add(new Criterion("@AttachedDate", request.AttachedDate));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            return _query;
+        }
+
+        public Query RemoveQCAttachment1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.RemoveQCAttachment1);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@Directory", request.Directory));
+            _query.Add(new Criterion("@Filename", request.Filename));
+            _query.Add(new Criterion("@AttachedDate", request.AttachedDate));
+            return _query;
+        }
+
+
+        
         public Query populateWOSummary(MessagingService request)
         {
             _query = new Query(NamedQuery.populateWOSummary);
@@ -724,6 +1465,51 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
             _query.Add(new Criterion("@OperatorName", request.OperatorName+"%"));
             _query.Add(new Criterion("@startTime", request.StartDate));
             _query.Add(new Criterion("@endTime", request.EndDate));
+            return _query;
+        }
+
+        
+        public Query CalculateDuration1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CalculateDuration1);
+            _query.Add(new Criterion("@PartID", request.PartID));
+            _query.Add(new Criterion("@McID", request.McID));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@OpSeq", Int32.Parse(request.OpSeq)));
+            _query.Add(new Criterion("@RouteID", Int32.Parse(request.RouteID)));
+            return _query;
+        }
+
+        public Query CalculateDuration2(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CalculateDuration2);
+            _query.Add(new Criterion("@PartID", request.PartID));
+            _query.Add(new Criterion("@McID", request.McID));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@OpSeq", Int32.Parse(request.OpSeq)));
+            _query.Add(new Criterion("@RouteID", Int32.Parse(request.RouteID)));
+            return _query;
+        }
+
+
+        public Query CalculateQCDuration(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CalculateQCDuration);
+            _query.Add(new Criterion("@PartID", request.PartID));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@OpSeq", Int32.Parse(request.OpSeq)));
+            _query.Add(new Criterion("@RouteID", Int32.Parse(request.RouteID)));
+            return _query;
+        }
+
+        
+        public Query CalculateDuration3(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CalculateDuration3);
+            _query.Add(new Criterion("@PlannedDuration", decimal.Parse(request.PlannedDuration)));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.RouteID)));
             return _query;
         }
 
@@ -1154,8 +1940,138 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
             return _query;
         }
 
+        public Query cmdUpdateReceived_ClickCase7(MessagingService request)
+        {
+            _query = new Query(NamedQuery.cmdUpdateReceived_ClickCase7);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@QtyUpdated", Int32.Parse(request.QtyUpdated)));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+
+            return _query;
+        }
+        public Query cmdUpdateReceived_ClickCase10_1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.cmdUpdateReceived_ClickCase10_1);
+            _query.Add(new Criterion("@ActualRecQty", Int32.Parse(request.ActualRecQty)));
+            _query.Add(new Criterion("@ActualRecDate", request.ActualRecDate));
+            _query.Add(new Criterion("@CompletedQty", Int32.Parse(request.CompletedQty)));
+            _query.Add(new Criterion("@CompletedDate", request.CompletedDate));
+            _query.Add(new Criterion("@OutstandingQty", Int32.Parse(request.OutstandingQty)));
+            _query.Add(new Criterion("@OutstandingDate", request.OutstandingDate));
+            _query.Add(new Criterion("@WOStatus", request.WOStatus));
+            _query.Add(new Criterion("@TotalSetupDuration", decimal.Parse(request.TotalSetupDuration)));
+            _query.Add(new Criterion("@ProdTotalDuration", decimal.Parse(request.ProdTotalDuration)));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+
+
+            return _query;
+        }
+
+        public Query cmdScrap_ClickCase10_1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.cmdScrap_ClickCase10_1);
+            _query.Add(new Criterion("@ActualRecQty", Int32.Parse(request.ActualRecQty)));
+            _query.Add(new Criterion("@ActualRecDate", request.ActualRecDate));
+            _query.Add(new Criterion("@CompletedQty", Int32.Parse(request.CompletedQty)));
+            _query.Add(new Criterion("@CompletedDate", request.CompletedDate));
+            _query.Add(new Criterion("@OutstandingQty", Int32.Parse(request.OutstandingQty)));
+            _query.Add(new Criterion("@OutstandingDate", request.OutstandingDate));
+            _query.Add(new Criterion("@WOStatus", request.WOStatus));
+            _query.Add(new Criterion("@ProdTotalDuration", decimal.Parse(request.ProdTotalDuration)));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+
+            return _query;
+        }
 
         
+
+        public Query cmdUpdateReceived_ClickCase10_1_1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.cmdUpdateReceived_ClickCase10_1_1);
+            _query.Add(new Criterion("@ActualRecQty", Int32.Parse(request.ActualRecQty)));
+            _query.Add(new Criterion("@ActualRecDate", request.ActualRecDate));
+            _query.Add(new Criterion("@CompletedQty", Int32.Parse(request.CompletedQty)));
+            _query.Add(new Criterion("@CompletedDate", request.CompletedDate));
+            _query.Add(new Criterion("@OutstandingQty", Int32.Parse(request.OutstandingQty)));
+            _query.Add(new Criterion("@OutstandingDate", request.OutstandingDate));
+
+
+            _query.Add(new Criterion("@WOStatus", request.WOStatus));
+            _query.Add(new Criterion("@ProdTotalDuration", decimal.Parse(request.ProdTotalDuration)));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            //  _query.Add(new Criterion("@SetupStartDate", request.SetupStartDate));
+            //_query.Add(new Criterion("@OperatorID", request.OperatorID));
+            //_query.Add(new Criterion("@OperatorName", request.OperatorName));
+            //_query.Add(new Criterion("@ShiftID", request.ShiftID));
+            //_query.Add(new Criterion("@McID", request.McID));
+
+            //_query.Add(new Criterion("@Remark", request.Remark));
+
+            return _query;
+        }
+        public Query cmdUpdateReceived_ClickCase10_2(MessagingService request)
+        {
+            _query = new Query(NamedQuery.cmdUpdateReceived_ClickCase10_2);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@ExStatus", Int32.Parse(request.ExStatus)));
+            _query.Add(new Criterion("@UpdatedDate", request.UpdatedDate));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            _query.Add(new Criterion("@Reason", request.reason));
+            return _query;
+        }
+        public Query cmdUpdateReceived_ClickCase30(MessagingService request)
+        {
+            _query = new Query(NamedQuery.cmdUpdateReceived_ClickCase30);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            return _query;
+        }
+
+        public Query cmdUpdateReceived_ClickCase80_1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.cmdUpdateReceived_ClickCase80_1);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@EndDate", request.EndDate));
+            return _query;
+        }
+        public Query cmdUpdateReceived_ClickCase80_2(MessagingService request)
+        {
+            _query = new Query(NamedQuery.cmdUpdateReceived_ClickCase80_2);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@WOStatus", request.WOStatus));
+            return _query;
+        }
+        public Query cmdUpdateReceived_ClickCase95_1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.cmdUpdateReceived_ClickCase95_1);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@Status", request.Status));
+            return _query;
+        }
+        public Query cmdUpdateReceived_ClickCase95_2(MessagingService request)
+        {
+            _query = new Query(NamedQuery.cmdUpdateReceived_ClickCase95_2);
+            _query.Add(new Criterion("@ID", Int32.Parse(request.id)));
+            _query.Add(new Criterion("@Status", request.Status));
+            return _query;
+        }
+
+        public Query cmdUpdateReceived_ClickCase95_3(MessagingService request)
+        {
+            _query = new Query(NamedQuery.cmdUpdateReceived_ClickCase95_3);
+            _query.Add(new Criterion("@WOID", request.WOID));
+
+            return _query;
+        }
+
+
 
 
         public Query GlobalCurrentWorkOrderRoute(MessagingService request)
@@ -1438,6 +2354,14 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
             return _query;
         }
 
+        public Query GenerateScrapRemark()
+        {
+            _query = new Query(NamedQuery.GenerateScrapRemark);
+            return _query;
+        }
+
+        
+
         public Query GenerateUserIDList()
         {
             _query = new Query(NamedQuery.GenerateUserIDList);
@@ -1668,7 +2592,16 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
             return _query;
         }
 
+        public Query GenerateSubAssemblyWOList(MessagingService request)
+        {
+            _query = new Query(NamedQuery.GenerateSubAssemblyWOList);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            return _query;
+        }
+
         
+
+
         public Query addWORouteCurrent(MessagingService request)
         {
             Debug.WriteLine("addWORouteCurrent");
@@ -1681,6 +2614,86 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
             return _query;
         }
 
+
+        public Query addWORouteNext(MessagingService request)
+        {
+            //Debug.WriteLine("addWORouteCurrent");
+            //Debug.WriteLine("WOID: " + request.WOID + "||");
+            //Debug.WriteLine("ProcOpSeq: " + request.ProcOpSeq + "||");
+            //Debug.WriteLine("________");
+            _query = new Query(NamedQuery.addWORouteNext);
+            _query.Add(new Criterion("@tempwo", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            return _query;
+        }
+
+
+        
+
+
+        public Query cmdOnHold_ClickCase20_1(MessagingService request)
+        {
+
+            _query = new Query(NamedQuery.cmdOnHold_ClickCase20_1);
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@StopDateTime", request.StopDateTime));
+            _query.Add(new Criterion("@EndType", request.endType));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@McID", request.McID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            return _query;
+        }
+
+        public Query cmdOnHold_ClickCase20_2(MessagingService request)
+        {
+
+            _query = new Query(NamedQuery.cmdOnHold_ClickCase20_2);
+
+            _query.Add(new Criterion("@ShiftID", request.ShiftID));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            _query.Add(new Criterion("@Reason", request.reason));
+            _query.Add(new Criterion("@McType", request.McType));
+            _query.Add(new Criterion("@StartType", request.StartType));
+            _query.Add(new Criterion("@StartDateTime", request.StartDateTime));
+            _query.Add(new Criterion("@OpSeq", Int32.Parse(request.OpSeq)));
+            _query.Add(new Criterion("@RouteID", Int32.Parse(request.RouteID)));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@McID", request.McID));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@EndType", request.endType));
+            _query.Add(new Criterion("@StopDateTime", request.StopDateTime));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            return _query;
+        }
+
+        public Query cmdOnHold_ClickCase20_3(MessagingService request)
+        {
+
+            _query = new Query(NamedQuery.cmdOnHold_ClickCase20_3);
+            _query.Add(new Criterion("@WOStatus", request.WOStatus));
+            _query.Add(new Criterion("@TotalSetupDuration", decimal.Parse(request.TotalSetupDuration)));
+            _query.Add(new Criterion("@ProdTotalDuration", decimal.Parse(request.ProdTotalDuration)));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            _query.Add(new Criterion("@McID", request.McID));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            return _query;
+        }
+
+        public Query cmdUpdate_ClickCase15(MessagingService request)
+        {
+
+            _query = new Query(NamedQuery.cmdUpdate_ClickCase15);
+            _query.Add(new Criterion("@WOID", request.WOID));
+
+            return _query;
+        }
+        
+
+
         public Query addWORouteQC(MessagingService request)
         {
             Debug.WriteLine("addWORouteQC");
@@ -1691,7 +2704,7 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
             Debug.WriteLine("ProcOpSeq: " + request.ProcOpSeq + "||");
             Debug.WriteLine("McID: " + request.McID + "||");
             Debug.WriteLine("McType: " + request.McType + "||");
-            Debug.WriteLine("Remark: " + request.Remark + "||");
+            Debug.WriteLine("Remark: " + request.Type + "||");
             Debug.WriteLine("RouteName: " + request.RouteName + "||");
             Debug.WriteLine("________");
 
@@ -1704,7 +2717,7 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
             _query.Add(new Criterion("@newProcOpSeq", Int32.Parse(request.ProcOpSeq)));
             _query.Add(new Criterion("@tempmcid", request.McID));
             _query.Add(new Criterion("@tempmctype", request.McType));
-            _query.Add(new Criterion("@tempremark", request.Remark));
+            _query.Add(new Criterion("@tempremark", request.Type));
             _query.Add(new Criterion("@temproutename", request.RouteName));
             return _query;
         }
@@ -1865,8 +2878,6 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
 
         public Query GenerateWOSummary1(MessagingService request)
         {
-            Debug.WriteLine("GenerateWOSummary1-1");
-            Debug.WriteLine("GenerateWOSummary1", request.WOID);
             _query = new Query(NamedQuery.GenerateWOSummary1);
             _query.Add(new Criterion("@selectedWO", request.WOID));
             return _query;
@@ -1911,24 +2922,24 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
         public Query addWOExe3(MessagingService request)
         {
             _query = new Query(NamedQuery.addWOExe3);
-            _query.Add(new Criterion("@subwo", request.WOID));
-            _query.Add(new Criterion("@temppartid", request.PartID));
-            _query.Add(new Criterion("@tempactrecqty", Int32.Parse(request.ActualRecQty)));//int
-            _query.Add(new Criterion("@tempactrecdate", request.ActualRecDate));//date
-            _query.Add(new Criterion("@tempcomqty", Int32.Parse(request.CompletedQty)));//int
-            _query.Add(new Criterion("@tempcomdate", request.CompletedDate));//date
-            _query.Add(new Criterion("@tempoutsqty", Int32.Parse(request.OutstandingQty)));//int
-            _query.Add(new Criterion("@tempoutsdate", request.OutstandingDate));//date
-            _query.Add(new Criterion("@tempmcid", request.McID));//date
-            _query.Add(new Criterion("@tempmctype", request.McType));
-            _query.Add(new Criterion("@temprouteid", Int32.Parse(request.RouteID)));
-            _query.Add(new Criterion("@tempworkcenter", request.WorkCenter));
-            _query.Add(new Criterion("@tempopseq", Int32.Parse(request.OpSeq)));
-            _query.Add(new Criterion("newProcOpSeq", Int32.Parse(request.ProcOpSeq)));
-            _query.Add(new Criterion("@wostatus", request.WOStatus));
-            _query.Add(new Criterion("@remark", request.Remark));
-            _query.Add(new Criterion("@tempparwo", request.ParentWOID));
-            _query.Add(new Criterion("@intQtyUpated", Int32.Parse(request.QtyUpdated)));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@PartID", request.PartID));
+            _query.Add(new Criterion("@ActualRecQty", Int32.Parse(request.ActualRecQty)));//int
+            _query.Add(new Criterion("@ActualRecDate", request.ActualRecDate));//date
+            _query.Add(new Criterion("@CompletedQty", Int32.Parse(request.CompletedQty)));//int
+            _query.Add(new Criterion("@CompletedDate", request.CompletedDate));//date
+            _query.Add(new Criterion("@OutstandingQty", Int32.Parse(request.OutstandingQty)));//int
+            _query.Add(new Criterion("@OutstandingDate", request.OutstandingDate));//date
+            _query.Add(new Criterion("@McID", request.McID));//date
+            _query.Add(new Criterion("@McType", request.McType));
+            _query.Add(new Criterion("@RouteID", Int32.Parse(request.RouteID)));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@OpSeq", Int32.Parse(request.OpSeq)));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@WOStatus", request.WOStatus));
+            _query.Add(new Criterion("@Type", request.Type));
+            _query.Add(new Criterion("@ParentWOID", request.ParentWOID));
+            _query.Add(new Criterion("@QtyUpdated", Int32.Parse(request.QtyUpdated)));
 
             return _query;
         }
@@ -1977,6 +2988,10 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
         public Query ConfirmGCReorder(MessagingService request)
         {
 
+            if (request.McID == "")
+            {
+                request.McID = " ";
+            }
             _query = new Query(NamedQuery.ConfirmGCReorder);
             _query.Add(new Criterion("@McID", request.McID));
             _query.Add(new Criterion("@McType", request.McType));
@@ -2129,21 +3144,349 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
             return _query;
         }
 
+        public Query spGenerateDynamic12(MessagingService request)
+        {
+            _query = new Query(NamedQuery.spGenerateDynamic12);
+            _query.Add(new Criterion("@radio", request.radio + "%"));//todo
+            _query.Add(new Criterion("@Remark", "%"));//
+            _query.Add(new Criterion("@McID", request.McID + "%"));//
+            _query.Add(new Criterion("@WOID", request.WOID + "%"));//
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter + "%"));//
+            _query.Add(new Criterion("@PartID", request.PartID + "%"));//
+            _query.Add(new Criterion("@PartNO", request.PartNO + "%"));//
+            _query.Add(new Criterion("@CustomerList", request.CustomerList + "%"));//
+            _query.Add(new Criterion("@SONO", request.SONO + "%"));//
+            _query.Add(new Criterion("@FGDimension", request.FGDimension + "%"));//
+            _query.Add(new Criterion("@WOStatus", request.radio + "%"));
+            _query.Add(new Criterion("@StartDate", request.StartDate ));
+            _query.Add(new Criterion("@EndDate", request.EndDate ));
+            _query.Add(new Criterion("@Remark1", request.Remark1 + "%"));
+            return _query;
+        }
+
+        public Query spGenerateDynamic13(MessagingService request)
+        {
+            _query = new Query(NamedQuery.spGenerateDynamic13);
+            _query.Add(new Criterion("@radio", request.radio + "%"));//todo
+            _query.Add(new Criterion("@Remark", "%"));//
+            _query.Add(new Criterion("@McID", request.McID + "%"));//
+            _query.Add(new Criterion("@WOID", request.WOID + "%"));//
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter + "%"));//
+            _query.Add(new Criterion("@PartID", request.PartID + "%"));//
+            _query.Add(new Criterion("@PartNO", request.PartNO + "%"));//
+            _query.Add(new Criterion("@CustomerList", request.CustomerList + "%"));//
+            _query.Add(new Criterion("@SONO", request.SONO + "%"));//
+            _query.Add(new Criterion("@FGDimension", request.FGDimension + "%"));//
+            _query.Add(new Criterion("@WOStatus", request.radio + "%"));
+            _query.Add(new Criterion("@StartDate", request.StartDate ));
+            _query.Add(new Criterion("@EndDate", request.EndDate ));
+            _query.Add(new Criterion("@Remark1", request.Remark1 + "%"));
+            return _query;
+        }
+
+        public Query spGenerateDynamic14(MessagingService request)
+        {
+            _query = new Query(NamedQuery.spGenerateDynamic14);
+            _query.Add(new Criterion("@radio", request.radio + "%"));//todo
+            _query.Add(new Criterion("@Remark", "%"));//
+            _query.Add(new Criterion("@McID", request.McID + "%"));//
+            _query.Add(new Criterion("@WOID", request.WOID + "%"));//
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter + "%"));//
+            _query.Add(new Criterion("@PartID", request.PartID + "%"));//
+            _query.Add(new Criterion("@PartNO", request.PartNO + "%"));//
+            _query.Add(new Criterion("@CustomerList", request.CustomerList + "%"));//
+            _query.Add(new Criterion("@SONO", request.SONO + "%"));//
+            _query.Add(new Criterion("@FGDimension", request.FGDimension + "%"));//
+            _query.Add(new Criterion("@WOStatus", request.radio + "%"));
+            _query.Add(new Criterion("@StartDate", request.StartDate));
+            _query.Add(new Criterion("@EndDate", request.EndDate ));
+            _query.Add(new Criterion("@Remark1", request.Remark1 + "%"));
+            return _query;
+        }
+
+        public Query spGenerateDynamic2(MessagingService request)
+        {
+            _query = new Query(NamedQuery.spGenerateDynamic2);
+            _query.Add(new Criterion("@radio", request.radio + "%"));//todo
+            _query.Add(new Criterion("@Remark", "%"));//
+            _query.Add(new Criterion("@McID", request.McID + "%"));//
+            _query.Add(new Criterion("@WOID", request.WOID + "%"));//
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter + "%"));//
+            _query.Add(new Criterion("@PartID", request.PartID + "%"));//
+            _query.Add(new Criterion("@PartNO", request.PartNO + "%"));//
+            _query.Add(new Criterion("@CustomerList", request.CustomerList + "%"));//
+            _query.Add(new Criterion("@SONO", request.SONO + "%"));//
+            _query.Add(new Criterion("@FGDimension", request.FGDimension + "%"));//
+            _query.Add(new Criterion("@WOStatus", request.radio + "%"));
+            _query.Add(new Criterion("@StartDate", request.StartDate ));
+            _query.Add(new Criterion("@EndDate", request.EndDate ));
+            _query.Add(new Criterion("@Remark1", request.Remark1 + "%"));
+            return _query;
+        }
+
+        public Query spGenerateDynamic3(MessagingService request)
+        {
+            _query = new Query(NamedQuery.spGenerateDynamic3);
+            _query.Add(new Criterion("@radio", request.radio + "%"));//todo
+            _query.Add(new Criterion("@Remark", "%"));//
+            _query.Add(new Criterion("@McID", request.McID + "%"));//
+            _query.Add(new Criterion("@WOID", request.WOID + "%"));//
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter + "%"));//
+            _query.Add(new Criterion("@PartID", request.PartID + "%"));//
+            _query.Add(new Criterion("@PartNO", request.PartNO + "%"));//
+            _query.Add(new Criterion("@CustomerList", request.CustomerList + "%"));//
+            _query.Add(new Criterion("@SONO", request.SONO + "%"));//
+            _query.Add(new Criterion("@FGDimension", request.FGDimension + "%"));//
+            _query.Add(new Criterion("@WOStatus", request.radio + "%"));
+            _query.Add(new Criterion("@StartDate", request.StartDate));
+            _query.Add(new Criterion("@EndDate", request.EndDate));
+            _query.Add(new Criterion("@Remark1", request.Remark1 + "%"));
+            return _query;
+        }
+
+        public Query spGenerateDynamic4(MessagingService request)
+        {
+            _query = new Query(NamedQuery.spGenerateDynamic4);
+            _query.Add(new Criterion("@radio", request.radio + "%"));//todo
+            _query.Add(new Criterion("@Remark", "%"));//
+            _query.Add(new Criterion("@McID", request.McID + "%"));//
+            _query.Add(new Criterion("@WOID", request.WOID + "%"));//
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter + "%"));//
+            _query.Add(new Criterion("@PartID", request.PartID + "%"));//
+            _query.Add(new Criterion("@PartNO", request.PartNO + "%"));//
+            _query.Add(new Criterion("@CustomerList", request.CustomerList + "%"));//
+            _query.Add(new Criterion("@SONO", request.SONO + "%"));//
+            _query.Add(new Criterion("@FGDimension", request.FGDimension + "%"));//
+            _query.Add(new Criterion("@WOStatus", request.radio + "%"));
+            _query.Add(new Criterion("@StartDate", request.StartDate ));
+            _query.Add(new Criterion("@EndDate", request.EndDate));
+            _query.Add(new Criterion("@Remark1", request.Remark1 + "%"));
+            return _query;
+        }
+
+        public Query spGenerateDynamic5(MessagingService request)
+        {
+            _query = new Query(NamedQuery.spGenerateDynamic5);
+            _query.Add(new Criterion("@radio", request.radio + "%"));//todo
+            _query.Add(new Criterion("@Remark", "%"));//
+            _query.Add(new Criterion("@McID", request.McID + "%"));//
+            _query.Add(new Criterion("@WOID", request.WOID + "%"));//
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter + "%"));//
+            _query.Add(new Criterion("@PartID", request.PartID + "%"));//
+            _query.Add(new Criterion("@PartNO", request.PartNO + "%"));//
+            _query.Add(new Criterion("@CustomerList", request.CustomerList + "%"));//
+            _query.Add(new Criterion("@SONO", request.SONO + "%"));//
+            _query.Add(new Criterion("@FGDimension", request.FGDimension + "%"));//
+            _query.Add(new Criterion("@WOStatus", request.radio + "%"));
+            _query.Add(new Criterion("@StartDate", request.StartDate));
+            _query.Add(new Criterion("@EndDate", request.EndDate ));
+            _query.Add(new Criterion("@Remark1", request.Remark1 + "%"));
+            return _query;
+        }
+
+        public Query spGenerateDynamic6(MessagingService request)
+        {
+            _query = new Query(NamedQuery.spGenerateDynamic6);
+            _query.Add(new Criterion("@radio", request.radio + "%"));//todo
+            _query.Add(new Criterion("@Remark", "%"));//
+            _query.Add(new Criterion("@McID", request.McID + "%"));//
+            _query.Add(new Criterion("@WOID", request.WOID + "%"));//
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter + "%"));//
+            _query.Add(new Criterion("@PartID", request.PartID + "%"));//
+            _query.Add(new Criterion("@PartNO", request.PartNO + "%"));//
+            _query.Add(new Criterion("@CustomerList", request.CustomerList + "%"));//
+            _query.Add(new Criterion("@SONO", request.SONO + "%"));//
+            _query.Add(new Criterion("@FGDimension", request.FGDimension + "%"));//
+            _query.Add(new Criterion("@WOStatus", request.radio + "%"));
+            _query.Add(new Criterion("@StartDate", request.StartDate));
+            _query.Add(new Criterion("@EndDate", request.EndDate ));
+            _query.Add(new Criterion("@Remark1", request.Remark1 + "%"));
+            return _query;
+        }
+
+        public Query spGenerateDynamic7(MessagingService request)
+        {
+            _query = new Query(NamedQuery.spGenerateDynamic7);
+            _query.Add(new Criterion("@radio", request.radio + "%"));//todo
+            _query.Add(new Criterion("@Remark", "%"));//
+            _query.Add(new Criterion("@McID", request.McID + "%"));//
+            _query.Add(new Criterion("@WOID", request.WOID + "%"));//
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter + "%"));//
+            _query.Add(new Criterion("@PartID", request.PartID + "%"));//
+            _query.Add(new Criterion("@PartNO", request.PartNO + "%"));//
+            _query.Add(new Criterion("@CustomerList", request.CustomerList + "%"));//
+            _query.Add(new Criterion("@SONO", request.SONO + "%"));//
+            _query.Add(new Criterion("@FGDimension", request.FGDimension + "%"));//
+            _query.Add(new Criterion("@WOStatus", request.radio + "%"));
+            _query.Add(new Criterion("@StartDate", request.StartDate ));
+            _query.Add(new Criterion("@EndDate", request.EndDate ));
+            _query.Add(new Criterion("@Remark1", request.Remark1 + "%"));
+            return _query;
+        }
+
+        public Query spGenerateDynamic8(MessagingService request)
+        {
+            _query = new Query(NamedQuery.spGenerateDynamic8);
+            _query.Add(new Criterion("@radio", request.radio + "%"));//todo
+            _query.Add(new Criterion("@Remark", "%"));//
+            _query.Add(new Criterion("@McID", request.McID + "%"));//
+            _query.Add(new Criterion("@WOID", request.WOID + "%"));//
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter + "%"));//
+            _query.Add(new Criterion("@PartID", request.PartID + "%"));//
+            _query.Add(new Criterion("@PartNO", request.PartNO + "%"));//
+            _query.Add(new Criterion("@CustomerList", request.CustomerList + "%"));//
+            _query.Add(new Criterion("@SONO", request.SONO + "%"));//
+            _query.Add(new Criterion("@FGDimension", request.FGDimension + "%"));//
+            _query.Add(new Criterion("@WOStatus", request.radio + "%"));
+            _query.Add(new Criterion("@StartDate", request.StartDate ));
+            _query.Add(new Criterion("@EndDate", request.EndDate ));
+            _query.Add(new Criterion("@Remark1", request.Remark1 + "%"));
+            return _query;
+        }
+
+        public Query spGenerateDynamic9(MessagingService request)
+        {
+            _query = new Query(NamedQuery.spGenerateDynamic9);
+            _query.Add(new Criterion("@radio", request.radio + "%"));//todo
+            _query.Add(new Criterion("@Remark", "%"));//
+            _query.Add(new Criterion("@McID", request.McID + "%"));//
+            _query.Add(new Criterion("@WOID", request.WOID + "%"));//
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter + "%"));//
+            _query.Add(new Criterion("@PartID", request.PartID + "%"));//
+            _query.Add(new Criterion("@PartNO", request.PartNO + "%"));//
+            _query.Add(new Criterion("@CustomerList", request.CustomerList + "%"));//
+            _query.Add(new Criterion("@SONO", request.SONO + "%"));//
+            _query.Add(new Criterion("@FGDimension", request.FGDimension + "%"));//
+            _query.Add(new Criterion("@WOStatus", request.radio + "%"));
+            _query.Add(new Criterion("@StartDate", request.StartDate));
+            _query.Add(new Criterion("@EndDate", request.EndDate ));
+            _query.Add(new Criterion("@Remark1", request.Remark1 + "%"));
+            return _query;
+        }
+
+        public Query spGenerateDynamic10(MessagingService request)
+        {
+            _query = new Query(NamedQuery.spGenerateDynamic10);
+            _query.Add(new Criterion("@radio", request.radio + "%"));//todo
+            _query.Add(new Criterion("@Remark", "%"));//
+            _query.Add(new Criterion("@McID", request.McID + "%"));//
+            _query.Add(new Criterion("@WOID", request.WOID + "%"));//
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter + "%"));//
+            _query.Add(new Criterion("@PartID", request.PartID + "%"));//
+            _query.Add(new Criterion("@PartNO", request.PartNO + "%"));//
+            _query.Add(new Criterion("@CustomerList", request.CustomerList + "%"));//
+            _query.Add(new Criterion("@SONO", request.SONO + "%"));//
+            _query.Add(new Criterion("@FGDimension", request.FGDimension + "%"));//
+            _query.Add(new Criterion("@WOStatus", request.radio + "%"));
+            _query.Add(new Criterion("@StartDate", request.StartDate ));
+            _query.Add(new Criterion("@EndDate", request.EndDate ));
+            _query.Add(new Criterion("@Remark1", request.Remark1 + "%"));
+            return _query;
+        }
+
+        public Query spGenerateDynamic11(MessagingService request)
+        {
+            _query = new Query(NamedQuery.spGenerateDynamic11);
+            _query.Add(new Criterion("@radio", request.radio + "%"));//todo
+            _query.Add(new Criterion("@Remark", "%"));//
+            _query.Add(new Criterion("@McID", request.McID + "%"));//
+            _query.Add(new Criterion("@WOID", request.WOID + "%"));//
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter + "%"));//
+            _query.Add(new Criterion("@PartID", request.PartID + "%"));//
+            _query.Add(new Criterion("@PartNO", request.PartNO + "%"));//
+            _query.Add(new Criterion("@CustomerList", request.CustomerList + "%"));//
+            _query.Add(new Criterion("@SONO", request.SONO + "%"));//
+            _query.Add(new Criterion("@FGDimension", request.FGDimension + "%"));//
+            _query.Add(new Criterion("@WOStatus", request.radio + "%"));
+            _query.Add(new Criterion("@StartDate", request.StartDate ));
+            _query.Add(new Criterion("@EndDate", request.EndDate ));
+            _query.Add(new Criterion("@Remark1", request.Remark1 + "%"));
+            return _query;
+        }
+
+        public Query spGenerateDynamic1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.spGenerateDynamic1);
+            Debug.WriteLine("McID: ||" + request.McID + "||");
+            Debug.WriteLine("WOID: ||" + request.WOID + "||");
+            Debug.WriteLine("WorkCenter: ||" + request.WorkCenter + "||");
+            Debug.WriteLine("Start: ||" + request.StartDate + "||");
+            Debug.WriteLine("End: ||" + request.EndDate + "||");
+
+            if (request.radio == null)
+            {
+                request.radio = "";
+            }
+            if (request.McID == null)
+            {
+                request.McID = "";
+            }
+            if (request.WOID == null)
+            {
+                request.WOID = "";
+            }
+            if (request.WorkCenter == null)
+            {
+                request.WorkCenter = "";
+            }
+            if (request.PartID == null)
+            {
+                request.PartID = "";
+            }
+            if (request.PartNO == null)
+            {
+                request.PartNO = "";
+            }
+            if (request.CustomerList == null)
+            {
+                request.CustomerList = "";
+            }
+            if (request.SONO == null)
+            {
+                request.SONO = "";
+            }
+            if (request.FGDimension == null)
+            {
+                request.FGDimension = "";
+            }
+            if (request.StartDate == null)
+            {
+                request.StartDate = "";
+            }
+
+            if (request.EndDate == null)
+            {
+                request.EndDate = "";
+            }
+
+            if (request.Remark1 == null)
+            {
+                request.Remark1 = "";
+            }
+
+
+            _query.Add(new Criterion("@radio", request.radio + "%"));//todo
+            _query.Add(new Criterion("@Remark", "%"));//
+            _query.Add(new Criterion("@McID", request.McID + "%"));//
+            _query.Add(new Criterion("@WOID", request.WOID + "%"));//
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter+"%"));//
+            _query.Add(new Criterion("@PartID", request.PartID + "%"));//
+            _query.Add(new Criterion("@PartNO", request.PartNO + "%"));//
+            _query.Add(new Criterion("@CustomerList", request.CustomerList + "%"));//
+            _query.Add(new Criterion("@SONO", request.SONO + "%"));//
+            _query.Add(new Criterion("@FGDimension", request.FGDimension + "%"));//
+            _query.Add(new Criterion("@WOStatus", request.radio + "%"));
+            _query.Add(new Criterion("@StartDate", request.StartDate ));
+            _query.Add(new Criterion("@EndDate", request.EndDate ));
+            _query.Add(new Criterion("@Remark1", request.Remark1 + "%"));
+            return _query;
+        }
+
 
         public Query spGenerateDynamicWOStatusListStatement1(MessagingService request)
         {
             _query = new Query(NamedQuery.spGenerateDynamicWOStatusListStatement1);
-            // _query.Add(new Criterion("@Test", "Select * From SIMAPS_MOM.dbo.WorkOrderInfo"));
-            //_query.Add(new Criterion("@McID", "LASER"));
-            //_query.Add(new Criterion("@WOID", "2017050001"));
-            //_query.Add(new Criterion("@WorkCenter", "Laser"));
-            //_query.Add(new Criterion("@Remark", ""));
-            //_query.Add(new Criterion("@PartID", "14VS078A201-01"));
-            //_query.Add(new Criterion("@PartNO", "301718-TESTING"));
-            //_query.Add(new Criterion("@CustomerList", "MAKINO"));
-            //_query.Add(new Criterion("@SONO", "1"));//
-            //_query.Add(new Criterion("@FGDimension", "REPEAT"));
-            //_query.Add(new Criterion("@WOStatus", "Queuing"));
+
 
             Debug.WriteLine("McID: " + request.McID + "||");
             Debug.WriteLine("WOID: " + request.WOID + "||");
@@ -2175,6 +3518,484 @@ namespace TestTemplate.Domain.Service.Implementations.Factory
             // _query.Add(new Criterion("@EndDate", "20170630"));
             return _query;
         }
+
+        public Query ScrapbutConfirm_Click1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.ScrapbutConfirm_Click1);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq) ));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+
+            return _query;
+        }
+
+        public Query ScrapbutConfirm_Click2(MessagingService request)
+        {
+            _query = new Query(NamedQuery.ScrapbutConfirm_Click2);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@RouteID", Int32.Parse(request.RouteID)));
+            _query.Add(new Criterion("@OpSeq", Int32.Parse(request.OpSeq)));
+
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@ScrapQty", Int32.Parse(request.ScrapQty)));
+            _query.Add(new Criterion("@Remark", request.Remark));
+            _query.Add(new Criterion("@ScrapType", request.ScrapType));
+            _query.Add(new Criterion("@ScrapDate", request.ScrapDate));
+            _query.Add(new Criterion("@UserID", request.UserID));
+            _query.Add(new Criterion("@UserName", request.UserName));
+            _query.Add(new Criterion("@Status", request.Status));
+
+
+
+
+
+
+            return _query;
+        }
+
+        public Query ScrapbutConfirm_Click3(MessagingService request)
+        {
+            _query = new Query(NamedQuery.ScrapbutConfirm_Click3);
+
+
+
+            Debug.WriteLine("OutstandingQty: " + request.OutstandingQty + "||");
+            _query.Add(new Criterion("@AccumulatedScrapQty", Int32.Parse(request.AccumulatedScrapQty)));//todo
+            _query.Add(new Criterion("@AccumulatedScrapDate", request.AccumulatedScrapDate));//todo
+            _query.Add(new Criterion("@OutstandingQty", Int32.Parse(request.OutstandingQty) ));
+            _query.Add(new Criterion("@OutstandingDate", request.OutstandingDate ));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            return _query;
+        }
+
+        public Query btnCancelWO_ClickCase20_1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.btnCancelWO_ClickCase20_1);
+
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));//todo
+            _query.Add(new Criterion("@StopDateTime", request.StopDateTime));
+            _query.Add(new Criterion("@EndType", request.endType));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            return _query;
+        }
+
+        public Query btnCancelWO_ClickCase20_2(MessagingService request)
+        {
+            _query = new Query(NamedQuery.btnCancelWO_ClickCase20_2);
+
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));//todo
+            _query.Add(new Criterion("@WOStatus", request.WOStatus));
+            _query.Add(new Criterion("@ProdEndDate ", request.ProdEndDate));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            _query.Add(new Criterion("@McID", request.McID));
+            _query.Add(new Criterion("@TotalSetupDuration", float.Parse(request.TotalSetupDuration)));
+            _query.Add(new Criterion("@ProdTotalDuration", float.Parse(request.ProdTotalDuration)));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            return _query;
+        }
+
+        public Query btnCancelWO_ClickCase20_2_1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.btnCancelWO_ClickCase20_2_1);
+
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));//todo
+            _query.Add(new Criterion("@WOStatus", request.WOStatus));
+            _query.Add(new Criterion("@ProdEndDate ", request.ProdEndDate));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            _query.Add(new Criterion("@ProdTotalDuration", float.Parse(request.ProdTotalDuration)));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            return _query;
+        }
+
+        public Query btnCancelWO_ClickCase30_1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.btnCancelWO_ClickCase30_1);
+
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));//todo
+            _query.Add(new Criterion("@WOStatus", request.WOStatus));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            _query.Add(new Criterion("@McID", request.McID));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            return _query;
+        }
+
+        public Query btnCancelWO_ClickCase30_1_1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.btnCancelWO_ClickCase30_1_1);
+
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));//todo
+            _query.Add(new Criterion("@WOStatus", request.WOStatus));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            return _query;
+        }
+
+        public Query btnCancelWO_ClickCase40_1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.btnCancelWO_ClickCase40_1);
+
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));//todo
+            _query.Add(new Criterion("@WOStatus", request.WOStatus));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            return _query;
+        }
+
+        public Query btnCancelWO_ClickCase40_2(MessagingService request)
+        {
+            _query = new Query(NamedQuery.btnCancelWO_ClickCase40_2);
+
+            _query.Add(new Criterion("@DiscardReason", request.DiscardReason));//todo
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@WOStatus", request.WOStatus));
+            return _query;
+        }
+
+        public Query btnCancelWO_ClickCase40_3(MessagingService request)
+        {
+            _query = new Query(NamedQuery.btnCancelWO_ClickCase40_3);
+
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));//todo
+            _query.Add(new Criterion("@StopDateTime ", request.StopDateTime));
+            _query.Add(new Criterion("@EndType", request.endType));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            return _query;
+        }
+
+        public Query butConfirm_Click1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.butConfirm_Click1);
+
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@RouteID", Int32.Parse(request.RouteID)));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));//todo
+            _query.Add(new Criterion("@OpSeq", Int32.Parse(request.OpSeq)));//todo
+            _query.Add(new Criterion("@ScrapQty", Int32.Parse(request.ScrapQty)));//todo
+            _query.Add(new Criterion("@Remark", request.Type));
+            _query.Add(new Criterion("@ScrapType", request.ScrapType));
+            _query.Add(new Criterion("@ScrapDate", request.ScrapDate));
+            _query.Add(new Criterion("@UserID", request.UserID));
+            _query.Add(new Criterion("@UserName", request.UserName));
+            _query.Add(new Criterion("@Status", request.Status));
+            _query.Add(new Criterion("@ApprovedID", request.ApprovedID));
+            _query.Add(new Criterion("@ApprovedName", request.ApprovedName));
+            return _query;
+        }
+
+        public Query butConfirm_Click2(MessagingService request)
+        {
+            _query = new Query(NamedQuery.butConfirm_Click2);
+
+            _query.Add(new Criterion("@ScrapQty", Int32.Parse(request.ScrapQty)));//todo
+            _query.Add(new Criterion("@AccumulatedScrapDate ", request.AccumulatedScrapDate));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            return _query;
+        }
+
+        public Query butConfirm_Click3(MessagingService request)
+        {
+            _query = new Query(NamedQuery.butConfirm_Click3);
+            _query.Add(new Criterion("@ScrapQty", Int32.Parse(request.ScrapQty)));//todo
+            _query.Add(new Criterion("@AccumulatedScrapDate ", request.AccumulatedScrapDate));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));//todo
+            _query.Add(new Criterion("@WOID", request.WOID));
+            return _query;
+        }
+
+        public Query Generate_WOSplitDetail(MessagingService request)
+        {
+            _query = new Query(NamedQuery.Generate_WOSplitDetail);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            return _query;
+        }
+
+        public Query CheckAnyChildNotCompletedOwn1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CheckAnyChildNotCompletedOwn1);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            return _query;
+        }
+
+        public Query CheckAnyChildNotCompletedOwn2(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CheckAnyChildNotCompletedOwn2);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            return _query;
+        }
+
+        public Query GenerateOperatorList(MessagingService request)
+        {
+            _query = new Query(NamedQuery.GenerateOperatorList);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq))); 
+            return _query;
+        }
+
+        public Query cmdConfirm_ClickCase10(MessagingService request)
+        {
+            _query = new Query(NamedQuery.cmdConfirm_ClickCase10);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            return _query;
+        }
+
+
+        public Query GetCurrentShiftID(MessagingService request)
+        {
+            _query = new Query(NamedQuery.GetCurrentShiftID);
+            _query.Add(new Criterion("@CurrentTime", request.CurrentTime));
+            return _query;
+        }
+
+        public Query GenerateQCEquipmentList(MessagingService request)
+        {
+            _query = new Query(NamedQuery.GenerateQCEquipmentList);
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            return _query;
+        }
+
+        public Query GenerateSeletedQCEquipmentList(MessagingService request)
+        {
+            _query = new Query(NamedQuery.GenerateSeletedQCEquipmentList);
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@RouteID", Int32.Parse(request.RouteID)));
+            _query.Add(new Criterion("@OpSeq", Int32.Parse(request.OpSeq)));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            return _query;
+        }
+
+        public Query cmdAdd_Click(MessagingService request)
+        {
+            _query = new Query(NamedQuery.cmdAdd_Click);
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@RouteID", Int32.Parse(request.RouteID)));
+            _query.Add(new Criterion("@OpSeq", Int32.Parse(request.OpSeq)));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@McID", request.McID));
+            return _query;
+        }
+
+        public Query cmdDelete_Click(MessagingService request)
+        {
+            _query = new Query(NamedQuery.cmdDelete_Click);
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@RouteID", Int32.Parse(request.RouteID)));
+            _query.Add(new Criterion("@OpSeq", Int32.Parse(request.OpSeq)));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            _query.Add(new Criterion("@McID", request.McID));
+            return _query;
+        }
+
+        public Query fnUpdateOperator1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.fnUpdateOperator1);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            return _query;
+        }
+
+        public Query fnUpdateOperator2(MessagingService request)
+        {
+            _query = new Query(NamedQuery.fnUpdateOperator2);
+            _query.Add(new Criterion("@ReceivedDate", request.ReceivedDate));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            return _query;
+        }
+
+        public Query fnUpdateOperator3(MessagingService request)
+        {
+            _query = new Query(NamedQuery.fnUpdateOperator3);
+            _query.Add(new Criterion("@CompletedDate", request.CompletedDate));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            return _query;
+        }
+
+        public Query fnUpdateOperator4(MessagingService request)
+        {
+            _query = new Query(NamedQuery.fnUpdateOperator4);
+            _query.Add(new Criterion("@OperatorStatus", request.OperatorStatus));
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));
+            return _query;
+        }
+
+        public Query fnUpdateOperator5(MessagingService request)
+        {
+            _query = new Query(NamedQuery.fnUpdateOperator5);
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));//
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));//
+            _query.Add(new Criterion("@WOID", request.WOID));//
+            _query.Add(new Criterion("@McID", request.McID));//
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));//
+            _query.Add(new Criterion("@McType", request.McType));//
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));//
+            _query.Add(new Criterion("@ReceivedQty", Int32.Parse(request.ReceivedQty)));//
+            _query.Add(new Criterion("@ReceivedDate", request.ReceivedDate));//
+            return _query;
+        }
+
+        public Query fnUpdateOperator6(MessagingService request)
+        {
+            _query = new Query(NamedQuery.fnUpdateOperator6);
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));//
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));//
+            _query.Add(new Criterion("@WOID", request.WOID));//
+            _query.Add(new Criterion("@McID", request.McID));//
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));//
+            _query.Add(new Criterion("@McType", request.McType));//
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));//
+            _query.Add(new Criterion("@CompletedQty", Int32.Parse(request.CompletedQty)));//
+            _query.Add(new Criterion("@CompletedDate", request.CompletedDate));//
+            return _query;
+        }
+
+        public Query fnUpdateOperator7(MessagingService request)
+        {
+            _query = new Query(NamedQuery.fnUpdateOperator7);
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));//
+            _query.Add(new Criterion("@ProcOpSeq", Int32.Parse(request.ProcOpSeq)));//
+            _query.Add(new Criterion("@WOID", request.WOID));//
+            _query.Add(new Criterion("@McID", request.McID));//
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));//
+            _query.Add(new Criterion("@McType", request.McType));//
+            _query.Add(new Criterion("@OperatorName", request.OperatorName));//
+            _query.Add(new Criterion("@OperatorStatus", request.OperatorStatus));//
+            return _query;
+        }
+
+
+        public Query CheckWOReady1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CheckWOReady1);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            return _query;
+        }
+
+        public Query CheckWOReady2(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CheckWOReady2);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            return _query;
+        }
+
+        public Query CheckWOReady3(MessagingService request)
+        {
+            _query = new Query(NamedQuery.CheckWOReady3);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            return _query;
+        }
+
+
+        public Query populateOperatorID(MessagingService request)
+        {
+            _query = new Query(NamedQuery.populateOperatorID);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            return _query;
+        }
+
+        public Query fnUpdateWOExecution(MessagingService request)
+        {
+            _query = new Query(NamedQuery.fnUpdateWOExecution);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@RouteID", request.RouteID));
+            _query.Add(new Criterion("@ProcOpSeq", request.ProcOpSeq));
+            _query.Add(new Criterion("@McID", request.McID));
+            return _query;
+        }
+
+        public Query fnUpdateWOExecution1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.fnUpdateWOExecution1);
+            _query.Add(new Criterion("@WOID", request.WOID));
+            _query.Add(new Criterion("@WorkCenter", request.WorkCenter));
+            _query.Add(new Criterion("@RouteID", request.RouteID));
+            _query.Add(new Criterion("@ProcOpSeq", request.ProcOpSeq));
+            _query.Add(new Criterion("@McID", request.McID));
+            _query.Add(new Criterion("@WOStatus", request.WOStatus));
+            
+            return _query;
+        }
+
+        public Query fnUpdateWOExecution2(MessagingService request)
+        {
+            _query = new Query(NamedQuery.fnUpdateWOExecution2);
+            _query.Add(new Criterion("@WOID", request.WOID));
+
+            return _query;
+        }
+
+        public Query fnUpdateWOExecution3(MessagingService request)
+        {
+            _query = new Query(NamedQuery.fnUpdateWOExecution3);
+            _query.Add(new Criterion("@WOID", request.WOID));
+
+            return _query;
+        }
+
+
+        public Query getOperatorName(MessagingService request)
+        {
+            _query = new Query(NamedQuery.getOperatorName);
+            _query.Add(new Criterion("@OperatorID", request.OperatorID));
+
+            return _query;
+        }
+
+        public Query fnAddFGInventory1(MessagingService request)
+        {
+            _query = new Query(NamedQuery.fnAddFGInventory1);
+            _query.Add(new Criterion("@woid", request.WOID));
+
+            return _query;
+        }
+
+        public Query fnAddFGInventory2(MessagingService request)
+        {
+            _query = new Query(NamedQuery.fnAddFGInventory2);
+            _query.Add(new Criterion("@Location", request.Location));
+            _query.Add(new Criterion("@DateIn", request.DateIn));
+            _query.Add(new Criterion("@InvType", request.InvType));
+            _query.Add(new Criterion("@PartNo", request.PartNo));
+            _query.Add(new Criterion("@WorkOrder", request.WOID));
+            _query.Add(new Criterion("@Customer", request.Customer));
+            _query.Add(new Criterion("@SeqNo", Int32.Parse(request.SeqNo)));
+            _query.Add(new Criterion("@CenterID", request.CenterID));
+            _query.Add(new Criterion("@Qty", Int32.Parse(request.Qty)));
+            _query.Add(new Criterion("@BalQty",Int32.Parse(request.BalQty)));
+            _query.Add(new Criterion("@Status", request.Status));
+
+
+            return _query;
+        }
+
+        
+
+
+
+
+
+
+
     }
 }
 

@@ -1,62 +1,69 @@
 ﻿
 <section class="main-content-wrapper">
     <div class="col-md-12">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="panel panel-default">
+        <div class="row-margin">
+            <div class="col-md-4">
+                <div class="panel panel-default full-height">
 
                     <div class="panel-heading">
                         <h3 class="panel-title">Work Order Detail</h3>
-                        <div class="actions pull-right">
+<!--                        <div class="actions pull-right">
                             <i class="fa fa-expand"></i>
                             <i class="fa fa-chevron-down"></i>
                             <i class="fa fa-times"></i>
-                        </div>
+                        </div>-->
                     </div>
 
                     <div class="panel-body">
-                        <div class="form-group">
-                            <label>Work Order Selection</label>
-                            <select id="select_splitlist" class="selector form-control split-selector" ng-change="splitSelected()" ng-model="splitlist"></select>
+                        <div class="form-horizontal ng-pristine ng-valid">
+                        <div class="form-group form-group-margin">
+                            <label class="col-sm-4 control-label control-label-font">Work Order Selection</label>
+                            <div class="col-sm-8">
+                            <select id="select_splitlist" class=" form-control input-small form-control-height" ng-change="splitSelected()" ng-model="splitlist"></select>
+                        </div>
+                    
+
                         </div>
 
 
+                        
 
+                            
+                            <div class="form-group form-group-margin">
+                                                                
+                                    <label class="col-sm-4 control-label control-label-font">Work Centre</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control input-small form-control-height" id="work-center-info" readonly>
+                                </div>
+                                
+                            </div>
 
-                        <div class="row split-table-margin">
-
-                            <div class="form-group">
-                                <label>Work Order Information</label>
-
-                                <div class="form-group">
-                                    <label>Work Centre</label>
-                                    <input type="text" class="form-control " id="work-center-info" readonly>
+                            <div class="form-group form-group-margin">
+                                <label class="col-sm-4 control-label control-label-font"> ProcOpSeq</label>
+                                <div class="col-sm-8">
+                                <input type="text" class="form-control input-small form-control-height" id="procopseq-info" readonly>
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <label> ProcOpSeq</label>
-                                <input type="text" class="form-control " id="procopseq-info" readonly>
+                           
                             </div>
-
-                        </div>
+                      
                     </div>
                 </div>
             </div>
 
 
 
-            <div class="col-md-6" style="display:none;" id="hidden-row-1">
-                <div class="panel panel-default" id="split-table1">
+            <div class="col-md-4" style="display:none;" id="hidden-row-1">
+                <div class="panel panel-default full-height" id="split-table1">
 
 
                     <div class="panel-heading">
                         <h3 class="panel-title">Raw Material</h3>
-                        <div class="actions pull-right">
+<!--                        <div class="actions pull-right">
                             <i class="fa fa-expand"></i>
                             <i class="fa fa-chevron-down"></i>
                             <i class="fa fa-times"></i>
-                        </div>
+                        </div>-->
                     </div>
 
                     <!--<div class="gridTitle">
@@ -65,20 +72,78 @@
                     <div class="panel-body">
                         <table class="table table-striped">
                             <tr>
-                                <th>Part No</th>
-                                <td id="table1-td1"></td>
+                                <th class="table-control-padding-font-1">Part No</th>
+                                <td class="table-control-padding-font-1" id="table1-td1"></td>
                             </tr>
                             <tr>
-                                <th>Part Family</th>
-                                <td id="table1-td2"></td>
+                                <th class="table-control-padding-font-1">Part Family</th>
+                                <td class="table-control-padding-font-1" id="table1-td2"></td>
                             </tr>
                             <tr>
-                                <th>Planner Remarks</th>
-                                <td id="table1-td3"></td>
+                                <th class="table-control-padding-font-1">Planner Remarks</th>
+                                <td class="table-control-padding-font-1" id="table1-td3"></td>
                             </tr>
                             <tr>
-                                <th>Production Remarks</th>
-                                <td id="table1-td4"></td>
+                                <th class="table-control-padding-font-1">Production Remarks</th>
+                                <td class="table-control-padding-font-1" id="table1-td4"></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="col-md-4" style="display:none;" id="hidden-row-2">
+                <div class="panel panel-default full-height" id="split-table3">
+
+                    <div class="panel-heading">
+                        <h3 class="panel-title">//todo: check vertical name again  WO Summary</h3>
+<!--                        <div class="actions pull-right">
+                            <i class="fa fa-expand"></i>
+                            <i class="fa fa-chevron-down"></i>
+                            <i class="fa fa-times"></i>
+                        </div>-->
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-striped">
+                            <tr>
+                                <th class="table-control-padding-font-1">Release Production Qty</th>
+                                <td class="table-control-padding-font-1" id="table3-td1_1"></td>
+                                <td class="table-control-padding-font-1" id="table3-td1_2"></td>
+                            </tr>
+                            <tr id="table3_tr2">
+                                <th class="table-control-padding-font-1">Scrap + Unaccountable Qty</th>
+                                <td class="table-control-padding-font-1" id="table3-td2_1"></td>
+                                <td class="table-control-padding-font-1" id="table3-td2_2"></td>
+                            </tr>
+                            <tr>
+                                <th class="table-control-padding-font-1">Actual Production Qty</th>
+                                <td class="table-control-padding-font-1" id="table3-td3_1"></td>
+                                <td class="table-control-padding-font-1" id="table3-td3_2"></td>
+                            </tr>
+                            <tr>
+                                <th class="table-control-padding-font-1">Actual Received Qty</th>
+                                <td class="table-control-padding-font-1" id="table3-td4_1"></td>
+                                <td class="table-control-padding-font-1" id="table3-td4_2"></td>
+                            </tr>
+
+                            <tr id="table3_tr5">
+                                <th class="table-control-padding-font-1">Completed Qty</th>
+                                <td class="table-control-padding-font-1" id="table3-td5_1"></td>
+                                <td class="table-control-padding-font-1" id="table3-td5_2"></td>
+                            </tr>
+
+                            <tr id="table3_tr6">
+                                <th class="table-control-padding-font-1">Accumulative Scrap</th>
+                                <td class="table-control-padding-font-1" id="table3-td6_1"></td>
+                                <td class="table-control-padding-font-1" id="table3-td6_2"></td>
+                            </tr>
+
+                            <tr id="table3_tr7">
+                                <th class="table-control-padding-font-1">Outstanding Qty</th>
+                                <td class="table-control-padding-font-1" id="table3-td7_1"></td>
+                                <td class="table-control-padding-font-1" id="table3-td7_2"></td>
                             </tr>
                         </table>
                     </div>
@@ -87,74 +152,19 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-6" style="display:none;" id="hidden-row-2">
-                <div class="panel panel-default" id="split-table3">
-
-                    <div class="panel-heading">
-                        <h3 class="panel-title">//todo: check vertical name again  WO Summary</h3>
-                        <div class="actions pull-right">
-                            <i class="fa fa-expand"></i>
-                            <i class="fa fa-chevron-down"></i>
-                            <i class="fa fa-times"></i>
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <table class="table table-striped">
-                            <tr>
-                                <th>Release Production Qty</th>
-                                <td id="table3-td1_1"></td>
-                                <td id="table3-td1_2"></td>
-                            </tr>
-                            <tr id="table3_tr2">
-                                <th>Scrap + Unaccountable Qty</th>
-                                <td id="table3-td2_1"></td>
-                                <td id="table3-td2_2"></td>
-                            </tr>
-                            <tr>
-                                <th>Actual Production Qty</th>
-                                <td id="table3-td3_1"></td>
-                                <td id="table3-td3_2"></td>
-                            </tr>
-                            <tr>
-                                <th>Actual Received Qty</th>
-                                <td id="table3-td4_1"></td>
-                                <td id="table3-td4_2"></td>
-                            </tr>
-
-                            <tr id="table3_tr5">
-                                <th>Completed Qty</th>
-                                <td id="table3-td5_1"></td>
-                                <td id="table3-td5_2"></td>
-                            </tr>
-
-                            <tr id="table3_tr6">
-                                <th>Accumulative Scrap</th>
-                                <td id="table3-td6_1"></td>
-                                <td id="table3-td6_2"></td>
-                            </tr>
-
-                            <tr id="table3_tr7">
-                                <th>Outstanding Qty</th>
-                                <td id="table3-td7_1"></td>
-                                <td id="table3-td7_2"></td>
-                            </tr>
-                        </table>
-                    </div>
-
-                </div>
-            </div>
+        <div class="row row-margin">
+            
             <div class="col-md-6" style="display:none;" id="hidden-row-3">
 
                 <div class="panel panel-default" id="split-table4">
 
                     <div class="panel-heading">
                         <h3 class="panel-title"></h3>
-                        <div class="actions pull-right">
+<!--                        <div class="actions pull-right">
                             <i class="fa fa-expand"></i>
                             <i class="fa fa-chevron-down"></i>
                             <i class="fa fa-times"></i>
-                        </div>
+                        </div>-->
                     </div>
 
 
@@ -168,26 +178,26 @@
                         <div class="form-group" style="width:49%;display:inline-block;">
 
                             <label>Work Order:</label>
-                            <input type="text" class="form-control " id="split-wo" readonly>
+                            <input type="text" class="form-control input-small form-control-height" id="split-wo" readonly>
                             <label>Allowable Qty:</label>
-                            <input type="text" class="form-control " id="split-allowable" readonly>
+                            <input type="text" class="form-control input-small form-control-height" id="split-allowable" readonly>
                             <label>Completed Qty:</label>
-                            <input type="text" class="form-control " id="split-completed" readonly>
+                            <input type="text" class="form-control input-small form-control-height" id="split-completed" readonly>
 
                             <label></label>
-                            <button type="button" class="form-control btn btn-default " ng-click="split1()">Split</button>
+                            
                         </div>
 
 
                         <div class="form-group" style="width:49%;display:inline-block;">
                             <label>Split No:</label>
-                            <input type="text" class="form-control " id="split-no" readonly>
+                            <input type="text" class="form-control input-small form-control-height" id="split-no" readonly>
                             <label>Split Qty:</label>
-                            <input type="text" class="form-control " id="split-qty">
+                            <input type="text" class="form-control input-small form-control-height" id="split-qty">
                             <label>Bal.Allowable:</label>
-                            <input type="text" class="form-control " id="split-balallowable" readonly>
+                            <input type="text" class="form-control input-small form-control-height" id="split-balallowable" readonly>
                             <label>Bal.Completed Qty:</label>
-                            <input type="text" class="form-control " id="split-balcompleted" readonly>
+                            <input type="text" class="form-control input-small form-control-height" id="split-balcompleted" readonly>
                         </div>
 
                         <!--<div class="form-group" style="margin-top:15px;">
@@ -204,38 +214,44 @@
 
             </div>
 
-        </div>
-
-        <div class="col-md-6" id="split-table4">
+                    <div class="col-md-6" id="split-table4">
             <div class="panel panel-default" id="split-table4-kendo">
                 <div class="panel-heading">
                     <h3 class="panel-title"></h3>
-                    <div class="actions pull-right">
+<!--                    <div class="actions pull-right">
                         <i class="fa fa-expand"></i>
                         <i class="fa fa-chevron-down"></i>
                         <i class="fa fa-times"></i>
-                    </div>
+                    </div>-->
                 </div>
 
                 <div class="panel-body">
                     <table id="split-table4-table" class="table table-striped">
                         <tr id="table4_tr0">
-                            <th>Sub-WO</th>
-                            <th>Actual Production Qty</th>
-                            <th>Completed Qty</th>
-                            <th>Outstanding Qty</th>
-                            <th>Remark</th>
+                            <th class="table-control-padding-font-1">Sub-WO</th>
+                            <th class="table-control-padding-font-1">Actual Production Qty</th>
+                            <th class="table-control-padding-font-1">Completed Qty</th>
+                            <th class="table-control-padding-font-1">Outstanding Qty</th>
+                            <th class="table-control-padding-font-1">Remark</th>
                         </tr>
 
                     </table>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row split-table-margin">
 
-        <div class="col-sm-2">
-            <button type="button" class="btn btn-default" ng-click="save()">Save</button>
+        </div>
+
+
+    </div>
+    <div class="row row-margin">
+
+        <div class="col-sm-1">
+            <button type="button" class="btn btn-primary" ng-click="save()">Save</button>
+        </div>
+
+        <div class="col-sm-1">
+            <button type="button" class="btn btn-primary" ng-click="split1()">Split</button>
         </div>
     </div>
 

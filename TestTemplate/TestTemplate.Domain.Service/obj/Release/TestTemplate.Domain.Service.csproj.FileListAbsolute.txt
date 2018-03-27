@@ -20,3 +20,25 @@ C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTempl
 C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain.Service\obj\Release\TestTemplate.Domain.Service.csprojResolveAssemblyReference.cache
 C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain.Service\obj\Release\TestTemplate.Domain.Service.dll
 C:\HMLV_MOM\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain.Service\obj\Release\TestTemplate.Domain.Service.pdb
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain.Service\bin\Release\TestTemplate.Domain.Service.dll.config
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain.Service\bin\Release\TestTemplate.Domain.Service.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain.Service\bin\Release\TestTemplate.Domain.Service.pdb
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain.Service\bin\Release\EntityFramework.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain.Service\bin\Release\EntityFramework.SqlServer.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain.Service\bin\Release\Microsoft.AspNet.Identity.Core.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain.Service\bin\Release\Newtonsoft.Json.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain.Service\bin\Release\Nexus.Infrastructure.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain.Service\bin\Release\Security.Cryptography.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain.Service\bin\Release\TestTemplate.Domain.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain.Service\bin\Release\TestTemplate.Repository.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain.Service\bin\Release\TestTemplate.Domain.pdb
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain.Service\bin\Release\TestTemplate.Repository.pdb
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain.Service\bin\Release\EntityFramework.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain.Service\bin\Release\EntityFramework.SqlServer.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain.Service\bin\Release\Microsoft.AspNet.Identity.Core.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain.Service\bin\Release\Newtonsoft.Json.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain.Service\bin\Release\Security.Cryptography.pdb
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain.Service\bin\Release\Security.Cryptography.xml
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain.Service\obj\Release\TestTemplate.Domain.Service.csprojResolveAssemblyReference.cache
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain.Service\obj\Release\TestTemplate.Domain.Service.dll
+C:\Nexus Web Dashboard\asJan\Original Version updated\Configuration_NEXUS\TestTemplate\TestTemplate\TestTemplate\TestTemplate.Domain.Service\obj\Release\TestTemplate.Domain.Service.pdb

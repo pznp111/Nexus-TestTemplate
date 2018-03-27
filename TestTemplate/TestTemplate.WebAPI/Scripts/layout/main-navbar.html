@@ -1,6 +1,9 @@
 
 
-    <nav class="navbar navbar-default">
+
+
+
+    <nav class="navbar navbar-default" style="width:50px;">
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -9,13 +12,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-<!--                <div class="brand hidden-md hidden-lg" style="padding-right:46px;">
+                <div class="brand hidden-md hidden-lg" style="padding-right:46px;">
                     <center>
                         <a href="#">
                             <img class="hidden-md hidden-lg custom-logo-nav-sm" src="Content/img/simtechlogo.png" />
                         </a>
                     </center>
-                </div>-->
+                </div>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -29,80 +32,18 @@
                 -->
 
 
-                <ul class="nav navbar-nav  navbar-left brand" style="width:100%;    height: 55px;" >
+                <ul class="nav navbar-nav  navbar-left brand" style="height: 40px; " >
 
-
-                <li class="nav-item dropdown cust-navbar"  style="width:180px;text-align: center;"> 
-                                            <a href="#">
-                        <img  src="Content/img/simtechsmall.png" style="height: 25px;" />
-                    </a>
-
-                </li>
-
-
-                <li class="nav-item dropdown "  style="width:180px;text-align: center;">   
-                        <a class="nav-link dropdown-toggle cust-navbar" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            WO Execution
-                        </a>     
-                        <div class="dropdown-menu clearBoth menu-alighment" aria-labelledby="navbarDropdown" ng-repeat="menu in topMenuBar" ng-if ="menu.siteMapTitle ==  'Dispatch'||menu.siteMapTitle ==  'WO Tracking'||menu.siteMapTitle ==  'WO Split'  ||menu.siteMapTitle ==  'WO Rework'" >
-                            <a class="dropdown-item" ui-sref={{menu.siteMapUrl}}>{{menu.siteMapTitle}}</a>
-
-                        </div>
-
-                </li>
-
-
-                <li class="nav-item dropdown "  style="width:180px;text-align: center;">   
-                        <a class="nav-link dropdown-toggle cust-navbar" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span>WO Dashboard</span>
-                        </a>     
-                        <div class="dropdown-menu clearBoth menu-alighment" aria-labelledby="navbarDropdown" ng-repeat="menu in topMenuBar" ng-if ="menu.siteMapTitle ==  'Lock Report'||menu.siteMapTitle ==  'WO Status'|| menu.siteMapTitle ==  'WO Detail' ||menu.siteMapTitle ==  'Route Detail'||menu.siteMapTitle ==  'WO Split Report' || menu.siteMapTitle ==  'WO Scrap Report' ||menu.siteMapTitle ==  'Operator Report' ||menu.siteMapTitle ==  'WO Rework Report' ||menu.siteMapTitle ==  'WO Released Report' ||menu.siteMapTitle ==  'Customised Operator Report'" >
-                            <a class="dropdown-item" ui-sref={{menu.siteMapUrl}}>{{menu.siteMapTitle}}</a>
-
-                        </div>
-
-                </li>
-
-               <li class="nav-item dropdown "  style="width:180px;text-align: center;">   
-                        <a class="nav-link dropdown-toggle cust-navbar" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            ALL
-                        </a>     
-                        <div class="dropdown-menu clearBoth menu-alighment" aria-labelledby="navbarDropdown" ng-repeat="menu in topMenuBar">
-                            <a class="dropdown-item" ui-sref={{menu.siteMapUrl}}>{{menu.siteMapTitle}}</a>
-
-                        </div>
-
-                </li>
-
-                                    <ul class="nav navbar-nav  navbar-left brand" >
-                <li class="dropdown" ui-sref-active="active" ng-repeat="menu in topMenuBar">   
-                         
-                    
-                             
-<!--                    <a  ng-if ="menu.siteMapTitle !=  'Review' && menu.siteMapTitle !=  'Report'" ui-sref={{menu.siteMapUrl}} class="custom-nav" role="button" title="{{menu.siteMapTitle}}">
-
-                        <i class="{{menu.tag.cssClass}}" aria-hidden="true"></i><span>{{menu.siteMapTitle}}</span>
-                    </a>-->
-                </li>
-
-<!--                    <li class="toggle-navigation toggle-left" >
-                        <button class="sidebar-toggle" id="toggle-left" type="button" ng-click="toggleleft()" style="height: 34px; margin-top: 62%;    background: transparent;
-    border: none;">
-                            <i class="fa fa-bars"></i>
-                        </button>
-                    </li>-->
-            </ul>
-
-
-
-                <ul class="nav navbar-nav navbar-right">
+                    <ul class="navbar-left" style="height:40px;width:100px;margin-left: -35px;">
 
                     <li class="dropdown profile hidden-xs">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" style="height: 68px;">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" style="height: 40px;">
                             <span class="meta">
+                                                                    
                                 <span class="avatar">
                                     <img src="Content/img/3duser-black.png" class="img-circle custom-user-logo" alt="System Admin" />
-                                    <span class="text custom-white-text">{{currentUser.userName}}</span>
+
+                                    <!--<span class="text custom-white-text">{{currentUser.userName}}</span>-->
                                     <span class="caret"></span>
                                 </span>
 
@@ -122,52 +63,208 @@
                             </li>
                         </ul>
                     </li>
-                </ul>
+                    </ul>
+
+
+<!--                <li class="nav-item dropdown cust-navbar"  style="width:180px;text-align: center;height: 40px;"> 
+                                            <a href="#" style="height: 40px;">
+                        <img  src="Content/img/simtechsmall.png" style="height: 25px;" />
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item dropdown "  style="width:180px;text-align: center;">   
+                        <a class="nav-link dropdown-toggle cust-navbar" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="height: 40px;">
+                            WO Execution
+                        </a>     
+                        <div class="dropdown-menu clearBoth menu-alighment" aria-labelledby="navbarDropdown" ng-repeat="menu in topMenuBar" ng-if ="menu.siteMapTitle ==  'Dispatch'||menu.siteMapTitle ==  'WO Tracking'||menu.siteMapTitle ==  'WO Split'  ||menu.siteMapTitle ==  'WO Rework'" >
+                            <a class="dropdown-item" ui-sref={{menu.siteMapUrl}}>{{menu.siteMapTitle}}</a>
+
+                        </div>
+
+                </li>
+
+
+                <li class="nav-item dropdown "  style="width:180px;text-align: center;">   
+                        <a class="nav-link dropdown-toggle cust-navbar" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="height: 40px;">
+                            <span>WO Dashboard</span>
+                        </a>     
+                        <div class="dropdown-menu clearBoth menu-alighment" aria-labelledby="navbarDropdown" ng-repeat="menu in topMenuBar" ng-if ="menu.siteMapTitle ==  'Lock Report'||menu.siteMapTitle ==  'WO Status'|| menu.siteMapTitle ==  'WO Detail' ||menu.siteMapTitle ==  'Route Detail'||menu.siteMapTitle ==  'WO Split Report' || menu.siteMapTitle ==  'WO Scrap Report' ||menu.siteMapTitle ==  'Operator Report' ||menu.siteMapTitle ==  'WO Rework Report' ||menu.siteMapTitle ==  'WO Released Report' ||menu.siteMapTitle ==  'Customised Operator Report'" >
+                            <a class="dropdown-item" ui-sref={{menu.siteMapUrl}}>{{menu.siteMapTitle}}</a>
+
+                        </div>
+
+                </li>
+
+               <li class="nav-item dropdown "  style="width:180px;text-align: center;">   
+                        <a class="nav-link dropdown-toggle cust-navbar" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="height: 40px;">
+                            ALL
+                        </a>     
+                        <div class="dropdown-menu clearBoth menu-alighment" aria-labelledby="navbarDropdown" ng-repeat="menu in topMenuBar">
+                            <a class="dropdown-item" ui-sref={{menu.siteMapUrl}}>{{menu.siteMapTitle}}</a>
+
+                        </div>
+
+                </li>-->
+
+                                    <ul class="nav navbar-nav  navbar-left brand" >
+                <li class="dropdown" ui-sref-active="active" ng-repeat="menu in topMenuBar">   
+                         
+                    
+                             
+<!--                    <a  ng-if ="menu.siteMapTitle !=  'Review' && menu.siteMapTitle !=  'Report'" ui-sref={{menu.siteMapUrl}} class="custom-nav" role="button" title="{{menu.siteMapTitle}}">
+
+                        <i class="{{menu.tag.cssClass}}" aria-hidden="true"></i><span>{{menu.siteMapTitle}}</span>
+                    </a>-->
+                </li>
+
+<!--                    <li class="toggle-navigation toggle-left" >
+                        <button class="sidebar-toggle" id="toggle-left" type="button" ng-click="toggleleft()" style="height: 34px; margin-top: 62%;    background: transparent;
+    border: none;">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                    </li>-->
+ 
+            </ul>
+
+
+
+
             </div>
         </div>
     </nav>
 
-<section class ="theme-default sidebar-mini">
-    <aside class="sidebar sidebar-left" id="left-side-bar" >
+
+    <aside class="sidebar sidebar-left" id="left-side-bar" style="margin-top: 0px !important;">
 
         <nav style="background-color: #1d212a;">
             <h5 class="sidebar-header neo-left-color">Navigation</h5>
             <ul class="nav nav-pills nav-stacked">
-                <li ui-sref-active="active" ng-repeat="menu in topMenuBar">
-                    <a ui-sref={{menu.siteMapUrl}}  role="button" title="{{menu.siteMapTitle}}" ng-if ="menu.siteMapTitle ==  'Lock Report'||menu.siteMapTitle ==  'WO Status'|| menu.siteMapTitle ==  'WO Detail' ||menu.siteMapTitle ==  'Route Detail'||menu.siteMapTitle ==  'WO Split Report' || menu.siteMapTitle ==  'WO Scrap Report' ||menu.siteMapTitle ==  'Operator Report' ||menu.siteMapTitle ==  'WO Rework Report' ||menu.siteMapTitle ==  'WO Released Report' ||menu.siteMapTitle ==  'Customised Operator Report'">
+                <li ui-sref-active="active">
+                    <a href="#" title="WO Execution"><span></span>
+                            <i class="glyphicon glyphicon-dashboard"></i> WO Execution
+                        </a>
+
+                    <ul class ="nav-sub" data-index ="0" style="display:none">
+                    <a ui-sref={{menu.siteMapUrl}}  role="button" title="{{menu.siteMapTitle}}"  ng-repeat="menu in topMenuBar" ng-if ="menu.siteMapTitle ==  'Dispatch'||menu.siteMapTitle ==  'QC Tracking'||menu.siteMapTitle ==  'WO Tracking'||menu.siteMapTitle ==  'WO Split'  ||menu.siteMapTitle ==  'WO Rework'" >
                         <i class="fa  fa-fw fa-edit"></i><span class="neo-left-color">{{menu.siteMapTitle}}</span>
                     </a>
-                </li>
-            </ul>
-        </nav>
-    </aside>
 
-</section>
-
-<!--<section class ="theme-default sidebar-mini">
-    <aside class="sidebar sidebar-left" id="left-side-bar " >
-
-        <nav style="background-color: #1d212a;">
-            <h5 class="sidebar-header neo-left-color">Menu</h5>
-            <ul class="nav nav-pills nav-stacked">
-                <li ui-sref-active="active" class="nav-dropdown open" >
-                    <a href ="#">
-                        <i class="fa  fa-fw fa-edit"></i><span class="neo-left-color" ng-click ="toggleDashboard()">WO Dashboard</span>
-                    </a>
-                    <div id="dashboardul"  >
-                    <ul class ="nav-sub" ng-repeat="menu in topMenuBar" style="display:block;" >
-                        <li  ng-if ="menu.siteMapTitle ==  'Lock Report'||menu.siteMapTitle ==  'WO Status'|| menu.siteMapTitle ==  'WO Detail' ||menu.siteMapTitle ==  'Route Detail'||menu.siteMapTitle ==  'WO Split Report' || menu.siteMapTitle ==  'WO Scrap Report' ||menu.siteMapTitle ==  'Operator Report' ||menu.siteMapTitle ==  'WO Rework Report' ||menu.siteMapTitle ==  'WO Released Report' ||menu.siteMapTitle ==  'Customised Operator Report'">
-                            <a ui-sref={{menu.siteMapUrl}}  role="button" title="{{menu.siteMapTitle}}">{{menu.siteMapTitle}}</a>
-                        </li>
                     </ul>
 
-                    </div>
+                </li>
+
+                                <li ui-sref-active="active">
+                    <a href="#" title="WO Dashboard"><span></span>
+                            <i class="glyphicon glyphicon-play-circle"></i> WO Dashboard
+                        </a>
+
+                    <ul class ="nav-sub" data-index ="0" style="display:none">
+                    <a ui-sref={{menu.siteMapUrl}}  role="button" title="{{menu.siteMapTitle}}"  ng-repeat="menu in topMenuBar" ng-if ="menu.siteMapTitle ==  'Lock Report'||menu.siteMapTitle ==  'WO Status'|| menu.siteMapTitle ==  'WO Detail' ||menu.siteMapTitle ==  'Route Detail'||menu.siteMapTitle ==  'WO Split Report' || menu.siteMapTitle ==  'WO Scrap Report' ||menu.siteMapTitle ==  'Operator Report' ||menu.siteMapTitle ==  'WO Rework Report' ||menu.siteMapTitle ==  'WO Released Report' ||menu.siteMapTitle ==  'Customised Operator Report'">
+                        <i class="fa  fa-fw fa-edit"></i><span class="neo-left-color">{{menu.siteMapTitle}}</span>
+                    </a>
+
+                    </ul>
+
+                </li>
+
+                
+                                <li ui-sref-active="active">
+                    <a href="#" title="WO Dashboard"><span></span>
+                            <i class="fa  fa-fw fa-cogs"></i> ALL
+                        </a>
+
+                    <ul class ="nav-sub" data-index ="0" style="display:none">
+                    <a ui-sref={{menu.siteMapUrl}}  role="button" title="{{menu.siteMapTitle}}"  ng-repeat="menu in topMenuBar" >
+                        <i class="fa  fa-fw fa-edit"></i><span class="neo-left-color">{{menu.siteMapTitle}}</span>
+                    </a>
+
+                    </ul>
 
                 </li>
             </ul>
         </nav>
     </aside>
+    <aside class="sidebar sidebar-left" id="infoBox" style="       margin-top: 40px !important;
+    margin-left: 50px;
+    width: 300px;
+    background-color: #e25d5d;
+    overflow: scroll;
+    height: 300px;
+    position: absolute;
+    display:none;">
 
-</section>-->
 
-    <div ncy-breadcrumb></div>
+
+
+
+
+    <table class="table table-bordered">
+  <tr>
+    <th>woid</th>
+    <th id="infobox-woid"></th>
+  </tr>
+  <tr>
+    <td>PartID</td>
+    <td id="infobox-partID"></td>
+  </tr>
+  <tr>
+    <td>Actual Rec Qty</td>
+    <td id="infobox-actualRecQty"></td>
+  </tr>
+  <tr>
+    <td>Actual Rec Date</td>
+    <td id="infobox-actualRecDate"></td>
+  </tr>
+  <tr>
+    <td>completed Date</td>
+    <td id="infobox-completedDate"></td>
+  </tr>
+  <tr>
+    <td>completed Qty</td>
+    <td id="infobox-completedQty"></td>
+  </tr>
+  <tr>
+    <td>mcID</td>
+    <td id="infobox-mcID"></td>
+  </tr>
+</table>
+
+            </aside>
+    <div id = "horizontalBar" ncy-breadcrumb style="width:50%;margin-left:50px;margin-top:-40px;"></div>
+
+
+
+            <ol id="toolbar_wodetail" class="breadcrumb ng-scope ng-isolate-scope pull-right" style="margin-top:-40px; display:none;">
+                <li>
+                <a class="btn btn-sm btn-primary" style="padding:0px 5px; font-size:0.6em;"  data-toggle="modal" data-target="#summaryModal">
+                    <span class="glyphicon glyphicon-th-list"></span>Summary</a>
+                </li>
+
+                <li>
+                <a class="btn btn-sm btn-primary" style="padding:0px 5px; font-size:0.6em;"  data-toggle="modal" data-target="#executionhistoryModal">
+                    <span class="glyphicon glyphicon-th-list"></span>Execution History</a>
+                </li>
+
+                <li>
+                <a class="btn btn-sm btn-primary" style="padding:0px 5px; font-size:0.6em;"  data-toggle="modal" data-target="#fileUploadModal">
+                    <span class="glyphicon glyphicon-th-list"></span>QC Attachment</a>
+                </li>
+
+            </ol>
+
+
+            <ol id="toolbar_rework" class="breadcrumb ng-scope ng-isolate-scope pull-right" style="margin-top:-40px; display:none;">
+                <li>
+                <a class="btn btn-sm btn-primary" style="padding:0px 5px; font-size:0.6em;"  data-toggle="modal" data-target="#reworkinfo1">
+                    <span class="glyphicon glyphicon-th-list"></span>Work Order Detail</a>
+
+               <a class="btn btn-sm btn-primary" style="padding:0px 5px; font-size:0.6em;"  data-toggle="modal" data-target="#reworkinfo2">
+                    <span class="glyphicon glyphicon-th-list"></span>Raw Material</a>
+                </li>
+
+            </ol>
+<!--        <div id="infoBox" class="pull-left" style="width:200px;height:500px;display:none;background:red;    margin-top: 38px;margin-left:50px;overflow:scroll;">
+            texture
+        </div>-->

@@ -28,7 +28,11 @@
             }
             return memo;
         }, []);
+
         $('canvas').remove();
+        $("#toolbar_rework").hide();
+        $("#toolbar_wodetail").hide();
+        $("#main-container-page").css('margin-top', 0)
 
         //$('#startDate').val(new Date("2014-02-09").toDateInputValue());
         //$('#endDate').val(new Date().toDateInputValue());
@@ -232,22 +236,23 @@
                 //    }
                 //},
                 dataSource: {
-                    data,
-                    pageSize: 20
+                    data
+                    //,
+                    //pageSize: 20
                 },
                 dataType: "json",
-                height: 550,
-                pageable: {
-                    refresh: true,
-                    pageSizes: true,
-                    buttonCount: 5
-                },
+                height: 350,
+                //pageable: {
+                //    refresh: true,
+                //    pageSizes: true,
+                //    buttonCount: 5
+                //},
                 dragAndDrop: true,
-                pageable: true,
+               // pageable: true,
 
                 //pageSize: 10,
                 sortable: true,
-                pageable: true,
+               // pageable: true,
                 //groupable: true,
                 filterable: true,
                 columnMenu: true,

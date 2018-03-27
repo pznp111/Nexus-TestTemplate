@@ -70,6 +70,64 @@ namespace TestTemplate.WebAPI.Controllers
         //}
 
         [HttpPost]
+        public HttpResponseMessage CalculateDuration1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CalculateDuration1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage CalculateDuration2([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CalculateDuration2(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
+        [HttpPost]
+        public HttpResponseMessage CalculateQCDuration([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CalculateQCDuration(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        
+
+        [HttpPost]
+        public HttpResponseMessage CalculateDuration3([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CalculateDuration3(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+        [HttpPost]
         public HttpResponseMessage GenerateWOList3([FromBody]MessagingService request)
         {
             //ITS_WorkOrderService service = new TS_WorkOrderService();
@@ -296,6 +354,20 @@ namespace TestTemplate.WebAPI.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
+        [HttpPost]
+        public HttpResponseMessage comboWO_Selected_wotraking1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.comboWO_Selected_wotraking1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
 
         [HttpPost]
         public HttpResponseMessage UpdateQtyFromPreviousProcOpSeq1([FromBody]MessagingService request)
@@ -352,6 +424,50 @@ namespace TestTemplate.WebAPI.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
+
+        [HttpPost]
+        public HttpResponseMessage CheckQCWOOpnStatus1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CheckQCWOOpnStatus1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+        [HttpPost]
+        public HttpResponseMessage CheckQCWOOpnStatus2([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CheckQCWOOpnStatus2(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
+        [HttpPost]
+        public HttpResponseMessage CheckWOOpnStatus2_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CheckWOOpnStatus2_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
         [HttpPost]
         public HttpResponseMessage CheckWOOpnStatus3([FromBody]MessagingService request)
         {
@@ -359,6 +475,20 @@ namespace TestTemplate.WebAPI.Controllers
             IQueuingWOsService service = new QueuingWOsService();
 
             var result = service.CheckWOOpnStatus3(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage CheckWOOpnStatus3_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CheckWOOpnStatus3_1(request);
             if (result == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);
@@ -409,6 +539,78 @@ namespace TestTemplate.WebAPI.Controllers
         }
 
 
+
+        [HttpPost]
+        public HttpResponseMessage CalculateTimeSpan4([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CalculateTimeSpan4(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage CalculateTimeSpan5([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CalculateTimeSpan5(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage CalculateTimeSpan6([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CalculateTimeSpan6(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage CalculateTimeSpan7([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CalculateTimeSpan7(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage CalculateTimeSpan7_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CalculateTimeSpan7_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
         [HttpPost]
         public HttpResponseMessage GenerateQueuingWOList1([FromBody]MessagingService request)
         {
@@ -438,6 +640,35 @@ namespace TestTemplate.WebAPI.Controllers
         }
 
 
+        [HttpPost]
+        public HttpResponseMessage GenerateQueuingWOList3([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.GenerateQueuingWOList3(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage GenerateQueuingWOList4([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.GenerateQueuingWOList4(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
 
         [HttpPost]
         public HttpResponseMessage CalculateTimeSpan3([FromBody]MessagingService request)
@@ -454,7 +685,51 @@ namespace TestTemplate.WebAPI.Controllers
         }
 
 
+        [HttpPost]
+        public HttpResponseMessage CalculateTimeSpan3_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CalculateTimeSpan3_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage CheckSubconWOOpnStatus([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CheckSubconWOOpnStatus(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage CalculateSubconTimeSpan([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CalculateSubconTimeSpan(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
         
+
+
+
 
 
 
@@ -572,6 +847,20 @@ namespace TestTemplate.WebAPI.Controllers
         }
 
         [HttpPost]
+        public HttpResponseMessage fnGetUserAccessRight([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.fnGetUserAccessRight(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
         public HttpResponseMessage ScrapReport2([FromBody]MessagingService request)
         {
             //ITS_WorkOrderService service = new TS_WorkOrderService();
@@ -639,6 +928,202 @@ namespace TestTemplate.WebAPI.Controllers
         }
 
 
+        [HttpPost]
+        public HttpResponseMessage spGenerateDynamic1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.spGenerateDynamic1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage spGenerateDynamic11([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.spGenerateDynamic11(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage spGenerateDynamic10([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.spGenerateDynamic10(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage spGenerateDynamic9([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.spGenerateDynamic9(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage spGenerateDynamic8([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.spGenerateDynamic8(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage spGenerateDynamic7([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.spGenerateDynamic7(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage spGenerateDynamic6([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.spGenerateDynamic6(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage spGenerateDynamic5([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.spGenerateDynamic5(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage spGenerateDynamic4([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.spGenerateDynamic4(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
+        [HttpPost]
+        public HttpResponseMessage spGenerateDynamic3([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.spGenerateDynamic3(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage spGenerateDynamic2([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.spGenerateDynamic2(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage spGenerateDynamic14([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.spGenerateDynamic14(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage spGenerateDynamic13([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.spGenerateDynamic13(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage spGenerateDynamic12([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.spGenerateDynamic12(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
 
         [HttpPost]
         public HttpResponseMessage spGenerateDynamicWOStatusListStatement([FromBody]MessagingService request)
@@ -653,7 +1138,6 @@ namespace TestTemplate.WebAPI.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
-
 
 
         [HttpPost]
@@ -1015,13 +1499,25 @@ namespace TestTemplate.WebAPI.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
+
+
+
+
+
         
+        [HttpGet]
+        public HttpResponseMessage GenerateScrapRemark()
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
 
-
-
-
-
-
+            var result = service.GenerateScrapRemark();
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
 
         [HttpGet]
         public HttpResponseMessage GenerateMcID()
@@ -1442,6 +1938,20 @@ namespace TestTemplate.WebAPI.Controllers
         }
 
         [HttpPost]
+        public HttpResponseMessage addWORouteNext([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.addWORouteNext(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
         public HttpResponseMessage addWORouteQC([FromBody]MessagingService request)
         {
             //ITS_WorkOrderService service = new TS_WorkOrderService();
@@ -1732,73 +2242,28 @@ namespace TestTemplate.WebAPI.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
-        
-
         [HttpPost]
-        public HttpResponseMessage GenerateWOSummary2([FromBody]MessagingService request)
+        public HttpResponseMessage GenerateSubAssemblyWOList([FromBody]MessagingService request)
         {
             //ITS_WorkOrderService service = new TS_WorkOrderService();
             IQueuingWOsService service = new QueuingWOsService();
 
-            var result = service.GenerateWOSummary2(request);
+            var result = service.GenerateSubAssemblyWOList(request);
             if (result == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);
             }
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
-
-        [HttpPost]
-        public HttpResponseMessage GenerateWOMaterial([FromBody]MessagingService request)
-        {
-            //ITS_WorkOrderService service = new TS_WorkOrderService();
-            IQueuingWOsService service = new QueuingWOsService();
-
-            var result = service.GenerateWOMaterial(request);
-            if (result == null)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
-            return Request.CreateResponse(HttpStatusCode.OK, result);
-        }
-
-        [HttpPost]
-        public HttpResponseMessage GenerateWODetail1([FromBody]MessagingService request)
-        {
-            //ITS_WorkOrderService service = new TS_WorkOrderService();
-            IQueuingWOsService service = new QueuingWOsService();
-
-            var result = service.GenerateWODetail1(request);
-            if (result == null)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
-            return Request.CreateResponse(HttpStatusCode.OK, result);
-        }
-
-        [HttpPost]
-        public HttpResponseMessage GenerateWODetail2([FromBody]MessagingService request)
-        {
-            //ITS_WorkOrderService service = new TS_WorkOrderService();
-            IQueuingWOsService service = new QueuingWOsService();
-
-            var result = service.GenerateWODetail2(request);
-            if (result == null)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
-            return Request.CreateResponse(HttpStatusCode.OK, result);
-        }
-
 
         
         [HttpPost]
-        public HttpResponseMessage fnMultipleWOEnableConfig([FromBody]MessagingService request)
+        public HttpResponseMessage GenerateMcIDByWorkCenter([FromBody]MessagingService request)
         {
             //ITS_WorkOrderService service = new TS_WorkOrderService();
             IQueuingWOsService service = new QueuingWOsService();
 
-            var result = service.fnMultipleWOEnableConfig(request);
+            var result = service.GenerateMcIDByWorkCenter(request);
             if (result == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);
@@ -1806,6 +2271,265 @@ namespace TestTemplate.WebAPI.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
+        [HttpPost]
+        public HttpResponseMessage cmdOnHold_ClickCase20_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.cmdOnHold_ClickCase20_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage cmdOnHold_ClickCase20_2([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.cmdOnHold_ClickCase20_2(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage cmdOnHold_ClickCase20_3([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.cmdOnHold_ClickCase20_3(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage cmdUpdate_ClickCase15([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.cmdUpdate_ClickCase15(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
+        
+
+        [HttpPost]
+        public HttpResponseMessage productionPauseCase20_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.productionPauseCase20_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage productionPauseCase20_1_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.productionPauseCase20_1_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+        [HttpPost]
+        public HttpResponseMessage setupPauseCase20_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.setupPauseCase20_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
+        [HttpPost]
+        public HttpResponseMessage cmdQCResume_ClickCase10([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.cmdQCResume_ClickCase10(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        
+
+        [HttpPost]
+        public HttpResponseMessage QCPauseCase20_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.setupPauseCase20_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        
+
+
+
+        [HttpPost]
+        public HttpResponseMessage productionPauseCase20_2([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.productionPauseCase20_2(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage productionPauseCase20_3([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.productionPauseCase20_3(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage fnCheckPriorityConfig([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.fnCheckPriorityConfig(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage fnValidateUserNameMCAssign([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.fnValidateUserNameMCAssign(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        
+        [HttpPost]
+        public HttpResponseMessage productionResumeCase10_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.productionResumeCase10_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage productionResumeCase10_1_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.productionResumeCase10_1_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage setupResumeCase10_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.setupResumeCase10_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+        [HttpPost]
+        public HttpResponseMessage productionResumeCase10_2([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.productionResumeCase10_2(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+        [HttpPost]
+        public HttpResponseMessage productionResumeCase10_3([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.productionResumeCase10_3(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
 
         [HttpPost]
         public HttpResponseMessage setupStartCase10([FromBody]MessagingService request)
@@ -1822,12 +2546,100 @@ namespace TestTemplate.WebAPI.Controllers
         }
 
         [HttpPost]
-        public HttpResponseMessage ValidateOperatorName([FromBody]MessagingService request)
+        public HttpResponseMessage setupStartCase10_1([FromBody]MessagingService request)
         {
             //ITS_WorkOrderService service = new TS_WorkOrderService();
             IQueuingWOsService service = new QueuingWOsService();
 
-            var result = service.ValidateOperatorName(request);
+            var result = service.setupStartCase10_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage setupStartCase10_2([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.setupStartCase10_2(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
+        [HttpPost]
+        public HttpResponseMessage productionResumeCase10_4([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.productionResumeCase10_4(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
+        [HttpPost]
+        public HttpResponseMessage RemoveQCAttachment1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.RemoveQCAttachment1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage AddQCAttachment1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.AddQCAttachment1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
+        [HttpPost]
+        public HttpResponseMessage productionStopCase10_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.productionStopCase10_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
+        [HttpPost]
+        public HttpResponseMessage frmExecutionHistory1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.frmExecutionHistory1(request);
             if (result == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);
@@ -1838,12 +2650,12 @@ namespace TestTemplate.WebAPI.Controllers
 
 
         [HttpPost]
-        public HttpResponseMessage fnGetUserAccessRight([FromBody]MessagingService request)
+        public HttpResponseMessage frmExecutionHistory2([FromBody]MessagingService request)
         {
             //ITS_WorkOrderService service = new TS_WorkOrderService();
             IQueuingWOsService service = new QueuingWOsService();
 
-            var result = service.fnGetUserAccessRight(request);
+            var result = service.frmExecutionHistory2(request);
             if (result == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);
@@ -1851,6 +2663,48 @@ namespace TestTemplate.WebAPI.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
+
+        [HttpPost]
+        public HttpResponseMessage productionStopCase10_2([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.productionStopCase10_2(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage QCStopCase10_2([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.QCStopCase10_2(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage productionStopCase10_3([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.productionStopCase10_3(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
         [HttpPost]
         public HttpResponseMessage setupStartCase40_1([FromBody]MessagingService request)
         {
@@ -1878,6 +2732,80 @@ namespace TestTemplate.WebAPI.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
+
+        [HttpPost]
+        public HttpResponseMessage setupStartCase40_2_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.setupStartCase40_2_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage setupStopCase30_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.setupStopCase30_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
+        [HttpPost]
+        public HttpResponseMessage cmdConfirm_ClickCase30_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.cmdConfirm_ClickCase30_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+        
+
+        [HttpPost]
+        public HttpResponseMessage cmdConfirm_ClickCase40_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.cmdConfirm_ClickCase40_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage setupStopCase40_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.setupStopCase40_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        
 
         [HttpPost]
         public HttpResponseMessage setupStartCase40_3([FromBody]MessagingService request)
@@ -1936,22 +2864,80 @@ namespace TestTemplate.WebAPI.Controllers
         }
 
 
-
-
-
         [HttpPost]
-        public HttpResponseMessage populateOperatorID([FromBody]MessagingService request)
+        public HttpResponseMessage GetGetSalesID([FromBody]MessagingService request)
         {
             //ITS_WorkOrderService service = new TS_WorkOrderService();
             IQueuingWOsService service = new QueuingWOsService();
 
-            var result = service.populateOperatorID(request);
+            var result = service.GetGetSalesID(request);
             if (result == null)
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound);
             }
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
+
+        
+
+
+        [HttpPost]
+        public HttpResponseMessage GenerateWOSummary2([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.GenerateWOSummary2(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage GenerateWOMaterial([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.GenerateWOMaterial(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage GenerateWODetail1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.GenerateWODetail1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage GenerateWODetail2([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.GenerateWODetail2(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
 
         [HttpPost]
         public HttpResponseMessage generateWorkCenterInPriority([FromBody]MessagingService request)
@@ -2085,7 +3071,6 @@ namespace TestTemplate.WebAPI.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
-
         [HttpPost]
         public HttpResponseMessage GenerateMCWOList([FromBody]MessagingService request)
         {
@@ -2114,34 +3099,8 @@ namespace TestTemplate.WebAPI.Controllers
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
 
+        
 
-        [HttpPost]
-        public HttpResponseMessage frmExecutionHistory1([FromBody]MessagingService request)
-        {
-            //ITS_WorkOrderService service = new TS_WorkOrderService();
-            IQueuingWOsService service = new QueuingWOsService();
-
-            var result = service.frmExecutionHistory1(request);
-            if (result == null)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
-            return Request.CreateResponse(HttpStatusCode.OK, result);
-        }
-
-        [HttpPost]
-        public HttpResponseMessage frmExecutionHistory2([FromBody]MessagingService request)
-        {
-            //ITS_WorkOrderService service = new TS_WorkOrderService();
-            IQueuingWOsService service = new QueuingWOsService();
-
-            var result = service.frmExecutionHistory2(request);
-            if (result == null)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
-            return Request.CreateResponse(HttpStatusCode.OK, result);
-        }
 
 
 
@@ -2172,6 +3131,353 @@ namespace TestTemplate.WebAPI.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
+
+        [HttpPost]
+        public HttpResponseMessage cmdUpdateReceived_ClickCase7([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.cmdUpdateReceived_ClickCase7(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage cmdUpdateReceived_ClickCase10_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.cmdUpdateReceived_ClickCase10_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage cmdScrap_ClickCase10_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.cmdScrap_ClickCase10_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        
+
+        [HttpPost]
+        public HttpResponseMessage cmdUpdateReceived_ClickCase10_1_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.cmdUpdateReceived_ClickCase10_1_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage cmdUpdateReceived_ClickCase10_2([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.cmdUpdateReceived_ClickCase10_2(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage cmdUpdateReceived_ClickCase30([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.cmdUpdateReceived_ClickCase30(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
+
+        [HttpPost]
+        public HttpResponseMessage cmdUpdateReceived_ClickCase80_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.cmdUpdateReceived_ClickCase80_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage cmdUpdateReceived_ClickCase80_2([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.cmdUpdateReceived_ClickCase80_2(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage UpdateWorkOrderQty([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.UpdateWorkOrderQty(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage CheckAnyChildNotCompleted1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CheckAnyChildNotCompleted1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+        [HttpPost]
+        public HttpResponseMessage CheckAnyChildNotCompleted2([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CheckAnyChildNotCompleted2(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+        [HttpPost]
+        public HttpResponseMessage CheckAnyChildNotCompleted3([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CheckAnyChildNotCompleted3(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+        [HttpPost]
+        public HttpResponseMessage CheckAnyChildNotCompleted4([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CheckAnyChildNotCompleted4(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+        [HttpPost]
+        public HttpResponseMessage CheckAnyChildNotCompleted5([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CheckAnyChildNotCompleted5(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+        [HttpPost]
+        public HttpResponseMessage CheckAnyChildNotCompleted6([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CheckAnyChildNotCompleted6(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+        [HttpPost]
+        public HttpResponseMessage CheckAnyChildNotCompleted7([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CheckAnyChildNotCompleted7(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+        [HttpPost]
+        public HttpResponseMessage CheckAnyChildNotCompleted8([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CheckAnyChildNotCompleted8(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+        [HttpPost]
+        public HttpResponseMessage CheckAnyChildNotCompleted9([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CheckAnyChildNotCompleted9(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+        [HttpPost]
+        public HttpResponseMessage CheckAnyChildNotCompleted10([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CheckAnyChildNotCompleted10(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+        [HttpPost]
+        public HttpResponseMessage CheckAnyChildNotCompleted11([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CheckAnyChildNotCompleted11(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+        [HttpPost]
+        public HttpResponseMessage CheckAnyChildNotCompleted12([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CheckAnyChildNotCompleted12(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+        [HttpPost]
+        public HttpResponseMessage CheckAnyChildNotCompleted13([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CheckAnyChildNotCompleted13(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        
+
+        [HttpPost]
+        public HttpResponseMessage cmdUpdateReceived_ClickCase95_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.cmdUpdateReceived_ClickCase95_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage cmdUpdateReceived_ClickCase95_2([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.cmdUpdateReceived_ClickCase95_2(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
+        [HttpPost]
+        public HttpResponseMessage cmdUpdateReceived_ClickCase95_3([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.cmdUpdateReceived_ClickCase95_3(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
 
         [HttpPost]
         public HttpResponseMessage RemoveScrapRemark([FromBody]MessagingService request)
@@ -3135,6 +4441,631 @@ namespace TestTemplate.WebAPI.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.OK, result);
         }
+
+
+        [HttpPost]
+        public HttpResponseMessage getCurrentWorkOrderByMcID([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.getCurrentWorkOrderByMcID(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage ScrapbutConfirm_Click1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.ScrapbutConfirm_Click1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage ScrapbutConfirm_Click2([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.ScrapbutConfirm_Click2(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage ScrapbutConfirm_Click3([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.ScrapbutConfirm_Click3(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
+        [HttpPost]
+        public HttpResponseMessage btnCancelWO_ClickCase20_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.btnCancelWO_ClickCase20_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage btnCancelWO_ClickCase20_2_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.btnCancelWO_ClickCase20_2_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage btnCancelWO_ClickCase20_2([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.btnCancelWO_ClickCase20_2(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage btnCancelWO_ClickCase30_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.btnCancelWO_ClickCase30_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage btnCancelWO_ClickCase30_1_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.btnCancelWO_ClickCase30_1_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage btnCancelWO_ClickCase40_1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.btnCancelWO_ClickCase40_1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage btnCancelWO_ClickCase40_2([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.btnCancelWO_ClickCase40_2(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage btnCancelWO_ClickCase40_3([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.btnCancelWO_ClickCase40_3(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage butConfirm_Click1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.butConfirm_Click1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage butConfirm_Click2([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.butConfirm_Click2(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage butConfirm_Click3([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.butConfirm_Click3(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage Generate_WOSplitDetail([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.Generate_WOSplitDetail(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage CheckAnyChildNotCompletedOwn1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CheckAnyChildNotCompletedOwn1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage CheckAnyChildNotCompletedOwn2([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CheckAnyChildNotCompletedOwn2(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage GenerateOperatorList([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.GenerateOperatorList(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
+        [HttpPost]
+        public HttpResponseMessage cmdConfirm_ClickCase10([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.cmdConfirm_ClickCase10(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpGet]
+        public HttpResponseMessage GenerateQCWOList()
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.GenerateQCWOList();
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
+        [HttpPost]
+        public HttpResponseMessage GetCurrentShiftID([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.GetCurrentShiftID(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
+        [HttpPost]
+        public HttpResponseMessage GenerateQCEquipmentList([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.GenerateQCEquipmentList(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage GenerateSeletedQCEquipmentList([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.GenerateSeletedQCEquipmentList(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
+        [HttpPost]
+        public HttpResponseMessage cmdAdd_Click([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.cmdAdd_Click(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage cmdDelete_Click([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.cmdDelete_Click(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
+        [HttpPost]
+        public HttpResponseMessage fnUpdateOperator1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.fnUpdateOperator1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage fnUpdateOperator2([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.fnUpdateOperator2(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage fnUpdateOperator3([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.fnUpdateOperator3(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage fnUpdateOperator4([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.fnUpdateOperator4(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage fnUpdateOperator5([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.fnUpdateOperator5(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage fnUpdateOperator6([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.fnUpdateOperator6(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+        [HttpPost]
+        public HttpResponseMessage fnUpdateOperator7([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.fnUpdateOperator7(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage CheckWOReady1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CheckWOReady1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage CheckWOReady2([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CheckWOReady2(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage CheckWOReady3([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.CheckWOReady3(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
+        [HttpPost]
+        public HttpResponseMessage populateOperatorID([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.populateOperatorID(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage fnUpdateWOExecution([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.fnUpdateWOExecution(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage fnUpdateWOExecution1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.fnUpdateWOExecution1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage fnUpdateWOExecution2([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.fnUpdateWOExecution2(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage fnUpdateWOExecution3([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.fnUpdateWOExecution3(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage getOperatorName([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.getOperatorName(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage fnAddFGInventory1([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.fnAddFGInventory1(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage fnAddFGInventory2([FromBody]MessagingService request)
+        {
+            //ITS_WorkOrderService service = new TS_WorkOrderService();
+            IQueuingWOsService service = new QueuingWOsService();
+
+            var result = service.fnAddFGInventory2(request);
+            if (result == null)
+            {
+                return Request.CreateResponse(HttpStatusCode.NotFound);
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, result);
+        }
+
+
 
         //Tracking Report
 

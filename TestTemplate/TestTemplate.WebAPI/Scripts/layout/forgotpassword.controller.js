@@ -9,6 +9,11 @@
         $scope.forgotPassword = forgotPassword;
         $scope.acc = {};
 
+
+
+        $("#toolbar_rework").hide();
+        $("#toolbar_wodetail").hide();
+
         function forgotPassword() {
 
             authService.forgotPassword($scope.acc).then(function (result) {

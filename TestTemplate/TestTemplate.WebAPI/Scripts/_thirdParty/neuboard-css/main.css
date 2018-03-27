@@ -529,11 +529,11 @@ canvas {
   text-transform: uppercase;
 }
 .sidebar-left a {
-  color: #B3B8C3;
+  color: #000000;
 }
 .sidebar-left a:focus,
 .sidebar-left a:hover {
-  color: #fff;
+  color: #5bc0de;
   background-color: transparent;
 }
 .sidebar-left .active > a,
@@ -620,16 +620,13 @@ canvas {
     overflow-x: hidden;
   }
 }
-
-
 @media (min-width: 768px) {
   .sidebar {
     display: block;
   }
   .sidebar-mini .sidebar {
     width: 50px;
-    /*margin-top: 20px;*/
-    margin-top: 40px;
+    margin-top: 20px;
     -webkit-transition: all 0.1s ease-in-out;
     -moz-transition: all 0.1s ease-in-out;
     -o-transition: all 0.1s ease-in-out;
@@ -1615,7 +1612,8 @@ fieldset[disabled] .btn-warning.active {
 .panel > .panel-heading {
   font-weight: 400;
   text-transform: uppercase;
-  padding: 14px 10px;
+  /*padding: 14px 10px;*/
+  padding: 7px 5px;
 }
 .panel-heading > .panel-title {
   height: auto;

@@ -32,14 +32,17 @@
         //$('#startDate').val(new Date("2014-02-09 ").toDateInputValue());
         //$('#endDate').val(new Date().toDateInputValue());
 
+        //set default time
+        var d = new Date();
+        d.setMonth(d.getMonth() - 1);
         $(function () {
             $('#startDate').datetimepicker(
                 {
-                    defaultDate: "11/1/2013",
+                    defaultDate: d,
                     disabledDates: [
-                        moment("12/25/2013"),
-                        new Date(2013, 11 - 1, 21),
-                        "11/22/2013 00:53"
+                        moment(d),
+                        d,
+                        d
                     ]
                 });
 
@@ -51,7 +54,9 @@
         });
 
 
-
+        $("#toolbar_rework").hide();
+        $("#toolbar_wodetail").hide();
+        $("#main-container-page").css('margin-top', 0)
 
         onload();
 
@@ -239,7 +244,33 @@
 
         }
 
+        //'*******************************************************************
+        //'Title     :  convertTime
+        //'Function  :  
+        //'Input     :  
+        //'Output    : 
+        //'Remark    : to convert time to the correct display format(from YYYY-MM-DDDDTHH:MM:SS to YYYY-MM-DDDD HH:MM:SS)
+        function convertTime(convertField, data) {
+            for (var i = 0; i < convertField.length; i++) {
+                var field = convertField[i];
+                for (var j = 0; j < data.length; j++) {
+                    var originaltime = data[j][field];
+                    var originaltimeArray = originaltime.split("T");
+                    var finaltime = "";
+                    for (var k = 0; k < originaltimeArray.length; k++) {
+                        finaltime = finaltime + originaltimeArray[k] + " ";
+                    }
+                    data[j][field] = finaltime;
+                }
+            }
+        }
+
+
+
         function makeTable(data) {
+
+
+            convertTime(["scrapDate"],data);
             console.log("tableData", data);
             for (var i = 0; i < data.length; i++) {
                 data[i]["index"] = (i + 1);
@@ -262,23 +293,24 @@
                 //    }
                 //},
                 dataSource: {
-                    data,
-                    pageSize: 20
+                    data
+                    //,
+                    //pageSize: 20
                 },
                 dataType: "json",
-                height: 550,
-                pageable: {
-                    refresh: true,
-                    pageSizes: true,
-                    buttonCount: 5
-                },
+                height: 350,
+                //pageable: {
+                //    refresh: true,
+                //    pageSizes: true,
+                //    buttonCount: 5
+                //},
                 dragAndDrop: true,
-                pageable: true,
+               // pageable: true,
 
                 //pageSize: 10,
-                // sortable: true,
+                 sortable: true,
                 resizable: true,
-                pageable: true,
+               // pageable: true,
                 //groupable: true,
                 filterable: true,
                 columnMenu: true,
@@ -293,25 +325,25 @@
 
                  },
                  {
-                     field: "woid", title: "Work Order", width: 150
+                     field: "woid", title: "Work Order", width: 120
 
                  },
 
                  {
-                     field: "poNumber", title: "PO Number", width: 150
+                     field: "poNumber", title: "PO Number", width: 120
 
                  },
                 {
                     field: "partID", title: "PartNo.", width: 150
                 },
                  {
-                     field: "workcenter", title: "Work Center", width: 150
+                     field: "workcenter", title: "Work Center", width: 100
                  },
                   {
-                      field: "procOpSeq", title: "Proc Op Seq", width: 150
+                      field: "procOpSeq", title: "Proc Op Seq", width: 80
                   },
                  {
-                     field: "scrapQty", title: "Scrap Qty", width: 150
+                     field: "scrapQty", title: "Scrap Qty", width: 80
 
                  },
                  {
@@ -319,7 +351,7 @@
 
                  },
                  {
-                     field: "scrapType", title: "Scrap Type", width: 150
+                     field: "scrapType", title: "Scrap Type", width: 100
 
                  },
                  {
@@ -333,7 +365,7 @@
                     field: "remark", title: "Remark", width: 150
                 },
                 {
-                    field: "alertStatus", title: "Alert Status", width: 150
+                    field: "alertStatus", title: "Alert Status", width: 100
                 }
                 ]
             })

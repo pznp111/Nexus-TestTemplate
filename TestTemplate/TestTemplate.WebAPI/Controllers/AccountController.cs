@@ -30,8 +30,24 @@ namespace TestTemplate.WebAPI.Controllers
          *   [SiteMapFilter("dashboard-3")]
          *      should have "dashboard-1" AND "dashboard-3" in order
          */
+        //[SitemapFilter("dashboard-1")]
+        //public async Task<Tenant> Get()
+        //{
+        //    /*
+        //     * Get TenantId of current logged in user. You can also get the following
+        //     * - GetRoles(), GetSitemaps(), GetUserId(), GetUserName(), GetTenantId()
+        //     */
+        //    var tenantId = User.Identity.GetTenantId();
+
+        //    /*
+        //     * You can access all Nexus endpoints using the NexusService class
+        //     */
+        //    return await NexusService.Tenant.ReadTenant(tenantId);
+        //}
+
+
         [SitemapFilter("dashboard-1")]
-        public async Task<Tenant> Get()
+        public String Get()
         {
             /*
              * Get TenantId of current logged in user. You can also get the following
@@ -42,7 +58,9 @@ namespace TestTemplate.WebAPI.Controllers
             /*
              * You can access all Nexus endpoints using the NexusService class
              */
-            return await NexusService.Tenant.ReadTenant(tenantId);
+            return "";
         }
+
+
     }
 }

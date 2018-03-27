@@ -24,16 +24,16 @@ namespace TestTemplate.Repository.EntityFramework
 
             Db db = new Db("TestConn");
             // Db db = new Db("");
-           // String decryptString = EncryptionHelper.Decrypt(db.connectionString);
-           // db.connectionString = decryptString;
+            // String decryptString = EncryptionHelper.Decrypt(db.connectionString);
+            // db.connectionString = decryptString;
             _sqlConnBuilder = new SqlConnectionStringBuilder(db.connectionString);
             _entityBuilder = new EntityConnectionStringBuilder();
             _entityBuilder.Provider = "System.Data.SqlClient";
             _entityBuilder.ProviderConnectionString = _sqlConnBuilder.ToString();
 
-          //  String result = EncryptionHelper.Encrypt(_entityBuilder.ProviderConnectionString);
-          //  Debug.WriteLine("before encrypt",_entityBuilder.ProviderConnectionString);
-          //  Debug.WriteLine("after encrypt",result);
+            //  String result = EncryptionHelper.Encrypt(_entityBuilder.ProviderConnectionString);
+            //  Debug.WriteLine("before encrypt",_entityBuilder.ProviderConnectionString);
+            //  Debug.WriteLine("after encrypt",result);
 
         }
 
